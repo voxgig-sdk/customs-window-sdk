@@ -1,0 +1,33 @@
+# Guide
+
+@"@voxgig/apidef/model/guide.aontu"
+
+@"base-guide.aontu"
+
+
+# KNOWN ISSUE — three spurious entities, no supported fix yet.
+#
+# The Customs Window spec is Django-REST-Framework generated: each paginated
+# list endpoint responds with an envelope component
+# (PaginatedBulkUploadListList = { count, next, previous, results[] }) that the
+# classifier promotes to an entity of its own. They carry no paths and no ops,
+# so apidef warns "No paths defined for entity=..." and every target ships
+# three empty entities (the 3 assertion-free "risky" tests in the PHP suite).
+#
+# Deactivating them does NOT work, and both obvious edits are traps:
+#   - `guide: entity: <name>: active: false` parses (the guide schema has
+#     `active?: boolean`) but apidef never propagates the guide's `active` into
+#     `main.kit.entity.<name>.active` — the model still reads active:true.
+#   - editing `.sdk/model/entity/<name>.aontu` is pointless: apidef rewrites
+#     every entity file on each build.
+# The real entities (BulkUpload/Party/Submission) already expose `list`, so the
+# envelopes add nothing. Harmless but noisy; the fix belongs in apidef.
+#
+# This file SURVIVES a re-scaffold: create-sdkgen excludes the guide from its
+# blanket overwrite and merges instead (it restores missing @-includes and
+# otherwise leaves the file byte-identical), so customizations and notes kept
+# here are durable across cedar-regen.sh. Requires the create-sdkgen
+# guide-merge fix (in the local 0.16.4 tree; not yet published).
+
+
+

@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "paginated_bulk_upload_list_list": {
+      "PAGINATED_BULK_UPLOAD_LIST_LIST00": {},
+      "PAGINATED_BULK_UPLOAD_LIST_LIST01": {},
+      "PAGINATED_BULK_UPLOAD_LIST_LIST02": {}
+    }
+  },
+  "new": {
+    "paginated_bulk_upload_list_list": {
+      "paginated_bulk_upload_list_list_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,609 @@
+-- Typed models for the CustomsWindow SDK (LuaLS annotations).
+--
+-- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+-- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+-- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
+-- edit by hand.
+
+---@class BulkUpload
+---@field active_transport_nationality? string
+---@field active_transport_number? string
+---@field arrival_datetime? string
+---@field client string
+---@field company_member string
+---@field created_at string
+---@field declarant string
+---@field declarations_no number
+---@field deleted_at? string
+---@field departure_datetime? string
+---@field errors_file table
+---@field external_id? string
+---@field failed_declarations_no? number
+---@field file table
+---@field green_routed_no? number
+---@field h1_fallback_template? string
+---@field house_transport_doc_ref? string
+---@field id? string
+---@field issue_date? string
+---@field mapping? string
+---@field orange_routed_no? number
+---@field parsed_declarations_no? number
+---@field parser? string
+---@field parsing_completed_at? string
+---@field parsing_started_at? string
+---@field passive_transport_nationality? string
+---@field passive_transport_number? string
+---@field processed_declarations_no? number
+---@field processing_ended_at? string
+---@field processing_started_at? string
+---@field receipt_generating_started_at? string
+---@field receipt_request_started_at? string
+---@field receipt_request_status? string
+---@field receipt_request_user? string
+---@field receipts_zip? string
+---@field red_routed_no? number
+---@field rejected_status_no? number
+---@field status? string
+---@field template? string
+---@field updated_at string
+---@field yellow_routed_no? number
+
+---@class BulkUploadLoadMatch
+---@field id string
+
+---@class BulkUploadListMatch
+---@field active_transport_nationality? string
+---@field active_transport_number? string
+---@field arrival_datetime? string
+---@field client? string
+---@field company_member? string
+---@field created_at? string
+---@field declarant? string
+---@field declarations_no? number
+---@field deleted_at? string
+---@field departure_datetime? string
+---@field errors_file? table
+---@field external_id? string
+---@field failed_declarations_no? number
+---@field file? table
+---@field green_routed_no? number
+---@field h1_fallback_template? string
+---@field house_transport_doc_ref? string
+---@field id? string
+---@field issue_date? string
+---@field mapping? string
+---@field orange_routed_no? number
+---@field parsed_declarations_no? number
+---@field parser? string
+---@field parsing_completed_at? string
+---@field parsing_started_at? string
+---@field passive_transport_nationality? string
+---@field passive_transport_number? string
+---@field processed_declarations_no? number
+---@field processing_ended_at? string
+---@field processing_started_at? string
+---@field receipt_generating_started_at? string
+---@field receipt_request_started_at? string
+---@field receipt_request_status? string
+---@field receipt_request_user? string
+---@field receipts_zip? string
+---@field red_routed_no? number
+---@field rejected_status_no? number
+---@field status? string
+---@field template? string
+---@field updated_at? string
+---@field yellow_routed_no? number
+
+---@class BulkUploadCreateData
+---@field active_transport_nationality? string
+---@field active_transport_number? string
+---@field arrival_datetime? string
+---@field client string
+---@field company_member string
+---@field created_at string
+---@field declarant string
+---@field declarations_no number
+---@field deleted_at? string
+---@field departure_datetime? string
+---@field errors_file table
+---@field external_id? string
+---@field failed_declarations_no? number
+---@field file table
+---@field green_routed_no? number
+---@field h1_fallback_template? string
+---@field house_transport_doc_ref? string
+---@field id? string
+---@field issue_date? string
+---@field mapping? string
+---@field orange_routed_no? number
+---@field parsed_declarations_no? number
+---@field parser? string
+---@field parsing_completed_at? string
+---@field parsing_started_at? string
+---@field passive_transport_nationality? string
+---@field passive_transport_number? string
+---@field processed_declarations_no? number
+---@field processing_ended_at? string
+---@field processing_started_at? string
+---@field receipt_generating_started_at? string
+---@field receipt_request_started_at? string
+---@field receipt_request_status? string
+---@field receipt_request_user? string
+---@field receipts_zip? string
+---@field red_routed_no? number
+---@field rejected_status_no? number
+---@field status? string
+---@field template? string
+---@field updated_at string
+---@field yellow_routed_no? number
+
+---@class BulkUploadUpdateData
+---@field id string
+---@field active_transport_nationality? string
+---@field active_transport_number? string
+---@field arrival_datetime? string
+---@field client? string
+---@field company_member? string
+---@field created_at? string
+---@field declarant? string
+---@field declarations_no? number
+---@field deleted_at? string
+---@field departure_datetime? string
+---@field errors_file? table
+---@field external_id? string
+---@field failed_declarations_no? number
+---@field file? table
+---@field green_routed_no? number
+---@field h1_fallback_template? string
+---@field house_transport_doc_ref? string
+---@field issue_date? string
+---@field mapping? string
+---@field orange_routed_no? number
+---@field parsed_declarations_no? number
+---@field parser? string
+---@field parsing_completed_at? string
+---@field parsing_started_at? string
+---@field passive_transport_nationality? string
+---@field passive_transport_number? string
+---@field processed_declarations_no? number
+---@field processing_ended_at? string
+---@field processing_started_at? string
+---@field receipt_generating_started_at? string
+---@field receipt_request_started_at? string
+---@field receipt_request_status? string
+---@field receipt_request_user? string
+---@field receipts_zip? string
+---@field red_routed_no? number
+---@field rejected_status_no? number
+---@field status? string
+---@field template? string
+---@field updated_at? string
+---@field yellow_routed_no? number
+
+---@class BulkUploadRemoveMatch
+---@field id string
+
+---@class File
+---@field company string
+---@field created_at string
+---@field extension string
+---@field file string
+---@field id? string
+---@field name string
+---@field public boolean
+---@field size? number
+---@field updated_at string
+---@field url string
+
+---@class FileCreateData
+---@field company string
+---@field created_at string
+---@field extension string
+---@field file string
+---@field id? string
+---@field name string
+---@field public boolean
+---@field size? number
+---@field updated_at string
+---@field url string
+
+---@class PaginatedBulkUploadListList
+
+---@class PaginatedPartyListList
+
+---@class PaginatedSubmissionListList
+
+---@class Party
+---@field additional_declaration_type table
+---@field address table
+---@field authorisation table
+---@field bank_detail? string
+---@field certificate table
+---@field certificate_type string
+---@field company string
+---@field created_at string
+---@field customs_office_of_lodgement table
+---@field deleted_at? string
+---@field email? string
+---@field id? string
+---@field identification_number? string
+---@field indirect_representative? boolean
+---@field name? string
+---@field nhd_last_submission_year? number
+---@field nhd_submission_counter? number
+---@field person_paying_customs_duty? string
+---@field phone_country_code? string
+---@field phone_number? string
+---@field preferred_payment_method table
+---@field signed_form table
+---@field type? string
+---@field type_of_person table
+---@field unlocode? string
+---@field updated_at string
+
+---@class PartyLoadMatch
+---@field id string
+
+---@class PartyListMatch
+---@field additional_declaration_type? table
+---@field address? table
+---@field authorisation? table
+---@field bank_detail? string
+---@field certificate? table
+---@field certificate_type? string
+---@field company? string
+---@field created_at? string
+---@field customs_office_of_lodgement? table
+---@field deleted_at? string
+---@field email? string
+---@field id? string
+---@field identification_number? string
+---@field indirect_representative? boolean
+---@field name? string
+---@field nhd_last_submission_year? number
+---@field nhd_submission_counter? number
+---@field person_paying_customs_duty? string
+---@field phone_country_code? string
+---@field phone_number? string
+---@field preferred_payment_method? table
+---@field signed_form? table
+---@field type? string
+---@field type_of_person? table
+---@field unlocode? string
+---@field updated_at? string
+
+---@class PartyCreateData
+---@field additional_declaration_type table
+---@field address table
+---@field authorisation table
+---@field bank_detail? string
+---@field certificate table
+---@field certificate_type string
+---@field company string
+---@field created_at string
+---@field customs_office_of_lodgement table
+---@field deleted_at? string
+---@field email? string
+---@field id? string
+---@field identification_number? string
+---@field indirect_representative? boolean
+---@field name? string
+---@field nhd_last_submission_year? number
+---@field nhd_submission_counter? number
+---@field person_paying_customs_duty? string
+---@field phone_country_code? string
+---@field phone_number? string
+---@field preferred_payment_method table
+---@field signed_form table
+---@field type? string
+---@field type_of_person table
+---@field unlocode? string
+---@field updated_at string
+
+---@class PartyUpdateData
+---@field id string
+---@field additional_declaration_type? table
+---@field address? table
+---@field authorisation? table
+---@field bank_detail? string
+---@field certificate? table
+---@field certificate_type? string
+---@field company? string
+---@field created_at? string
+---@field customs_office_of_lodgement? table
+---@field deleted_at? string
+---@field email? string
+---@field identification_number? string
+---@field indirect_representative? boolean
+---@field name? string
+---@field nhd_last_submission_year? number
+---@field nhd_submission_counter? number
+---@field person_paying_customs_duty? string
+---@field phone_country_code? string
+---@field phone_number? string
+---@field preferred_payment_method? table
+---@field signed_form? table
+---@field type? string
+---@field type_of_person? table
+---@field unlocode? string
+---@field updated_at? string
+
+---@class PartyRemoveMatch
+---@field id string
+
+---@class Submission
+---@field additional_external_id? table
+---@field amendment_reason? string
+---@field amendment_status? string
+---@field answer table
+---@field bypass_restricted_code? boolean
+---@field clearance_slip table
+---@field client table
+---@field company_member table
+---@field consignee table
+---@field consignor table
+---@field created_at string
+---@field declarant table
+---@field document_upload_status? string
+---@field documents_presentation_requested? boolean
+---@field documents_upload_requested? boolean
+---@field external_id? string
+---@field form string
+---@field goods_presentation_status? string
+---@field hrcm_status? string
+---@field id? string
+---@field invalidation_status? string
+---@field is_global_template? boolean
+---@field latest_notification_item? string
+---@field latest_state table
+---@field lrn? string
+---@field mrn? string
+---@field name? string
+---@field partial_answer? boolean
+---@field receipt table
+---@field refund_application_status? string
+---@field route? string
+---@field shipment_items_no? number
+---@field shipment_items_quantity_no? number
+---@field source? string
+---@field source_type? string
+---@field status? string
+---@field template? boolean
+---@field template_id? string
+---@field template_property? table
+---@field total_tax_amount? string
+---@field updated_at string
+---@field verification_error? table
+---@field verification_status? string
+
+---@class SubmissionLoadMatch
+---@field id string
+
+---@class SubmissionListMatch
+---@field additional_external_id? table
+---@field amendment_reason? string
+---@field amendment_status? string
+---@field answer? table
+---@field bypass_restricted_code? boolean
+---@field clearance_slip? table
+---@field client? table
+---@field company_member? table
+---@field consignee? table
+---@field consignor? table
+---@field created_at? string
+---@field declarant? table
+---@field document_upload_status? string
+---@field documents_presentation_requested? boolean
+---@field documents_upload_requested? boolean
+---@field external_id? string
+---@field form? string
+---@field goods_presentation_status? string
+---@field hrcm_status? string
+---@field id? string
+---@field invalidation_status? string
+---@field is_global_template? boolean
+---@field latest_notification_item? string
+---@field latest_state? table
+---@field lrn? string
+---@field mrn? string
+---@field name? string
+---@field partial_answer? boolean
+---@field receipt? table
+---@field refund_application_status? string
+---@field route? string
+---@field shipment_items_no? number
+---@field shipment_items_quantity_no? number
+---@field source? string
+---@field source_type? string
+---@field status? string
+---@field template? boolean
+---@field template_id? string
+---@field template_property? table
+---@field total_tax_amount? string
+---@field updated_at? string
+---@field verification_error? table
+---@field verification_status? string
+
+---@class SubmissionCreateData
+---@field additional_external_id? table
+---@field amendment_reason? string
+---@field amendment_status? string
+---@field answer table
+---@field bypass_restricted_code? boolean
+---@field clearance_slip table
+---@field client table
+---@field company_member table
+---@field consignee table
+---@field consignor table
+---@field created_at string
+---@field declarant table
+---@field document_upload_status? string
+---@field documents_presentation_requested? boolean
+---@field documents_upload_requested? boolean
+---@field external_id? string
+---@field form string
+---@field goods_presentation_status? string
+---@field hrcm_status? string
+---@field id? string
+---@field invalidation_status? string
+---@field is_global_template? boolean
+---@field latest_notification_item? string
+---@field latest_state table
+---@field lrn? string
+---@field mrn? string
+---@field name? string
+---@field partial_answer? boolean
+---@field receipt table
+---@field refund_application_status? string
+---@field route? string
+---@field shipment_items_no? number
+---@field shipment_items_quantity_no? number
+---@field source? string
+---@field source_type? string
+---@field status? string
+---@field template? boolean
+---@field template_id? string
+---@field template_property? table
+---@field total_tax_amount? string
+---@field updated_at string
+---@field verification_error? table
+---@field verification_status? string
+
+---@class SubmissionUpdateData
+---@field id string
+---@field additional_external_id? table
+---@field amendment_reason? string
+---@field amendment_status? string
+---@field answer? table
+---@field bypass_restricted_code? boolean
+---@field clearance_slip? table
+---@field client? table
+---@field company_member? table
+---@field consignee? table
+---@field consignor? table
+---@field created_at? string
+---@field declarant? table
+---@field document_upload_status? string
+---@field documents_presentation_requested? boolean
+---@field documents_upload_requested? boolean
+---@field external_id? string
+---@field form? string
+---@field goods_presentation_status? string
+---@field hrcm_status? string
+---@field invalidation_status? string
+---@field is_global_template? boolean
+---@field latest_notification_item? string
+---@field latest_state? table
+---@field lrn? string
+---@field mrn? string
+---@field name? string
+---@field partial_answer? boolean
+---@field receipt? table
+---@field refund_application_status? string
+---@field route? string
+---@field shipment_items_no? number
+---@field shipment_items_quantity_no? number
+---@field source? string
+---@field source_type? string
+---@field status? string
+---@field template? boolean
+---@field template_id? string
+---@field template_property? table
+---@field total_tax_amount? string
+---@field updated_at? string
+---@field verification_error? table
+---@field verification_status? string
+
+---@class SubmissionRemoveMatch
+---@field id string
+
+---@class SubmissionDetail
+---@field additional_external_id? table
+---@field additional_information table
+---@field amendment_status? string
+---@field clearance_slip table
+---@field client table
+---@field company string
+---@field company_member table
+---@field consignee table
+---@field consignor table
+---@field created_at string
+---@field declarant table
+---@field document_upload_status? string
+---@field documents_presentation_requested? boolean
+---@field documents_upload_requested? boolean
+---@field external_id? string
+---@field form string
+---@field goods_presentation_status? string
+---@field hrcm_status? string
+---@field id? string
+---@field invalidation_status? string
+---@field is_global_template? boolean
+---@field latest_notification_item? string
+---@field latest_state table
+---@field lrn? string
+---@field mrn? string
+---@field name? string
+---@field receipt table
+---@field refund_application_status? string
+---@field route? string
+---@field shipment_items_no? number
+---@field shipment_items_quantity_no? number
+---@field source? string
+---@field source_type? string
+---@field status? string
+---@field submission string
+---@field supporting_document? table
+---@field template? boolean
+---@field total_tax_amount? string
+---@field updated_at string
+---@field verification_error? table
+---@field verification_status? string
+
+---@class SubmissionDetailCreateData
+---@field additional_external_id? table
+---@field additional_information table
+---@field amendment_status? string
+---@field clearance_slip table
+---@field client table
+---@field company string
+---@field company_member table
+---@field consignee table
+---@field consignor table
+---@field created_at string
+---@field declarant table
+---@field document_upload_status? string
+---@field documents_presentation_requested? boolean
+---@field documents_upload_requested? boolean
+---@field external_id? string
+---@field form string
+---@field goods_presentation_status? string
+---@field hrcm_status? string
+---@field id? string
+---@field invalidation_status? string
+---@field is_global_template? boolean
+---@field latest_notification_item? string
+---@field latest_state table
+---@field lrn? string
+---@field mrn? string
+---@field name? string
+---@field receipt table
+---@field refund_application_status? string
+---@field route? string
+---@field shipment_items_no? number
+---@field shipment_items_quantity_no? number
+---@field source? string
+---@field source_type? string
+---@field status? string
+---@field submission string
+---@field supporting_document? table
+---@field template? boolean
+---@field total_tax_amount? string
+---@field updated_at string
+---@field verification_error? table
+---@field verification_status? string
+
+local M = {}
+
+return M

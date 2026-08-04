@@ -1,0 +1,879 @@
+# Entity: submission
+
+main: kit: entity: submission: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "additional_external_id"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "amendment_reason"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "amendment_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "answer"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "bypass_restricted_code"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "clearance_slip"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "client"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "company_member"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "consignee"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "consignor"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "created_at"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "declarant"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "document_upload_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "documents_presentation_requested"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "documents_upload_requested"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "external_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "form"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "goods_presentation_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "hrcm_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "invalidation_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "is_global_template"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "latest_notification_item"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "latest_state"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "lrn"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mrn"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "partial_answer"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "receipt"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "refund_application_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "route"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "shipment_items_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "shipment_items_quantity_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "source"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "source_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "template"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "template_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "template_property"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "total_tax_amount"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "updated_at"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "verification_error"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "verification_status"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "submission"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/submissions/{id}/refund"
+          parts: [
+            "submissions"
+            "{id}"
+            "refund"
+          ]
+          select: {
+            "$action": "refund"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "POST"
+          orig: "/submissions"
+          parts: [
+            "submissions"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "POST"
+          orig: "/submissions/retrieve"
+          parts: [
+            "submissions"
+            "retrieve"
+          ]
+          select: {
+            "$action": "retrieve"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "cursor"
+                orig: "cursor"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "form_subtype"
+                orig: "form_subtype"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "green"
+                kind: "query"
+                name: "route"
+                orig: "route"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "released"
+                kind: "query"
+                name: "status"
+                orig: "status"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "template"
+                orig: "template"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/submissions"
+          parts: [
+            "submissions"
+          ]
+          select: {
+            exist: [
+              "cursor"
+              "form_subtype"
+              "route"
+              "status"
+              "template"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/submissions/{id}"
+          parts: [
+            "submissions"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/submissions/{id}/clearance-slip"
+          parts: [
+            "submissions"
+            "{id}"
+            "clearance-slip"
+          ]
+          select: {
+            "$action": "clearance_slip"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/submissions/{id}/notification-read"
+          parts: [
+            "submissions"
+            "{id}"
+            "notification-read"
+          ]
+          select: {
+            "$action": "notification_read"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/submissions/{id}/pbn-applicable"
+          parts: [
+            "submissions"
+            "{id}"
+            "pbn-applicable"
+          ]
+          select: {
+            "$action": "pbn_applicable"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/submissions/{id}/receipt"
+          parts: [
+            "submissions"
+            "{id}"
+            "receipt"
+          ]
+          select: {
+            "$action": "receipt"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/submissions/{id}/refund"
+          parts: [
+            "submissions"
+            "{id}"
+            "refund"
+          ]
+          select: {
+            "$action": "refund"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/submissions/retrieve"
+          parts: [
+            "submissions"
+            "retrieve"
+          ]
+          select: {
+            "$action": "retrieve"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/submissions/{id}"
+          parts: [
+            "submissions"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/submissions/{id}/clearance-slip"
+          parts: [
+            "submissions"
+            "{id}"
+            "clearance-slip"
+          ]
+          select: {
+            "$action": "clearance_slip"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/submissions/{id}/notification-read"
+          parts: [
+            "submissions"
+            "{id}"
+            "notification-read"
+          ]
+          select: {
+            "$action": "notification_read"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/submissions/{id}/pbn-applicable"
+          parts: [
+            "submissions"
+            "{id}"
+            "pbn-applicable"
+          ]
+          select: {
+            "$action": "pbn_applicable"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/submissions/{id}/receipt"
+          parts: [
+            "submissions"
+            "{id}"
+            "receipt"
+          ]
+          select: {
+            "$action": "receipt"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/submissions/{id}"
+          parts: [
+            "submissions"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/submissions/{id}/clearance-slip"
+          parts: [
+            "submissions"
+            "{id}"
+            "clearance-slip"
+          ]
+          select: {
+            "$action": "clearance_slip"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/submissions/{id}/notification-read"
+          parts: [
+            "submissions"
+            "{id}"
+            "notification-read"
+          ]
+          select: {
+            "$action": "notification_read"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/submissions/{id}/pbn-applicable"
+          parts: [
+            "submissions"
+            "{id}"
+            "pbn-applicable"
+          ]
+          select: {
+            "$action": "pbn_applicable"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/submissions/{id}/receipt"
+          parts: [
+            "submissions"
+            "{id}"
+            "receipt"
+          ]
+          select: {
+            "$action": "receipt"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

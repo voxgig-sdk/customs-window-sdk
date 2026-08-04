@@ -1,0 +1,347 @@
+// CustomsWindow Ts SDK
+
+import { BulkUploadEntity } from './entity/BulkUploadEntity'
+import { FileEntity } from './entity/FileEntity'
+import { PaginatedBulkUploadListListEntity } from './entity/PaginatedBulkUploadListListEntity'
+import { PaginatedPartyListListEntity } from './entity/PaginatedPartyListListEntity'
+import { PaginatedSubmissionListListEntity } from './entity/PaginatedSubmissionListListEntity'
+import { PartyEntity } from './entity/PartyEntity'
+import { SubmissionEntity } from './entity/SubmissionEntity'
+import { SubmissionDetailEntity } from './entity/SubmissionDetailEntity'
+
+export type * from './CustomsWindowTypes'
+
+
+import { inspect } from 'node:util'
+
+import type { Context, Feature } from './types'
+
+import { config } from './Config'
+import { CustomsWindowEntityBase } from './CustomsWindowEntityBase'
+import { Utility } from './utility/Utility'
+
+
+import { BaseFeature } from './feature/base/BaseFeature'
+
+
+const stdutil = new Utility()
+
+
+class CustomsWindowSDK {
+  _mode: string = 'live'
+  _options: any
+  _utility = new Utility()
+  _features: Feature[]
+  _rootctx: Context
+
+  constructor(options?: any) {
+
+    this._rootctx = this._utility.makeContext({
+      client: this,
+      utility: this._utility,
+      config,
+      options,
+      shared: new WeakMap()
+    })
+
+    this._options = this._utility.makeOptions(this._rootctx)
+
+    const struct = this._utility.struct
+    const getpath = struct.getpath
+
+    if (true === getpath(this._options.feature, 'test.active')) {
+      this._mode = 'test'
+    }
+
+    this._rootctx.options = this._options
+
+    this._features = []
+
+    const featureAdd = this._utility.featureAdd
+    const featureInit = this._utility.featureInit
+
+    // Add features in the resolved order (makeOptions puts an explicit
+    // array order first, else defaults to test-first). Ordering matters:
+    // the `test` feature installs the base mock transport and the transport
+    // features (retry/cache/netsim/proxy/ratelimit) wrap whatever is current,
+    // so `test` must be added before them to sit at the base of the chain.
+    const featureorder = getpath(this._options, '__derived__.featureorder') || []
+    for (const fname of featureorder) {
+      const fopts = this._options.feature[fname] || {}
+      if (fopts.active) {
+        featureAdd(this._rootctx, this._rootctx.config.makeFeature(fname))
+      }
+    }
+
+    if (null != this._options.extend) {
+      for (let f of this._options.extend) {
+        featureAdd(this._rootctx, f)
+      }
+    }
+
+    for (let f of this._features) {
+      featureInit(this._rootctx, f)
+    }
+
+    const featureHook = this._utility.featureHook
+    featureHook(this._rootctx, 'PostConstruct')
+  }
+
+
+  options() {
+    return this._utility.struct.clone(this._options)
+  }
+
+
+  utility() {
+    return this._utility.struct.clone(this._utility)
+  }
+
+
+  async prepare(fetchargs?: any) {
+    const utility = this._utility
+    const struct = utility.struct
+    const clone = struct.clone
+
+    const {
+      makeContext,
+      makeFetchDef,
+      prepareHeaders,
+      prepareAuth,
+    } = utility
+
+    fetchargs = fetchargs || {}
+
+    let ctx: Context = makeContext({
+      opname: 'prepare',
+      ctrl: fetchargs.ctrl || {},
+    }, this._rootctx)
+
+    const options = this._options
+
+    // Build spec directly from SDK options + user-provided fetch args.
+    const spec: any = {
+      base: options.base,
+      prefix: options.prefix,
+      suffix: options.suffix,
+      path: fetchargs.path || '',
+      method: fetchargs.method || 'GET',
+      params: fetchargs.params || {},
+      query: fetchargs.query || {},
+      headers: prepareHeaders(ctx),
+      body: fetchargs.body,
+      step: 'start',
+    }
+
+    ctx.spec = spec
+
+    // Merge user-provided headers over SDK defaults.
+    if (fetchargs.headers) {
+      const uheaders = fetchargs.headers
+      for (let key in uheaders) {
+        spec.headers[key] = uheaders[key]
+      }
+    }
+
+    // Apply SDK auth (apikey, auth prefix, etc.)
+    const authResult = prepareAuth(ctx)
+    if (authResult instanceof Error) {
+      return authResult
+    }
+
+    return makeFetchDef(ctx)
+  }
+
+
+  async direct(fetchargs?: any) {
+    const utility = this._utility
+    const fetcher = utility.fetcher
+    const makeContext = utility.makeContext
+
+    const fetchdef = await this.prepare(fetchargs)
+    if (fetchdef instanceof Error) {
+      return fetchdef
+    }
+
+    let ctx: Context = makeContext({
+      opname: 'direct',
+      ctrl: (fetchargs || {}).ctrl || {},
+    }, this._rootctx)
+
+    try {
+      const fetched = await fetcher(ctx, fetchdef.url, fetchdef)
+
+      if (null == fetched) {
+        return { ok: false, err: ctx.error('direct_no_response', 'response: undefined') }
+      }
+      else if (fetched instanceof Error) {
+        return { ok: false, err: fetched }
+      }
+
+      const status = fetched.status
+
+      // No body responses (204 No Content, 304 Not Modified) and explicit
+      // zero content-length must skip JSON parsing — fetched.json() would
+      // throw `Unexpected end of JSON input` on an empty body.
+      const headers = fetched.headers
+      const contentLength = headers && 'function' === typeof headers.get
+        ? headers.get('content-length')
+        : (headers || {})['content-length']
+      const noBody = 204 === status || 304 === status || '0' === String(contentLength)
+
+      let json: any = undefined
+      if (!noBody) {
+        try {
+          json = 'function' === typeof fetched.json ? await fetched.json() : fetched.json
+        }
+        catch (parseErr) {
+          // Body wasn't valid JSON — surface the raw response rather than
+          // throwing. data stays undefined; callers can inspect status/headers.
+          json = undefined
+        }
+      }
+
+      return {
+        ok: status >= 200 && status < 300,
+        status,
+        headers: fetched.headers,
+        data: json,
+      }
+    }
+    catch (err: any) {
+      return { ok: false, err }
+    }
+  }
+
+
+
+  // Entity access: `client.BulkUpload().list()` / `client.BulkUpload().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  BulkUpload(entopts?: Record<string, any>) {
+    const self = this
+    return new BulkUploadEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.File().list()` / `client.File().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  File(entopts?: Record<string, any>) {
+    const self = this
+    return new FileEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.PaginatedBulkUploadListList().list()` / `client.PaginatedBulkUploadListList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PaginatedBulkUploadListList(entopts?: Record<string, any>) {
+    const self = this
+    return new PaginatedBulkUploadListListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.PaginatedPartyListList().list()` / `client.PaginatedPartyListList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PaginatedPartyListList(entopts?: Record<string, any>) {
+    const self = this
+    return new PaginatedPartyListListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.PaginatedSubmissionListList().list()` / `client.PaginatedSubmissionListList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PaginatedSubmissionListList(entopts?: Record<string, any>) {
+    const self = this
+    return new PaginatedSubmissionListListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Party().list()` / `client.Party().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Party(entopts?: Record<string, any>) {
+    const self = this
+    return new PartyEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Submission().list()` / `client.Submission().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Submission(entopts?: Record<string, any>) {
+    const self = this
+    return new SubmissionEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.SubmissionDetail().list()` / `client.SubmissionDetail().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SubmissionDetail(entopts?: Record<string, any>) {
+    const self = this
+    return new SubmissionDetailEntity(self, entopts)
+  }
+
+
+
+
+  static test(testoptsarg?: any, sdkoptsarg?: any) {
+    const struct = stdutil.struct
+    const setpath = struct.setpath
+    const getdef = struct.getdef
+    const clone = struct.clone
+    const setprop = struct.setprop
+
+    const sdkopts = getdef(clone(sdkoptsarg), {})
+    const testopts = getdef(clone(testoptsarg), {})
+    setprop(testopts, 'active', true)
+    setpath(sdkopts, 'feature.test', testopts)
+
+    const testsdk = new CustomsWindowSDK(sdkopts)
+    testsdk._mode = 'test'
+
+    return testsdk
+  }
+
+
+  tester(testopts?: any, sdkopts?: any) {
+    return CustomsWindowSDK.test(testopts, sdkopts)
+  }
+
+
+  toJSON() {
+    return { name: 'CustomsWindow' }
+  }
+
+  toString() {
+    return 'CustomsWindow ' + this._utility.struct.jsonify(this.toJSON())
+  }
+
+  [inspect.custom]() {
+    return this.toString()
+  }
+
+}
+
+
+
+
+const SDK = CustomsWindowSDK
+
+
+export {
+  stdutil,
+  config,
+
+  BaseFeature,
+  CustomsWindowEntityBase,
+
+  CustomsWindowSDK,
+  SDK,
+}
+
+

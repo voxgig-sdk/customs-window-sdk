@@ -1,0 +1,32 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "The API Reference."
+      security: {
+        in: "header"
+        name: "Basic Auth"
+        prefix: ""
+        scheme: "Secret Key"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          description: "Customs Window production API"
+          url: "https://api.customswindow.com"
+        }
+      ]
+      title: "API Reference"
+      version: "v1"
+      website: "https://customswindow.com"
+      "x-logo": {
+        altText: "Customs Window logo"
+        backgroundColor: "#FFFFFF"
+        url: "https://customswindow.com/wp-content/uploads/2024/04/cw-logo@2x.png"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,463 @@
+# Entity: bulk_upload
+
+main: kit: entity: bulk_upload: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "active_transport_nationality"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "active_transport_number"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "arrival_datetime"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "client"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "company_member"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "created_at"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "declarant"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "declarations_no"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "deleted_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "departure_datetime"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "errors_file"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "external_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "failed_declarations_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "file"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "green_routed_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "h1_fallback_template"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "house_transport_doc_ref"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "issue_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mapping"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "orange_routed_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "parsed_declarations_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "parser"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "parsing_completed_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "parsing_started_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "passive_transport_nationality"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "passive_transport_number"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "processed_declarations_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "processing_ended_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "processing_started_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "receipt_generating_started_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "receipt_request_started_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "receipt_request_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "receipt_request_user"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "receipts_zip"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "red_routed_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rejected_status_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "template"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "updated_at"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "yellow_routed_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "bulk_upload"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/bulk-uploads"
+          parts: [
+            "bulk-uploads"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "cursor"
+                orig: "cursor"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/bulk-uploads"
+          parts: [
+            "bulk-uploads"
+          ]
+          select: {
+            exist: [
+              "cursor"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/bulk-uploads/{id}"
+          parts: [
+            "bulk-uploads"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/bulk-uploads/{id}/generate-pdfs"
+          parts: [
+            "bulk-uploads"
+            "{id}"
+            "generate-pdfs"
+          ]
+          select: {
+            "$action": "generate_pdf"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/bulk-uploads/{id}"
+          parts: [
+            "bulk-uploads"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/bulk-uploads/{id}/generate-pdfs"
+          parts: [
+            "bulk-uploads"
+            "{id}"
+            "generate-pdfs"
+          ]
+          select: {
+            "$action": "generate_pdf"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/bulk-uploads/{id}"
+          parts: [
+            "bulk-uploads"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/bulk-uploads/{id}/generate-pdfs"
+          parts: [
+            "bulk-uploads"
+            "{id}"
+            "generate-pdfs"
+          ]
+          select: {
+            "$action": "generate_pdf"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

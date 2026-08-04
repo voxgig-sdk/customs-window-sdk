@@ -1,0 +1,9 @@
+# BasicPaginatedBulkUploadListListFlow
+
+main: kit: flow: BasicPaginatedBulkUploadListListFlow:
+{
+  entity: "paginated_bulk_upload_list_list",
+  kind: "basic",
+  name: "BasicPaginatedBulkUploadListListFlow",
+  "key$": "BasicPaginatedBulkUploadListListFlow"
+}

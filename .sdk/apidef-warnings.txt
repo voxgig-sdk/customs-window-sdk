@@ -1,0 +1,40 @@
+{
+  point: "warning"
+  when: 1785856394796
+  note: "No paths defined for entity=paginated_bulk_upload_list_list"
+  entm: {
+    name: "paginated_bulk_upload_list_list"
+    orig: "PaginatedBulkUploadListList"
+    path: {
+    }
+  }
+
+}
+
+
+{
+  point: "warning"
+  when: 1785856394796
+  note: "No paths defined for entity=paginated_party_list_list"
+  entm: {
+    name: "paginated_party_list_list"
+    orig: "PaginatedPartyListList"
+    path: {
+    }
+  }
+
+}
+
+
+{
+  point: "warning"
+  when: 1785856394796
+  note: "No paths defined for entity=paginated_submission_list_list"
+  entm: {
+    name: "paginated_submission_list_list"
+    orig: "PaginatedSubmissionListList"
+    path: {
+    }
+  }
+
+}

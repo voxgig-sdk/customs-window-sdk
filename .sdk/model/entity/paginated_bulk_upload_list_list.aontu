@@ -1,0 +1,10 @@
+# Entity: paginated_bulk_upload_list_list
+
+main: kit: entity: paginated_bulk_upload_list_list: {
+
+  alias: field: {}
+
+  name: "paginated_bulk_upload_list_list"
+
+
+}

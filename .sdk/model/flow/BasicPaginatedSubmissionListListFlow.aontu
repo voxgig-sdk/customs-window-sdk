@@ -1,0 +1,9 @@
+# BasicPaginatedSubmissionListListFlow
+
+main: kit: flow: BasicPaginatedSubmissionListListFlow:
+{
+  entity: "paginated_submission_list_list",
+  kind: "basic",
+  name: "BasicPaginatedSubmissionListListFlow",
+  "key$": "BasicPaginatedSubmissionListListFlow"
+}

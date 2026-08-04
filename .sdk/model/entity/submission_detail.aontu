@@ -1,0 +1,242 @@
+# Entity: submission_detail
+
+main: kit: entity: submission_detail: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "additional_external_id"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "additional_information"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "amendment_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "clearance_slip"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "client"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "company"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "company_member"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "consignee"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "consignor"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "created_at"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "declarant"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "document_upload_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "documents_presentation_requested"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "documents_upload_requested"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "external_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "form"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "goods_presentation_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "hrcm_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "invalidation_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "is_global_template"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "latest_notification_item"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "latest_state"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "lrn"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mrn"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "receipt"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "refund_application_status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "route"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "shipment_items_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "shipment_items_quantity_no"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "source"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "source_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "submission"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "supporting_document"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "template"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "total_tax_amount"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "updated_at"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "verification_error"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "verification_status"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "submission_detail"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/documents-request"
+          parts: [
+            "documents-request"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

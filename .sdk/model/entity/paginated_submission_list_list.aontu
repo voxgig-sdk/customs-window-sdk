@@ -1,0 +1,10 @@
+# Entity: paginated_submission_list_list
+
+main: kit: entity: paginated_submission_list_list: {
+
+  alias: field: {}
+
+  name: "paginated_submission_list_list"
+
+
+}

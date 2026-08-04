@@ -1,0 +1,18 @@
+# BasicSubmissionDetailFlow
+
+main: kit: flow: BasicSubmissionDetailFlow:
+{
+  entity: "submission_detail",
+  kind: "basic",
+  name: "BasicSubmissionDetailFlow",
+  step: [
+    {
+      input: {
+        ref: "submission_detail_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSubmissionDetailFlow"
+}

@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "paginated_party_list_list": {
+      "PAGINATED_PARTY_LIST_LIST00": {},
+      "PAGINATED_PARTY_LIST_LIST01": {},
+      "PAGINATED_PARTY_LIST_LIST02": {}
+    }
+  },
+  "new": {
+    "paginated_party_list_list": {
+      "paginated_party_list_list_ref01": {}
+    }
+  }
+}

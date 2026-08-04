@@ -1,0 +1,9 @@
+# BasicPaginatedPartyListListFlow
+
+main: kit: flow: BasicPaginatedPartyListListFlow:
+{
+  entity: "paginated_party_list_list",
+  kind: "basic",
+  name: "BasicPaginatedPartyListListFlow",
+  "key$": "BasicPaginatedPartyListListFlow"
+}

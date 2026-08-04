@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// CustomsWindow SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+CustomsWindowUtility::setRegistrar(function (CustomsWindowUtility $u): void {
+    $u->clean = [CustomsWindowClean::class, 'call'];
+    $u->done = [CustomsWindowDone::class, 'call'];
+    $u->make_error = [CustomsWindowMakeError::class, 'call'];
+    $u->feature_add = [CustomsWindowFeatureAdd::class, 'call'];
+    $u->feature_hook = [CustomsWindowFeatureHook::class, 'call'];
+    $u->feature_init = [CustomsWindowFeatureInit::class, 'call'];
+    $u->fetcher = [CustomsWindowFetcher::class, 'call'];
+    $u->make_fetch_def = [CustomsWindowMakeFetchDef::class, 'call'];
+    $u->make_context = [CustomsWindowMakeContext::class, 'call'];
+    $u->make_options = [CustomsWindowMakeOptions::class, 'call'];
+    $u->make_request = [CustomsWindowMakeRequest::class, 'call'];
+    $u->make_response = [CustomsWindowMakeResponse::class, 'call'];
+    $u->make_result = [CustomsWindowMakeResult::class, 'call'];
+    $u->make_point = [CustomsWindowMakePoint::class, 'call'];
+    $u->make_spec = [CustomsWindowMakeSpec::class, 'call'];
+    $u->make_url = [CustomsWindowMakeUrl::class, 'call'];
+    $u->param = [CustomsWindowParam::class, 'call'];
+    $u->prepare_auth = [CustomsWindowPrepareAuth::class, 'call'];
+    $u->prepare_body = [CustomsWindowPrepareBody::class, 'call'];
+    $u->prepare_headers = [CustomsWindowPrepareHeaders::class, 'call'];
+    $u->prepare_method = [CustomsWindowPrepareMethod::class, 'call'];
+    $u->prepare_params = [CustomsWindowPrepareParams::class, 'call'];
+    $u->prepare_path = [CustomsWindowPreparePath::class, 'call'];
+    $u->prepare_query = [CustomsWindowPrepareQuery::class, 'call'];
+    $u->result_basic = [CustomsWindowResultBasic::class, 'call'];
+    $u->result_body = [CustomsWindowResultBody::class, 'call'];
+    $u->result_headers = [CustomsWindowResultHeaders::class, 'call'];
+    $u->transform_request = [CustomsWindowTransformRequest::class, 'call'];
+    $u->transform_response = [CustomsWindowTransformResponse::class, 'call'];
+});

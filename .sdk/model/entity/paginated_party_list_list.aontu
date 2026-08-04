@@ -1,0 +1,10 @@
+# Entity: paginated_party_list_list
+
+main: kit: entity: paginated_party_list_list: {
+
+  alias: field: {}
+
+  name: "paginated_party_list_list"
+
+
+}

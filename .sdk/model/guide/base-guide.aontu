@@ -1,0 +1,106 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 8
+  metrics: count: path: 15
+  metrics: count: method: 36
+
+  entity: bulk_upload: {
+    path: "/bulk-uploads": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/bulk-uploads/{id}": {
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/bulk-uploads/{id}/generate-pdfs": {
+      action: "generate_pdf": {}
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: file: {
+    path: "/files": {
+      op: create: method: *POST
+      op: create: transform: req: "file": *("`reqdata`")|top
+    }
+  }
+
+  entity: paginated_bulk_upload_list_list: {
+  }
+
+  entity: paginated_party_list_list: {
+  }
+
+  entity: paginated_submission_list_list: {
+  }
+
+  entity: party: {
+    path: "/parties": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/parties/{id}": {
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: submission: {
+    path: "/submissions": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/submissions/retrieve": {
+      action: "retrieve": {}
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+    path: "/submissions/{id}": {
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/submissions/{id}/clearance-slip": {
+      action: "clearance_slip": {}
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/submissions/{id}/notification-read": {
+      action: "notification_read": {}
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/submissions/{id}/pbn-applicable": {
+      action: "pbn_applicable": {}
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/submissions/{id}/receipt": {
+      action: "receipt": {}
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/submissions/{id}/refund": {
+      action: "refund": {}
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: submission_detail: {
+    path: "/documents-request": {
+      op: create: method: *POST
+    }
+  }
+
+}

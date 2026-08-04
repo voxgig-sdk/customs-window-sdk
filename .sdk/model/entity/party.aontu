@@ -1,0 +1,306 @@
+# Entity: party
+
+main: kit: entity: party: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "additional_declaration_type"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "address"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "authorisation"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "bank_detail"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "certificate"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "certificate_type"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "company"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "created_at"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "customs_office_of_lodgement"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "deleted_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "email"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "identification_number"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "indirect_representative"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "nhd_last_submission_year"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "nhd_submission_counter"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "person_paying_customs_duty"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "phone_country_code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "phone_number"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "preferred_payment_method"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "signed_form"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "type_of_person"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "unlocode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "updated_at"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "party"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/parties"
+          parts: [
+            "parties"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "cursor"
+                orig: "cursor"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "type"
+                orig: "type"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/parties"
+          parts: [
+            "parties"
+          ]
+          select: {
+            exist: [
+              "cursor"
+              "type"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/parties/{id}"
+          parts: [
+            "parties"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/parties/{id}"
+          parts: [
+            "parties"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/parties/{id}"
+          parts: [
+            "parties"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

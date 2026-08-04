@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "file": {
+      "FILE00": {
+        "company": "s64",
+        "created_at": "s65",
+        "extension": "s66",
+        "file": "s67",
+        "id": "FILE00",
+        "name": "s69",
+        "public": true,
+        "size": "s6b",
+        "updated_at": "s6c",
+        "url": "s6d"
+      },
+      "FILE01": {
+        "company": "sc8",
+        "created_at": "sc9",
+        "extension": "sca",
+        "file": "scb",
+        "id": "FILE01",
+        "name": "scd",
+        "public": true,
+        "size": "scf",
+        "updated_at": "sd0",
+        "url": "sd1"
+      },
+      "FILE02": {
+        "company": "s12c",
+        "created_at": "s12d",
+        "extension": "s12e",
+        "file": "s12f",
+        "id": "FILE02",
+        "name": "s131",
+        "public": true,
+        "size": "s133",
+        "updated_at": "s134",
+        "url": "s135"
+      }
+    }
+  },
+  "new": {
+    "file": {
+      "file_ref01": {
+        "company": "s190",
+        "created_at": "s191",
+        "extension": "s192",
+        "file": "s193",
+        "name": "s195",
+        "public": true,
+        "size": "s197",
+        "updated_at": "s198",
+        "url": "s199"
+      }
+    }
+  }
+}
