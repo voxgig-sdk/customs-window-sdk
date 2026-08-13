@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from customswindow_sdk.utility.voxgig_struct import voxgig_struct as vs
 from customswindow_sdk import CustomsWindowSDK
-from core import helpers
+from customswindow_sdk.core import helpers
 from test import runner
 
 
@@ -105,16 +105,16 @@ def _bulk_upload_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "CUSTOMSWINDOW_TEST_BULK_UPLOAD_ENTID": {},
-        "CUSTOMSWINDOW_TEST_LIVE": "FALSE",
-        "CUSTOMSWINDOW_APIKEY": "NONE",
+        "CUSTOMS_WINDOW_TEST_BULK_UPLOAD_ENTID": {},
+        "CUSTOMS_WINDOW_TEST_LIVE": "FALSE",
+        "CUSTOMS_WINDOW_APIKEY": "NONE",
     })
 
-    live = env.get("CUSTOMSWINDOW_TEST_LIVE") == "TRUE"
+    live = env.get("CUSTOMS_WINDOW_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("CUSTOMSWINDOW_APIKEY"),
+            "apikey": env.get("CUSTOMS_WINDOW_APIKEY"),
         }
         client = CustomsWindowSDK(merged_opts)
         return {

@@ -23,8 +23,8 @@ module CustomsWindowTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("CUSTOMSWINDOW_TEST_LIVE")
-    override = getenv("CUSTOMSWINDOW_TEST_OVERRIDE")
+    live = getenv("CUSTOMS_WINDOW_TEST_LIVE")
+    override = getenv("CUSTOMS_WINDOW_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module CustomsWindowTestRunner
       end
     end
 
-    explain = getenv("CUSTOMSWINDOW_TEST_EXPLAIN")
-    m["CUSTOMSWINDOW_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("CUSTOMS_WINDOW_TEST_EXPLAIN")
+    m["CUSTOMS_WINDOW_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

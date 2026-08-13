@@ -26,8 +26,8 @@ import {
 describe('SubmissionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when CUSTOMSWINDOW_TEST_LIVE=TRUE.
-  afterEach(liveDelay('CUSTOMSWINDOW_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when CUSTOMS_WINDOW_TEST_LIVE=TRUE.
+  afterEach(liveDelay('CUSTOMS_WINDOW_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CustomsWindowSDK.test()
@@ -62,14 +62,14 @@ describe('SubmissionEntity', async () => {
     const submission_ref01_ent = client.Submission()
     let submission_ref01_data = setup.data.new.submission['submission_ref01']
 
-    submission_ref01_data = await submission_ref01_ent.create(submission_ref01_data)
+    submission_ref01_data = (await submission_ref01_ent.create(submission_ref01_data)).data()
     assert(null != submission_ref01_data.id)
 
 
     // LIST
     const submission_ref01_match: any = {}
 
-    const submission_ref01_list = await submission_ref01_ent.list(submission_ref01_match)
+    const submission_ref01_list = (await submission_ref01_ent.list(submission_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(submission_ref01_list, { id: submission_ref01_data.id })))
 
@@ -81,7 +81,7 @@ describe('SubmissionEntity', async () => {
     const submission_ref01_markdef_up0 = { name: 'amendment_reason', value: 'Mark01-submission_ref01_' + setup.now }
     ;(submission_ref01_data_up0 as any)[submission_ref01_markdef_up0.name] = submission_ref01_markdef_up0.value
 
-    const submission_ref01_resdata_up0 = await submission_ref01_ent.update(submission_ref01_data_up0)
+    const submission_ref01_resdata_up0 = (await submission_ref01_ent.update(submission_ref01_data_up0)).data()
     assert(submission_ref01_resdata_up0.id === submission_ref01_data_up0.id)
 
     assert((submission_ref01_resdata_up0 as any)[submission_ref01_markdef_up0.name] === submission_ref01_markdef_up0.value)
@@ -90,7 +90,7 @@ describe('SubmissionEntity', async () => {
     // LOAD
     const submission_ref01_match_dt0: any = {}
     submission_ref01_match_dt0.id = submission_ref01_data.id
-    const submission_ref01_data_dt0 = await submission_ref01_ent.load(submission_ref01_match_dt0)
+    const submission_ref01_data_dt0 = (await submission_ref01_ent.load(submission_ref01_match_dt0)).data()
     assert(submission_ref01_data_dt0.id === submission_ref01_data.id)
 
 
@@ -102,7 +102,7 @@ describe('SubmissionEntity', async () => {
     // LIST
     const submission_ref01_match_rt0: any = {}
 
-    const submission_ref01_list_rt0 = await submission_ref01_ent.list(submission_ref01_match_rt0)
+    const submission_ref01_list_rt0 = (await submission_ref01_ent.list(submission_ref01_match_rt0)).map((e: any) => e.data())
 
     assert(isempty(select(submission_ref01_list_rt0, { id: submission_ref01_data.id })))
 

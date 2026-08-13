@@ -26,8 +26,8 @@ import {
 describe('FileEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when CUSTOMSWINDOW_TEST_LIVE=TRUE.
-  afterEach(liveDelay('CUSTOMSWINDOW_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when CUSTOMS_WINDOW_TEST_LIVE=TRUE.
+  afterEach(liveDelay('CUSTOMS_WINDOW_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CustomsWindowSDK.test()
@@ -62,7 +62,7 @@ describe('FileEntity', async () => {
     const file_ref01_ent = client.File()
     let file_ref01_data = setup.data.new.file['file_ref01']
 
-    file_ref01_data = await file_ref01_ent.create(file_ref01_data)
+    file_ref01_data = (await file_ref01_ent.create(file_ref01_data)).data()
     assert(null != file_ref01_data.id)
 
 

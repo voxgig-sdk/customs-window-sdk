@@ -26,8 +26,8 @@ import {
 describe('PartyEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when CUSTOMSWINDOW_TEST_LIVE=TRUE.
-  afterEach(liveDelay('CUSTOMSWINDOW_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when CUSTOMS_WINDOW_TEST_LIVE=TRUE.
+  afterEach(liveDelay('CUSTOMS_WINDOW_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CustomsWindowSDK.test()
@@ -62,14 +62,14 @@ describe('PartyEntity', async () => {
     const party_ref01_ent = client.Party()
     let party_ref01_data = setup.data.new.party['party_ref01']
 
-    party_ref01_data = await party_ref01_ent.create(party_ref01_data)
+    party_ref01_data = (await party_ref01_ent.create(party_ref01_data)).data()
     assert(null != party_ref01_data.id)
 
 
     // LIST
     const party_ref01_match: any = {}
 
-    const party_ref01_list = await party_ref01_ent.list(party_ref01_match)
+    const party_ref01_list = (await party_ref01_ent.list(party_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(party_ref01_list, { id: party_ref01_data.id })))
 
@@ -78,10 +78,10 @@ describe('PartyEntity', async () => {
     const party_ref01_data_up0: any = {}
     party_ref01_data_up0.id = party_ref01_data.id
 
-    const party_ref01_markdef_up0 = { name: 'bank_detail', value: 'Mark01-party_ref01_' + setup.now }
+    const party_ref01_markdef_up0 = { name: 'bank_details', value: 'Mark01-party_ref01_' + setup.now }
     ;(party_ref01_data_up0 as any)[party_ref01_markdef_up0.name] = party_ref01_markdef_up0.value
 
-    const party_ref01_resdata_up0 = await party_ref01_ent.update(party_ref01_data_up0)
+    const party_ref01_resdata_up0 = (await party_ref01_ent.update(party_ref01_data_up0)).data()
     assert(party_ref01_resdata_up0.id === party_ref01_data_up0.id)
 
     assert((party_ref01_resdata_up0 as any)[party_ref01_markdef_up0.name] === party_ref01_markdef_up0.value)
@@ -90,7 +90,7 @@ describe('PartyEntity', async () => {
     // LOAD
     const party_ref01_match_dt0: any = {}
     party_ref01_match_dt0.id = party_ref01_data.id
-    const party_ref01_data_dt0 = await party_ref01_ent.load(party_ref01_match_dt0)
+    const party_ref01_data_dt0 = (await party_ref01_ent.load(party_ref01_match_dt0)).data()
     assert(party_ref01_data_dt0.id === party_ref01_data.id)
 
 
@@ -102,7 +102,7 @@ describe('PartyEntity', async () => {
     // LIST
     const party_ref01_match_rt0: any = {}
 
-    const party_ref01_list_rt0 = await party_ref01_ent.list(party_ref01_match_rt0)
+    const party_ref01_list_rt0 = (await party_ref01_ent.list(party_ref01_match_rt0)).map((e: any) => e.data())
 
     assert(isempty(select(party_ref01_list_rt0, { id: party_ref01_data.id })))
 

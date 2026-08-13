@@ -65,10 +65,10 @@ local created, err = client:BulkUpload():create({ client = "example_client", com
 if err then error(err) end
 
 -- Update
-client:BulkUpload():update({ id = created["id"], active_transport_nationality = "example_active_transport_nationality", active_transport_number = "example_active_transport_number" })
+client:BulkUpload():update({ id = created:data_get()["id"], active_transport_nationality = "example_active_transport_nationality", active_transport_number = "example_active_transport_number" })
 
 -- Remove
-client:BulkUpload():remove({ id = created["id"] })
+client:BulkUpload():remove({ id = created:data_get()["id"] })
 ```
 
 
@@ -368,7 +368,7 @@ API path: ``
 | `additional_declaration_type` |  |
 | `address` |  |
 | `authorisation` |  |
-| `bank_detail` |  |
+| `bank_details` |  |
 | `certificate` |  |
 | `certificate_type` |  |
 | `company` |  |
@@ -400,10 +400,10 @@ API path: `/parties`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `amendment_reason` |  |
 | `amendment_status` |  |
-| `answer` |  |
+| `answers` |  |
 | `bypass_restricted_code` |  |
 | `clearance_slip` |  |
 | `client` |  |
@@ -427,7 +427,7 @@ API path: `/parties`
 | `lrn` |  |
 | `mrn` |  |
 | `name` |  |
-| `partial_answer` |  |
+| `partial_answers` |  |
 | `receipt` |  |
 | `refund_application_status` |  |
 | `route` |  |
@@ -438,10 +438,10 @@ API path: `/parties`
 | `status` |  |
 | `template` |  |
 | `template_id` |  |
-| `template_property` |  |
+| `template_properties` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: Create, List, Load, Remove, Update.
@@ -452,7 +452,7 @@ API path: `/submissions/{id}/refund`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `additional_information` |  |
 | `amendment_status` |  |
 | `clearance_slip` |  |
@@ -487,11 +487,11 @@ API path: `/submissions/{id}/refund`
 | `source_type` |  |
 | `status` |  |
 | `submission` |  |
-| `supporting_document` |  |
+| `supporting_documents` |  |
 | `template` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: Create.
@@ -668,7 +668,7 @@ Create an instance: `local party = client:Party(nil)`
 | `additional_declaration_type` | `table` |  |
 | `address` | `table` |  |
 | `authorisation` | `table` |  |
-| `bank_detail` | `string` |  |
+| `bank_details` | `string` |  |
 | `certificate` | `table` |  |
 | `certificate_type` | `string` |  |
 | `company` | `string` |  |
@@ -742,10 +742,10 @@ Create an instance: `local submission = client:Submission(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `table` |  |
+| `additional_external_ids` | `table` |  |
 | `amendment_reason` | `string` |  |
 | `amendment_status` | `string` |  |
-| `answer` | `table` |  |
+| `answers` | `table` |  |
 | `bypass_restricted_code` | `boolean` |  |
 | `clearance_slip` | `table` |  |
 | `client` | `table` |  |
@@ -769,7 +769,7 @@ Create an instance: `local submission = client:Submission(nil)`
 | `lrn` | `string` |  |
 | `mrn` | `string` |  |
 | `name` | `string` |  |
-| `partial_answer` | `boolean` |  |
+| `partial_answers` | `boolean` |  |
 | `receipt` | `table` |  |
 | `refund_application_status` | `string` |  |
 | `route` | `string` |  |
@@ -780,10 +780,10 @@ Create an instance: `local submission = client:Submission(nil)`
 | `status` | `string` |  |
 | `template` | `boolean` |  |
 | `template_id` | `string` |  |
-| `template_property` | `table` |  |
+| `template_properties` | `table` |  |
 | `total_tax_amount` | `string` |  |
 | `updated_at` | `string` |  |
-| `verification_error` | `table` |  |
+| `verification_errors` | `table` |  |
 | `verification_status` | `string` |  |
 
 #### Example: Load
@@ -802,7 +802,7 @@ local submissions, err = client:Submission():list()
 
 ```lua
 local submission, err = client:Submission():create({
-  answer = {}, -- table
+  answers = {}, -- table
   clearance_slip = {}, -- table
   client = {}, -- table
   company_member = {}, -- table
@@ -832,7 +832,7 @@ Create an instance: `local submission_detail = client:SubmissionDetail(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `table` |  |
+| `additional_external_ids` | `table` |  |
 | `additional_information` | `table` |  |
 | `amendment_status` | `string` |  |
 | `clearance_slip` | `table` |  |
@@ -867,11 +867,11 @@ Create an instance: `local submission_detail = client:SubmissionDetail(nil)`
 | `source_type` | `string` |  |
 | `status` | `string` |  |
 | `submission` | `string` |  |
-| `supporting_document` | `table` |  |
+| `supporting_documents` | `table` |  |
 | `template` | `boolean` |  |
 | `total_tax_amount` | `string` |  |
 | `updated_at` | `string` |  |
-| `verification_error` | `table` |  |
+| `verification_errors` | `table` |  |
 | `verification_status` | `string` |  |
 
 #### Example: Create

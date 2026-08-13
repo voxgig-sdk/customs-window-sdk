@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ CustomsWindowUtility.registrar = ->(u) {
   u.prepare_params = CustomsWindowUtilities::PrepareParams
   u.prepare_path = CustomsWindowUtilities::PreparePath
   u.prepare_query = CustomsWindowUtilities::PrepareQuery
+  u.graphql_body = CustomsWindowUtilities::GraphqlBody
+  u.graphql_errors = CustomsWindowUtilities::GraphqlErrors
   u.result_basic = CustomsWindowUtilities::ResultBasic
   u.result_body = CustomsWindowUtilities::ResultBody
   u.result_headers = CustomsWindowUtilities::ResultHeaders

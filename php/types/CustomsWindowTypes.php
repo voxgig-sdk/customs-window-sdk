@@ -259,7 +259,7 @@ class Party
     public array $additional_declaration_type;
     public array $address;
     public array $authorisation;
-    public ?string $bank_detail = null;
+    public ?string $bank_details = null;
     public array $certificate;
     public string $certificate_type;
     public string $company;
@@ -296,7 +296,7 @@ class PartyListMatch
     public ?array $additional_declaration_type = null;
     public ?array $address = null;
     public ?array $authorisation = null;
-    public ?string $bank_detail = null;
+    public ?string $bank_details = null;
     public ?array $certificate = null;
     public ?string $certificate_type = null;
     public ?string $company = null;
@@ -327,7 +327,7 @@ class PartyCreateData
     public array $additional_declaration_type;
     public array $address;
     public array $authorisation;
-    public ?string $bank_detail = null;
+    public ?string $bank_details = null;
     public array $certificate;
     public string $certificate_type;
     public string $company;
@@ -359,7 +359,7 @@ class PartyUpdateData
     public ?array $additional_declaration_type = null;
     public ?array $address = null;
     public ?array $authorisation = null;
-    public ?string $bank_detail = null;
+    public ?string $bank_details = null;
     public ?array $certificate = null;
     public ?string $certificate_type = null;
     public ?string $company = null;
@@ -392,10 +392,10 @@ class PartyRemoveMatch
 /** Submission entity data model. */
 class Submission
 {
-    public ?array $additional_external_id = null;
+    public ?array $additional_external_ids = null;
     public ?string $amendment_reason = null;
     public ?string $amendment_status = null;
-    public array $answer;
+    public array $answers;
     public ?bool $bypass_restricted_code = null;
     public array $clearance_slip;
     public array $client;
@@ -419,7 +419,7 @@ class Submission
     public ?string $lrn = null;
     public ?string $mrn = null;
     public ?string $name = null;
-    public ?bool $partial_answer = null;
+    public ?bool $partial_answers = null;
     public array $receipt;
     public ?string $refund_application_status = null;
     public ?string $route = null;
@@ -430,10 +430,10 @@ class Submission
     public ?string $status = null;
     public ?bool $template = null;
     public ?string $template_id = null;
-    public ?array $template_property = null;
+    public ?array $template_properties = null;
     public ?string $total_tax_amount = null;
     public string $updated_at;
-    public ?array $verification_error = null;
+    public ?array $verification_errors = null;
     public ?string $verification_status = null;
 }
 
@@ -446,10 +446,10 @@ class SubmissionLoadMatch
 /** Request payload for Submission#list. */
 class SubmissionListMatch
 {
-    public ?array $additional_external_id = null;
+    public ?array $additional_external_ids = null;
     public ?string $amendment_reason = null;
     public ?string $amendment_status = null;
-    public ?array $answer = null;
+    public ?array $answers = null;
     public ?bool $bypass_restricted_code = null;
     public ?array $clearance_slip = null;
     public ?array $client = null;
@@ -473,7 +473,7 @@ class SubmissionListMatch
     public ?string $lrn = null;
     public ?string $mrn = null;
     public ?string $name = null;
-    public ?bool $partial_answer = null;
+    public ?bool $partial_answers = null;
     public ?array $receipt = null;
     public ?string $refund_application_status = null;
     public ?string $route = null;
@@ -484,20 +484,20 @@ class SubmissionListMatch
     public ?string $status = null;
     public ?bool $template = null;
     public ?string $template_id = null;
-    public ?array $template_property = null;
+    public ?array $template_properties = null;
     public ?string $total_tax_amount = null;
     public ?string $updated_at = null;
-    public ?array $verification_error = null;
+    public ?array $verification_errors = null;
     public ?string $verification_status = null;
 }
 
 /** Request payload for Submission#create. */
 class SubmissionCreateData
 {
-    public ?array $additional_external_id = null;
+    public ?array $additional_external_ids = null;
     public ?string $amendment_reason = null;
     public ?string $amendment_status = null;
-    public array $answer;
+    public array $answers;
     public ?bool $bypass_restricted_code = null;
     public array $clearance_slip;
     public array $client;
@@ -521,7 +521,7 @@ class SubmissionCreateData
     public ?string $lrn = null;
     public ?string $mrn = null;
     public ?string $name = null;
-    public ?bool $partial_answer = null;
+    public ?bool $partial_answers = null;
     public array $receipt;
     public ?string $refund_application_status = null;
     public ?string $route = null;
@@ -532,10 +532,10 @@ class SubmissionCreateData
     public ?string $status = null;
     public ?bool $template = null;
     public ?string $template_id = null;
-    public ?array $template_property = null;
+    public ?array $template_properties = null;
     public ?string $total_tax_amount = null;
     public string $updated_at;
-    public ?array $verification_error = null;
+    public ?array $verification_errors = null;
     public ?string $verification_status = null;
 }
 
@@ -543,10 +543,10 @@ class SubmissionCreateData
 class SubmissionUpdateData
 {
     public string $id;
-    public ?array $additional_external_id = null;
+    public ?array $additional_external_ids = null;
     public ?string $amendment_reason = null;
     public ?string $amendment_status = null;
-    public ?array $answer = null;
+    public ?array $answers = null;
     public ?bool $bypass_restricted_code = null;
     public ?array $clearance_slip = null;
     public ?array $client = null;
@@ -569,7 +569,7 @@ class SubmissionUpdateData
     public ?string $lrn = null;
     public ?string $mrn = null;
     public ?string $name = null;
-    public ?bool $partial_answer = null;
+    public ?bool $partial_answers = null;
     public ?array $receipt = null;
     public ?string $refund_application_status = null;
     public ?string $route = null;
@@ -580,10 +580,10 @@ class SubmissionUpdateData
     public ?string $status = null;
     public ?bool $template = null;
     public ?string $template_id = null;
-    public ?array $template_property = null;
+    public ?array $template_properties = null;
     public ?string $total_tax_amount = null;
     public ?string $updated_at = null;
-    public ?array $verification_error = null;
+    public ?array $verification_errors = null;
     public ?string $verification_status = null;
 }
 
@@ -596,7 +596,7 @@ class SubmissionRemoveMatch
 /** SubmissionDetail entity data model. */
 class SubmissionDetail
 {
-    public ?array $additional_external_id = null;
+    public ?array $additional_external_ids = null;
     public array $additional_information;
     public ?string $amendment_status = null;
     public array $clearance_slip;
@@ -631,18 +631,18 @@ class SubmissionDetail
     public ?string $source_type = null;
     public ?string $status = null;
     public string $submission;
-    public ?array $supporting_document = null;
+    public ?array $supporting_documents = null;
     public ?bool $template = null;
     public ?string $total_tax_amount = null;
     public string $updated_at;
-    public ?array $verification_error = null;
+    public ?array $verification_errors = null;
     public ?string $verification_status = null;
 }
 
 /** Request payload for SubmissionDetail#create. */
 class SubmissionDetailCreateData
 {
-    public ?array $additional_external_id = null;
+    public ?array $additional_external_ids = null;
     public array $additional_information;
     public ?string $amendment_status = null;
     public array $clearance_slip;
@@ -677,11 +677,11 @@ class SubmissionDetailCreateData
     public ?string $source_type = null;
     public ?string $status = null;
     public string $submission;
-    public ?array $supporting_document = null;
+    public ?array $supporting_documents = null;
     public ?bool $template = null;
     public ?string $total_tax_amount = null;
     public string $updated_at;
-    public ?array $verification_error = null;
+    public ?array $verification_errors = null;
     public ?string $verification_status = null;
 }
 

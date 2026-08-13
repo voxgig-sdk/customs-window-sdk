@@ -33,7 +33,7 @@ class SubmissionDetailEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set CUSTOMSWINDOW_TEST_SUBMISSION_DETAIL_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set CUSTOMS_WINDOW_TEST_SUBMISSION_DETAIL_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -44,7 +44,7 @@ class SubmissionDetailEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.submission_detail"), "submission_detail_ref01"));
 
         $submission_detail_ref01_data_result = $submission_detail_ref01_ent->create($submission_detail_ref01_data, null);
-        $submission_detail_ref01_data = Helpers::to_map($submission_detail_ref01_data_result);
+        $submission_detail_ref01_data = Helpers::to_map(is_object($submission_detail_ref01_data_result) && method_exists($submission_detail_ref01_data_result, 'data_get') ? $submission_detail_ref01_data_result->data_get() : $submission_detail_ref01_data_result);
         $this->assertNotNull($submission_detail_ref01_data);
         $this->assertNotNull($submission_detail_ref01_data["id"]);
 
@@ -73,39 +73,39 @@ function submission_detail_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("CUSTOMSWINDOW_TEST_SUBMISSION_DETAIL_ENTID");
+    $entid_env_raw = getenv("CUSTOMS_WINDOW_TEST_SUBMISSION_DETAIL_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "CUSTOMSWINDOW_TEST_SUBMISSION_DETAIL_ENTID" => $idmap,
-        "CUSTOMSWINDOW_TEST_LIVE" => "FALSE",
-        "CUSTOMSWINDOW_TEST_EXPLAIN" => "FALSE",
-        "CUSTOMSWINDOW_APIKEY" => "NONE",
+        "CUSTOMS_WINDOW_TEST_SUBMISSION_DETAIL_ENTID" => $idmap,
+        "CUSTOMS_WINDOW_TEST_LIVE" => "FALSE",
+        "CUSTOMS_WINDOW_TEST_EXPLAIN" => "FALSE",
+        "CUSTOMS_WINDOW_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["CUSTOMSWINDOW_TEST_SUBMISSION_DETAIL_ENTID"]);
+        $env["CUSTOMS_WINDOW_TEST_SUBMISSION_DETAIL_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["CUSTOMSWINDOW_TEST_LIVE"] === "TRUE") {
+    if ($env["CUSTOMS_WINDOW_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["CUSTOMSWINDOW_APIKEY"],
+                "apikey" => $env["CUSTOMS_WINDOW_APIKEY"],
             ],
             $extra ?? [],
         ]);
         $client = new CustomsWindowSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["CUSTOMSWINDOW_TEST_LIVE"] === "TRUE";
+    $live = $env["CUSTOMS_WINDOW_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["CUSTOMSWINDOW_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["CUSTOMS_WINDOW_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

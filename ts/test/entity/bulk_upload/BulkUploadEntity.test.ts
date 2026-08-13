@@ -26,8 +26,8 @@ import {
 describe('BulkUploadEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when CUSTOMSWINDOW_TEST_LIVE=TRUE.
-  afterEach(liveDelay('CUSTOMSWINDOW_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when CUSTOMS_WINDOW_TEST_LIVE=TRUE.
+  afterEach(liveDelay('CUSTOMS_WINDOW_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CustomsWindowSDK.test()
@@ -62,14 +62,14 @@ describe('BulkUploadEntity', async () => {
     const bulk_upload_ref01_ent = client.BulkUpload()
     let bulk_upload_ref01_data = setup.data.new.bulk_upload['bulk_upload_ref01']
 
-    bulk_upload_ref01_data = await bulk_upload_ref01_ent.create(bulk_upload_ref01_data)
+    bulk_upload_ref01_data = (await bulk_upload_ref01_ent.create(bulk_upload_ref01_data)).data()
     assert(null != bulk_upload_ref01_data.id)
 
 
     // LIST
     const bulk_upload_ref01_match: any = {}
 
-    const bulk_upload_ref01_list = await bulk_upload_ref01_ent.list(bulk_upload_ref01_match)
+    const bulk_upload_ref01_list = (await bulk_upload_ref01_ent.list(bulk_upload_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(bulk_upload_ref01_list, { id: bulk_upload_ref01_data.id })))
 
@@ -81,7 +81,7 @@ describe('BulkUploadEntity', async () => {
     const bulk_upload_ref01_markdef_up0 = { name: 'active_transport_nationality', value: 'Mark01-bulk_upload_ref01_' + setup.now }
     ;(bulk_upload_ref01_data_up0 as any)[bulk_upload_ref01_markdef_up0.name] = bulk_upload_ref01_markdef_up0.value
 
-    const bulk_upload_ref01_resdata_up0 = await bulk_upload_ref01_ent.update(bulk_upload_ref01_data_up0)
+    const bulk_upload_ref01_resdata_up0 = (await bulk_upload_ref01_ent.update(bulk_upload_ref01_data_up0)).data()
     assert(bulk_upload_ref01_resdata_up0.id === bulk_upload_ref01_data_up0.id)
 
     assert((bulk_upload_ref01_resdata_up0 as any)[bulk_upload_ref01_markdef_up0.name] === bulk_upload_ref01_markdef_up0.value)
@@ -90,7 +90,7 @@ describe('BulkUploadEntity', async () => {
     // LOAD
     const bulk_upload_ref01_match_dt0: any = {}
     bulk_upload_ref01_match_dt0.id = bulk_upload_ref01_data.id
-    const bulk_upload_ref01_data_dt0 = await bulk_upload_ref01_ent.load(bulk_upload_ref01_match_dt0)
+    const bulk_upload_ref01_data_dt0 = (await bulk_upload_ref01_ent.load(bulk_upload_ref01_match_dt0)).data()
     assert(bulk_upload_ref01_data_dt0.id === bulk_upload_ref01_data.id)
 
 
@@ -102,7 +102,7 @@ describe('BulkUploadEntity', async () => {
     // LIST
     const bulk_upload_ref01_match_rt0: any = {}
 
-    const bulk_upload_ref01_list_rt0 = await bulk_upload_ref01_ent.list(bulk_upload_ref01_match_rt0)
+    const bulk_upload_ref01_list_rt0 = (await bulk_upload_ref01_ent.list(bulk_upload_ref01_match_rt0)).map((e: any) => e.data())
 
     assert(isempty(select(bulk_upload_ref01_list_rt0, { id: bulk_upload_ref01_data.id })))
 

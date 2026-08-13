@@ -458,7 +458,7 @@ fmt.Println(party.GetName()) // "party"
 | `additional_declaration_type` | `map[string]any` | Yes |  |
 | `address` | `map[string]any` | Yes |  |
 | `authorisation` | `map[string]any` | Yes |  |
-| `bank_detail` | `string` | No |  |
+| `bank_details` | `string` | No |  |
 | `certificate` | `map[string]any` | Yes |  |
 | `certificate_type` | `string` | Yes |  |
 | `company` | `string` | Yes |  |
@@ -595,10 +595,10 @@ fmt.Println(submission.GetName()) // "submission"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `[]any` | No |  |
+| `additional_external_ids` | `[]any` | No |  |
 | `amendment_reason` | `string` | No |  |
 | `amendment_status` | `string` | No |  |
-| `answer` | `[]any` | Yes |  |
+| `answers` | `[]any` | Yes |  |
 | `bypass_restricted_code` | `bool` | No |  |
 | `clearance_slip` | `map[string]any` | Yes |  |
 | `client` | `map[string]any` | Yes |  |
@@ -622,7 +622,7 @@ fmt.Println(submission.GetName()) // "submission"
 | `lrn` | `string` | No |  |
 | `mrn` | `string` | No |  |
 | `name` | `string` | No |  |
-| `partial_answer` | `bool` | No |  |
+| `partial_answers` | `bool` | No |  |
 | `receipt` | `map[string]any` | Yes |  |
 | `refund_application_status` | `string` | No |  |
 | `route` | `string` | No |  |
@@ -633,20 +633,20 @@ fmt.Println(submission.GetName()) // "submission"
 | `status` | `string` | No |  |
 | `template` | `bool` | No |  |
 | `template_id` | `string` | No |  |
-| `template_property` | `[]any` | No |  |
+| `template_properties` | `[]any` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
-| `verification_error` | `[]any` | No |  |
+| `verification_errors` | `[]any` | No |  |
 | `verification_status` | `string` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create | update | remove |
 | --- | --- | --- | --- | --- | --- |
-| `additional_external_id` | - | - | - | - | - |
+| `additional_external_ids` | - | - | - | - | - |
 | `amendment_reason` | - | - | - | - | - |
 | `amendment_status` | - | - | - | - | - |
-| `answer` | - | - | - | Yes | - |
+| `answers` | - | - | - | Yes | - |
 | `bypass_restricted_code` | - | - | - | - | - |
 | `clearance_slip` | - | - | - | - | - |
 | `client` | - | - | - | - | - |
@@ -670,7 +670,7 @@ fmt.Println(submission.GetName()) // "submission"
 | `lrn` | - | - | - | - | - |
 | `mrn` | - | - | - | - | - |
 | `name` | - | - | - | - | - |
-| `partial_answer` | - | - | - | - | - |
+| `partial_answers` | - | - | - | - | - |
 | `receipt` | - | - | - | - | - |
 | `refund_application_status` | - | - | - | - | - |
 | `route` | - | - | - | - | - |
@@ -681,10 +681,10 @@ fmt.Println(submission.GetName()) // "submission"
 | `status` | - | - | - | - | - |
 | `template` | - | - | - | - | - |
 | `template_id` | - | - | - | - | - |
-| `template_property` | - | - | - | - | - |
+| `template_properties` | - | - | - | - | - |
 | `total_tax_amount` | - | - | - | - | - |
 | `updated_at` | - | - | - | - | - |
-| `verification_error` | - | - | - | - | - |
+| `verification_errors` | - | - | - | - | - |
 | `verification_status` | - | - | - | - | - |
 
 ### Operations
@@ -719,7 +719,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Submission(nil).Create(map[string]any{
-    "answer": []any{},
+    "answers": []any{},
     "clearance_slip": map[string]any{},
     "client": map[string]any{},
     "company_member": map[string]any{},
@@ -800,7 +800,7 @@ fmt.Println(submissionDetail.GetName()) // "submission_detail"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `[]any` | No |  |
+| `additional_external_ids` | `[]any` | No |  |
 | `additional_information` | `[]any` | Yes |  |
 | `amendment_status` | `string` | No |  |
 | `clearance_slip` | `map[string]any` | Yes |  |
@@ -835,11 +835,11 @@ fmt.Println(submissionDetail.GetName()) // "submission_detail"
 | `source_type` | `string` | No |  |
 | `status` | `string` | No |  |
 | `submission` | `string` | Yes |  |
-| `supporting_document` | `[]any` | No |  |
+| `supporting_documents` | `[]any` | No |  |
 | `template` | `bool` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
-| `verification_error` | `[]any` | No |  |
+| `verification_errors` | `[]any` | No |  |
 | `verification_status` | `string` | No |  |
 
 ### Operations

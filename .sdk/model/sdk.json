@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "bulk_upload": {
           "active": true,
@@ -285,6 +290,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/bulk-uploads",
                   "parts": [
@@ -316,6 +322,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/bulk-uploads",
                   "parts": [
@@ -328,7 +335,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -351,6 +358,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/bulk-uploads/{id}",
                   "parts": [
@@ -381,6 +389,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/bulk-uploads/{id}/generate-pdfs",
                   "parts": [
@@ -419,6 +428,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "DELETE",
                   "orig": "/bulk-uploads/{id}",
                   "parts": [
@@ -449,6 +459,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "DELETE",
                   "orig": "/bulk-uploads/{id}/generate-pdfs",
                   "parts": [
@@ -487,6 +498,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "PATCH",
                   "orig": "/bulk-uploads/{id}",
                   "parts": [
@@ -517,6 +529,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "PATCH",
                   "orig": "/bulk-uploads/{id}/generate-pdfs",
                   "parts": [
@@ -628,6 +641,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/files",
                   "parts": [
@@ -710,7 +724,7 @@
             },
             {
               "active": true,
-              "name": "bank_detail",
+              "name": "bank_details",
               "req": false,
               "type": "`$STRING`"
             },
@@ -860,6 +874,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/parties",
                   "parts": [
@@ -899,6 +914,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/parties",
                   "parts": [
@@ -912,7 +928,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -935,6 +951,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/parties/{id}",
                   "parts": [
@@ -971,6 +988,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "DELETE",
                   "orig": "/parties/{id}",
                   "parts": [
@@ -1007,6 +1025,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "PATCH",
                   "orig": "/parties/{id}",
                   "parts": [
@@ -1038,7 +1057,7 @@
           "fields": [
             {
               "active": true,
-              "name": "additional_external_id",
+              "name": "additional_external_ids",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1056,7 +1075,7 @@
             },
             {
               "active": true,
-              "name": "answer",
+              "name": "answers",
               "op": {
                 "update": {
                   "req": false,
@@ -1212,7 +1231,7 @@
             },
             {
               "active": true,
-              "name": "partial_answer",
+              "name": "partial_answers",
               "req": false,
               "type": "`$BOOLEAN`"
             },
@@ -1278,7 +1297,7 @@
             },
             {
               "active": true,
-              "name": "template_property",
+              "name": "template_properties",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1296,7 +1315,7 @@
             },
             {
               "active": true,
-              "name": "verification_error",
+              "name": "verification_errors",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1331,6 +1350,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/submissions/{id}/refund",
                   "parts": [
@@ -1352,6 +1372,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/submissions",
                   "parts": [
@@ -1366,6 +1387,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/submissions/retrieve",
                   "parts": [
@@ -1434,6 +1456,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/submissions",
                   "parts": [
@@ -1450,7 +1473,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -1473,6 +1496,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}",
                   "parts": [
@@ -1503,6 +1527,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/clearance-slip",
                   "parts": [
@@ -1535,6 +1560,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/notification-read",
                   "parts": [
@@ -1567,6 +1593,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/pbn-applicable",
                   "parts": [
@@ -1599,6 +1626,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/receipt",
                   "parts": [
@@ -1631,6 +1659,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/refund",
                   "parts": [
@@ -1652,6 +1681,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/retrieve",
                   "parts": [
@@ -1686,6 +1716,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}",
                   "parts": [
@@ -1716,6 +1747,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}/clearance-slip",
                   "parts": [
@@ -1748,6 +1780,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}/notification-read",
                   "parts": [
@@ -1780,6 +1813,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}/pbn-applicable",
                   "parts": [
@@ -1812,6 +1846,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}/receipt",
                   "parts": [
@@ -1850,6 +1885,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}",
                   "parts": [
@@ -1880,6 +1916,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}/clearance-slip",
                   "parts": [
@@ -1912,6 +1949,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}/notification-read",
                   "parts": [
@@ -1944,6 +1982,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}/pbn-applicable",
                   "parts": [
@@ -1976,6 +2015,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}/receipt",
                   "parts": [
@@ -2009,7 +2049,7 @@
           "fields": [
             {
               "active": true,
-              "name": "additional_external_id",
+              "name": "additional_external_ids",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -2219,7 +2259,7 @@
             },
             {
               "active": true,
-              "name": "supporting_document",
+              "name": "supporting_documents",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -2243,7 +2283,7 @@
             },
             {
               "active": true,
-              "name": "verification_error",
+              "name": "verification_errors",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -2267,6 +2307,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/documents-request",
                   "parts": [
@@ -2582,7 +2623,7 @@
                 "ref": "party_ref01",
                 "srcdatavar": "party_ref01_data",
                 "suffix": "_up0",
-                "textfield": "bank_detail"
+                "textfield": "bank_details"
               },
               "match": {},
               "op": "update",
@@ -2809,18 +2850,41 @@
         }
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "customs-window"
+            "goversion": "",
+            "name": "customs-window",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2842,22 +2906,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "customs-window"
+            "goversion": "",
+            "name": "customs-window",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -2896,21 +2978,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "customs-window"
+            "goversion": "",
+            "name": "customs-window",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -2949,12 +3049,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -2966,10 +3071,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "customs-window"
+            "goversion": "",
+            "name": "customs-window",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2991,22 +3109,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "customs-window"
+            "goversion": "",
+            "name": "customs-window",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3028,13 +3164,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -3046,10 +3187,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "customs-window"
+            "goversion": "",
+            "name": "customs-window",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3071,13 +3225,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -3094,10 +3253,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "customs-window"
+            "goversion": "",
+            "name": "customs-window",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3119,13 +3291,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -3148,10 +3325,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "customs-window"
+            "goversion": "",
+            "name": "customs-window",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3173,9 +3363,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

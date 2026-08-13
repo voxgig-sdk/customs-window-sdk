@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# CustomsWindow SDK exists test
 
 import pytest
 from customswindow_sdk import CustomsWindowSDK

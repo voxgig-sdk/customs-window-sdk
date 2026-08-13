@@ -332,6 +332,7 @@ module CustomsWindowConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/bulk-uploads",
                   "parts" => [
@@ -365,6 +366,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/bulk-uploads",
                   "parts" => [
@@ -377,7 +379,7 @@ module CustomsWindowConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.results`",
                   },
                   "index$" => 0,
                 },
@@ -403,6 +405,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/bulk-uploads/{id}",
                   "parts" => [
@@ -434,6 +437,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/bulk-uploads/{id}/generate-pdfs",
                   "parts" => [
@@ -475,6 +479,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/bulk-uploads/{id}",
                   "parts" => [
@@ -506,6 +511,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/bulk-uploads/{id}/generate-pdfs",
                   "parts" => [
@@ -547,6 +553,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/bulk-uploads/{id}",
                   "parts" => [
@@ -579,6 +586,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/bulk-uploads/{id}/generate-pdfs",
                   "parts" => [
@@ -694,6 +702,7 @@ module CustomsWindowConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/files",
                   "parts" => [
@@ -765,7 +774,7 @@ module CustomsWindowConfig
             },
             {
               "active" => true,
-              "name" => "bank_detail",
+              "name" => "bank_details",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 3,
@@ -934,6 +943,7 @@ module CustomsWindowConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/parties",
                   "parts" => [
@@ -975,6 +985,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/parties",
                   "parts" => [
@@ -988,7 +999,7 @@ module CustomsWindowConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.results`",
                   },
                   "index$" => 0,
                 },
@@ -1014,6 +1025,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/parties/{id}",
                   "parts" => [
@@ -1053,6 +1065,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/parties/{id}",
                   "parts" => [
@@ -1092,6 +1105,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/parties/{id}",
                   "parts" => [
@@ -1121,7 +1135,7 @@ module CustomsWindowConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "additional_external_id",
+              "name" => "additional_external_ids",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 0,
@@ -1142,7 +1156,7 @@ module CustomsWindowConfig
             },
             {
               "active" => true,
-              "name" => "answer",
+              "name" => "answers",
               "op" => {
                 "update" => {
                   "req" => false,
@@ -1322,7 +1336,7 @@ module CustomsWindowConfig
             },
             {
               "active" => true,
-              "name" => "partial_answer",
+              "name" => "partial_answers",
               "req" => false,
               "type" => "`$BOOLEAN`",
               "index$" => 27,
@@ -1399,7 +1413,7 @@ module CustomsWindowConfig
             },
             {
               "active" => true,
-              "name" => "template_property",
+              "name" => "template_properties",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 38,
@@ -1420,7 +1434,7 @@ module CustomsWindowConfig
             },
             {
               "active" => true,
-              "name" => "verification_error",
+              "name" => "verification_errors",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 41,
@@ -1454,6 +1468,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/submissions/{id}/refund",
                   "parts" => [
@@ -1476,6 +1491,7 @@ module CustomsWindowConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/submissions",
                   "parts" => [
@@ -1491,6 +1507,7 @@ module CustomsWindowConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/submissions/retrieve",
                   "parts" => [
@@ -1561,6 +1578,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions",
                   "parts" => [
@@ -1577,7 +1595,7 @@ module CustomsWindowConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.results`",
                   },
                   "index$" => 0,
                 },
@@ -1603,6 +1621,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions/{id}",
                   "parts" => [
@@ -1634,6 +1653,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions/{id}/clearance-slip",
                   "parts" => [
@@ -1667,6 +1687,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions/{id}/notification-read",
                   "parts" => [
@@ -1700,6 +1721,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions/{id}/pbn-applicable",
                   "parts" => [
@@ -1733,6 +1755,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions/{id}/receipt",
                   "parts" => [
@@ -1766,6 +1789,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions/{id}/refund",
                   "parts" => [
@@ -1788,6 +1812,7 @@ module CustomsWindowConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions/retrieve",
                   "parts" => [
@@ -1825,6 +1850,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/submissions/{id}",
                   "parts" => [
@@ -1856,6 +1882,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/submissions/{id}/clearance-slip",
                   "parts" => [
@@ -1889,6 +1916,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/submissions/{id}/notification-read",
                   "parts" => [
@@ -1922,6 +1950,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/submissions/{id}/pbn-applicable",
                   "parts" => [
@@ -1955,6 +1984,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/submissions/{id}/receipt",
                   "parts" => [
@@ -1996,6 +2026,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/submissions/{id}",
                   "parts" => [
@@ -2027,6 +2058,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/submissions/{id}/clearance-slip",
                   "parts" => [
@@ -2060,6 +2092,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/submissions/{id}/notification-read",
                   "parts" => [
@@ -2093,6 +2126,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/submissions/{id}/pbn-applicable",
                   "parts" => [
@@ -2126,6 +2160,7 @@ module CustomsWindowConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/submissions/{id}/receipt",
                   "parts" => [
@@ -2157,7 +2192,7 @@ module CustomsWindowConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "additional_external_id",
+              "name" => "additional_external_ids",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 0,
@@ -2402,7 +2437,7 @@ module CustomsWindowConfig
             },
             {
               "active" => true,
-              "name" => "supporting_document",
+              "name" => "supporting_documents",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 35,
@@ -2430,7 +2465,7 @@ module CustomsWindowConfig
             },
             {
               "active" => true,
-              "name" => "verification_error",
+              "name" => "verification_errors",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 39,
@@ -2452,6 +2487,7 @@ module CustomsWindowConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/documents-request",
                   "parts" => [

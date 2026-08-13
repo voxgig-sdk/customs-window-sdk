@@ -31,7 +31,7 @@ main: kit: flow: BasicPartyFlow:
         ref: "party_ref01",
         srcdatavar: "party_ref01_data",
         suffix: "_up0",
-        textfield: "bank_detail"
+        textfield: "bank_details"
       }
 
       op: "update",

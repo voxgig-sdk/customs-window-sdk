@@ -331,6 +331,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/bulk-uploads",
 								"parts": []any{
@@ -344,7 +345,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"list": map[string]any{
 						"input": "data",
@@ -364,6 +364,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/bulk-uploads",
 								"parts": []any{
@@ -376,12 +377,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -402,6 +402,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/bulk-uploads/{id}",
 								"parts": []any{
@@ -433,6 +434,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/bulk-uploads/{id}/generate-pdfs",
 								"parts": []any{
@@ -453,7 +455,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "load",
 					},
 					"remove": map[string]any{
 						"input": "data",
@@ -474,6 +475,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/bulk-uploads/{id}",
 								"parts": []any{
@@ -505,6 +507,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/bulk-uploads/{id}/generate-pdfs",
 								"parts": []any{
@@ -525,7 +528,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "remove",
 					},
 					"update": map[string]any{
 						"input": "data",
@@ -546,6 +548,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/bulk-uploads/{id}",
 								"parts": []any{
@@ -577,6 +580,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/bulk-uploads/{id}/generate-pdfs",
 								"parts": []any{
@@ -597,7 +601,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "update",
 					},
 				},
 				"relations": map[string]any{
@@ -692,6 +695,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/files",
 								"parts": []any{
@@ -707,7 +711,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{
@@ -763,7 +766,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "bank_detail",
+						"name": "bank_details",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -932,6 +935,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/parties",
 								"parts": []any{
@@ -945,7 +949,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"list": map[string]any{
 						"input": "data",
@@ -973,6 +976,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/parties",
 								"parts": []any{
@@ -986,12 +990,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1012,6 +1015,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/parties/{id}",
 								"parts": []any{
@@ -1030,7 +1034,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 					"remove": map[string]any{
 						"input": "data",
@@ -1051,6 +1054,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/parties/{id}",
 								"parts": []any{
@@ -1069,7 +1073,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "remove",
 					},
 					"update": map[string]any{
 						"input": "data",
@@ -1090,6 +1093,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/parties/{id}",
 								"parts": []any{
@@ -1108,7 +1112,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "update",
 					},
 				},
 				"relations": map[string]any{
@@ -1119,7 +1122,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "additional_external_id",
+						"name": "additional_external_ids",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -1140,7 +1143,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "answer",
+						"name": "answers",
 						"op": map[string]any{
 							"update": map[string]any{
 								"req": false,
@@ -1320,7 +1323,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "partial_answer",
+						"name": "partial_answers",
 						"req": false,
 						"type": "`$BOOLEAN`",
 						"index$": 27,
@@ -1397,7 +1400,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "template_property",
+						"name": "template_properties",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 38,
@@ -1418,7 +1421,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "verification_error",
+						"name": "verification_errors",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 41,
@@ -1448,9 +1451,11 @@ func MakeConfig() map[string]any {
 											"orig": "id",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 								},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/submissions/{id}/refund",
 								"parts": []any{
@@ -1473,6 +1478,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/submissions",
 								"parts": []any{
@@ -1488,6 +1494,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/submissions/retrieve",
 								"parts": []any{
@@ -1504,7 +1511,6 @@ func MakeConfig() map[string]any {
 								"index$": 2,
 							},
 						},
-						"key$": "create",
 					},
 					"list": map[string]any{
 						"input": "data",
@@ -1558,6 +1564,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions",
 								"parts": []any{
@@ -1574,12 +1581,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1600,6 +1606,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}",
 								"parts": []any{
@@ -1631,6 +1638,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/clearance-slip",
 								"parts": []any{
@@ -1664,6 +1672,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/notification-read",
 								"parts": []any{
@@ -1697,6 +1706,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/pbn-applicable",
 								"parts": []any{
@@ -1730,6 +1740,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/receipt",
 								"parts": []any{
@@ -1763,6 +1774,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/refund",
 								"parts": []any{
@@ -1785,6 +1797,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/retrieve",
 								"parts": []any{
@@ -1801,7 +1814,6 @@ func MakeConfig() map[string]any {
 								"index$": 6,
 							},
 						},
-						"key$": "load",
 					},
 					"remove": map[string]any{
 						"input": "data",
@@ -1822,6 +1834,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}",
 								"parts": []any{
@@ -1853,6 +1866,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}/clearance-slip",
 								"parts": []any{
@@ -1886,6 +1900,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}/notification-read",
 								"parts": []any{
@@ -1919,6 +1934,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}/pbn-applicable",
 								"parts": []any{
@@ -1952,6 +1968,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}/receipt",
 								"parts": []any{
@@ -1972,7 +1989,6 @@ func MakeConfig() map[string]any {
 								"index$": 4,
 							},
 						},
-						"key$": "remove",
 					},
 					"update": map[string]any{
 						"input": "data",
@@ -1993,6 +2009,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}",
 								"parts": []any{
@@ -2024,6 +2041,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}/clearance-slip",
 								"parts": []any{
@@ -2057,6 +2075,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}/notification-read",
 								"parts": []any{
@@ -2090,6 +2109,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}/pbn-applicable",
 								"parts": []any{
@@ -2123,6 +2143,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}/receipt",
 								"parts": []any{
@@ -2143,7 +2164,6 @@ func MakeConfig() map[string]any {
 								"index$": 4,
 							},
 						},
-						"key$": "update",
 					},
 				},
 				"relations": map[string]any{
@@ -2154,7 +2174,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "additional_external_id",
+						"name": "additional_external_ids",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -2399,7 +2419,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "supporting_document",
+						"name": "supporting_documents",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 35,
@@ -2427,7 +2447,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "verification_error",
+						"name": "verification_errors",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 39,
@@ -2449,6 +2469,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/documents-request",
 								"parts": []any{
@@ -2462,7 +2483,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{

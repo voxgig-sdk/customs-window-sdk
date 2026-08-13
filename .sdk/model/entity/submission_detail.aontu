@@ -6,7 +6,7 @@ main: kit: entity: submission_detail: {
 
   fields: [
     {
-      name: "additional_external_id"
+      name: "additional_external_ids"
       req: false
       type: "`$ARRAY`"
     }
@@ -181,7 +181,7 @@ main: kit: entity: submission_detail: {
       type: "`$STRING`"
     }
     {
-      name: "supporting_document"
+      name: "supporting_documents"
       req: false
       type: "`$ARRAY`"
     }
@@ -201,7 +201,7 @@ main: kit: entity: submission_detail: {
       type: "`$STRING`"
     }
     {
-      name: "verification_error"
+      name: "verification_errors"
       req: false
       type: "`$ARRAY`"
     }

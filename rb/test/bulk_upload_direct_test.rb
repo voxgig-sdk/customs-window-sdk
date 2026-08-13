@@ -114,16 +114,16 @@ def bulk_upload_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "CUSTOMSWINDOW_TEST_BULK_UPLOAD_ENTID" => {},
-    "CUSTOMSWINDOW_TEST_LIVE" => "FALSE",
-    "CUSTOMSWINDOW_APIKEY" => "NONE",
+    "CUSTOMS_WINDOW_TEST_BULK_UPLOAD_ENTID" => {},
+    "CUSTOMS_WINDOW_TEST_LIVE" => "FALSE",
+    "CUSTOMS_WINDOW_APIKEY" => "NONE",
   })
 
-  live = env["CUSTOMSWINDOW_TEST_LIVE"] == "TRUE"
+  live = env["CUSTOMS_WINDOW_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["CUSTOMSWINDOW_APIKEY"],
+      "apikey" => env["CUSTOMS_WINDOW_APIKEY"],
     }
     client = CustomsWindowSDK.new(merged_opts)
     return {

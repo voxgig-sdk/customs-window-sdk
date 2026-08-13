@@ -815,7 +815,7 @@ end
 # @!attribute [rw] authorisation
 #   @return [Hash]
 #
-# @!attribute [rw] bank_detail
+# @!attribute [rw] bank_details
 #   @return [String, nil]
 #
 # @!attribute [rw] certificate
@@ -887,7 +887,7 @@ Party = Struct.new(
   :additional_declaration_type,
   :address,
   :authorisation,
-  :bank_detail,
+  :bank_details,
   :certificate,
   :certificate_type,
   :company,
@@ -933,7 +933,7 @@ PartyLoadMatch = Struct.new(
 # @!attribute [rw] authorisation
 #   @return [Hash, nil]
 #
-# @!attribute [rw] bank_detail
+# @!attribute [rw] bank_details
 #   @return [String, nil]
 #
 # @!attribute [rw] certificate
@@ -1005,7 +1005,7 @@ PartyListMatch = Struct.new(
   :additional_declaration_type,
   :address,
   :authorisation,
-  :bank_detail,
+  :bank_details,
   :certificate,
   :certificate_type,
   :company,
@@ -1042,7 +1042,7 @@ PartyListMatch = Struct.new(
 # @!attribute [rw] authorisation
 #   @return [Hash]
 #
-# @!attribute [rw] bank_detail
+# @!attribute [rw] bank_details
 #   @return [String, nil]
 #
 # @!attribute [rw] certificate
@@ -1114,7 +1114,7 @@ PartyCreateData = Struct.new(
   :additional_declaration_type,
   :address,
   :authorisation,
-  :bank_detail,
+  :bank_details,
   :certificate,
   :certificate_type,
   :company,
@@ -1154,7 +1154,7 @@ PartyCreateData = Struct.new(
 # @!attribute [rw] authorisation
 #   @return [Hash, nil]
 #
-# @!attribute [rw] bank_detail
+# @!attribute [rw] bank_details
 #   @return [String, nil]
 #
 # @!attribute [rw] certificate
@@ -1224,7 +1224,7 @@ PartyUpdateData = Struct.new(
   :additional_declaration_type,
   :address,
   :authorisation,
-  :bank_detail,
+  :bank_details,
   :certificate,
   :certificate_type,
   :company,
@@ -1260,7 +1260,7 @@ PartyRemoveMatch = Struct.new(
 
 # Submission entity data model.
 #
-# @!attribute [rw] additional_external_id
+# @!attribute [rw] additional_external_ids
 #   @return [Array, nil]
 #
 # @!attribute [rw] amendment_reason
@@ -1269,7 +1269,7 @@ PartyRemoveMatch = Struct.new(
 # @!attribute [rw] amendment_status
 #   @return [String, nil]
 #
-# @!attribute [rw] answer
+# @!attribute [rw] answers
 #   @return [Array]
 #
 # @!attribute [rw] bypass_restricted_code
@@ -1341,7 +1341,7 @@ PartyRemoveMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] partial_answer
+# @!attribute [rw] partial_answers
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] receipt
@@ -1374,7 +1374,7 @@ PartyRemoveMatch = Struct.new(
 # @!attribute [rw] template_id
 #   @return [String, nil]
 #
-# @!attribute [rw] template_property
+# @!attribute [rw] template_properties
 #   @return [Array, nil]
 #
 # @!attribute [rw] total_tax_amount
@@ -1383,16 +1383,16 @@ PartyRemoveMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String]
 #
-# @!attribute [rw] verification_error
+# @!attribute [rw] verification_errors
 #   @return [Array, nil]
 #
 # @!attribute [rw] verification_status
 #   @return [String, nil]
 Submission = Struct.new(
-  :additional_external_id,
+  :additional_external_ids,
   :amendment_reason,
   :amendment_status,
-  :answer,
+  :answers,
   :bypass_restricted_code,
   :clearance_slip,
   :client,
@@ -1416,7 +1416,7 @@ Submission = Struct.new(
   :lrn,
   :mrn,
   :name,
-  :partial_answer,
+  :partial_answers,
   :receipt,
   :refund_application_status,
   :route,
@@ -1427,10 +1427,10 @@ Submission = Struct.new(
   :status,
   :template,
   :template_id,
-  :template_property,
+  :template_properties,
   :total_tax_amount,
   :updated_at,
-  :verification_error,
+  :verification_errors,
   :verification_status,
   keyword_init: true
 )
@@ -1446,7 +1446,7 @@ SubmissionLoadMatch = Struct.new(
 
 # Request payload for Submission#list.
 #
-# @!attribute [rw] additional_external_id
+# @!attribute [rw] additional_external_ids
 #   @return [Array, nil]
 #
 # @!attribute [rw] amendment_reason
@@ -1455,7 +1455,7 @@ SubmissionLoadMatch = Struct.new(
 # @!attribute [rw] amendment_status
 #   @return [String, nil]
 #
-# @!attribute [rw] answer
+# @!attribute [rw] answers
 #   @return [Array, nil]
 #
 # @!attribute [rw] bypass_restricted_code
@@ -1527,7 +1527,7 @@ SubmissionLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] partial_answer
+# @!attribute [rw] partial_answers
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] receipt
@@ -1560,7 +1560,7 @@ SubmissionLoadMatch = Struct.new(
 # @!attribute [rw] template_id
 #   @return [String, nil]
 #
-# @!attribute [rw] template_property
+# @!attribute [rw] template_properties
 #   @return [Array, nil]
 #
 # @!attribute [rw] total_tax_amount
@@ -1569,16 +1569,16 @@ SubmissionLoadMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] verification_error
+# @!attribute [rw] verification_errors
 #   @return [Array, nil]
 #
 # @!attribute [rw] verification_status
 #   @return [String, nil]
 SubmissionListMatch = Struct.new(
-  :additional_external_id,
+  :additional_external_ids,
   :amendment_reason,
   :amendment_status,
-  :answer,
+  :answers,
   :bypass_restricted_code,
   :clearance_slip,
   :client,
@@ -1602,7 +1602,7 @@ SubmissionListMatch = Struct.new(
   :lrn,
   :mrn,
   :name,
-  :partial_answer,
+  :partial_answers,
   :receipt,
   :refund_application_status,
   :route,
@@ -1613,17 +1613,17 @@ SubmissionListMatch = Struct.new(
   :status,
   :template,
   :template_id,
-  :template_property,
+  :template_properties,
   :total_tax_amount,
   :updated_at,
-  :verification_error,
+  :verification_errors,
   :verification_status,
   keyword_init: true
 )
 
 # Request payload for Submission#create.
 #
-# @!attribute [rw] additional_external_id
+# @!attribute [rw] additional_external_ids
 #   @return [Array, nil]
 #
 # @!attribute [rw] amendment_reason
@@ -1632,7 +1632,7 @@ SubmissionListMatch = Struct.new(
 # @!attribute [rw] amendment_status
 #   @return [String, nil]
 #
-# @!attribute [rw] answer
+# @!attribute [rw] answers
 #   @return [Array]
 #
 # @!attribute [rw] bypass_restricted_code
@@ -1704,7 +1704,7 @@ SubmissionListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] partial_answer
+# @!attribute [rw] partial_answers
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] receipt
@@ -1737,7 +1737,7 @@ SubmissionListMatch = Struct.new(
 # @!attribute [rw] template_id
 #   @return [String, nil]
 #
-# @!attribute [rw] template_property
+# @!attribute [rw] template_properties
 #   @return [Array, nil]
 #
 # @!attribute [rw] total_tax_amount
@@ -1746,16 +1746,16 @@ SubmissionListMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String]
 #
-# @!attribute [rw] verification_error
+# @!attribute [rw] verification_errors
 #   @return [Array, nil]
 #
 # @!attribute [rw] verification_status
 #   @return [String, nil]
 SubmissionCreateData = Struct.new(
-  :additional_external_id,
+  :additional_external_ids,
   :amendment_reason,
   :amendment_status,
-  :answer,
+  :answers,
   :bypass_restricted_code,
   :clearance_slip,
   :client,
@@ -1779,7 +1779,7 @@ SubmissionCreateData = Struct.new(
   :lrn,
   :mrn,
   :name,
-  :partial_answer,
+  :partial_answers,
   :receipt,
   :refund_application_status,
   :route,
@@ -1790,10 +1790,10 @@ SubmissionCreateData = Struct.new(
   :status,
   :template,
   :template_id,
-  :template_property,
+  :template_properties,
   :total_tax_amount,
   :updated_at,
-  :verification_error,
+  :verification_errors,
   :verification_status,
   keyword_init: true
 )
@@ -1803,7 +1803,7 @@ SubmissionCreateData = Struct.new(
 # @!attribute [rw] id
 #   @return [String]
 #
-# @!attribute [rw] additional_external_id
+# @!attribute [rw] additional_external_ids
 #   @return [Array, nil]
 #
 # @!attribute [rw] amendment_reason
@@ -1812,7 +1812,7 @@ SubmissionCreateData = Struct.new(
 # @!attribute [rw] amendment_status
 #   @return [String, nil]
 #
-# @!attribute [rw] answer
+# @!attribute [rw] answers
 #   @return [Array, nil]
 #
 # @!attribute [rw] bypass_restricted_code
@@ -1881,7 +1881,7 @@ SubmissionCreateData = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] partial_answer
+# @!attribute [rw] partial_answers
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] receipt
@@ -1914,7 +1914,7 @@ SubmissionCreateData = Struct.new(
 # @!attribute [rw] template_id
 #   @return [String, nil]
 #
-# @!attribute [rw] template_property
+# @!attribute [rw] template_properties
 #   @return [Array, nil]
 #
 # @!attribute [rw] total_tax_amount
@@ -1923,17 +1923,17 @@ SubmissionCreateData = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] verification_error
+# @!attribute [rw] verification_errors
 #   @return [Array, nil]
 #
 # @!attribute [rw] verification_status
 #   @return [String, nil]
 SubmissionUpdateData = Struct.new(
   :id,
-  :additional_external_id,
+  :additional_external_ids,
   :amendment_reason,
   :amendment_status,
-  :answer,
+  :answers,
   :bypass_restricted_code,
   :clearance_slip,
   :client,
@@ -1956,7 +1956,7 @@ SubmissionUpdateData = Struct.new(
   :lrn,
   :mrn,
   :name,
-  :partial_answer,
+  :partial_answers,
   :receipt,
   :refund_application_status,
   :route,
@@ -1967,10 +1967,10 @@ SubmissionUpdateData = Struct.new(
   :status,
   :template,
   :template_id,
-  :template_property,
+  :template_properties,
   :total_tax_amount,
   :updated_at,
-  :verification_error,
+  :verification_errors,
   :verification_status,
   keyword_init: true
 )
@@ -1986,7 +1986,7 @@ SubmissionRemoveMatch = Struct.new(
 
 # SubmissionDetail entity data model.
 #
-# @!attribute [rw] additional_external_id
+# @!attribute [rw] additional_external_ids
 #   @return [Array, nil]
 #
 # @!attribute [rw] additional_information
@@ -2091,7 +2091,7 @@ SubmissionRemoveMatch = Struct.new(
 # @!attribute [rw] submission
 #   @return [String]
 #
-# @!attribute [rw] supporting_document
+# @!attribute [rw] supporting_documents
 #   @return [Array, nil]
 #
 # @!attribute [rw] template
@@ -2103,13 +2103,13 @@ SubmissionRemoveMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String]
 #
-# @!attribute [rw] verification_error
+# @!attribute [rw] verification_errors
 #   @return [Array, nil]
 #
 # @!attribute [rw] verification_status
 #   @return [String, nil]
 SubmissionDetail = Struct.new(
-  :additional_external_id,
+  :additional_external_ids,
   :additional_information,
   :amendment_status,
   :clearance_slip,
@@ -2144,18 +2144,18 @@ SubmissionDetail = Struct.new(
   :source_type,
   :status,
   :submission,
-  :supporting_document,
+  :supporting_documents,
   :template,
   :total_tax_amount,
   :updated_at,
-  :verification_error,
+  :verification_errors,
   :verification_status,
   keyword_init: true
 )
 
 # Request payload for SubmissionDetail#create.
 #
-# @!attribute [rw] additional_external_id
+# @!attribute [rw] additional_external_ids
 #   @return [Array, nil]
 #
 # @!attribute [rw] additional_information
@@ -2260,7 +2260,7 @@ SubmissionDetail = Struct.new(
 # @!attribute [rw] submission
 #   @return [String]
 #
-# @!attribute [rw] supporting_document
+# @!attribute [rw] supporting_documents
 #   @return [Array, nil]
 #
 # @!attribute [rw] template
@@ -2272,13 +2272,13 @@ SubmissionDetail = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String]
 #
-# @!attribute [rw] verification_error
+# @!attribute [rw] verification_errors
 #   @return [Array, nil]
 #
 # @!attribute [rw] verification_status
 #   @return [String, nil]
 SubmissionDetailCreateData = Struct.new(
-  :additional_external_id,
+  :additional_external_ids,
   :additional_information,
   :amendment_status,
   :clearance_slip,
@@ -2313,11 +2313,11 @@ SubmissionDetailCreateData = Struct.new(
   :source_type,
   :status,
   :submission,
-  :supporting_document,
+  :supporting_documents,
   :template,
   :total_tax_amount,
   :updated_at,
-  :verification_error,
+  :verification_errors,
   :verification_status,
   keyword_init: true
 )

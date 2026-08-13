@@ -37,7 +37,9 @@ const client = new CustomsWindowSDK({
 
 ### 2. List bulkupload records
 
-`list()` resolves to an array of BulkUpload objects — iterate it directly:
+`list()` resolves to an array of BulkUpload ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const bulkuploads = await client.BulkUpload().list()
@@ -63,7 +65,7 @@ try {
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created BulkUpload
+// Create — returns the created BulkUpload ENTITY (.data() for the record)
 const created = await client.BulkUpload().create({
   client: 'example_client',
   company_member: 'example_company_member',
@@ -75,16 +77,16 @@ const created = await client.BulkUpload().create({
   updated_at: 'example_updated_at',
 })
 
-// Update — the id comes straight off the returned entity
+// Update — the id comes off the returned entity's data()
 const updated = await client.BulkUpload().update({
-  id: created.id!,
+  id: created.data().id!,
   active_transport_nationality: 'example_active_transport_nationality',
   active_transport_number: 'example_active_transport_number',
 })
 
 // Remove
 await client.BulkUpload().remove({
-  id: created.id!,
+  id: created.data().id!,
 })
 ```
 
@@ -163,7 +165,8 @@ Create a mock client for unit testing — no server required:
 const client = CustomsWindowSDK.test()
 
 const submission = await client.Submission().list()
-// submission is a bare entity populated with mock response data
+// submission is the entity, populated with mock response data
+// — call submission.data() for the record itself
 console.log(submission)
 ```
 
@@ -443,7 +446,7 @@ API path: ``
 | `additional_declaration_type` |  |
 | `address` |  |
 | `authorisation` |  |
-| `bank_detail` |  |
+| `bank_details` |  |
 | `certificate` |  |
 | `certificate_type` |  |
 | `company` |  |
@@ -475,10 +478,10 @@ API path: `/parties`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `amendment_reason` |  |
 | `amendment_status` |  |
-| `answer` |  |
+| `answers` |  |
 | `bypass_restricted_code` |  |
 | `clearance_slip` |  |
 | `client` |  |
@@ -502,7 +505,7 @@ API path: `/parties`
 | `lrn` |  |
 | `mrn` |  |
 | `name` |  |
-| `partial_answer` |  |
+| `partial_answers` |  |
 | `receipt` |  |
 | `refund_application_status` |  |
 | `route` |  |
@@ -513,10 +516,10 @@ API path: `/parties`
 | `status` |  |
 | `template` |  |
 | `template_id` |  |
-| `template_property` |  |
+| `template_properties` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: create, list, load, remove, update.
@@ -527,7 +530,7 @@ API path: `/submissions/{id}/refund`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `additional_information` |  |
 | `amendment_status` |  |
 | `clearance_slip` |  |
@@ -562,11 +565,11 @@ API path: `/submissions/{id}/refund`
 | `source_type` |  |
 | `status` |  |
 | `submission` |  |
-| `supporting_document` |  |
+| `supporting_documents` |  |
 | `template` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: create.
@@ -743,7 +746,7 @@ Create an instance: `const party = client.Party()`
 | `additional_declaration_type` | `Record<string, any>` |  |
 | `address` | `Record<string, any>` |  |
 | `authorisation` | `Record<string, any>` |  |
-| `bank_detail` | `string` |  |
+| `bank_details` | `string` |  |
 | `certificate` | `Record<string, any>` |  |
 | `certificate_type` | `string` |  |
 | `company` | `string` |  |
@@ -817,10 +820,10 @@ Create an instance: `const submission = client.Submission()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `any[]` |  |
+| `additional_external_ids` | `any[]` |  |
 | `amendment_reason` | `string` |  |
 | `amendment_status` | `string` |  |
-| `answer` | `any[]` |  |
+| `answers` | `any[]` |  |
 | `bypass_restricted_code` | `boolean` |  |
 | `clearance_slip` | `Record<string, any>` |  |
 | `client` | `Record<string, any>` |  |
@@ -844,7 +847,7 @@ Create an instance: `const submission = client.Submission()`
 | `lrn` | `string` |  |
 | `mrn` | `string` |  |
 | `name` | `string` |  |
-| `partial_answer` | `boolean` |  |
+| `partial_answers` | `boolean` |  |
 | `receipt` | `Record<string, any>` |  |
 | `refund_application_status` | `string` |  |
 | `route` | `string` |  |
@@ -855,10 +858,10 @@ Create an instance: `const submission = client.Submission()`
 | `status` | `string` |  |
 | `template` | `boolean` |  |
 | `template_id` | `string` |  |
-| `template_property` | `any[]` |  |
+| `template_properties` | `any[]` |  |
 | `total_tax_amount` | `string` |  |
 | `updated_at` | `string` |  |
-| `verification_error` | `any[]` |  |
+| `verification_errors` | `any[]` |  |
 | `verification_status` | `string` |  |
 
 #### Example: Load
@@ -877,7 +880,7 @@ const submissions = await client.Submission().list()
 
 ```ts
 const submission = await client.Submission().create({
-  answer: [],
+  answers: [],
   clearance_slip: {},
   client: {},
   company_member: {},
@@ -907,7 +910,7 @@ Create an instance: `const submission_detail = client.SubmissionDetail()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `any[]` |  |
+| `additional_external_ids` | `any[]` |  |
 | `additional_information` | `any[]` |  |
 | `amendment_status` | `string` |  |
 | `clearance_slip` | `Record<string, any>` |  |
@@ -942,11 +945,11 @@ Create an instance: `const submission_detail = client.SubmissionDetail()`
 | `source_type` | `string` |  |
 | `status` | `string` |  |
 | `submission` | `string` |  |
-| `supporting_document` | `any[]` |  |
+| `supporting_documents` | `any[]` |  |
 | `template` | `boolean` |  |
 | `total_tax_amount` | `string` |  |
 | `updated_at` | `string` |  |
-| `verification_error` | `any[]` |  |
+| `verification_errors` | `any[]` |  |
 | `verification_status` | `string` |  |
 
 #### Example: Create

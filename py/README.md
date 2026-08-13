@@ -55,7 +55,7 @@ except Exception as err:
 
 ### 3. Load a bulkupload
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -68,14 +68,14 @@ except Exception as err:
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
+# Create — returns the ENTITY (call data_get() for the record)
 created = client.BulkUpload().create({"client": "example_client", "company_member": "example_company_member", "created_at": "example_created_at", "declarant": "example_declarant", "declarations_no": 1, "errors_file": {}, "file": {}, "updated_at": "example_updated_at"})
 
 # Update — the created record's id is a plain dict key
-client.BulkUpload().update({"id": created["id"], "active_transport_nationality": "example_active_transport_nationality", "active_transport_number": "example_active_transport_number"})
+client.BulkUpload().update({"id": created.data_get()["id"], "active_transport_nationality": "example_active_transport_nationality", "active_transport_number": "example_active_transport_number"})
 
 # Remove
-client.BulkUpload().remove({"id": created["id"]})
+client.BulkUpload().remove({"id": created.data_get()["id"]})
 ```
 
 
@@ -152,7 +152,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = CustomsWindowSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 submission = client.Submission().list()
 # submission contains the mock response record
 ```
@@ -261,7 +262,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -382,7 +383,7 @@ API path: ``
 | `additional_declaration_type` |  |
 | `address` |  |
 | `authorisation` |  |
-| `bank_detail` |  |
+| `bank_details` |  |
 | `certificate` |  |
 | `certificate_type` |  |
 | `company` |  |
@@ -414,10 +415,10 @@ API path: `/parties`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `amendment_reason` |  |
 | `amendment_status` |  |
-| `answer` |  |
+| `answers` |  |
 | `bypass_restricted_code` |  |
 | `clearance_slip` |  |
 | `client` |  |
@@ -441,7 +442,7 @@ API path: `/parties`
 | `lrn` |  |
 | `mrn` |  |
 | `name` |  |
-| `partial_answer` |  |
+| `partial_answers` |  |
 | `receipt` |  |
 | `refund_application_status` |  |
 | `route` |  |
@@ -452,10 +453,10 @@ API path: `/parties`
 | `status` |  |
 | `template` |  |
 | `template_id` |  |
-| `template_property` |  |
+| `template_properties` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: Create, List, Load, Remove, Update.
@@ -466,7 +467,7 @@ API path: `/submissions/{id}/refund`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `additional_information` |  |
 | `amendment_status` |  |
 | `clearance_slip` |  |
@@ -501,11 +502,11 @@ API path: `/submissions/{id}/refund`
 | `source_type` |  |
 | `status` |  |
 | `submission` |  |
-| `supporting_document` |  |
+| `supporting_documents` |  |
 | `template` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: Create.
@@ -682,7 +683,7 @@ Create an instance: `party = client.Party()`
 | `additional_declaration_type` | `dict` |  |
 | `address` | `dict` |  |
 | `authorisation` | `dict` |  |
-| `bank_detail` | `str` |  |
+| `bank_details` | `str` |  |
 | `certificate` | `dict` |  |
 | `certificate_type` | `str` |  |
 | `company` | `str` |  |
@@ -756,10 +757,10 @@ Create an instance: `submission = client.Submission()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `list` |  |
+| `additional_external_ids` | `list` |  |
 | `amendment_reason` | `str` |  |
 | `amendment_status` | `str` |  |
-| `answer` | `list` |  |
+| `answers` | `list` |  |
 | `bypass_restricted_code` | `bool` |  |
 | `clearance_slip` | `dict` |  |
 | `client` | `dict` |  |
@@ -783,7 +784,7 @@ Create an instance: `submission = client.Submission()`
 | `lrn` | `str` |  |
 | `mrn` | `str` |  |
 | `name` | `str` |  |
-| `partial_answer` | `bool` |  |
+| `partial_answers` | `bool` |  |
 | `receipt` | `dict` |  |
 | `refund_application_status` | `str` |  |
 | `route` | `str` |  |
@@ -794,10 +795,10 @@ Create an instance: `submission = client.Submission()`
 | `status` | `str` |  |
 | `template` | `bool` |  |
 | `template_id` | `str` |  |
-| `template_property` | `list` |  |
+| `template_properties` | `list` |  |
 | `total_tax_amount` | `str` |  |
 | `updated_at` | `str` |  |
-| `verification_error` | `list` |  |
+| `verification_errors` | `list` |  |
 | `verification_status` | `str` |  |
 
 #### Example: Load
@@ -816,7 +817,7 @@ submissions = client.Submission().list()
 
 ```python
 submission = client.Submission().create({
-    "answer": [],  # list
+    "answers": [],  # list
     "clearance_slip": {},  # dict
     "client": {},  # dict
     "company_member": {},  # dict
@@ -846,7 +847,7 @@ Create an instance: `submission_detail = client.SubmissionDetail()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `list` |  |
+| `additional_external_ids` | `list` |  |
 | `additional_information` | `list` |  |
 | `amendment_status` | `str` |  |
 | `clearance_slip` | `dict` |  |
@@ -881,11 +882,11 @@ Create an instance: `submission_detail = client.SubmissionDetail()`
 | `source_type` | `str` |  |
 | `status` | `str` |  |
 | `submission` | `str` |  |
-| `supporting_document` | `list` |  |
+| `supporting_documents` | `list` |  |
 | `template` | `bool` |  |
 | `total_tax_amount` | `str` |  |
 | `updated_at` | `str` |  |
-| `verification_error` | `list` |  |
+| `verification_errors` | `list` |  |
 | `verification_status` | `str` |  |
 
 #### Example: Create

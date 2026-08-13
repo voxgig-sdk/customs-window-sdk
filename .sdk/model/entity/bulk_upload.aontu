@@ -262,7 +262,7 @@ main: kit: entity: bulk_upload: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

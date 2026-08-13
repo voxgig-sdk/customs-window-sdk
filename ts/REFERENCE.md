@@ -243,6 +243,28 @@ const bulk_upload = client.BulkUpload()
 | `updated_at` | `string` | Yes |  |
 | `yellow_routed_no` | `number` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `generate_pdf` | `/bulk-uploads/{id}/generate-pdfs` | `client.BulkUpload().load({ $action: 'generate_pdf', ... })` |
+| `generate_pdf` | `/bulk-uploads/{id}/generate-pdfs` | `client.BulkUpload().remove({ $action: 'generate_pdf', ... })` |
+| `generate_pdf` | `/bulk-uploads/{id}/generate-pdfs` | `client.BulkUpload().update({ $action: 'generate_pdf', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+BulkUpload record — check the API definition for its shape.
+
+```ts
+const result = await client.BulkUpload().load({
+  $action: 'generate_pdf',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -523,7 +545,7 @@ const party = client.Party()
 | `additional_declaration_type` | `Record<string, any>` | Yes |  |
 | `address` | `Record<string, any>` | Yes |  |
 | `authorisation` | `Record<string, any>` | Yes |  |
-| `bank_detail` | `string` | No |  |
+| `bank_details` | `string` | No |  |
 | `certificate` | `Record<string, any>` | Yes |  |
 | `certificate_type` | `string` | Yes |  |
 | `company` | `string` | Yes |  |
@@ -643,10 +665,10 @@ const submission = client.Submission()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `any[]` | No |  |
+| `additional_external_ids` | `any[]` | No |  |
 | `amendment_reason` | `string` | No |  |
 | `amendment_status` | `string` | No |  |
-| `answer` | `any[]` | Yes |  |
+| `answers` | `any[]` | Yes |  |
 | `bypass_restricted_code` | `boolean` | No |  |
 | `clearance_slip` | `Record<string, any>` | Yes |  |
 | `client` | `Record<string, any>` | Yes |  |
@@ -670,7 +692,7 @@ const submission = client.Submission()
 | `lrn` | `string` | No |  |
 | `mrn` | `string` | No |  |
 | `name` | `string` | No |  |
-| `partial_answer` | `boolean` | No |  |
+| `partial_answers` | `boolean` | No |  |
 | `receipt` | `Record<string, any>` | Yes |  |
 | `refund_application_status` | `string` | No |  |
 | `route` | `string` | No |  |
@@ -681,20 +703,20 @@ const submission = client.Submission()
 | `status` | `string` | No |  |
 | `template` | `boolean` | No |  |
 | `template_id` | `string` | No |  |
-| `template_property` | `any[]` | No |  |
+| `template_properties` | `any[]` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
-| `verification_error` | `any[]` | No |  |
+| `verification_errors` | `any[]` | No |  |
 | `verification_status` | `string` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create | update | remove |
 | --- | --- | --- | --- | --- | --- |
-| `additional_external_id` | - | - | - | - | - |
+| `additional_external_ids` | - | - | - | - | - |
 | `amendment_reason` | - | - | - | - | - |
 | `amendment_status` | - | - | - | - | - |
-| `answer` | - | - | - | Yes | - |
+| `answers` | - | - | - | Yes | - |
 | `bypass_restricted_code` | - | - | - | - | - |
 | `clearance_slip` | - | - | - | - | - |
 | `client` | - | - | - | - | - |
@@ -718,7 +740,7 @@ const submission = client.Submission()
 | `lrn` | - | - | - | - | - |
 | `mrn` | - | - | - | - | - |
 | `name` | - | - | - | - | - |
-| `partial_answer` | - | - | - | - | - |
+| `partial_answers` | - | - | - | - | - |
 | `receipt` | - | - | - | - | - |
 | `refund_application_status` | - | - | - | - | - |
 | `route` | - | - | - | - | - |
@@ -729,11 +751,46 @@ const submission = client.Submission()
 | `status` | - | - | - | - | - |
 | `template` | - | - | - | - | - |
 | `template_id` | - | - | - | - | - |
-| `template_property` | - | - | - | - | - |
+| `template_properties` | - | - | - | - | - |
 | `total_tax_amount` | - | - | - | - | - |
 | `updated_at` | - | - | - | - | - |
-| `verification_error` | - | - | - | - | - |
+| `verification_errors` | - | - | - | - | - |
 | `verification_status` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `refund` | `/submissions/{id}/refund` | `client.Submission().create({ $action: 'refund', ... })` |
+| `retrieve` | `/submissions/retrieve` | `client.Submission().create({ $action: 'retrieve', ... })` |
+| `clearance_slip` | `/submissions/{id}/clearance-slip` | `client.Submission().load({ $action: 'clearance_slip', ... })` |
+| `notification_read` | `/submissions/{id}/notification-read` | `client.Submission().load({ $action: 'notification_read', ... })` |
+| `pbn_applicable` | `/submissions/{id}/pbn-applicable` | `client.Submission().load({ $action: 'pbn_applicable', ... })` |
+| `receipt` | `/submissions/{id}/receipt` | `client.Submission().load({ $action: 'receipt', ... })` |
+| `refund` | `/submissions/{id}/refund` | `client.Submission().load({ $action: 'refund', ... })` |
+| `retrieve` | `/submissions/retrieve` | `client.Submission().load({ $action: 'retrieve', ... })` |
+| `clearance_slip` | `/submissions/{id}/clearance-slip` | `client.Submission().remove({ $action: 'clearance_slip', ... })` |
+| `notification_read` | `/submissions/{id}/notification-read` | `client.Submission().remove({ $action: 'notification_read', ... })` |
+| `pbn_applicable` | `/submissions/{id}/pbn-applicable` | `client.Submission().remove({ $action: 'pbn_applicable', ... })` |
+| `receipt` | `/submissions/{id}/receipt` | `client.Submission().remove({ $action: 'receipt', ... })` |
+| `clearance_slip` | `/submissions/{id}/clearance-slip` | `client.Submission().update({ $action: 'clearance_slip', ... })` |
+| `notification_read` | `/submissions/{id}/notification-read` | `client.Submission().update({ $action: 'notification_read', ... })` |
+| `pbn_applicable` | `/submissions/{id}/pbn-applicable` | `client.Submission().update({ $action: 'pbn_applicable', ... })` |
+| `receipt` | `/submissions/{id}/receipt` | `client.Submission().update({ $action: 'receipt', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Submission record — check the API definition for its shape.
+
+```ts
+const result = await client.Submission().create({
+  $action: 'refund',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -743,7 +800,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Submission().create({
-  answer: [],
+  answers: [],
   clearance_slip: {},
   client: {},
   company_member: {},
@@ -831,7 +888,7 @@ const submission_detail = client.SubmissionDetail()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `any[]` | No |  |
+| `additional_external_ids` | `any[]` | No |  |
 | `additional_information` | `any[]` | Yes |  |
 | `amendment_status` | `string` | No |  |
 | `clearance_slip` | `Record<string, any>` | Yes |  |
@@ -866,11 +923,11 @@ const submission_detail = client.SubmissionDetail()
 | `source_type` | `string` | No |  |
 | `status` | `string` | No |  |
 | `submission` | `string` | Yes |  |
-| `supporting_document` | `any[]` | No |  |
+| `supporting_documents` | `any[]` | No |  |
 | `template` | `boolean` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
-| `verification_error` | `any[]` | No |  |
+| `verification_errors` | `any[]` | No |  |
 | `verification_status` | `string` | No |  |
 
 ### Operations

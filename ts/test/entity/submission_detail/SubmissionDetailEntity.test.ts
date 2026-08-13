@@ -26,8 +26,8 @@ import {
 describe('SubmissionDetailEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when CUSTOMSWINDOW_TEST_LIVE=TRUE.
-  afterEach(liveDelay('CUSTOMSWINDOW_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when CUSTOMS_WINDOW_TEST_LIVE=TRUE.
+  afterEach(liveDelay('CUSTOMS_WINDOW_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CustomsWindowSDK.test()
@@ -62,7 +62,7 @@ describe('SubmissionDetailEntity', async () => {
     const submission_detail_ref01_ent = client.SubmissionDetail()
     let submission_detail_ref01_data = setup.data.new.submission_detail['submission_detail_ref01']
 
-    submission_detail_ref01_data = await submission_detail_ref01_ent.create(submission_detail_ref01_data)
+    submission_detail_ref01_data = (await submission_detail_ref01_ent.create(submission_detail_ref01_data)).data()
     assert(null != submission_detail_ref01_data.id)
 
 

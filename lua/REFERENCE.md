@@ -451,7 +451,7 @@ local party = client:Party(nil)
 | `additional_declaration_type` | `table` | Yes |  |
 | `address` | `table` | Yes |  |
 | `authorisation` | `table` | Yes |  |
-| `bank_detail` | `string` | No |  |
+| `bank_details` | `string` | No |  |
 | `certificate` | `table` | Yes |  |
 | `certificate_type` | `string` | Yes |  |
 | `company` | `string` | Yes |  |
@@ -573,10 +573,10 @@ local submission = client:Submission(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `table` | No |  |
+| `additional_external_ids` | `table` | No |  |
 | `amendment_reason` | `string` | No |  |
 | `amendment_status` | `string` | No |  |
-| `answer` | `table` | Yes |  |
+| `answers` | `table` | Yes |  |
 | `bypass_restricted_code` | `boolean` | No |  |
 | `clearance_slip` | `table` | Yes |  |
 | `client` | `table` | Yes |  |
@@ -600,7 +600,7 @@ local submission = client:Submission(nil)
 | `lrn` | `string` | No |  |
 | `mrn` | `string` | No |  |
 | `name` | `string` | No |  |
-| `partial_answer` | `boolean` | No |  |
+| `partial_answers` | `boolean` | No |  |
 | `receipt` | `table` | Yes |  |
 | `refund_application_status` | `string` | No |  |
 | `route` | `string` | No |  |
@@ -611,20 +611,20 @@ local submission = client:Submission(nil)
 | `status` | `string` | No |  |
 | `template` | `boolean` | No |  |
 | `template_id` | `string` | No |  |
-| `template_property` | `table` | No |  |
+| `template_properties` | `table` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
-| `verification_error` | `table` | No |  |
+| `verification_errors` | `table` | No |  |
 | `verification_status` | `string` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create | update | remove |
 | --- | --- | --- | --- | --- | --- |
-| `additional_external_id` | - | - | - | - | - |
+| `additional_external_ids` | - | - | - | - | - |
 | `amendment_reason` | - | - | - | - | - |
 | `amendment_status` | - | - | - | - | - |
-| `answer` | - | - | - | Yes | - |
+| `answers` | - | - | - | Yes | - |
 | `bypass_restricted_code` | - | - | - | - | - |
 | `clearance_slip` | - | - | - | - | - |
 | `client` | - | - | - | - | - |
@@ -648,7 +648,7 @@ local submission = client:Submission(nil)
 | `lrn` | - | - | - | - | - |
 | `mrn` | - | - | - | - | - |
 | `name` | - | - | - | - | - |
-| `partial_answer` | - | - | - | - | - |
+| `partial_answers` | - | - | - | - | - |
 | `receipt` | - | - | - | - | - |
 | `refund_application_status` | - | - | - | - | - |
 | `route` | - | - | - | - | - |
@@ -659,10 +659,10 @@ local submission = client:Submission(nil)
 | `status` | - | - | - | - | - |
 | `template` | - | - | - | - | - |
 | `template_id` | - | - | - | - | - |
-| `template_property` | - | - | - | - | - |
+| `template_properties` | - | - | - | - | - |
 | `total_tax_amount` | - | - | - | - | - |
 | `updated_at` | - | - | - | - | - |
-| `verification_error` | - | - | - | - | - |
+| `verification_errors` | - | - | - | - | - |
 | `verification_status` | - | - | - | - | - |
 
 ### Operations
@@ -673,7 +673,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Submission():create({
-  answer = --[[ table ]],
+  answers = --[[ table ]],
   clearance_slip = --[[ table ]],
   client = --[[ table ]],
   company_member = --[[ table ]],
@@ -763,7 +763,7 @@ local submission_detail = client:SubmissionDetail(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `table` | No |  |
+| `additional_external_ids` | `table` | No |  |
 | `additional_information` | `table` | Yes |  |
 | `amendment_status` | `string` | No |  |
 | `clearance_slip` | `table` | Yes |  |
@@ -798,11 +798,11 @@ local submission_detail = client:SubmissionDetail(nil)
 | `source_type` | `string` | No |  |
 | `status` | `string` | No |  |
 | `submission` | `string` | Yes |  |
-| `supporting_document` | `table` | No |  |
+| `supporting_documents` | `table` | No |  |
 | `template` | `boolean` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
-| `verification_error` | `table` | No |  |
+| `verification_errors` | `table` | No |  |
 | `verification_status` | `string` | No |  |
 
 ### Operations

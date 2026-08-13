@@ -454,7 +454,7 @@ party = client.Party
 | `additional_declaration_type` | `Hash` | Yes |  |
 | `address` | `Hash` | Yes |  |
 | `authorisation` | `Hash` | Yes |  |
-| `bank_detail` | `String` | No |  |
+| `bank_details` | `String` | No |  |
 | `certificate` | `Hash` | Yes |  |
 | `certificate_type` | `String` | Yes |  |
 | `company` | `String` | Yes |  |
@@ -576,10 +576,10 @@ submission = client.Submission
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `Array` | No |  |
+| `additional_external_ids` | `Array` | No |  |
 | `amendment_reason` | `String` | No |  |
 | `amendment_status` | `String` | No |  |
-| `answer` | `Array` | Yes |  |
+| `answers` | `Array` | Yes |  |
 | `bypass_restricted_code` | `Boolean` | No |  |
 | `clearance_slip` | `Hash` | Yes |  |
 | `client` | `Hash` | Yes |  |
@@ -603,7 +603,7 @@ submission = client.Submission
 | `lrn` | `String` | No |  |
 | `mrn` | `String` | No |  |
 | `name` | `String` | No |  |
-| `partial_answer` | `Boolean` | No |  |
+| `partial_answers` | `Boolean` | No |  |
 | `receipt` | `Hash` | Yes |  |
 | `refund_application_status` | `String` | No |  |
 | `route` | `String` | No |  |
@@ -614,20 +614,20 @@ submission = client.Submission
 | `status` | `String` | No |  |
 | `template` | `Boolean` | No |  |
 | `template_id` | `String` | No |  |
-| `template_property` | `Array` | No |  |
+| `template_properties` | `Array` | No |  |
 | `total_tax_amount` | `String` | No |  |
 | `updated_at` | `String` | Yes |  |
-| `verification_error` | `Array` | No |  |
+| `verification_errors` | `Array` | No |  |
 | `verification_status` | `String` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create | update | remove |
 | --- | --- | --- | --- | --- | --- |
-| `additional_external_id` | - | - | - | - | - |
+| `additional_external_ids` | - | - | - | - | - |
 | `amendment_reason` | - | - | - | - | - |
 | `amendment_status` | - | - | - | - | - |
-| `answer` | - | - | - | Yes | - |
+| `answers` | - | - | - | Yes | - |
 | `bypass_restricted_code` | - | - | - | - | - |
 | `clearance_slip` | - | - | - | - | - |
 | `client` | - | - | - | - | - |
@@ -651,7 +651,7 @@ submission = client.Submission
 | `lrn` | - | - | - | - | - |
 | `mrn` | - | - | - | - | - |
 | `name` | - | - | - | - | - |
-| `partial_answer` | - | - | - | - | - |
+| `partial_answers` | - | - | - | - | - |
 | `receipt` | - | - | - | - | - |
 | `refund_application_status` | - | - | - | - | - |
 | `route` | - | - | - | - | - |
@@ -662,10 +662,10 @@ submission = client.Submission
 | `status` | - | - | - | - | - |
 | `template` | - | - | - | - | - |
 | `template_id` | - | - | - | - | - |
-| `template_property` | - | - | - | - | - |
+| `template_properties` | - | - | - | - | - |
 | `total_tax_amount` | - | - | - | - | - |
 | `updated_at` | - | - | - | - | - |
-| `verification_error` | - | - | - | - | - |
+| `verification_errors` | - | - | - | - | - |
 | `verification_status` | - | - | - | - | - |
 
 ### Operations
@@ -676,7 +676,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Submission.create({
-  "answer" => [], # Array
+  "answers" => [], # Array
   "clearance_slip" => {}, # Hash
   "client" => {}, # Hash
   "company_member" => {}, # Hash
@@ -766,7 +766,7 @@ submission_detail = client.SubmissionDetail
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `Array` | No |  |
+| `additional_external_ids` | `Array` | No |  |
 | `additional_information` | `Array` | Yes |  |
 | `amendment_status` | `String` | No |  |
 | `clearance_slip` | `Hash` | Yes |  |
@@ -801,11 +801,11 @@ submission_detail = client.SubmissionDetail
 | `source_type` | `String` | No |  |
 | `status` | `String` | No |  |
 | `submission` | `String` | Yes |  |
-| `supporting_document` | `Array` | No |  |
+| `supporting_documents` | `Array` | No |  |
 | `template` | `Boolean` | No |  |
 | `total_tax_amount` | `String` | No |  |
 | `updated_at` | `String` | Yes |  |
-| `verification_error` | `Array` | No |  |
+| `verification_errors` | `Array` | No |  |
 | `verification_status` | `String` | No |  |
 
 ### Operations

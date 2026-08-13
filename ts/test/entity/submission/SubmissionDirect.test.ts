@@ -19,8 +19,8 @@ import {
 describe('SubmissionDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when CUSTOMSWINDOW_TEST_LIVE=TRUE.
-  afterEach(liveDelay('CUSTOMSWINDOW_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when CUSTOMS_WINDOW_TEST_LIVE=TRUE.
+  afterEach(liveDelay('CUSTOMS_WINDOW_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new CustomsWindowSDK({
@@ -138,19 +138,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'CUSTOMSWINDOW_TEST_SUBMISSION_ENTID': {},
-    'CUSTOMSWINDOW_TEST_LIVE': 'FALSE',
-    'CUSTOMSWINDOW_APIKEY': 'NONE',
+    'CUSTOMS_WINDOW_TEST_SUBMISSION_ENTID': {},
+    'CUSTOMS_WINDOW_TEST_LIVE': 'FALSE',
+    'CUSTOMS_WINDOW_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.CUSTOMSWINDOW_TEST_LIVE
+  const live = 'TRUE' === env.CUSTOMS_WINDOW_TEST_LIVE
 
   if (live) {
     const client = new CustomsWindowSDK({
-      apikey: env.CUSTOMSWINDOW_APIKEY,
+      apikey: env.CUSTOMS_WINDOW_APIKEY,
     })
 
-    let idmap: any = env['CUSTOMSWINDOW_TEST_SUBMISSION_ENTID']
+    let idmap: any = env['CUSTOMS_WINDOW_TEST_SUBMISSION_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

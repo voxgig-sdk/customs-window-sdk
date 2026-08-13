@@ -331,6 +331,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/bulk-uploads",
                 ["parts"] = {
@@ -364,6 +365,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/bulk-uploads",
                 ["parts"] = {
@@ -376,7 +378,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -402,6 +404,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/bulk-uploads/{id}",
                 ["parts"] = {
@@ -433,6 +436,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/bulk-uploads/{id}/generate-pdfs",
                 ["parts"] = {
@@ -474,6 +478,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/bulk-uploads/{id}",
                 ["parts"] = {
@@ -505,6 +510,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/bulk-uploads/{id}/generate-pdfs",
                 ["parts"] = {
@@ -546,6 +552,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/bulk-uploads/{id}",
                 ["parts"] = {
@@ -578,6 +585,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/bulk-uploads/{id}/generate-pdfs",
                 ["parts"] = {
@@ -693,6 +701,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/files",
                 ["parts"] = {
@@ -764,7 +773,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "bank_detail",
+            ["name"] = "bank_details",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
@@ -933,6 +942,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/parties",
                 ["parts"] = {
@@ -974,6 +984,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/parties",
                 ["parts"] = {
@@ -987,7 +998,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -1013,6 +1024,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/parties/{id}",
                 ["parts"] = {
@@ -1052,6 +1064,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/parties/{id}",
                 ["parts"] = {
@@ -1091,6 +1104,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/parties/{id}",
                 ["parts"] = {
@@ -1120,7 +1134,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "additional_external_id",
+            ["name"] = "additional_external_ids",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -1141,7 +1155,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "answer",
+            ["name"] = "answers",
             ["op"] = {
               ["update"] = {
                 ["req"] = false,
@@ -1321,7 +1335,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "partial_answer",
+            ["name"] = "partial_answers",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 27,
@@ -1398,7 +1412,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "template_property",
+            ["name"] = "template_properties",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 38,
@@ -1419,7 +1433,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "verification_error",
+            ["name"] = "verification_errors",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 41,
@@ -1453,6 +1467,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/submissions/{id}/refund",
                 ["parts"] = {
@@ -1475,6 +1490,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/submissions",
                 ["parts"] = {
@@ -1490,6 +1506,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/submissions/retrieve",
                 ["parts"] = {
@@ -1560,6 +1577,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions",
                 ["parts"] = {
@@ -1576,7 +1594,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -1602,6 +1620,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}",
                 ["parts"] = {
@@ -1633,6 +1652,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/clearance-slip",
                 ["parts"] = {
@@ -1666,6 +1686,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/notification-read",
                 ["parts"] = {
@@ -1699,6 +1720,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/pbn-applicable",
                 ["parts"] = {
@@ -1732,6 +1754,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/receipt",
                 ["parts"] = {
@@ -1765,6 +1788,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/refund",
                 ["parts"] = {
@@ -1787,6 +1811,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/retrieve",
                 ["parts"] = {
@@ -1824,6 +1849,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}",
                 ["parts"] = {
@@ -1855,6 +1881,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}/clearance-slip",
                 ["parts"] = {
@@ -1888,6 +1915,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}/notification-read",
                 ["parts"] = {
@@ -1921,6 +1949,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}/pbn-applicable",
                 ["parts"] = {
@@ -1954,6 +1983,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}/receipt",
                 ["parts"] = {
@@ -1995,6 +2025,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}",
                 ["parts"] = {
@@ -2026,6 +2057,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}/clearance-slip",
                 ["parts"] = {
@@ -2059,6 +2091,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}/notification-read",
                 ["parts"] = {
@@ -2092,6 +2125,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}/pbn-applicable",
                 ["parts"] = {
@@ -2125,6 +2159,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}/receipt",
                 ["parts"] = {
@@ -2156,7 +2191,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "additional_external_id",
+            ["name"] = "additional_external_ids",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -2401,7 +2436,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "supporting_document",
+            ["name"] = "supporting_documents",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 35,
@@ -2429,7 +2464,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "verification_error",
+            ["name"] = "verification_errors",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 39,
@@ -2451,6 +2486,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/documents-request",
                 ["parts"] = {

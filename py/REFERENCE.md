@@ -445,7 +445,7 @@ party = client.Party()
 | `additional_declaration_type` | `dict` | Yes |  |
 | `address` | `dict` | Yes |  |
 | `authorisation` | `dict` | Yes |  |
-| `bank_detail` | `str` | No |  |
+| `bank_details` | `str` | No |  |
 | `certificate` | `dict` | Yes |  |
 | `certificate_type` | `str` | Yes |  |
 | `company` | `str` | Yes |  |
@@ -568,10 +568,10 @@ submission = client.Submission()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `list` | No |  |
+| `additional_external_ids` | `list` | No |  |
 | `amendment_reason` | `str` | No |  |
 | `amendment_status` | `str` | No |  |
-| `answer` | `list` | Yes |  |
+| `answers` | `list` | Yes |  |
 | `bypass_restricted_code` | `bool` | No |  |
 | `clearance_slip` | `dict` | Yes |  |
 | `client` | `dict` | Yes |  |
@@ -595,7 +595,7 @@ submission = client.Submission()
 | `lrn` | `str` | No |  |
 | `mrn` | `str` | No |  |
 | `name` | `str` | No |  |
-| `partial_answer` | `bool` | No |  |
+| `partial_answers` | `bool` | No |  |
 | `receipt` | `dict` | Yes |  |
 | `refund_application_status` | `str` | No |  |
 | `route` | `str` | No |  |
@@ -606,20 +606,20 @@ submission = client.Submission()
 | `status` | `str` | No |  |
 | `template` | `bool` | No |  |
 | `template_id` | `str` | No |  |
-| `template_property` | `list` | No |  |
+| `template_properties` | `list` | No |  |
 | `total_tax_amount` | `str` | No |  |
 | `updated_at` | `str` | Yes |  |
-| `verification_error` | `list` | No |  |
+| `verification_errors` | `list` | No |  |
 | `verification_status` | `str` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create | update | remove |
 | --- | --- | --- | --- | --- | --- |
-| `additional_external_id` | - | - | - | - | - |
+| `additional_external_ids` | - | - | - | - | - |
 | `amendment_reason` | - | - | - | - | - |
 | `amendment_status` | - | - | - | - | - |
-| `answer` | - | - | - | Yes | - |
+| `answers` | - | - | - | Yes | - |
 | `bypass_restricted_code` | - | - | - | - | - |
 | `clearance_slip` | - | - | - | - | - |
 | `client` | - | - | - | - | - |
@@ -643,7 +643,7 @@ submission = client.Submission()
 | `lrn` | - | - | - | - | - |
 | `mrn` | - | - | - | - | - |
 | `name` | - | - | - | - | - |
-| `partial_answer` | - | - | - | - | - |
+| `partial_answers` | - | - | - | - | - |
 | `receipt` | - | - | - | - | - |
 | `refund_application_status` | - | - | - | - | - |
 | `route` | - | - | - | - | - |
@@ -654,10 +654,10 @@ submission = client.Submission()
 | `status` | - | - | - | - | - |
 | `template` | - | - | - | - | - |
 | `template_id` | - | - | - | - | - |
-| `template_property` | - | - | - | - | - |
+| `template_properties` | - | - | - | - | - |
 | `total_tax_amount` | - | - | - | - | - |
 | `updated_at` | - | - | - | - | - |
-| `verification_error` | - | - | - | - | - |
+| `verification_errors` | - | - | - | - | - |
 | `verification_status` | - | - | - | - | - |
 
 ### Operations
@@ -668,7 +668,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Submission().create({
-    "answer": [],  # list
+    "answers": [],  # list
     "clearance_slip": {},  # dict
     "client": {},  # dict
     "company_member": {},  # dict
@@ -759,7 +759,7 @@ submission_detail = client.SubmissionDetail()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `list` | No |  |
+| `additional_external_ids` | `list` | No |  |
 | `additional_information` | `list` | Yes |  |
 | `amendment_status` | `str` | No |  |
 | `clearance_slip` | `dict` | Yes |  |
@@ -794,11 +794,11 @@ submission_detail = client.SubmissionDetail()
 | `source_type` | `str` | No |  |
 | `status` | `str` | No |  |
 | `submission` | `str` | Yes |  |
-| `supporting_document` | `list` | No |  |
+| `supporting_documents` | `list` | No |  |
 | `template` | `bool` | No |  |
 | `total_tax_amount` | `str` | No |  |
 | `updated_at` | `str` | Yes |  |
-| `verification_error` | `list` | No |  |
+| `verification_errors` | `list` | No |  |
 | `verification_status` | `str` | No |  |
 
 ### Operations

@@ -51,7 +51,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare BulkUpload record (throws on error).
+    // load() returns the ENTITY — call data_get() for the BulkUpload record (throws on error).
     $bulkupload = $client->BulkUpload()->load(["id" => "example_id"]);
     print_r($bulkupload);
 } catch (\Throwable $err) {
@@ -62,14 +62,14 @@ try {
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created BulkUpload record.
+// create() returns the ENTITY — call data_get() for the created BulkUpload record.
 $created = $client->BulkUpload()->create(["client" => "example_client", "company_member" => "example_company_member", "created_at" => "example_created_at", "declarant" => "example_declarant", "declarations_no" => 1, "errors_file" => [], "file" => [], "updated_at" => "example_updated_at"]);
 
-// Update — index the bare record directly ($created["id"]).
-$client->BulkUpload()->update(["id" => $created["id"], "active_transport_nationality" => "example_active_transport_nationality", "active_transport_number" => "example_active_transport_number"]);
+// Update — index the record via data_get() ($created->data_get()["id"]).
+$client->BulkUpload()->update(["id" => $created->data_get()["id"], "active_transport_nationality" => "example_active_transport_nationality", "active_transport_number" => "example_active_transport_number"]);
 
 // Remove
-$client->BulkUpload()->remove(["id" => $created["id"]]);
+$client->BulkUpload()->remove(["id" => $created->data_get()["id"]]);
 ```
 
 
@@ -155,7 +155,8 @@ $client = CustomsWindowSDK::test([
     "entity" => ["submission" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $submission = $client->Submission()->list();
 print_r($submission);
 ```
@@ -267,7 +268,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -388,7 +389,7 @@ API path: ``
 | `additional_declaration_type` |  |
 | `address` |  |
 | `authorisation` |  |
-| `bank_detail` |  |
+| `bank_details` |  |
 | `certificate` |  |
 | `certificate_type` |  |
 | `company` |  |
@@ -420,10 +421,10 @@ API path: `/parties`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `amendment_reason` |  |
 | `amendment_status` |  |
-| `answer` |  |
+| `answers` |  |
 | `bypass_restricted_code` |  |
 | `clearance_slip` |  |
 | `client` |  |
@@ -447,7 +448,7 @@ API path: `/parties`
 | `lrn` |  |
 | `mrn` |  |
 | `name` |  |
-| `partial_answer` |  |
+| `partial_answers` |  |
 | `receipt` |  |
 | `refund_application_status` |  |
 | `route` |  |
@@ -458,10 +459,10 @@ API path: `/parties`
 | `status` |  |
 | `template` |  |
 | `template_id` |  |
-| `template_property` |  |
+| `template_properties` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: Create, List, Load, Remove, Update.
@@ -472,7 +473,7 @@ API path: `/submissions/{id}/refund`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `additional_information` |  |
 | `amendment_status` |  |
 | `clearance_slip` |  |
@@ -507,11 +508,11 @@ API path: `/submissions/{id}/refund`
 | `source_type` |  |
 | `status` |  |
 | `submission` |  |
-| `supporting_document` |  |
+| `supporting_documents` |  |
 | `template` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: Create.
@@ -586,7 +587,7 @@ Create an instance: `$bulk_upload = $client->BulkUpload();`
 #### Example: Load
 
 ```php
-// load() returns the bare BulkUpload record (throws on error).
+// load() returns the ENTITY — call data_get() for the BulkUpload record (throws on error).
 $bulk_upload = $client->BulkUpload()->load(["id" => "bulk_upload_id"]);
 ```
 
@@ -690,7 +691,7 @@ Create an instance: `$party = $client->Party();`
 | `additional_declaration_type` | `array` |  |
 | `address` | `array` |  |
 | `authorisation` | `array` |  |
-| `bank_detail` | `string` |  |
+| `bank_details` | `string` |  |
 | `certificate` | `array` |  |
 | `certificate_type` | `string` |  |
 | `company` | `string` |  |
@@ -717,7 +718,7 @@ Create an instance: `$party = $client->Party();`
 #### Example: Load
 
 ```php
-// load() returns the bare Party record (throws on error).
+// load() returns the ENTITY — call data_get() for the Party record (throws on error).
 $party = $client->Party()->load(["id" => "party_id"]);
 ```
 
@@ -766,10 +767,10 @@ Create an instance: `$submission = $client->Submission();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `array` |  |
+| `additional_external_ids` | `array` |  |
 | `amendment_reason` | `string` |  |
 | `amendment_status` | `string` |  |
-| `answer` | `array` |  |
+| `answers` | `array` |  |
 | `bypass_restricted_code` | `bool` |  |
 | `clearance_slip` | `array` |  |
 | `client` | `array` |  |
@@ -793,7 +794,7 @@ Create an instance: `$submission = $client->Submission();`
 | `lrn` | `string` |  |
 | `mrn` | `string` |  |
 | `name` | `string` |  |
-| `partial_answer` | `bool` |  |
+| `partial_answers` | `bool` |  |
 | `receipt` | `array` |  |
 | `refund_application_status` | `string` |  |
 | `route` | `string` |  |
@@ -804,16 +805,16 @@ Create an instance: `$submission = $client->Submission();`
 | `status` | `string` |  |
 | `template` | `bool` |  |
 | `template_id` | `string` |  |
-| `template_property` | `array` |  |
+| `template_properties` | `array` |  |
 | `total_tax_amount` | `string` |  |
 | `updated_at` | `string` |  |
-| `verification_error` | `array` |  |
+| `verification_errors` | `array` |  |
 | `verification_status` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Submission record (throws on error).
+// load() returns the ENTITY — call data_get() for the Submission record (throws on error).
 $submission = $client->Submission()->load(["id" => "submission_id"]);
 ```
 
@@ -828,7 +829,7 @@ $submissions = $client->Submission()->list();
 
 ```php
 $submission = $client->Submission()->create([
-    "answer" => null, // array
+    "answers" => null, // array
     "clearance_slip" => null, // array
     "client" => null, // array
     "company_member" => null, // array
@@ -858,7 +859,7 @@ Create an instance: `$submission_detail = $client->SubmissionDetail();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `array` |  |
+| `additional_external_ids` | `array` |  |
 | `additional_information` | `array` |  |
 | `amendment_status` | `string` |  |
 | `clearance_slip` | `array` |  |
@@ -893,11 +894,11 @@ Create an instance: `$submission_detail = $client->SubmissionDetail();`
 | `source_type` | `string` |  |
 | `status` | `string` |  |
 | `submission` | `string` |  |
-| `supporting_document` | `array` |  |
+| `supporting_documents` | `array` |  |
 | `template` | `bool` |  |
 | `total_tax_amount` | `string` |  |
 | `updated_at` | `string` |  |
-| `verification_error` | `array` |  |
+| `verification_errors` | `array` |  |
 | `verification_status` | `string` |  |
 
 #### Example: Create

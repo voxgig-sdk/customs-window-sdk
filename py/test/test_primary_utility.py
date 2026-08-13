@@ -6,15 +6,15 @@ import re
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from customswindow_sdk.utility.voxgig_struct import voxgig_struct as vs
 from customswindow_sdk import CustomsWindowSDK
-from core.spec import CustomsWindowSpec
-from core.result import CustomsWindowResult
-from core.response import CustomsWindowResponse
-from core.operation import CustomsWindowOperation
-from core.error import CustomsWindowError
-from core import helpers
-from feature.base_feature import CustomsWindowBaseFeature
+from customswindow_sdk.core.spec import CustomsWindowSpec
+from customswindow_sdk.core.result import CustomsWindowResult
+from customswindow_sdk.core.response import CustomsWindowResponse
+from customswindow_sdk.core.operation import CustomsWindowOperation
+from customswindow_sdk.core.error import CustomsWindowError
+from customswindow_sdk.core import helpers
+from customswindow_sdk.feature.base_feature import CustomsWindowBaseFeature
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 

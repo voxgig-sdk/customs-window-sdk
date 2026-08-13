@@ -376,6 +376,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/bulk-uploads",
               "parts": [
@@ -409,6 +410,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads",
               "parts": [
@@ -421,7 +423,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -447,6 +449,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads/{id}",
               "parts": [
@@ -478,6 +481,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
               "parts": [
@@ -519,6 +523,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/bulk-uploads/{id}",
               "parts": [
@@ -550,6 +555,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
               "parts": [
@@ -591,6 +597,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/bulk-uploads/{id}",
               "parts": [
@@ -623,6 +630,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
               "parts": [
@@ -738,6 +746,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/files",
               "parts": [
@@ -809,7 +818,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "bank_detail",
+          "name": "bank_details",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -978,6 +987,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/parties",
               "parts": [
@@ -1019,6 +1029,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/parties",
               "parts": [
@@ -1032,7 +1043,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -1058,6 +1069,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/parties/{id}",
               "parts": [
@@ -1097,6 +1109,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/parties/{id}",
               "parts": [
@@ -1136,6 +1149,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/parties/{id}",
               "parts": [
@@ -1165,7 +1179,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "additional_external_id",
+          "name": "additional_external_ids",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -1186,7 +1200,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "answer",
+          "name": "answers",
           "op": {
             "update": {
               "req": false,
@@ -1366,7 +1380,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "partial_answer",
+          "name": "partial_answers",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 27
@@ -1443,7 +1457,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "template_property",
+          "name": "template_properties",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 38
@@ -1464,7 +1478,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "verification_error",
+          "name": "verification_errors",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 41
@@ -1498,6 +1512,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/submissions/{id}/refund",
               "parts": [
@@ -1520,6 +1535,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/submissions",
               "parts": [
@@ -1535,6 +1551,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/submissions/retrieve",
               "parts": [
@@ -1605,6 +1622,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/submissions",
               "parts": [
@@ -1621,7 +1639,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -1647,6 +1665,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}",
               "parts": [
@@ -1678,6 +1697,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/clearance-slip",
               "parts": [
@@ -1711,6 +1731,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/notification-read",
               "parts": [
@@ -1744,6 +1765,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/pbn-applicable",
               "parts": [
@@ -1777,6 +1799,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/receipt",
               "parts": [
@@ -1810,6 +1833,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/refund",
               "parts": [
@@ -1832,6 +1856,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/submissions/retrieve",
               "parts": [
@@ -1869,6 +1894,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}",
               "parts": [
@@ -1900,6 +1926,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/clearance-slip",
               "parts": [
@@ -1933,6 +1960,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/notification-read",
               "parts": [
@@ -1966,6 +1994,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/pbn-applicable",
               "parts": [
@@ -1999,6 +2028,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/receipt",
               "parts": [
@@ -2040,6 +2070,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}",
               "parts": [
@@ -2071,6 +2102,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/clearance-slip",
               "parts": [
@@ -2104,6 +2136,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/notification-read",
               "parts": [
@@ -2137,6 +2170,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/pbn-applicable",
               "parts": [
@@ -2170,6 +2204,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/receipt",
               "parts": [
@@ -2201,7 +2236,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "additional_external_id",
+          "name": "additional_external_ids",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -2446,7 +2481,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "supporting_document",
+          "name": "supporting_documents",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 35
@@ -2474,7 +2509,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "verification_error",
+          "name": "verification_errors",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 39
@@ -2496,6 +2531,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/documents-request",
               "parts": [

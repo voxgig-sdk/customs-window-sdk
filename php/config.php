@@ -337,6 +337,7 @@ class CustomsWindowConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/bulk-uploads',
                   'parts' => [
@@ -370,6 +371,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/bulk-uploads',
                   'parts' => [
@@ -382,7 +384,7 @@ class CustomsWindowConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -408,6 +410,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/bulk-uploads/{id}',
                   'parts' => [
@@ -439,6 +442,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/bulk-uploads/{id}/generate-pdfs',
                   'parts' => [
@@ -480,6 +484,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/bulk-uploads/{id}',
                   'parts' => [
@@ -511,6 +516,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/bulk-uploads/{id}/generate-pdfs',
                   'parts' => [
@@ -552,6 +558,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/bulk-uploads/{id}',
                   'parts' => [
@@ -584,6 +591,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/bulk-uploads/{id}/generate-pdfs',
                   'parts' => [
@@ -699,6 +707,7 @@ class CustomsWindowConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/files',
                   'parts' => [
@@ -770,7 +779,7 @@ class CustomsWindowConfig
             ],
             [
               'active' => true,
-              'name' => 'bank_detail',
+              'name' => 'bank_details',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 3,
@@ -939,6 +948,7 @@ class CustomsWindowConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/parties',
                   'parts' => [
@@ -980,6 +990,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/parties',
                   'parts' => [
@@ -993,7 +1004,7 @@ class CustomsWindowConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -1019,6 +1030,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/parties/{id}',
                   'parts' => [
@@ -1058,6 +1070,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/parties/{id}',
                   'parts' => [
@@ -1097,6 +1110,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/parties/{id}',
                   'parts' => [
@@ -1126,7 +1140,7 @@ class CustomsWindowConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'additional_external_id',
+              'name' => 'additional_external_ids',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -1147,7 +1161,7 @@ class CustomsWindowConfig
             ],
             [
               'active' => true,
-              'name' => 'answer',
+              'name' => 'answers',
               'op' => [
                 'update' => [
                   'req' => false,
@@ -1327,7 +1341,7 @@ class CustomsWindowConfig
             ],
             [
               'active' => true,
-              'name' => 'partial_answer',
+              'name' => 'partial_answers',
               'req' => false,
               'type' => '`$BOOLEAN`',
               'index$' => 27,
@@ -1404,7 +1418,7 @@ class CustomsWindowConfig
             ],
             [
               'active' => true,
-              'name' => 'template_property',
+              'name' => 'template_properties',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 38,
@@ -1425,7 +1439,7 @@ class CustomsWindowConfig
             ],
             [
               'active' => true,
-              'name' => 'verification_error',
+              'name' => 'verification_errors',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 41,
@@ -1459,6 +1473,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/submissions/{id}/refund',
                   'parts' => [
@@ -1481,6 +1496,7 @@ class CustomsWindowConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/submissions',
                   'parts' => [
@@ -1496,6 +1512,7 @@ class CustomsWindowConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/submissions/retrieve',
                   'parts' => [
@@ -1566,6 +1583,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions',
                   'parts' => [
@@ -1582,7 +1600,7 @@ class CustomsWindowConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -1608,6 +1626,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions/{id}',
                   'parts' => [
@@ -1639,6 +1658,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions/{id}/clearance-slip',
                   'parts' => [
@@ -1672,6 +1692,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions/{id}/notification-read',
                   'parts' => [
@@ -1705,6 +1726,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions/{id}/pbn-applicable',
                   'parts' => [
@@ -1738,6 +1760,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions/{id}/receipt',
                   'parts' => [
@@ -1771,6 +1794,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions/{id}/refund',
                   'parts' => [
@@ -1793,6 +1817,7 @@ class CustomsWindowConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions/retrieve',
                   'parts' => [
@@ -1830,6 +1855,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/submissions/{id}',
                   'parts' => [
@@ -1861,6 +1887,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/submissions/{id}/clearance-slip',
                   'parts' => [
@@ -1894,6 +1921,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/submissions/{id}/notification-read',
                   'parts' => [
@@ -1927,6 +1955,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/submissions/{id}/pbn-applicable',
                   'parts' => [
@@ -1960,6 +1989,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/submissions/{id}/receipt',
                   'parts' => [
@@ -2001,6 +2031,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/submissions/{id}',
                   'parts' => [
@@ -2032,6 +2063,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/submissions/{id}/clearance-slip',
                   'parts' => [
@@ -2065,6 +2097,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/submissions/{id}/notification-read',
                   'parts' => [
@@ -2098,6 +2131,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/submissions/{id}/pbn-applicable',
                   'parts' => [
@@ -2131,6 +2165,7 @@ class CustomsWindowConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/submissions/{id}/receipt',
                   'parts' => [
@@ -2162,7 +2197,7 @@ class CustomsWindowConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'additional_external_id',
+              'name' => 'additional_external_ids',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -2407,7 +2442,7 @@ class CustomsWindowConfig
             ],
             [
               'active' => true,
-              'name' => 'supporting_document',
+              'name' => 'supporting_documents',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 35,
@@ -2435,7 +2470,7 @@ class CustomsWindowConfig
             ],
             [
               'active' => true,
-              'name' => 'verification_error',
+              'name' => 'verification_errors',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 39,
@@ -2457,6 +2492,7 @@ class CustomsWindowConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/documents-request',
                   'parts' => [

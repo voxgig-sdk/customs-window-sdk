@@ -6,7 +6,11 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/customs-window-sdk/go/core"
+)
 
 // BulkUpload is the typed data model for the bulk_upload entity.
 type BulkUpload struct {
@@ -243,7 +247,7 @@ type Party struct {
 	AdditionalDeclarationType map[string]any `json:"additional_declaration_type"`
 	Address map[string]any `json:"address"`
 	Authorisation map[string]any `json:"authorisation"`
-	BankDetail *string `json:"bank_detail,omitempty"`
+	BankDetails *string `json:"bank_details,omitempty"`
 	Certificate map[string]any `json:"certificate"`
 	CertificateType string `json:"certificate_type"`
 	Company string `json:"company"`
@@ -278,7 +282,7 @@ type PartyListMatch struct {
 	AdditionalDeclarationType *map[string]any `json:"additional_declaration_type,omitempty"`
 	Address *map[string]any `json:"address,omitempty"`
 	Authorisation *map[string]any `json:"authorisation,omitempty"`
-	BankDetail *string `json:"bank_detail,omitempty"`
+	BankDetails *string `json:"bank_details,omitempty"`
 	Certificate *map[string]any `json:"certificate,omitempty"`
 	CertificateType *string `json:"certificate_type,omitempty"`
 	Company *string `json:"company,omitempty"`
@@ -308,7 +312,7 @@ type PartyCreateData struct {
 	AdditionalDeclarationType map[string]any `json:"additional_declaration_type"`
 	Address map[string]any `json:"address"`
 	Authorisation map[string]any `json:"authorisation"`
-	BankDetail *string `json:"bank_detail,omitempty"`
+	BankDetails *string `json:"bank_details,omitempty"`
 	Certificate map[string]any `json:"certificate"`
 	CertificateType string `json:"certificate_type"`
 	Company string `json:"company"`
@@ -339,7 +343,7 @@ type PartyUpdateData struct {
 	AdditionalDeclarationType *map[string]any `json:"additional_declaration_type,omitempty"`
 	Address *map[string]any `json:"address,omitempty"`
 	Authorisation *map[string]any `json:"authorisation,omitempty"`
-	BankDetail *string `json:"bank_detail,omitempty"`
+	BankDetails *string `json:"bank_details,omitempty"`
 	Certificate *map[string]any `json:"certificate,omitempty"`
 	CertificateType *string `json:"certificate_type,omitempty"`
 	Company *string `json:"company,omitempty"`
@@ -370,10 +374,10 @@ type PartyRemoveMatch struct {
 
 // Submission is the typed data model for the submission entity.
 type Submission struct {
-	AdditionalExternalId *[]any `json:"additional_external_id,omitempty"`
+	AdditionalExternalIds *[]any `json:"additional_external_ids,omitempty"`
 	AmendmentReason *string `json:"amendment_reason,omitempty"`
 	AmendmentStatus *string `json:"amendment_status,omitempty"`
-	Answer []any `json:"answer"`
+	Answers []any `json:"answers"`
 	BypassRestrictedCode *bool `json:"bypass_restricted_code,omitempty"`
 	ClearanceSlip map[string]any `json:"clearance_slip"`
 	Client map[string]any `json:"client"`
@@ -397,7 +401,7 @@ type Submission struct {
 	Lrn *string `json:"lrn,omitempty"`
 	Mrn *string `json:"mrn,omitempty"`
 	Name *string `json:"name,omitempty"`
-	PartialAnswer *bool `json:"partial_answer,omitempty"`
+	PartialAnswers *bool `json:"partial_answers,omitempty"`
 	Receipt map[string]any `json:"receipt"`
 	RefundApplicationStatus *string `json:"refund_application_status,omitempty"`
 	Route *string `json:"route,omitempty"`
@@ -408,10 +412,10 @@ type Submission struct {
 	Status *string `json:"status,omitempty"`
 	Template *bool `json:"template,omitempty"`
 	TemplateId *string `json:"template_id,omitempty"`
-	TemplateProperty *[]any `json:"template_property,omitempty"`
+	TemplateProperties *[]any `json:"template_properties,omitempty"`
 	TotalTaxAmount *string `json:"total_tax_amount,omitempty"`
 	UpdatedAt string `json:"updated_at"`
-	VerificationError *[]any `json:"verification_error,omitempty"`
+	VerificationErrors *[]any `json:"verification_errors,omitempty"`
 	VerificationStatus *string `json:"verification_status,omitempty"`
 }
 
@@ -422,10 +426,10 @@ type SubmissionLoadMatch struct {
 
 // SubmissionListMatch is the typed request payload for Submission.ListTyped.
 type SubmissionListMatch struct {
-	AdditionalExternalId *[]any `json:"additional_external_id,omitempty"`
+	AdditionalExternalIds *[]any `json:"additional_external_ids,omitempty"`
 	AmendmentReason *string `json:"amendment_reason,omitempty"`
 	AmendmentStatus *string `json:"amendment_status,omitempty"`
-	Answer *[]any `json:"answer,omitempty"`
+	Answers *[]any `json:"answers,omitempty"`
 	BypassRestrictedCode *bool `json:"bypass_restricted_code,omitempty"`
 	ClearanceSlip *map[string]any `json:"clearance_slip,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
@@ -449,7 +453,7 @@ type SubmissionListMatch struct {
 	Lrn *string `json:"lrn,omitempty"`
 	Mrn *string `json:"mrn,omitempty"`
 	Name *string `json:"name,omitempty"`
-	PartialAnswer *bool `json:"partial_answer,omitempty"`
+	PartialAnswers *bool `json:"partial_answers,omitempty"`
 	Receipt *map[string]any `json:"receipt,omitempty"`
 	RefundApplicationStatus *string `json:"refund_application_status,omitempty"`
 	Route *string `json:"route,omitempty"`
@@ -460,19 +464,19 @@ type SubmissionListMatch struct {
 	Status *string `json:"status,omitempty"`
 	Template *bool `json:"template,omitempty"`
 	TemplateId *string `json:"template_id,omitempty"`
-	TemplateProperty *[]any `json:"template_property,omitempty"`
+	TemplateProperties *[]any `json:"template_properties,omitempty"`
 	TotalTaxAmount *string `json:"total_tax_amount,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	VerificationError *[]any `json:"verification_error,omitempty"`
+	VerificationErrors *[]any `json:"verification_errors,omitempty"`
 	VerificationStatus *string `json:"verification_status,omitempty"`
 }
 
 // SubmissionCreateData is the typed request payload for Submission.CreateTyped.
 type SubmissionCreateData struct {
-	AdditionalExternalId *[]any `json:"additional_external_id,omitempty"`
+	AdditionalExternalIds *[]any `json:"additional_external_ids,omitempty"`
 	AmendmentReason *string `json:"amendment_reason,omitempty"`
 	AmendmentStatus *string `json:"amendment_status,omitempty"`
-	Answer []any `json:"answer"`
+	Answers []any `json:"answers"`
 	BypassRestrictedCode *bool `json:"bypass_restricted_code,omitempty"`
 	ClearanceSlip map[string]any `json:"clearance_slip"`
 	Client map[string]any `json:"client"`
@@ -496,7 +500,7 @@ type SubmissionCreateData struct {
 	Lrn *string `json:"lrn,omitempty"`
 	Mrn *string `json:"mrn,omitempty"`
 	Name *string `json:"name,omitempty"`
-	PartialAnswer *bool `json:"partial_answer,omitempty"`
+	PartialAnswers *bool `json:"partial_answers,omitempty"`
 	Receipt map[string]any `json:"receipt"`
 	RefundApplicationStatus *string `json:"refund_application_status,omitempty"`
 	Route *string `json:"route,omitempty"`
@@ -507,20 +511,20 @@ type SubmissionCreateData struct {
 	Status *string `json:"status,omitempty"`
 	Template *bool `json:"template,omitempty"`
 	TemplateId *string `json:"template_id,omitempty"`
-	TemplateProperty *[]any `json:"template_property,omitempty"`
+	TemplateProperties *[]any `json:"template_properties,omitempty"`
 	TotalTaxAmount *string `json:"total_tax_amount,omitempty"`
 	UpdatedAt string `json:"updated_at"`
-	VerificationError *[]any `json:"verification_error,omitempty"`
+	VerificationErrors *[]any `json:"verification_errors,omitempty"`
 	VerificationStatus *string `json:"verification_status,omitempty"`
 }
 
 // SubmissionUpdateData is the typed request payload for Submission.UpdateTyped.
 type SubmissionUpdateData struct {
 	Id string `json:"id"`
-	AdditionalExternalId *[]any `json:"additional_external_id,omitempty"`
+	AdditionalExternalIds *[]any `json:"additional_external_ids,omitempty"`
 	AmendmentReason *string `json:"amendment_reason,omitempty"`
 	AmendmentStatus *string `json:"amendment_status,omitempty"`
-	Answer *[]any `json:"answer,omitempty"`
+	Answers *[]any `json:"answers,omitempty"`
 	BypassRestrictedCode *bool `json:"bypass_restricted_code,omitempty"`
 	ClearanceSlip *map[string]any `json:"clearance_slip,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
@@ -543,7 +547,7 @@ type SubmissionUpdateData struct {
 	Lrn *string `json:"lrn,omitempty"`
 	Mrn *string `json:"mrn,omitempty"`
 	Name *string `json:"name,omitempty"`
-	PartialAnswer *bool `json:"partial_answer,omitempty"`
+	PartialAnswers *bool `json:"partial_answers,omitempty"`
 	Receipt *map[string]any `json:"receipt,omitempty"`
 	RefundApplicationStatus *string `json:"refund_application_status,omitempty"`
 	Route *string `json:"route,omitempty"`
@@ -554,10 +558,10 @@ type SubmissionUpdateData struct {
 	Status *string `json:"status,omitempty"`
 	Template *bool `json:"template,omitempty"`
 	TemplateId *string `json:"template_id,omitempty"`
-	TemplateProperty *[]any `json:"template_property,omitempty"`
+	TemplateProperties *[]any `json:"template_properties,omitempty"`
 	TotalTaxAmount *string `json:"total_tax_amount,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	VerificationError *[]any `json:"verification_error,omitempty"`
+	VerificationErrors *[]any `json:"verification_errors,omitempty"`
 	VerificationStatus *string `json:"verification_status,omitempty"`
 }
 
@@ -568,7 +572,7 @@ type SubmissionRemoveMatch struct {
 
 // SubmissionDetail is the typed data model for the submission_detail entity.
 type SubmissionDetail struct {
-	AdditionalExternalId *[]any `json:"additional_external_id,omitempty"`
+	AdditionalExternalIds *[]any `json:"additional_external_ids,omitempty"`
 	AdditionalInformation []any `json:"additional_information"`
 	AmendmentStatus *string `json:"amendment_status,omitempty"`
 	ClearanceSlip map[string]any `json:"clearance_slip"`
@@ -603,17 +607,17 @@ type SubmissionDetail struct {
 	SourceType *string `json:"source_type,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Submission string `json:"submission"`
-	SupportingDocument *[]any `json:"supporting_document,omitempty"`
+	SupportingDocuments *[]any `json:"supporting_documents,omitempty"`
 	Template *bool `json:"template,omitempty"`
 	TotalTaxAmount *string `json:"total_tax_amount,omitempty"`
 	UpdatedAt string `json:"updated_at"`
-	VerificationError *[]any `json:"verification_error,omitempty"`
+	VerificationErrors *[]any `json:"verification_errors,omitempty"`
 	VerificationStatus *string `json:"verification_status,omitempty"`
 }
 
 // SubmissionDetailCreateData is the typed request payload for SubmissionDetail.CreateTyped.
 type SubmissionDetailCreateData struct {
-	AdditionalExternalId *[]any `json:"additional_external_id,omitempty"`
+	AdditionalExternalIds *[]any `json:"additional_external_ids,omitempty"`
 	AdditionalInformation []any `json:"additional_information"`
 	AmendmentStatus *string `json:"amendment_status,omitempty"`
 	ClearanceSlip map[string]any `json:"clearance_slip"`
@@ -648,11 +652,11 @@ type SubmissionDetailCreateData struct {
 	SourceType *string `json:"source_type,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Submission string `json:"submission"`
-	SupportingDocument *[]any `json:"supporting_document,omitempty"`
+	SupportingDocuments *[]any `json:"supporting_documents,omitempty"`
 	Template *bool `json:"template,omitempty"`
 	TotalTaxAmount *string `json:"total_tax_amount,omitempty"`
 	UpdatedAt string `json:"updated_at"`
-	VerificationError *[]any `json:"verification_error,omitempty"`
+	VerificationErrors *[]any `json:"verification_errors,omitempty"`
 	VerificationStatus *string `json:"verification_status,omitempty"`
 }
 
@@ -668,12 +672,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -685,12 +703,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

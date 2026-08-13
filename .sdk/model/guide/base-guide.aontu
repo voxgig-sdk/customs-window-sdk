@@ -9,6 +9,7 @@ guide: {
     path: "/bulk-uploads": {
       op: create: method: *POST
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/bulk-uploads/{id}": {
       op: load: method: *GET
@@ -43,6 +44,7 @@ guide: {
     path: "/parties": {
       op: create: method: *POST
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/parties/{id}": {
       op: load: method: *GET
@@ -55,6 +57,7 @@ guide: {
     path: "/submissions": {
       op: create: method: *POST
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/submissions/retrieve": {
       action: "retrieve": {}

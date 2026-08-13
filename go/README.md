@@ -404,7 +404,7 @@ API path: ``
 | `"additional_declaration_type"` |  |
 | `"address"` |  |
 | `"authorisation"` |  |
-| `"bank_detail"` |  |
+| `"bank_details"` |  |
 | `"certificate"` |  |
 | `"certificate_type"` |  |
 | `"company"` |  |
@@ -436,10 +436,10 @@ API path: `/parties`
 
 | Field | Description |
 | --- | --- |
-| `"additional_external_id"` |  |
+| `"additional_external_ids"` |  |
 | `"amendment_reason"` |  |
 | `"amendment_status"` |  |
-| `"answer"` |  |
+| `"answers"` |  |
 | `"bypass_restricted_code"` |  |
 | `"clearance_slip"` |  |
 | `"client"` |  |
@@ -463,7 +463,7 @@ API path: `/parties`
 | `"lrn"` |  |
 | `"mrn"` |  |
 | `"name"` |  |
-| `"partial_answer"` |  |
+| `"partial_answers"` |  |
 | `"receipt"` |  |
 | `"refund_application_status"` |  |
 | `"route"` |  |
@@ -474,10 +474,10 @@ API path: `/parties`
 | `"status"` |  |
 | `"template"` |  |
 | `"template_id"` |  |
-| `"template_property"` |  |
+| `"template_properties"` |  |
 | `"total_tax_amount"` |  |
 | `"updated_at"` |  |
-| `"verification_error"` |  |
+| `"verification_errors"` |  |
 | `"verification_status"` |  |
 
 Operations: Create, List, Load, Remove, Update.
@@ -488,7 +488,7 @@ API path: `/submissions/{id}/refund`
 
 | Field | Description |
 | --- | --- |
-| `"additional_external_id"` |  |
+| `"additional_external_ids"` |  |
 | `"additional_information"` |  |
 | `"amendment_status"` |  |
 | `"clearance_slip"` |  |
@@ -523,11 +523,11 @@ API path: `/submissions/{id}/refund`
 | `"source_type"` |  |
 | `"status"` |  |
 | `"submission"` |  |
-| `"supporting_document"` |  |
+| `"supporting_documents"` |  |
 | `"template"` |  |
 | `"total_tax_amount"` |  |
 | `"updated_at"` |  |
-| `"verification_error"` |  |
+| `"verification_errors"` |  |
 | `"verification_status"` |  |
 
 Operations: Create.
@@ -720,7 +720,7 @@ Create an instance: `party := client.Party(nil)`
 | `additional_declaration_type` | `map[string]any` |  |
 | `address` | `map[string]any` |  |
 | `authorisation` | `map[string]any` |  |
-| `bank_detail` | `string` |  |
+| `bank_details` | `string` |  |
 | `certificate` | `map[string]any` |  |
 | `certificate_type` | `string` |  |
 | `company` | `string` |  |
@@ -806,10 +806,10 @@ Create an instance: `submission := client.Submission(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `[]any` |  |
+| `additional_external_ids` | `[]any` |  |
 | `amendment_reason` | `string` |  |
 | `amendment_status` | `string` |  |
-| `answer` | `[]any` |  |
+| `answers` | `[]any` |  |
 | `bypass_restricted_code` | `bool` |  |
 | `clearance_slip` | `map[string]any` |  |
 | `client` | `map[string]any` |  |
@@ -833,7 +833,7 @@ Create an instance: `submission := client.Submission(nil)`
 | `lrn` | `string` |  |
 | `mrn` | `string` |  |
 | `name` | `string` |  |
-| `partial_answer` | `bool` |  |
+| `partial_answers` | `bool` |  |
 | `receipt` | `map[string]any` |  |
 | `refund_application_status` | `string` |  |
 | `route` | `string` |  |
@@ -844,10 +844,10 @@ Create an instance: `submission := client.Submission(nil)`
 | `status` | `string` |  |
 | `template` | `bool` |  |
 | `template_id` | `string` |  |
-| `template_property` | `[]any` |  |
+| `template_properties` | `[]any` |  |
 | `total_tax_amount` | `string` |  |
 | `updated_at` | `string` |  |
-| `verification_error` | `[]any` |  |
+| `verification_errors` | `[]any` |  |
 | `verification_status` | `string` |  |
 
 #### Example: Load
@@ -874,7 +874,7 @@ fmt.Println(submissions) // the array of records
 
 ```go
 result, err := client.Submission(nil).Create(map[string]any{
-    "answer": []any{},
+    "answers": []any{},
     "clearance_slip": map[string]any{},
     "client": map[string]any{},
     "company_member": map[string]any{},
@@ -908,7 +908,7 @@ Create an instance: `submissionDetail := client.SubmissionDetail(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `[]any` |  |
+| `additional_external_ids` | `[]any` |  |
 | `additional_information` | `[]any` |  |
 | `amendment_status` | `string` |  |
 | `clearance_slip` | `map[string]any` |  |
@@ -943,11 +943,11 @@ Create an instance: `submissionDetail := client.SubmissionDetail(nil)`
 | `source_type` | `string` |  |
 | `status` | `string` |  |
 | `submission` | `string` |  |
-| `supporting_document` | `[]any` |  |
+| `supporting_documents` | `[]any` |  |
 | `template` | `bool` |  |
 | `total_tax_amount` | `string` |  |
 | `updated_at` | `string` |  |
-| `verification_error` | `[]any` |  |
+| `verification_errors` | `[]any` |  |
 | `verification_status` | `string` |  |
 
 #### Example: Create

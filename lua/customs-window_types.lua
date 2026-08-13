@@ -218,7 +218,7 @@
 ---@field additional_declaration_type table
 ---@field address table
 ---@field authorisation table
----@field bank_detail? string
+---@field bank_details? string
 ---@field certificate table
 ---@field certificate_type string
 ---@field company string
@@ -249,7 +249,7 @@
 ---@field additional_declaration_type? table
 ---@field address? table
 ---@field authorisation? table
----@field bank_detail? string
+---@field bank_details? string
 ---@field certificate? table
 ---@field certificate_type? string
 ---@field company? string
@@ -277,7 +277,7 @@
 ---@field additional_declaration_type table
 ---@field address table
 ---@field authorisation table
----@field bank_detail? string
+---@field bank_details? string
 ---@field certificate table
 ---@field certificate_type string
 ---@field company string
@@ -306,7 +306,7 @@
 ---@field additional_declaration_type? table
 ---@field address? table
 ---@field authorisation? table
----@field bank_detail? string
+---@field bank_details? string
 ---@field certificate? table
 ---@field certificate_type? string
 ---@field company? string
@@ -333,10 +333,10 @@
 ---@field id string
 
 ---@class Submission
----@field additional_external_id? table
+---@field additional_external_ids? table
 ---@field amendment_reason? string
 ---@field amendment_status? string
----@field answer table
+---@field answers table
 ---@field bypass_restricted_code? boolean
 ---@field clearance_slip table
 ---@field client table
@@ -360,7 +360,7 @@
 ---@field lrn? string
 ---@field mrn? string
 ---@field name? string
----@field partial_answer? boolean
+---@field partial_answers? boolean
 ---@field receipt table
 ---@field refund_application_status? string
 ---@field route? string
@@ -371,20 +371,20 @@
 ---@field status? string
 ---@field template? boolean
 ---@field template_id? string
----@field template_property? table
+---@field template_properties? table
 ---@field total_tax_amount? string
 ---@field updated_at string
----@field verification_error? table
+---@field verification_errors? table
 ---@field verification_status? string
 
 ---@class SubmissionLoadMatch
 ---@field id string
 
 ---@class SubmissionListMatch
----@field additional_external_id? table
+---@field additional_external_ids? table
 ---@field amendment_reason? string
 ---@field amendment_status? string
----@field answer? table
+---@field answers? table
 ---@field bypass_restricted_code? boolean
 ---@field clearance_slip? table
 ---@field client? table
@@ -408,7 +408,7 @@
 ---@field lrn? string
 ---@field mrn? string
 ---@field name? string
----@field partial_answer? boolean
+---@field partial_answers? boolean
 ---@field receipt? table
 ---@field refund_application_status? string
 ---@field route? string
@@ -419,17 +419,17 @@
 ---@field status? string
 ---@field template? boolean
 ---@field template_id? string
----@field template_property? table
+---@field template_properties? table
 ---@field total_tax_amount? string
 ---@field updated_at? string
----@field verification_error? table
+---@field verification_errors? table
 ---@field verification_status? string
 
 ---@class SubmissionCreateData
----@field additional_external_id? table
+---@field additional_external_ids? table
 ---@field amendment_reason? string
 ---@field amendment_status? string
----@field answer table
+---@field answers table
 ---@field bypass_restricted_code? boolean
 ---@field clearance_slip table
 ---@field client table
@@ -453,7 +453,7 @@
 ---@field lrn? string
 ---@field mrn? string
 ---@field name? string
----@field partial_answer? boolean
+---@field partial_answers? boolean
 ---@field receipt table
 ---@field refund_application_status? string
 ---@field route? string
@@ -464,18 +464,18 @@
 ---@field status? string
 ---@field template? boolean
 ---@field template_id? string
----@field template_property? table
+---@field template_properties? table
 ---@field total_tax_amount? string
 ---@field updated_at string
----@field verification_error? table
+---@field verification_errors? table
 ---@field verification_status? string
 
 ---@class SubmissionUpdateData
 ---@field id string
----@field additional_external_id? table
+---@field additional_external_ids? table
 ---@field amendment_reason? string
 ---@field amendment_status? string
----@field answer? table
+---@field answers? table
 ---@field bypass_restricted_code? boolean
 ---@field clearance_slip? table
 ---@field client? table
@@ -498,7 +498,7 @@
 ---@field lrn? string
 ---@field mrn? string
 ---@field name? string
----@field partial_answer? boolean
+---@field partial_answers? boolean
 ---@field receipt? table
 ---@field refund_application_status? string
 ---@field route? string
@@ -509,17 +509,17 @@
 ---@field status? string
 ---@field template? boolean
 ---@field template_id? string
----@field template_property? table
+---@field template_properties? table
 ---@field total_tax_amount? string
 ---@field updated_at? string
----@field verification_error? table
+---@field verification_errors? table
 ---@field verification_status? string
 
 ---@class SubmissionRemoveMatch
 ---@field id string
 
 ---@class SubmissionDetail
----@field additional_external_id? table
+---@field additional_external_ids? table
 ---@field additional_information table
 ---@field amendment_status? string
 ---@field clearance_slip table
@@ -554,15 +554,15 @@
 ---@field source_type? string
 ---@field status? string
 ---@field submission string
----@field supporting_document? table
+---@field supporting_documents? table
 ---@field template? boolean
 ---@field total_tax_amount? string
 ---@field updated_at string
----@field verification_error? table
+---@field verification_errors? table
 ---@field verification_status? string
 
 ---@class SubmissionDetailCreateData
----@field additional_external_id? table
+---@field additional_external_ids? table
 ---@field additional_information table
 ---@field amendment_status? string
 ---@field clearance_slip table
@@ -597,11 +597,11 @@
 ---@field source_type? string
 ---@field status? string
 ---@field submission string
----@field supporting_document? table
+---@field supporting_documents? table
 ---@field template? boolean
 ---@field total_tax_amount? string
 ---@field updated_at string
----@field verification_error? table
+---@field verification_errors? table
 ---@field verification_status? string
 
 local M = {}

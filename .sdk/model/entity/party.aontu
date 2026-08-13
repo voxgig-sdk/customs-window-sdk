@@ -21,7 +21,7 @@ main: kit: entity: party: {
       type: "`$OBJECT`"
     }
     {
-      name: "bank_detail"
+      name: "bank_details"
       req: false
       type: "`$STRING`"
     }
@@ -195,7 +195,7 @@ main: kit: entity: party: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

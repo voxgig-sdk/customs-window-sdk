@@ -115,16 +115,16 @@ function submission_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["CUSTOMSWINDOW_TEST_SUBMISSION_ENTID"] = {},
-    ["CUSTOMSWINDOW_TEST_LIVE"] = "FALSE",
-    ["CUSTOMSWINDOW_APIKEY"] = "NONE",
+    ["CUSTOMS_WINDOW_TEST_SUBMISSION_ENTID"] = {},
+    ["CUSTOMS_WINDOW_TEST_LIVE"] = "FALSE",
+    ["CUSTOMS_WINDOW_APIKEY"] = "NONE",
   })
 
-  local live = env["CUSTOMSWINDOW_TEST_LIVE"] == "TRUE"
+  local live = env["CUSTOMS_WINDOW_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["CUSTOMSWINDOW_APIKEY"],
+      apikey = env["CUSTOMS_WINDOW_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

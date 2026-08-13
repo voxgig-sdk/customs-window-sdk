@@ -34,9 +34,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = CustomsWindowSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = CustomsWindowSDK.test({
+  entity: {
+    submission: {
+      test01: { id: 'test01', answers: [], clearance_slip: {}, client: {} },
+    },
+  },
+})
 const submissions = await client.Submission().list()
-// submissions is an array of bare Submission records populated with mock data
+// submissions is an array of Submission entities, populated with mock data
+// — call submissions[0].data() for the record itself
 console.log(submissions)
 ```
 
@@ -108,7 +117,7 @@ const client = new CustomsWindowSDK({
   apikey: process.env.CUSTOMS_WINDOW_APIKEY,
 })
 
-// List all bulkuploads (returns BulkUpload[])
+// List all bulkuploads (returns BulkUploadEntity[] — .data() for the record)
 const bulkuploads = await client.BulkUpload().list()
 for (const bulkupload of bulkuploads) {
   console.log(bulkupload)
@@ -159,7 +168,7 @@ The API exposes 8 entities:
 | **PaginatedPartyListList** | The PaginatedPartyListList entity. | `` |
 | **PaginatedSubmissionListList** | The PaginatedSubmissionListList entity. | `` |
 | **Party** | The Party entity (create, list, load, remove, update). | `/parties` |
-| **Submission** | The Submission entity (create, list, load, remove, update). | `/submissions/{id}/refund` |
+| **Submission** | The Submission entity (create, list, load, remove, update). | `/submissions` |
 | **SubmissionDetail** | The SubmissionDetail entity (create). | `/documents-request` |
 
 The operations available across these entities are **load**, **list**, **create**, **update**, **remove** — see each entity's
@@ -201,7 +210,7 @@ $client = new CustomsWindowSDK([
 $bulkuploads = $client->BulkUpload()->list();
 print_r($bulkuploads);
 
-// Load a specific bulkupload (returns the bare record; throws on error)
+// Load a specific bulkupload (returns the ENTITY; call data_get() for the record; throws on error)
 $bulkupload = $client->BulkUpload()->load(["id" => "example_id"]);
 print_r($bulkupload);
 ```
@@ -236,7 +245,7 @@ client = CustomsWindowSDK.new({
 bulkuploads = client.BulkUpload.list
 puts bulkuploads
 
-# Load a specific bulkupload (returns the bare record; raises on error)
+# Load a specific bulkupload (returns the ENTITY; call data_get for the record)
 bulkupload = client.BulkUpload.load({ "id" => "example_id" })
 puts bulkupload
 ```

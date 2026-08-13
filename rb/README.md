@@ -50,7 +50,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare BulkUpload record (raises on error).
+  # load returns the ENTITY — call data_get for the BulkUpload record (raises on error).
   bulkupload = client.BulkUpload.load({ "id" => "example_id" })
   puts bulkupload
 rescue => err
@@ -61,14 +61,14 @@ end
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created BulkUpload record.
+# create returns the ENTITY — call data_get for the created BulkUpload record.
 created = client.BulkUpload.create({ "client" => "example_client", "company_member" => "example_company_member", "created_at" => "example_created_at", "declarant" => "example_declarant", "declarations_no" => 1, "errors_file" => {}, "file" => {}, "updated_at" => "example_updated_at" })
 
-# Update — index the bare record directly (created["id"]).
-client.BulkUpload.update({ "id" => created["id"], "active_transport_nationality" => "example_active_transport_nationality", "active_transport_number" => "example_active_transport_number" })
+# Update — index the record via data_get (created.data_get["id"]).
+client.BulkUpload.update({ "id" => created.data_get["id"], "active_transport_nationality" => "example_active_transport_nationality", "active_transport_number" => "example_active_transport_number" })
 
 # Remove
-client.BulkUpload.remove({ "id" => created["id"] })
+client.BulkUpload.remove({ "id" => created.data_get["id"] })
 ```
 
 
@@ -149,7 +149,8 @@ client = CustomsWindowSDK.test({
   "entity" => { "submission" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 submission = client.Submission.list()
 puts submission
 ```
@@ -378,7 +379,7 @@ API path: ``
 | `additional_declaration_type` |  |
 | `address` |  |
 | `authorisation` |  |
-| `bank_detail` |  |
+| `bank_details` |  |
 | `certificate` |  |
 | `certificate_type` |  |
 | `company` |  |
@@ -410,10 +411,10 @@ API path: `/parties`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `amendment_reason` |  |
 | `amendment_status` |  |
-| `answer` |  |
+| `answers` |  |
 | `bypass_restricted_code` |  |
 | `clearance_slip` |  |
 | `client` |  |
@@ -437,7 +438,7 @@ API path: `/parties`
 | `lrn` |  |
 | `mrn` |  |
 | `name` |  |
-| `partial_answer` |  |
+| `partial_answers` |  |
 | `receipt` |  |
 | `refund_application_status` |  |
 | `route` |  |
@@ -448,10 +449,10 @@ API path: `/parties`
 | `status` |  |
 | `template` |  |
 | `template_id` |  |
-| `template_property` |  |
+| `template_properties` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: Create, List, Load, Remove, Update.
@@ -462,7 +463,7 @@ API path: `/submissions/{id}/refund`
 
 | Field | Description |
 | --- | --- |
-| `additional_external_id` |  |
+| `additional_external_ids` |  |
 | `additional_information` |  |
 | `amendment_status` |  |
 | `clearance_slip` |  |
@@ -497,11 +498,11 @@ API path: `/submissions/{id}/refund`
 | `source_type` |  |
 | `status` |  |
 | `submission` |  |
-| `supporting_document` |  |
+| `supporting_documents` |  |
 | `template` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
-| `verification_error` |  |
+| `verification_errors` |  |
 | `verification_status` |  |
 
 Operations: Create.
@@ -576,7 +577,7 @@ Create an instance: `bulk_upload = client.BulkUpload`
 #### Example: Load
 
 ```ruby
-# load returns the bare BulkUpload record (raises on error).
+# load returns the ENTITY — call data_get for the BulkUpload record (raises on error).
 bulk_upload = client.BulkUpload.load({ "id" => "bulk_upload_id" })
 ```
 
@@ -680,7 +681,7 @@ Create an instance: `party = client.Party`
 | `additional_declaration_type` | `Hash` |  |
 | `address` | `Hash` |  |
 | `authorisation` | `Hash` |  |
-| `bank_detail` | `String` |  |
+| `bank_details` | `String` |  |
 | `certificate` | `Hash` |  |
 | `certificate_type` | `String` |  |
 | `company` | `String` |  |
@@ -707,7 +708,7 @@ Create an instance: `party = client.Party`
 #### Example: Load
 
 ```ruby
-# load returns the bare Party record (raises on error).
+# load returns the ENTITY — call data_get for the Party record (raises on error).
 party = client.Party.load({ "id" => "party_id" })
 ```
 
@@ -756,10 +757,10 @@ Create an instance: `submission = client.Submission`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `Array` |  |
+| `additional_external_ids` | `Array` |  |
 | `amendment_reason` | `String` |  |
 | `amendment_status` | `String` |  |
-| `answer` | `Array` |  |
+| `answers` | `Array` |  |
 | `bypass_restricted_code` | `Boolean` |  |
 | `clearance_slip` | `Hash` |  |
 | `client` | `Hash` |  |
@@ -783,7 +784,7 @@ Create an instance: `submission = client.Submission`
 | `lrn` | `String` |  |
 | `mrn` | `String` |  |
 | `name` | `String` |  |
-| `partial_answer` | `Boolean` |  |
+| `partial_answers` | `Boolean` |  |
 | `receipt` | `Hash` |  |
 | `refund_application_status` | `String` |  |
 | `route` | `String` |  |
@@ -794,16 +795,16 @@ Create an instance: `submission = client.Submission`
 | `status` | `String` |  |
 | `template` | `Boolean` |  |
 | `template_id` | `String` |  |
-| `template_property` | `Array` |  |
+| `template_properties` | `Array` |  |
 | `total_tax_amount` | `String` |  |
 | `updated_at` | `String` |  |
-| `verification_error` | `Array` |  |
+| `verification_errors` | `Array` |  |
 | `verification_status` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Submission record (raises on error).
+# load returns the ENTITY — call data_get for the Submission record (raises on error).
 submission = client.Submission.load({ "id" => "submission_id" })
 ```
 
@@ -818,7 +819,7 @@ submissions = client.Submission.list
 
 ```ruby
 submission = client.Submission.create({
-  "answer" => [], # Array
+  "answers" => [], # Array
   "clearance_slip" => {}, # Hash
   "client" => {}, # Hash
   "company_member" => {}, # Hash
@@ -848,7 +849,7 @@ Create an instance: `submission_detail = client.SubmissionDetail`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `additional_external_id` | `Array` |  |
+| `additional_external_ids` | `Array` |  |
 | `additional_information` | `Array` |  |
 | `amendment_status` | `String` |  |
 | `clearance_slip` | `Hash` |  |
@@ -883,11 +884,11 @@ Create an instance: `submission_detail = client.SubmissionDetail`
 | `source_type` | `String` |  |
 | `status` | `String` |  |
 | `submission` | `String` |  |
-| `supporting_document` | `Array` |  |
+| `supporting_documents` | `Array` |  |
 | `template` | `Boolean` |  |
 | `total_tax_amount` | `String` |  |
 | `updated_at` | `String` |  |
-| `verification_error` | `Array` |  |
+| `verification_errors` | `Array` |  |
 | `verification_status` | `String` |  |
 
 #### Example: Create

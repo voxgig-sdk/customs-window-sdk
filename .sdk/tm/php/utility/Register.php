@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ CustomsWindowUtility::setRegistrar(function (CustomsWindowUtility $u): void {
     $u->prepare_params = [CustomsWindowPrepareParams::class, 'call'];
     $u->prepare_path = [CustomsWindowPreparePath::class, 'call'];
     $u->prepare_query = [CustomsWindowPrepareQuery::class, 'call'];
+    $u->graphql_body = [CustomsWindowGraphql::class, 'body'];
+    $u->graphql_errors = [CustomsWindowGraphql::class, 'errors'];
     $u->result_basic = [CustomsWindowResultBasic::class, 'call'];
     $u->result_body = [CustomsWindowResultBody::class, 'call'];
     $u->result_headers = [CustomsWindowResultHeaders::class, 'call'];

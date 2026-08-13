@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import CustomsWindowSDK
-from core.error import CustomsWindowError
-from core.result import CustomsWindowResult
-from core.response import CustomsWindowResponse
-from core.spec import CustomsWindowSpec
-from feature.base_feature import CustomsWindowBaseFeature
+from projectname_sdk.core.error import CustomsWindowError
+from projectname_sdk.core.result import CustomsWindowResult
+from projectname_sdk.core.response import CustomsWindowResponse
+from projectname_sdk.core.spec import CustomsWindowSpec
+from projectname_sdk.feature.base_feature import CustomsWindowBaseFeature
 
 
 def _client():

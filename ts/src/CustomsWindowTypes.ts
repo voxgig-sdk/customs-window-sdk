@@ -51,6 +51,12 @@ export interface BulkUpload {
 
 export interface BulkUploadLoadMatch {
   id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'generate_pdf'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface BulkUploadListMatch {
@@ -183,10 +189,22 @@ export interface BulkUploadUpdateData {
   template?: string
   updated_at?: string
   yellow_routed_no?: number
+
+  // Selects a custom action instead of the plain update:
+  //   'generate_pdf'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface BulkUploadRemoveMatch {
   id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'generate_pdf'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface File {
@@ -228,7 +246,7 @@ export interface Party {
   additional_declaration_type: Record<string, any>
   address: Record<string, any>
   authorisation: Record<string, any>
-  bank_detail?: string
+  bank_details?: string
   certificate: Record<string, any>
   certificate_type: string
   company: string
@@ -261,7 +279,7 @@ export interface PartyListMatch {
   additional_declaration_type?: Record<string, any>
   address?: Record<string, any>
   authorisation?: Record<string, any>
-  bank_detail?: string
+  bank_details?: string
   certificate?: Record<string, any>
   certificate_type?: string
   company?: string
@@ -290,7 +308,7 @@ export interface PartyCreateData {
   additional_declaration_type: Record<string, any>
   address: Record<string, any>
   authorisation: Record<string, any>
-  bank_detail?: string
+  bank_details?: string
   certificate: Record<string, any>
   certificate_type: string
   company: string
@@ -320,7 +338,7 @@ export interface PartyUpdateData {
   additional_declaration_type?: Record<string, any>
   address?: Record<string, any>
   authorisation?: Record<string, any>
-  bank_detail?: string
+  bank_details?: string
   certificate?: Record<string, any>
   certificate_type?: string
   company?: string
@@ -349,10 +367,10 @@ export interface PartyRemoveMatch {
 }
 
 export interface Submission {
-  additional_external_id?: any[]
+  additional_external_ids?: any[]
   amendment_reason?: string
   amendment_status?: string
-  answer: any[]
+  answers: any[]
   bypass_restricted_code?: boolean
   clearance_slip: Record<string, any>
   client: Record<string, any>
@@ -376,7 +394,7 @@ export interface Submission {
   lrn?: string
   mrn?: string
   name?: string
-  partial_answer?: boolean
+  partial_answers?: boolean
   receipt: Record<string, any>
   refund_application_status?: string
   route?: string
@@ -387,22 +405,28 @@ export interface Submission {
   status?: string
   template?: boolean
   template_id?: string
-  template_property?: any[]
+  template_properties?: any[]
   total_tax_amount?: string
   updated_at: string
-  verification_error?: any[]
+  verification_errors?: any[]
   verification_status?: string
 }
 
 export interface SubmissionLoadMatch {
   id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'clearance_slip' | 'notification_read' | 'pbn_applicable' | 'receipt' | 'refund' | 'retrieve'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface SubmissionListMatch {
-  additional_external_id?: any[]
+  additional_external_ids?: any[]
   amendment_reason?: string
   amendment_status?: string
-  answer?: any[]
+  answers?: any[]
   bypass_restricted_code?: boolean
   clearance_slip?: Record<string, any>
   client?: Record<string, any>
@@ -426,7 +450,7 @@ export interface SubmissionListMatch {
   lrn?: string
   mrn?: string
   name?: string
-  partial_answer?: boolean
+  partial_answers?: boolean
   receipt?: Record<string, any>
   refund_application_status?: string
   route?: string
@@ -437,18 +461,18 @@ export interface SubmissionListMatch {
   status?: string
   template?: boolean
   template_id?: string
-  template_property?: any[]
+  template_properties?: any[]
   total_tax_amount?: string
   updated_at?: string
-  verification_error?: any[]
+  verification_errors?: any[]
   verification_status?: string
 }
 
 export interface SubmissionCreateData {
-  additional_external_id?: any[]
+  additional_external_ids?: any[]
   amendment_reason?: string
   amendment_status?: string
-  answer: any[]
+  answers: any[]
   bypass_restricted_code?: boolean
   clearance_slip: Record<string, any>
   client: Record<string, any>
@@ -472,7 +496,7 @@ export interface SubmissionCreateData {
   lrn?: string
   mrn?: string
   name?: string
-  partial_answer?: boolean
+  partial_answers?: boolean
   receipt: Record<string, any>
   refund_application_status?: string
   route?: string
@@ -483,19 +507,25 @@ export interface SubmissionCreateData {
   status?: string
   template?: boolean
   template_id?: string
-  template_property?: any[]
+  template_properties?: any[]
   total_tax_amount?: string
   updated_at: string
-  verification_error?: any[]
+  verification_errors?: any[]
   verification_status?: string
+
+  // Selects a custom action instead of the plain create:
+  //   'refund' | 'retrieve'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface SubmissionUpdateData {
   id: string
-  additional_external_id?: any[]
+  additional_external_ids?: any[]
   amendment_reason?: string
   amendment_status?: string
-  answer?: any[]
+  answers?: any[]
   bypass_restricted_code?: boolean
   clearance_slip?: Record<string, any>
   client?: Record<string, any>
@@ -518,7 +548,7 @@ export interface SubmissionUpdateData {
   lrn?: string
   mrn?: string
   name?: string
-  partial_answer?: boolean
+  partial_answers?: boolean
   receipt?: Record<string, any>
   refund_application_status?: string
   route?: string
@@ -529,19 +559,31 @@ export interface SubmissionUpdateData {
   status?: string
   template?: boolean
   template_id?: string
-  template_property?: any[]
+  template_properties?: any[]
   total_tax_amount?: string
   updated_at?: string
-  verification_error?: any[]
+  verification_errors?: any[]
   verification_status?: string
+
+  // Selects a custom action instead of the plain update:
+  //   'clearance_slip' | 'notification_read' | 'pbn_applicable' | 'receipt'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface SubmissionRemoveMatch {
   id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'clearance_slip' | 'notification_read' | 'pbn_applicable' | 'receipt'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface SubmissionDetail {
-  additional_external_id?: any[]
+  additional_external_ids?: any[]
   additional_information: any[]
   amendment_status?: string
   clearance_slip: Record<string, any>
@@ -576,16 +618,16 @@ export interface SubmissionDetail {
   source_type?: string
   status?: string
   submission: string
-  supporting_document?: any[]
+  supporting_documents?: any[]
   template?: boolean
   total_tax_amount?: string
   updated_at: string
-  verification_error?: any[]
+  verification_errors?: any[]
   verification_status?: string
 }
 
 export interface SubmissionDetailCreateData {
-  additional_external_id?: any[]
+  additional_external_ids?: any[]
   additional_information: any[]
   amendment_status?: string
   clearance_slip: Record<string, any>
@@ -620,11 +662,11 @@ export interface SubmissionDetailCreateData {
   source_type?: string
   status?: string
   submission: string
-  supporting_document?: any[]
+  supporting_documents?: any[]
   template?: boolean
   total_tax_amount?: string
   updated_at: string
-  verification_error?: any[]
+  verification_errors?: any[]
   verification_status?: string
 }
 

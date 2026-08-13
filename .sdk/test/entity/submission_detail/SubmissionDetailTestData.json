@@ -2,7 +2,7 @@
   "existing": {
     "submission_detail": {
       "SUBMISSION_DETAIL00": {
-        "additional_external_id": "ADDITIONAL_EXTERNAL01",
+        "additional_external_ids": [],
         "additional_information": [],
         "amendment_status": "s19c",
         "clearance_slip": {},
@@ -37,15 +37,15 @@
         "source_type": "s1ba",
         "status": "s1bb",
         "submission": "s1bc",
-        "supporting_document": [],
+        "supporting_documents": [],
         "template": true,
         "total_tax_amount": "s1bf",
         "updated_at": "s1c0",
-        "verification_error": [],
+        "verification_errors": [],
         "verification_status": "s1c2"
       },
       "SUBMISSION_DETAIL01": {
-        "additional_external_id": "ADDITIONAL_EXTERNAL01",
+        "additional_external_ids": [],
         "additional_information": [],
         "amendment_status": "s336",
         "clearance_slip": {},
@@ -80,15 +80,15 @@
         "source_type": "s354",
         "status": "s355",
         "submission": "s356",
-        "supporting_document": [],
+        "supporting_documents": [],
         "template": true,
         "total_tax_amount": "s359",
         "updated_at": "s35a",
-        "verification_error": [],
+        "verification_errors": [],
         "verification_status": "s35c"
       },
       "SUBMISSION_DETAIL02": {
-        "additional_external_id": "ADDITIONAL_EXTERNAL01",
+        "additional_external_ids": [],
         "additional_information": [],
         "amendment_status": "s4d0",
         "clearance_slip": {},
@@ -123,11 +123,11 @@
         "source_type": "s4ee",
         "status": "s4ef",
         "submission": "s4f0",
-        "supporting_document": [],
+        "supporting_documents": [],
         "template": true,
         "total_tax_amount": "s4f3",
         "updated_at": "s4f4",
-        "verification_error": [],
+        "verification_errors": [],
         "verification_status": "s4f6"
       }
     }
@@ -135,7 +135,7 @@
   "new": {
     "submission_detail": {
       "submission_detail_ref01": {
-        "additional_external_id": "ADDITIONAL_EXTERNAL01",
+        "additional_external_ids": [],
         "additional_information": [],
         "amendment_status": "s66a",
         "clearance_slip": {},
@@ -169,11 +169,11 @@
         "source_type": "s688",
         "status": "s689",
         "submission": "s68a",
-        "supporting_document": [],
+        "supporting_documents": [],
         "template": true,
         "total_tax_amount": "s68d",
         "updated_at": "s68e",
-        "verification_error": [],
+        "verification_errors": [],
         "verification_status": "s690"
       }
     }

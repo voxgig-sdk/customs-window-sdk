@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import CustomsWindowControl
-from core.error import CustomsWindowError
-from core.result import CustomsWindowResult
-from core.spec import CustomsWindowSpec
+from customswindow_sdk.config import make_config
+from customswindow_sdk.features import _make_feature
+from customswindow_sdk.core.control import CustomsWindowControl
+from customswindow_sdk.core.error import CustomsWindowError
+from customswindow_sdk.core.result import CustomsWindowResult
+from customswindow_sdk.core.spec import CustomsWindowSpec
 
 
 # True when this SDK was generated with the named feature.

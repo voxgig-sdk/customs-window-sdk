@@ -453,7 +453,7 @@ $party = $client->Party();
 | `additional_declaration_type` | `array` | Yes |  |
 | `address` | `array` | Yes |  |
 | `authorisation` | `array` | Yes |  |
-| `bank_detail` | `string` | No |  |
+| `bank_details` | `string` | No |  |
 | `certificate` | `array` | Yes |  |
 | `certificate_type` | `string` | Yes |  |
 | `company` | `string` | Yes |  |
@@ -575,10 +575,10 @@ $submission = $client->Submission();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `array` | No |  |
+| `additional_external_ids` | `array` | No |  |
 | `amendment_reason` | `string` | No |  |
 | `amendment_status` | `string` | No |  |
-| `answer` | `array` | Yes |  |
+| `answers` | `array` | Yes |  |
 | `bypass_restricted_code` | `bool` | No |  |
 | `clearance_slip` | `array` | Yes |  |
 | `client` | `array` | Yes |  |
@@ -602,7 +602,7 @@ $submission = $client->Submission();
 | `lrn` | `string` | No |  |
 | `mrn` | `string` | No |  |
 | `name` | `string` | No |  |
-| `partial_answer` | `bool` | No |  |
+| `partial_answers` | `bool` | No |  |
 | `receipt` | `array` | Yes |  |
 | `refund_application_status` | `string` | No |  |
 | `route` | `string` | No |  |
@@ -613,20 +613,20 @@ $submission = $client->Submission();
 | `status` | `string` | No |  |
 | `template` | `bool` | No |  |
 | `template_id` | `string` | No |  |
-| `template_property` | `array` | No |  |
+| `template_properties` | `array` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
-| `verification_error` | `array` | No |  |
+| `verification_errors` | `array` | No |  |
 | `verification_status` | `string` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create | update | remove |
 | --- | --- | --- | --- | --- | --- |
-| `additional_external_id` | - | - | - | - | - |
+| `additional_external_ids` | - | - | - | - | - |
 | `amendment_reason` | - | - | - | - | - |
 | `amendment_status` | - | - | - | - | - |
-| `answer` | - | - | - | Yes | - |
+| `answers` | - | - | - | Yes | - |
 | `bypass_restricted_code` | - | - | - | - | - |
 | `clearance_slip` | - | - | - | - | - |
 | `client` | - | - | - | - | - |
@@ -650,7 +650,7 @@ $submission = $client->Submission();
 | `lrn` | - | - | - | - | - |
 | `mrn` | - | - | - | - | - |
 | `name` | - | - | - | - | - |
-| `partial_answer` | - | - | - | - | - |
+| `partial_answers` | - | - | - | - | - |
 | `receipt` | - | - | - | - | - |
 | `refund_application_status` | - | - | - | - | - |
 | `route` | - | - | - | - | - |
@@ -661,10 +661,10 @@ $submission = $client->Submission();
 | `status` | - | - | - | - | - |
 | `template` | - | - | - | - | - |
 | `template_id` | - | - | - | - | - |
-| `template_property` | - | - | - | - | - |
+| `template_properties` | - | - | - | - | - |
 | `total_tax_amount` | - | - | - | - | - |
 | `updated_at` | - | - | - | - | - |
-| `verification_error` | - | - | - | - | - |
+| `verification_errors` | - | - | - | - | - |
 | `verification_status` | - | - | - | - | - |
 
 ### Operations
@@ -675,7 +675,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Submission()->create([
-  "answer" => null, // array
+  "answers" => null, // array
   "clearance_slip" => null, // array
   "client" => null, // array
   "company_member" => null, // array
@@ -765,7 +765,7 @@ $submission_detail = $client->SubmissionDetail();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `additional_external_id` | `array` | No |  |
+| `additional_external_ids` | `array` | No |  |
 | `additional_information` | `array` | Yes |  |
 | `amendment_status` | `string` | No |  |
 | `clearance_slip` | `array` | Yes |  |
@@ -800,11 +800,11 @@ $submission_detail = $client->SubmissionDetail();
 | `source_type` | `string` | No |  |
 | `status` | `string` | No |  |
 | `submission` | `string` | Yes |  |
-| `supporting_document` | `array` | No |  |
+| `supporting_documents` | `array` | No |  |
 | `template` | `bool` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
-| `verification_error` | `array` | No |  |
+| `verification_errors` | `array` | No |  |
 | `verification_status` | `string` | No |  |
 
 ### Operations

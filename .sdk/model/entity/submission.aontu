@@ -6,7 +6,7 @@ main: kit: entity: submission: {
 
   fields: [
     {
-      name: "additional_external_id"
+      name: "additional_external_ids"
       req: false
       type: "`$ARRAY`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: submission: {
       type: "`$STRING`"
     }
     {
-      name: "answer"
+      name: "answers"
       op: {
         update: {
           req: false
@@ -153,7 +153,7 @@ main: kit: entity: submission: {
       type: "`$STRING`"
     }
     {
-      name: "partial_answer"
+      name: "partial_answers"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -208,7 +208,7 @@ main: kit: entity: submission: {
       type: "`$STRING`"
     }
     {
-      name: "template_property"
+      name: "template_properties"
       req: false
       type: "`$ARRAY`"
     }
@@ -223,7 +223,7 @@ main: kit: entity: submission: {
       type: "`$STRING`"
     }
     {
-      name: "verification_error"
+      name: "verification_errors"
       req: false
       type: "`$ARRAY`"
     }
@@ -363,7 +363,7 @@ main: kit: entity: submission: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]
