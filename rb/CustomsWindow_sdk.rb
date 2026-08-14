@@ -28,7 +28,7 @@ class CustomsWindowSDK
     utility = CustomsWindowUtility.new
     @_utility = utility
 
-    config = CustomsWindowConfig.make_config
+    config = CustomsWindowConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

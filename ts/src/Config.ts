@@ -80,291 +80,176 @@ class Config {
     "bulk_upload": {
       "fields": [
         {
-          "active": true,
           "name": "active_transport_nationality",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "active_transport_number",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "arrival_datetime",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "client",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "company_member",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "created_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "declarant",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "declarations_no",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "deleted_at",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "departure_datetime",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "errors_file",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 10
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "external_id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "failed_declarations_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 12
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "file",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 13
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "green_routed_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 14
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "h1_fallback_template",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "house_transport_doc_ref",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 16
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "issue_date",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 18
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "mapping",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 19
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "orange_routed_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 20
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "parsed_declarations_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 21
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "parser",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 22
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "parsing_completed_at",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 23
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "parsing_started_at",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 24
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "passive_transport_nationality",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 25
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "passive_transport_number",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 26
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "processed_declarations_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 27
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "processing_ended_at",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 28
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "processing_started_at",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 29
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "receipt_generating_started_at",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 30
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "receipt_request_started_at",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 31
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "receipt_request_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 32
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "receipt_request_user",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 33
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "receipts_zip",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 34
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "red_routed_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 35
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "rejected_status_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 36
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 37
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "template",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 38
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "updated_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 39
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "yellow_routed_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 40
+          "type": "`$INTEGER`"
         }
       ],
       "name": "bulk_upload",
@@ -374,7 +259,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -386,26 +270,21 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "cursor",
                     "orig": "cursor",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -424,28 +303,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -464,15 +338,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -498,28 +369,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         },
         "remove": {
           "input": "data",
           "name": "remove",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -538,15 +404,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -572,28 +435,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "remove"
+          ]
         },
         "update": {
           "input": "data",
           "name": "update",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -612,21 +470,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -647,11 +501,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "update"
+          ]
         }
       },
       "relations": {
@@ -661,80 +513,57 @@ class Config {
     "file": {
       "fields": [
         {
-          "active": true,
           "name": "company",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "created_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "extension",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "file",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "public",
           "op": {
             "create": {
-              "req": false,
               "type": "`$BOOLEAN`"
             }
           },
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 6
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "size",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "updated_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "url",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         }
       ],
       "name": "file",
@@ -744,7 +573,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -758,11 +586,9 @@ class Config {
                   "file": "`reqdata`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -796,186 +622,120 @@ class Config {
     "party": {
       "fields": [
         {
-          "active": true,
           "name": "additional_declaration_type",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "address",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "authorisation",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 2
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "bank_details",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "certificate",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "certificate_type",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "company",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "created_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "customs_office_of_lodgement",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "deleted_at",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "email",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "identification_number",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "indirect_representative",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 13
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "nhd_last_submission_year",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 15
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "nhd_submission_counter",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 16
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "person_paying_customs_duty",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "phone_country_code",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 18
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "phone_number",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 19
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "preferred_payment_method",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 20
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "signed_form",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 21
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "type",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 22
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "type_of_person",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 23
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "unlocode",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 24
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "updated_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 25
+          "type": "`$STRING`"
         }
       ],
       "name": "party",
@@ -985,7 +745,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -997,34 +756,27 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "cursor",
                     "orig": "cursor",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "type",
                     "orig": "type",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1044,28 +796,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1084,28 +831,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         },
         "remove": {
           "input": "data",
           "name": "remove",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1124,28 +866,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "remove"
+          ]
         },
         "update": {
           "input": "data",
           "name": "update",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1164,11 +901,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "update"
+          ]
         }
       },
       "relations": {
@@ -1178,317 +913,198 @@ class Config {
     "submission": {
       "fields": [
         {
-          "active": true,
           "name": "additional_external_ids",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "amendment_reason",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "amendment_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "answers",
           "op": {
             "update": {
-              "req": false,
               "type": "`$ARRAY`"
             }
           },
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 3
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "bypass_restricted_code",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 4
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "clearance_slip",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "client",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "company_member",
           "op": {
             "update": {
-              "req": false,
               "type": "`$STRING`"
             }
           },
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "consignee",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "consignor",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 9
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "created_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "declarant",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 11
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "document_upload_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "documents_presentation_requested",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 13
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "documents_upload_requested",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 14
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "external_id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "form",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 16
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "goods_presentation_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "hrcm_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 18
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 19
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "invalidation_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 20
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "is_global_template",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 21
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "latest_notification_item",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 22
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "latest_state",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 23
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "lrn",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 24
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "mrn",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 25
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 26
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "partial_answers",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 27
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "receipt",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 28
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "refund_application_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 29
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "route",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 30
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "shipment_items_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 31
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "shipment_items_quantity_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 32
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "source",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 33
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "source_type",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 34
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 35
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "template",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 36
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "template_id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 37
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "template_properties",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 38
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "total_tax_amount",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 39
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "updated_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 40
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "verification_errors",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 41
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "verification_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 42
+          "type": "`$STRING`"
         }
       ],
       "name": "submission",
@@ -1498,17 +1114,14 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1529,11 +1142,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1545,11 +1156,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1564,60 +1173,47 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "cursor",
                     "orig": "cursor",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "form_subtype",
                     "orig": "form_subtype",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "green",
                     "kind": "query",
                     "name": "route",
                     "orig": "route",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "released",
                     "kind": "query",
                     "name": "status",
                     "orig": "status",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "template",
                     "orig": "template",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   }
                 ]
@@ -1640,28 +1236,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1680,15 +1271,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -1714,15 +1302,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -1748,15 +1333,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -1782,15 +1364,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -1816,15 +1395,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 4
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -1850,11 +1426,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 5
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1869,28 +1443,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 6
+              }
             }
-          ],
-          "key$": "load"
+          ]
         },
         "remove": {
           "input": "data",
           "name": "remove",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1909,15 +1478,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -1943,15 +1509,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -1977,15 +1540,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -2011,15 +1571,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -2045,28 +1602,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 4
+              }
             }
-          ],
-          "key$": "remove"
+          ]
         },
         "update": {
           "input": "data",
           "name": "update",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2085,15 +1637,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -2119,15 +1668,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -2153,15 +1699,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -2187,15 +1730,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
@@ -2221,11 +1761,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 4
+              }
             }
-          ],
-          "key$": "update"
+          ]
         }
       },
       "relations": {
@@ -2235,291 +1773,182 @@ class Config {
     "submission_detail": {
       "fields": [
         {
-          "active": true,
           "name": "additional_external_ids",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "additional_information",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "amendment_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "clearance_slip",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "client",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "company",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "company_member",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "consignee",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "consignor",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "created_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "declarant",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 10
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "document_upload_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "documents_presentation_requested",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 12
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "documents_upload_requested",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 13
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "external_id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "form",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "goods_presentation_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 16
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "hrcm_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 18
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "invalidation_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 19
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "is_global_template",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 20
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "latest_notification_item",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 21
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "latest_state",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 22
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "lrn",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 23
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "mrn",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 24
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 25
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "receipt",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 26
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "refund_application_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 27
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "route",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 28
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "shipment_items_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 29
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "shipment_items_quantity_no",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 30
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "source",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 31
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "source_type",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 32
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 33
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "submission",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 34
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "supporting_documents",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 35
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "template",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 36
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "total_tax_amount",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 37
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "updated_at",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 38
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "verification_errors",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 39
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "verification_status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 40
+          "type": "`$STRING`"
         }
       ],
       "name": "submission_detail",
@@ -2529,7 +1958,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2541,11 +1969,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {

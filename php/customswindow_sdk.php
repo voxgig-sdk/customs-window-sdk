@@ -40,7 +40,7 @@ class CustomsWindowSDK
         $utility = new CustomsWindowUtility();
         $this->_utility = $utility;
 
-        $config = CustomsWindowConfig::make_config();
+        $config = CustomsWindowConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
