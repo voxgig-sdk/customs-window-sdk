@@ -38,6 +38,7 @@ main: kit: entity: party: {
     {
       name: "company"
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -63,6 +64,7 @@ main: kit: entity: party: {
     {
       name: "id"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -118,6 +120,7 @@ main: kit: entity: party: {
     {
       name: "type"
       req: false
+      short: "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…"
       type: "`$STRING`"
     }
     {

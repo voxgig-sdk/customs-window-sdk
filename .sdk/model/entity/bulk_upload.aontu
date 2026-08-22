@@ -8,6 +8,7 @@ main: kit: entity: bulk_upload: {
     {
       name: "active_transport_nationality"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -23,11 +24,13 @@ main: kit: entity: bulk_upload: {
     {
       name: "client"
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
       name: "company_member"
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -38,6 +41,7 @@ main: kit: entity: bulk_upload: {
     {
       name: "declarant"
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -73,6 +77,7 @@ main: kit: entity: bulk_upload: {
     {
       name: "file"
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$OBJECT`"
     }
     {
@@ -83,6 +88,7 @@ main: kit: entity: bulk_upload: {
     {
       name: "h1_fallback_template"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -93,6 +99,7 @@ main: kit: entity: bulk_upload: {
     {
       name: "id"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -103,6 +110,7 @@ main: kit: entity: bulk_upload: {
     {
       name: "mapping"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -118,6 +126,7 @@ main: kit: entity: bulk_upload: {
     {
       name: "parser"
       req: false
+      short: "* `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform"
       type: "`$STRING`"
     }
     {
@@ -133,6 +142,7 @@ main: kit: entity: bulk_upload: {
     {
       name: "passive_transport_nationality"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -168,16 +178,19 @@ main: kit: entity: bulk_upload: {
     {
       name: "receipt_request_status"
       req: false
+      short: "* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed"
       type: "`$STRING`"
     }
     {
       name: "receipt_request_user"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
       name: "receipts_zip"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -193,11 +206,13 @@ main: kit: entity: bulk_upload: {
     {
       name: "status"
       req: false
+      short: "* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete"
       type: "`$STRING`"
     }
     {
       name: "template"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {

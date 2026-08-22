@@ -284,45 +284,45 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `active_transport_nationality` |  |
+| `active_transport_nationality` | cuid-format identifier for this entity. |
 | `active_transport_number` |  |
 | `arrival_datetime` |  |
-| `client` |  |
-| `company_member` |  |
+| `client` | cuid-format identifier for this entity. |
+| `company_member` | cuid-format identifier for this entity. |
 | `created_at` |  |
-| `declarant` |  |
+| `declarant` | cuid-format identifier for this entity. |
 | `declarations_no` |  |
 | `deleted_at` |  |
 | `departure_datetime` |  |
 | `errors_file` |  |
 | `external_id` |  |
 | `failed_declarations_no` |  |
-| `file` |  |
+| `file` | cuid-format identifier for this entity. |
 | `green_routed_no` |  |
-| `h1_fallback_template` |  |
+| `h1_fallback_template` | cuid-format identifier for this entity. |
 | `house_transport_doc_ref` |  |
-| `id` |  |
+| `id` | cuid-format identifier for this entity. |
 | `issue_date` |  |
-| `mapping` |  |
+| `mapping` | cuid-format identifier for this entity. |
 | `orange_routed_no` |  |
 | `parsed_declarations_no` |  |
-| `parser` |  |
+| `parser` | * `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform |
 | `parsing_completed_at` |  |
 | `parsing_started_at` |  |
-| `passive_transport_nationality` |  |
+| `passive_transport_nationality` | cuid-format identifier for this entity. |
 | `passive_transport_number` |  |
 | `processed_declarations_no` |  |
 | `processing_ended_at` |  |
 | `processing_started_at` |  |
 | `receipt_generating_started_at` |  |
 | `receipt_request_started_at` |  |
-| `receipt_request_status` |  |
-| `receipt_request_user` |  |
-| `receipts_zip` |  |
+| `receipt_request_status` | * `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed |
+| `receipt_request_user` | cuid-format identifier for this entity. |
+| `receipts_zip` | cuid-format identifier for this entity. |
 | `red_routed_no` |  |
 | `rejected_status_no` |  |
-| `status` |  |
-| `template` |  |
+| `status` | * `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete |
+| `template` | cuid-format identifier for this entity. |
 | `updated_at` |  |
 | `yellow_routed_no` |  |
 
@@ -334,11 +334,11 @@ API path: `/bulk-uploads`
 
 | Field | Description |
 | --- | --- |
-| `company` |  |
+| `company` | cuid-format identifier for this entity. |
 | `created_at` |  |
 | `extension` |  |
 | `file` |  |
-| `id` |  |
+| `id` | cuid-format identifier for this entity. |
 | `name` |  |
 | `public` |  |
 | `size` |  |
@@ -386,12 +386,12 @@ API path: ``
 | `bank_details` |  |
 | `certificate` |  |
 | `certificate_type` |  |
-| `company` |  |
+| `company` | cuid-format identifier for this entity. |
 | `created_at` |  |
 | `customs_office_of_lodgement` |  |
 | `deleted_at` |  |
 | `email` |  |
-| `id` |  |
+| `id` | cuid-format identifier for this entity. |
 | `identification_number` |  |
 | `indirect_representative` |  |
 | `name` |  |
@@ -402,7 +402,7 @@ API path: ``
 | `phone_number` |  |
 | `preferred_payment_method` |  |
 | `signed_form` |  |
-| `type` |  |
+| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
 | `type_of_person` |  |
 | `unlocode` |  |
 | `updated_at` |  |
@@ -417,47 +417,47 @@ API path: `/parties`
 | --- | --- |
 | `additional_external_ids` |  |
 | `amendment_reason` |  |
-| `amendment_status` |  |
+| `amendment_status` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `answers` |  |
 | `bypass_restricted_code` |  |
 | `clearance_slip` |  |
 | `client` |  |
-| `company_member` |  |
+| `company_member` | cuid-format identifier for this entity. |
 | `consignee` |  |
 | `consignor` |  |
 | `created_at` |  |
-| `declarant` |  |
-| `document_upload_status` |  |
+| `declarant` | cuid-format identifier for this entity. |
+| `document_upload_status` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `documents_presentation_requested` |  |
 | `documents_upload_requested` |  |
 | `external_id` |  |
-| `form` |  |
-| `goods_presentation_status` |  |
-| `hrcm_status` |  |
-| `id` |  |
-| `invalidation_status` |  |
+| `form` | cuid-format identifier for this entity. |
+| `goods_presentation_status` | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested |
+| `hrcm_status` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
+| `id` | cuid-format identifier for this entity. |
+| `invalidation_status` | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled |
 | `is_global_template` |  |
-| `latest_notification_item` |  |
+| `latest_notification_item` | cuid-format identifier for this entity. |
 | `latest_state` |  |
 | `lrn` |  |
 | `mrn` |  |
 | `name` |  |
 | `partial_answers` |  |
 | `receipt` |  |
-| `refund_application_status` |  |
-| `route` |  |
+| `refund_application_status` | * `processing` - processing * `rejected` - rejected * `accepted` - accepted |
+| `route` | * `green` - green * `orange` - orange * `red` - red * `yellow` - yellow |
 | `shipment_items_no` |  |
 | `shipment_items_quantity_no` |  |
-| `source` |  |
-| `source_type` |  |
-| `status` |  |
+| `source` | cuid-format identifier for this entity. |
+| `source_type` | * `template` - template * `automated_import` - automated_import |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
 | `template` |  |
-| `template_id` |  |
+| `template_id` | cuid-format identifier for this entity. |
 | `template_properties` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
 | `verification_errors` |  |
-| `verification_status` |  |
+| `verification_status` | * `passed` - passed * `failed` - failed |
 
 Operations: Create, List, Load, Remove, Update.
 
@@ -469,45 +469,45 @@ API path: `/submissions/{id}/refund`
 | --- | --- |
 | `additional_external_ids` |  |
 | `additional_information` |  |
-| `amendment_status` |  |
+| `amendment_status` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `clearance_slip` |  |
 | `client` |  |
-| `company` |  |
-| `company_member` |  |
+| `company` | cuid-format identifier for this entity. |
+| `company_member` | cuid-format identifier for this entity. |
 | `consignee` |  |
 | `consignor` |  |
 | `created_at` |  |
 | `declarant` |  |
-| `document_upload_status` |  |
+| `document_upload_status` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `documents_presentation_requested` |  |
 | `documents_upload_requested` |  |
 | `external_id` |  |
 | `form` |  |
-| `goods_presentation_status` |  |
-| `hrcm_status` |  |
-| `id` |  |
-| `invalidation_status` |  |
+| `goods_presentation_status` | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested |
+| `hrcm_status` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
+| `id` | cuid-format identifier for this entity. |
+| `invalidation_status` | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled |
 | `is_global_template` |  |
-| `latest_notification_item` |  |
+| `latest_notification_item` | cuid-format identifier for this entity. |
 | `latest_state` |  |
 | `lrn` |  |
 | `mrn` |  |
 | `name` |  |
 | `receipt` |  |
-| `refund_application_status` |  |
-| `route` |  |
+| `refund_application_status` | * `processing` - processing * `rejected` - rejected * `accepted` - accepted |
+| `route` | * `green` - green * `orange` - orange * `red` - red * `yellow` - yellow |
 | `shipment_items_no` |  |
 | `shipment_items_quantity_no` |  |
-| `source` |  |
-| `source_type` |  |
-| `status` |  |
-| `submission` |  |
+| `source` | cuid-format identifier for this entity. |
+| `source_type` | * `template` - template * `automated_import` - automated_import |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `submission` | cuid-format identifier for this entity. |
 | `supporting_documents` |  |
 | `template` |  |
 | `total_tax_amount` |  |
 | `updated_at` |  |
 | `verification_errors` |  |
-| `verification_status` |  |
+| `verification_status` | * `passed` - passed * `failed` - failed |
 
 Operations: Create.
 
@@ -536,45 +536,45 @@ Create an instance: `bulk_upload = client.BulkUpload()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_transport_nationality` | `str` |  |
+| `active_transport_nationality` | `str` | cuid-format identifier for this entity. |
 | `active_transport_number` | `str` |  |
 | `arrival_datetime` | `str` |  |
-| `client` | `str` |  |
-| `company_member` | `str` |  |
+| `client` | `str` | cuid-format identifier for this entity. |
+| `company_member` | `str` | cuid-format identifier for this entity. |
 | `created_at` | `str` |  |
-| `declarant` | `str` |  |
+| `declarant` | `str` | cuid-format identifier for this entity. |
 | `declarations_no` | `int` |  |
 | `deleted_at` | `str` |  |
 | `departure_datetime` | `str` |  |
 | `errors_file` | `dict` |  |
 | `external_id` | `str` |  |
 | `failed_declarations_no` | `int` |  |
-| `file` | `dict` |  |
+| `file` | `dict` | cuid-format identifier for this entity. |
 | `green_routed_no` | `int` |  |
-| `h1_fallback_template` | `str` |  |
+| `h1_fallback_template` | `str` | cuid-format identifier for this entity. |
 | `house_transport_doc_ref` | `str` |  |
-| `id` | `str` |  |
+| `id` | `str` | cuid-format identifier for this entity. |
 | `issue_date` | `str` |  |
-| `mapping` | `str` |  |
+| `mapping` | `str` | cuid-format identifier for this entity. |
 | `orange_routed_no` | `int` |  |
 | `parsed_declarations_no` | `int` |  |
-| `parser` | `str` |  |
+| `parser` | `str` | * `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform |
 | `parsing_completed_at` | `str` |  |
 | `parsing_started_at` | `str` |  |
-| `passive_transport_nationality` | `str` |  |
+| `passive_transport_nationality` | `str` | cuid-format identifier for this entity. |
 | `passive_transport_number` | `str` |  |
 | `processed_declarations_no` | `int` |  |
 | `processing_ended_at` | `str` |  |
 | `processing_started_at` | `str` |  |
 | `receipt_generating_started_at` | `str` |  |
 | `receipt_request_started_at` | `str` |  |
-| `receipt_request_status` | `str` |  |
-| `receipt_request_user` | `str` |  |
-| `receipts_zip` | `str` |  |
+| `receipt_request_status` | `str` | * `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed |
+| `receipt_request_user` | `str` | cuid-format identifier for this entity. |
+| `receipts_zip` | `str` | cuid-format identifier for this entity. |
 | `red_routed_no` | `int` |  |
 | `rejected_status_no` | `int` |  |
-| `status` | `str` |  |
-| `template` | `str` |  |
+| `status` | `str` | * `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete |
+| `template` | `str` | cuid-format identifier for this entity. |
 | `updated_at` | `str` |  |
 | `yellow_routed_no` | `int` |  |
 
@@ -620,11 +620,11 @@ Create an instance: `file = client.File()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `company` | `str` |  |
+| `company` | `str` | cuid-format identifier for this entity. |
 | `created_at` | `str` |  |
 | `extension` | `str` |  |
 | `file` | `str` |  |
-| `id` | `str` |  |
+| `id` | `str` | cuid-format identifier for this entity. |
 | `name` | `str` |  |
 | `public` | `bool` |  |
 | `size` | `int` |  |
@@ -686,12 +686,12 @@ Create an instance: `party = client.Party()`
 | `bank_details` | `str` |  |
 | `certificate` | `dict` |  |
 | `certificate_type` | `str` |  |
-| `company` | `str` |  |
+| `company` | `str` | cuid-format identifier for this entity. |
 | `created_at` | `str` |  |
 | `customs_office_of_lodgement` | `dict` |  |
 | `deleted_at` | `str` |  |
 | `email` | `str` |  |
-| `id` | `str` |  |
+| `id` | `str` | cuid-format identifier for this entity. |
 | `identification_number` | `str` |  |
 | `indirect_representative` | `bool` |  |
 | `name` | `str` |  |
@@ -702,7 +702,7 @@ Create an instance: `party = client.Party()`
 | `phone_number` | `str` |  |
 | `preferred_payment_method` | `dict` |  |
 | `signed_form` | `dict` |  |
-| `type` | `str` |  |
+| `type` | `str` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
 | `type_of_person` | `dict` |  |
 | `unlocode` | `str` |  |
 | `updated_at` | `str` |  |
@@ -759,47 +759,47 @@ Create an instance: `submission = client.Submission()`
 | --- | --- | --- |
 | `additional_external_ids` | `list` |  |
 | `amendment_reason` | `str` |  |
-| `amendment_status` | `str` |  |
+| `amendment_status` | `str` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `answers` | `list` |  |
 | `bypass_restricted_code` | `bool` |  |
 | `clearance_slip` | `dict` |  |
 | `client` | `dict` |  |
-| `company_member` | `dict` |  |
+| `company_member` | `dict` | cuid-format identifier for this entity. |
 | `consignee` | `dict` |  |
 | `consignor` | `dict` |  |
 | `created_at` | `str` |  |
-| `declarant` | `dict` |  |
-| `document_upload_status` | `str` |  |
+| `declarant` | `dict` | cuid-format identifier for this entity. |
+| `document_upload_status` | `str` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `documents_presentation_requested` | `bool` |  |
 | `documents_upload_requested` | `bool` |  |
 | `external_id` | `str` |  |
-| `form` | `str` |  |
-| `goods_presentation_status` | `str` |  |
-| `hrcm_status` | `str` |  |
-| `id` | `str` |  |
-| `invalidation_status` | `str` |  |
+| `form` | `str` | cuid-format identifier for this entity. |
+| `goods_presentation_status` | `str` | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested |
+| `hrcm_status` | `str` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
+| `id` | `str` | cuid-format identifier for this entity. |
+| `invalidation_status` | `str` | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled |
 | `is_global_template` | `bool` |  |
-| `latest_notification_item` | `str` |  |
+| `latest_notification_item` | `str` | cuid-format identifier for this entity. |
 | `latest_state` | `dict` |  |
 | `lrn` | `str` |  |
 | `mrn` | `str` |  |
 | `name` | `str` |  |
 | `partial_answers` | `bool` |  |
 | `receipt` | `dict` |  |
-| `refund_application_status` | `str` |  |
-| `route` | `str` |  |
+| `refund_application_status` | `str` | * `processing` - processing * `rejected` - rejected * `accepted` - accepted |
+| `route` | `str` | * `green` - green * `orange` - orange * `red` - red * `yellow` - yellow |
 | `shipment_items_no` | `int` |  |
 | `shipment_items_quantity_no` | `int` |  |
-| `source` | `str` |  |
-| `source_type` | `str` |  |
-| `status` | `str` |  |
+| `source` | `str` | cuid-format identifier for this entity. |
+| `source_type` | `str` | * `template` - template * `automated_import` - automated_import |
+| `status` | `str` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
 | `template` | `bool` |  |
-| `template_id` | `str` |  |
+| `template_id` | `str` | cuid-format identifier for this entity. |
 | `template_properties` | `list` |  |
 | `total_tax_amount` | `str` |  |
 | `updated_at` | `str` |  |
 | `verification_errors` | `list` |  |
-| `verification_status` | `str` |  |
+| `verification_status` | `str` | * `passed` - passed * `failed` - failed |
 
 #### Example: Load
 
@@ -849,45 +849,45 @@ Create an instance: `submission_detail = client.SubmissionDetail()`
 | --- | --- | --- |
 | `additional_external_ids` | `list` |  |
 | `additional_information` | `list` |  |
-| `amendment_status` | `str` |  |
+| `amendment_status` | `str` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `clearance_slip` | `dict` |  |
 | `client` | `dict` |  |
-| `company` | `str` |  |
-| `company_member` | `dict` |  |
+| `company` | `str` | cuid-format identifier for this entity. |
+| `company_member` | `dict` | cuid-format identifier for this entity. |
 | `consignee` | `dict` |  |
 | `consignor` | `dict` |  |
 | `created_at` | `str` |  |
 | `declarant` | `dict` |  |
-| `document_upload_status` | `str` |  |
+| `document_upload_status` | `str` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `documents_presentation_requested` | `bool` |  |
 | `documents_upload_requested` | `bool` |  |
 | `external_id` | `str` |  |
 | `form` | `str` |  |
-| `goods_presentation_status` | `str` |  |
-| `hrcm_status` | `str` |  |
-| `id` | `str` |  |
-| `invalidation_status` | `str` |  |
+| `goods_presentation_status` | `str` | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested |
+| `hrcm_status` | `str` | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
+| `id` | `str` | cuid-format identifier for this entity. |
+| `invalidation_status` | `str` | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled |
 | `is_global_template` | `bool` |  |
-| `latest_notification_item` | `str` |  |
+| `latest_notification_item` | `str` | cuid-format identifier for this entity. |
 | `latest_state` | `dict` |  |
 | `lrn` | `str` |  |
 | `mrn` | `str` |  |
 | `name` | `str` |  |
 | `receipt` | `dict` |  |
-| `refund_application_status` | `str` |  |
-| `route` | `str` |  |
+| `refund_application_status` | `str` | * `processing` - processing * `rejected` - rejected * `accepted` - accepted |
+| `route` | `str` | * `green` - green * `orange` - orange * `red` - red * `yellow` - yellow |
 | `shipment_items_no` | `int` |  |
 | `shipment_items_quantity_no` | `int` |  |
-| `source` | `str` |  |
-| `source_type` | `str` |  |
-| `status` | `str` |  |
-| `submission` | `str` |  |
+| `source` | `str` | cuid-format identifier for this entity. |
+| `source_type` | `str` | * `template` - template * `automated_import` - automated_import |
+| `status` | `str` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `submission` | `str` | cuid-format identifier for this entity. |
 | `supporting_documents` | `list` |  |
 | `template` | `bool` |  |
 | `total_tax_amount` | `str` |  |
 | `updated_at` | `str` |  |
 | `verification_errors` | `list` |  |
-| `verification_status` | `str` |  |
+| `verification_status` | `str` | * `passed` - passed * `failed` - failed |
 
 #### Example: Create
 

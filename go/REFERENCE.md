@@ -127,45 +127,45 @@ fmt.Println(bulkUpload.GetName()) // "bulk_upload"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_transport_nationality` | `string` | No |  |
+| `active_transport_nationality` | `string` | No | cuid-format identifier for this entity. |
 | `active_transport_number` | `string` | No |  |
 | `arrival_datetime` | `string` | No |  |
-| `client` | `string` | Yes |  |
-| `company_member` | `string` | Yes |  |
+| `client` | `string` | Yes | cuid-format identifier for this entity. |
+| `company_member` | `string` | Yes | cuid-format identifier for this entity. |
 | `created_at` | `string` | Yes |  |
-| `declarant` | `string` | Yes |  |
+| `declarant` | `string` | Yes | cuid-format identifier for this entity. |
 | `declarations_no` | `int` | Yes |  |
 | `deleted_at` | `string` | No |  |
 | `departure_datetime` | `string` | No |  |
 | `errors_file` | `map[string]any` | Yes |  |
 | `external_id` | `string` | No |  |
 | `failed_declarations_no` | `int` | No |  |
-| `file` | `map[string]any` | Yes |  |
+| `file` | `map[string]any` | Yes | cuid-format identifier for this entity. |
 | `green_routed_no` | `int` | No |  |
-| `h1_fallback_template` | `string` | No |  |
+| `h1_fallback_template` | `string` | No | cuid-format identifier for this entity. |
 | `house_transport_doc_ref` | `string` | No |  |
-| `id` | `string` | No |  |
+| `id` | `string` | No | cuid-format identifier for this entity. |
 | `issue_date` | `string` | No |  |
-| `mapping` | `string` | No |  |
+| `mapping` | `string` | No | cuid-format identifier for this entity. |
 | `orange_routed_no` | `int` | No |  |
 | `parsed_declarations_no` | `int` | No |  |
-| `parser` | `string` | No |  |
+| `parser` | `string` | No | * `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform |
 | `parsing_completed_at` | `string` | No |  |
 | `parsing_started_at` | `string` | No |  |
-| `passive_transport_nationality` | `string` | No |  |
+| `passive_transport_nationality` | `string` | No | cuid-format identifier for this entity. |
 | `passive_transport_number` | `string` | No |  |
 | `processed_declarations_no` | `int` | No |  |
 | `processing_ended_at` | `string` | No |  |
 | `processing_started_at` | `string` | No |  |
 | `receipt_generating_started_at` | `string` | No |  |
 | `receipt_request_started_at` | `string` | No |  |
-| `receipt_request_status` | `string` | No |  |
-| `receipt_request_user` | `string` | No |  |
-| `receipts_zip` | `string` | No |  |
+| `receipt_request_status` | `string` | No | * `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed |
+| `receipt_request_user` | `string` | No | cuid-format identifier for this entity. |
+| `receipts_zip` | `string` | No | cuid-format identifier for this entity. |
 | `red_routed_no` | `int` | No |  |
 | `rejected_status_no` | `int` | No |  |
-| `status` | `string` | No |  |
-| `template` | `string` | No |  |
+| `status` | `string` | No | * `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete |
+| `template` | `string` | No | cuid-format identifier for this entity. |
 | `updated_at` | `string` | Yes |  |
 | `yellow_routed_no` | `int` | No |  |
 
@@ -278,11 +278,11 @@ fmt.Println(file.GetName()) // "file"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company` | `string` | Yes |  |
+| `company` | `string` | Yes | cuid-format identifier for this entity. |
 | `created_at` | `string` | Yes |  |
 | `extension` | `string` | Yes |  |
 | `file` | `string` | Yes |  |
-| `id` | `string` | No |  |
+| `id` | `string` | No | cuid-format identifier for this entity. |
 | `name` | `string` | Yes |  |
 | `public` | `bool` | Yes |  |
 | `size` | `int` | No |  |
@@ -461,12 +461,12 @@ fmt.Println(party.GetName()) // "party"
 | `bank_details` | `string` | No |  |
 | `certificate` | `map[string]any` | Yes |  |
 | `certificate_type` | `string` | Yes |  |
-| `company` | `string` | Yes |  |
+| `company` | `string` | Yes | cuid-format identifier for this entity. |
 | `created_at` | `string` | Yes |  |
 | `customs_office_of_lodgement` | `map[string]any` | Yes |  |
 | `deleted_at` | `string` | No |  |
 | `email` | `string` | No |  |
-| `id` | `string` | No |  |
+| `id` | `string` | No | cuid-format identifier for this entity. |
 | `identification_number` | `string` | No |  |
 | `indirect_representative` | `bool` | No |  |
 | `name` | `string` | No |  |
@@ -477,7 +477,7 @@ fmt.Println(party.GetName()) // "party"
 | `phone_number` | `string` | No |  |
 | `preferred_payment_method` | `map[string]any` | Yes |  |
 | `signed_form` | `map[string]any` | Yes |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
 | `type_of_person` | `map[string]any` | Yes |  |
 | `unlocode` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
@@ -597,47 +597,47 @@ fmt.Println(submission.GetName()) // "submission"
 | --- | --- | --- | --- |
 | `additional_external_ids` | `[]any` | No |  |
 | `amendment_reason` | `string` | No |  |
-| `amendment_status` | `string` | No |  |
+| `amendment_status` | `string` | No | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `answers` | `[]any` | Yes |  |
 | `bypass_restricted_code` | `bool` | No |  |
 | `clearance_slip` | `map[string]any` | Yes |  |
 | `client` | `map[string]any` | Yes |  |
-| `company_member` | `map[string]any` | Yes |  |
+| `company_member` | `map[string]any` | Yes | cuid-format identifier for this entity. |
 | `consignee` | `map[string]any` | Yes |  |
 | `consignor` | `map[string]any` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `declarant` | `map[string]any` | Yes |  |
-| `document_upload_status` | `string` | No |  |
+| `declarant` | `map[string]any` | Yes | cuid-format identifier for this entity. |
+| `document_upload_status` | `string` | No | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `documents_presentation_requested` | `bool` | No |  |
 | `documents_upload_requested` | `bool` | No |  |
 | `external_id` | `string` | No |  |
-| `form` | `string` | Yes |  |
-| `goods_presentation_status` | `string` | No |  |
-| `hrcm_status` | `string` | No |  |
-| `id` | `string` | No |  |
-| `invalidation_status` | `string` | No |  |
+| `form` | `string` | Yes | cuid-format identifier for this entity. |
+| `goods_presentation_status` | `string` | No | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested |
+| `hrcm_status` | `string` | No | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
+| `id` | `string` | No | cuid-format identifier for this entity. |
+| `invalidation_status` | `string` | No | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled |
 | `is_global_template` | `bool` | No |  |
-| `latest_notification_item` | `string` | No |  |
+| `latest_notification_item` | `string` | No | cuid-format identifier for this entity. |
 | `latest_state` | `map[string]any` | Yes |  |
 | `lrn` | `string` | No |  |
 | `mrn` | `string` | No |  |
 | `name` | `string` | No |  |
 | `partial_answers` | `bool` | No |  |
 | `receipt` | `map[string]any` | Yes |  |
-| `refund_application_status` | `string` | No |  |
-| `route` | `string` | No |  |
+| `refund_application_status` | `string` | No | * `processing` - processing * `rejected` - rejected * `accepted` - accepted |
+| `route` | `string` | No | * `green` - green * `orange` - orange * `red` - red * `yellow` - yellow |
 | `shipment_items_no` | `int` | No |  |
 | `shipment_items_quantity_no` | `int` | No |  |
-| `source` | `string` | No |  |
-| `source_type` | `string` | No |  |
-| `status` | `string` | No |  |
+| `source` | `string` | No | cuid-format identifier for this entity. |
+| `source_type` | `string` | No | * `template` - template * `automated_import` - automated_import |
+| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
 | `template` | `bool` | No |  |
-| `template_id` | `string` | No |  |
+| `template_id` | `string` | No | cuid-format identifier for this entity. |
 | `template_properties` | `[]any` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
 | `verification_errors` | `[]any` | No |  |
-| `verification_status` | `string` | No |  |
+| `verification_status` | `string` | No | * `passed` - passed * `failed` - failed |
 
 ### Field Usage by Operation
 
@@ -802,45 +802,45 @@ fmt.Println(submissionDetail.GetName()) // "submission_detail"
 | --- | --- | --- | --- |
 | `additional_external_ids` | `[]any` | No |  |
 | `additional_information` | `[]any` | Yes |  |
-| `amendment_status` | `string` | No |  |
+| `amendment_status` | `string` | No | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `clearance_slip` | `map[string]any` | Yes |  |
 | `client` | `map[string]any` | Yes |  |
-| `company` | `string` | Yes |  |
-| `company_member` | `map[string]any` | Yes |  |
+| `company` | `string` | Yes | cuid-format identifier for this entity. |
+| `company_member` | `map[string]any` | Yes | cuid-format identifier for this entity. |
 | `consignee` | `map[string]any` | Yes |  |
 | `consignor` | `map[string]any` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `declarant` | `map[string]any` | Yes |  |
-| `document_upload_status` | `string` | No |  |
+| `document_upload_status` | `string` | No | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
 | `documents_presentation_requested` | `bool` | No |  |
 | `documents_upload_requested` | `bool` | No |  |
 | `external_id` | `string` | No |  |
 | `form` | `string` | Yes |  |
-| `goods_presentation_status` | `string` | No |  |
-| `hrcm_status` | `string` | No |  |
-| `id` | `string` | No |  |
-| `invalidation_status` | `string` | No |  |
+| `goods_presentation_status` | `string` | No | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested |
+| `hrcm_status` | `string` | No | * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled |
+| `id` | `string` | No | cuid-format identifier for this entity. |
+| `invalidation_status` | `string` | No | * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled |
 | `is_global_template` | `bool` | No |  |
-| `latest_notification_item` | `string` | No |  |
+| `latest_notification_item` | `string` | No | cuid-format identifier for this entity. |
 | `latest_state` | `map[string]any` | Yes |  |
 | `lrn` | `string` | No |  |
 | `mrn` | `string` | No |  |
 | `name` | `string` | No |  |
 | `receipt` | `map[string]any` | Yes |  |
-| `refund_application_status` | `string` | No |  |
-| `route` | `string` | No |  |
+| `refund_application_status` | `string` | No | * `processing` - processing * `rejected` - rejected * `accepted` - accepted |
+| `route` | `string` | No | * `green` - green * `orange` - orange * `red` - red * `yellow` - yellow |
 | `shipment_items_no` | `int` | No |  |
 | `shipment_items_quantity_no` | `int` | No |  |
-| `source` | `string` | No |  |
-| `source_type` | `string` | No |  |
-| `status` | `string` | No |  |
-| `submission` | `string` | Yes |  |
+| `source` | `string` | No | cuid-format identifier for this entity. |
+| `source_type` | `string` | No | * `template` - template * `automated_import` - automated_import |
+| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `submission` | `string` | Yes | cuid-format identifier for this entity. |
 | `supporting_documents` | `[]any` | No |  |
 | `template` | `bool` | No |  |
 | `total_tax_amount` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
 | `verification_errors` | `[]any` | No |  |
-| `verification_status` | `string` | No |  |
+| `verification_status` | `string` | No | * `passed` - passed * `failed` - failed |
 
 ### Operations
 

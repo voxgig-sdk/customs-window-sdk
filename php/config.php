@@ -33,6 +33,9 @@ class CustomsWindowConfig
         return [
             "main" => [
                 "name" => "CustomsWindow",
+                "slug" => "customs-window",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -65,6 +68,7 @@ class CustomsWindowConfig
           'fields' => [
             [
               'name' => 'active_transport_nationality',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -78,11 +82,13 @@ class CustomsWindowConfig
             [
               'name' => 'client',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'company_member',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -93,6 +99,7 @@ class CustomsWindowConfig
             [
               'name' => 'declarant',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -124,6 +131,7 @@ class CustomsWindowConfig
             [
               'name' => 'file',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$OBJECT`',
             ],
             [
@@ -132,6 +140,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'h1_fallback_template',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -140,6 +149,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'id',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -148,6 +158,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'mapping',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -160,6 +171,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'parser',
+              'short' => '* `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform',
               'type' => '`$STRING`',
             ],
             [
@@ -172,6 +184,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'passive_transport_nationality',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -200,14 +213,17 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'receipt_request_status',
+              'short' => '* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'receipt_request_user',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'receipts_zip',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -220,10 +236,12 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'status',
+              'short' => '* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'template',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -499,6 +517,7 @@ class CustomsWindowConfig
             [
               'name' => 'company',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -518,6 +537,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'id',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -637,6 +657,7 @@ class CustomsWindowConfig
             [
               'name' => 'company',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -659,6 +680,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'id',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -705,6 +727,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'type',
+              'short' => '* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…',
               'type' => '`$STRING`',
             ],
             [
@@ -906,6 +929,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'amendment_status',
+              'short' => '* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled',
               'type' => '`$STRING`',
             ],
             [
@@ -940,6 +964,7 @@ class CustomsWindowConfig
                 ],
               ],
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$OBJECT`',
             ],
             [
@@ -960,10 +985,12 @@ class CustomsWindowConfig
             [
               'name' => 'declarant',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'document_upload_status',
+              'short' => '* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled',
               'type' => '`$STRING`',
             ],
             [
@@ -981,22 +1008,27 @@ class CustomsWindowConfig
             [
               'name' => 'form',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'goods_presentation_status',
+              'short' => '* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'hrcm_status',
+              'short' => '* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'invalidation_status',
+              'short' => '* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled',
               'type' => '`$STRING`',
             ],
             [
@@ -1005,6 +1037,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'latest_notification_item',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -1035,10 +1068,12 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'refund_application_status',
+              'short' => '* `processing` - processing * `rejected` - rejected * `accepted` - accepted',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'route',
+              'short' => '* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow',
               'type' => '`$STRING`',
             ],
             [
@@ -1051,14 +1086,17 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'source',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'source_type',
+              'short' => '* `template` - template * `automated_import` - automated_import',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
+              'short' => '* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…',
               'type' => '`$STRING`',
             ],
             [
@@ -1067,6 +1105,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'template_id',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -1088,6 +1127,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'verification_status',
+              'short' => '* `passed` - passed * `failed` - failed',
               'type' => '`$STRING`',
             ],
           ],
@@ -1767,6 +1807,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'amendment_status',
+              'short' => '* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled',
               'type' => '`$STRING`',
             ],
             [
@@ -1782,11 +1823,13 @@ class CustomsWindowConfig
             [
               'name' => 'company',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'company_member',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$OBJECT`',
             ],
             [
@@ -1811,6 +1854,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'document_upload_status',
+              'short' => '* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled',
               'type' => '`$STRING`',
             ],
             [
@@ -1832,18 +1876,22 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'goods_presentation_status',
+              'short' => '* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'hrcm_status',
+              'short' => '* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'invalidation_status',
+              'short' => '* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled',
               'type' => '`$STRING`',
             ],
             [
@@ -1852,6 +1900,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'latest_notification_item',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -1878,10 +1927,12 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'refund_application_status',
+              'short' => '* `processing` - processing * `rejected` - rejected * `accepted` - accepted',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'route',
+              'short' => '* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow',
               'type' => '`$STRING`',
             ],
             [
@@ -1894,19 +1945,23 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'source',
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'source_type',
+              'short' => '* `template` - template * `automated_import` - automated_import',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
+              'short' => '* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'submission',
               'req' => true,
+              'short' => 'cuid-format identifier for this entity.',
               'type' => '`$STRING`',
             ],
             [
@@ -1932,6 +1987,7 @@ class CustomsWindowConfig
             ],
             [
               'name' => 'verification_status',
+              'short' => '* `passed` - passed * `failed` - failed',
               'type' => '`$STRING`',
             ],
           ],

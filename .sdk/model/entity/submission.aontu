@@ -18,6 +18,7 @@ main: kit: entity: submission: {
     {
       name: "amendment_status"
       req: false
+      short: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
       type: "`$STRING`"
     }
     {
@@ -55,6 +56,7 @@ main: kit: entity: submission: {
         }
       }
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$OBJECT`"
     }
     {
@@ -75,11 +77,13 @@ main: kit: entity: submission: {
     {
       name: "declarant"
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$OBJECT`"
     }
     {
       name: "document_upload_status"
       req: false
+      short: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
       type: "`$STRING`"
     }
     {
@@ -100,26 +104,31 @@ main: kit: entity: submission: {
     {
       name: "form"
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
       name: "goods_presentation_status"
       req: false
+      short: "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested"
       type: "`$STRING`"
     }
     {
       name: "hrcm_status"
       req: false
+      short: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
       name: "invalidation_status"
       req: false
+      short: "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled"
       type: "`$STRING`"
     }
     {
@@ -130,6 +139,7 @@ main: kit: entity: submission: {
     {
       name: "latest_notification_item"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -165,11 +175,13 @@ main: kit: entity: submission: {
     {
       name: "refund_application_status"
       req: false
+      short: "* `processing` - processing * `rejected` - rejected * `accepted` - accepted"
       type: "`$STRING`"
     }
     {
       name: "route"
       req: false
+      short: "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow"
       type: "`$STRING`"
     }
     {
@@ -185,16 +197,19 @@ main: kit: entity: submission: {
     {
       name: "source"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
       name: "source_type"
       req: false
+      short: "* `template` - template * `automated_import` - automated_import"
       type: "`$STRING`"
     }
     {
       name: "status"
       req: false
+      short: "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…"
       type: "`$STRING`"
     }
     {
@@ -205,6 +220,7 @@ main: kit: entity: submission: {
     {
       name: "template_id"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -230,6 +246,7 @@ main: kit: entity: submission: {
     {
       name: "verification_status"
       req: false
+      short: "* `passed` - passed * `failed` - failed"
       type: "`$STRING`"
     }
   ]

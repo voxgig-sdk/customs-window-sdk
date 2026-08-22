@@ -8,6 +8,7 @@ main: kit: entity: file: {
     {
       name: "company"
       req: true
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {
@@ -28,6 +29,7 @@ main: kit: entity: file: {
     {
       name: "id"
       req: false
+      short: "cuid-format identifier for this entity."
       type: "`$STRING`"
     }
     {

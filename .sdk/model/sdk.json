@@ -20,9 +20,11 @@
         ],
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "repr": "auto"
       },
       "contributor": {},
+      "docs": {},
       "entity": {
         "bulk_upload": {
           "active": true,
@@ -34,6 +36,7 @@
               "active": true,
               "name": "active_transport_nationality",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -52,12 +55,14 @@
               "active": true,
               "name": "client",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "company_member",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -70,6 +75,7 @@
               "active": true,
               "name": "declarant",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -112,6 +118,7 @@
               "active": true,
               "name": "file",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$OBJECT`"
             },
             {
@@ -124,6 +131,7 @@
               "active": true,
               "name": "h1_fallback_template",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -136,6 +144,7 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -148,6 +157,7 @@
               "active": true,
               "name": "mapping",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -166,6 +176,7 @@
               "active": true,
               "name": "parser",
               "req": false,
+              "short": "* `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform",
               "type": "`$STRING`"
             },
             {
@@ -184,6 +195,7 @@
               "active": true,
               "name": "passive_transport_nationality",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -226,18 +238,21 @@
               "active": true,
               "name": "receipt_request_status",
               "req": false,
+              "short": "* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "receipt_request_user",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "receipts_zip",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -256,12 +271,14 @@
               "active": true,
               "name": "status",
               "req": false,
+              "short": "* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "template",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -565,6 +582,7 @@
               "active": true,
               "name": "company",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -589,6 +607,7 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -744,6 +763,7 @@
               "active": true,
               "name": "company",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -774,6 +794,7 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -840,6 +861,7 @@
               "active": true,
               "name": "type",
               "req": false,
+              "short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…",
               "type": "`$STRING`"
             },
             {
@@ -1071,6 +1093,7 @@
               "active": true,
               "name": "amendment_status",
               "req": false,
+              "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
               "type": "`$STRING`"
             },
             {
@@ -1113,6 +1136,7 @@
                 }
               },
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$OBJECT`"
             },
             {
@@ -1137,12 +1161,14 @@
               "active": true,
               "name": "declarant",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "document_upload_status",
               "req": false,
+              "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
               "type": "`$STRING`"
             },
             {
@@ -1167,30 +1193,35 @@
               "active": true,
               "name": "form",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "goods_presentation_status",
               "req": false,
+              "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "hrcm_status",
               "req": false,
+              "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "invalidation_status",
               "req": false,
+              "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
               "type": "`$STRING`"
             },
             {
@@ -1203,6 +1234,7 @@
               "active": true,
               "name": "latest_notification_item",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -1245,12 +1277,14 @@
               "active": true,
               "name": "refund_application_status",
               "req": false,
+              "short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "route",
               "req": false,
+              "short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
               "type": "`$STRING`"
             },
             {
@@ -1269,18 +1303,21 @@
               "active": true,
               "name": "source",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "source_type",
               "req": false,
+              "short": "* `template` - template * `automated_import` - automated_import",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
               "type": "`$STRING`"
             },
             {
@@ -1293,6 +1330,7 @@
               "active": true,
               "name": "template_id",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -1323,6 +1361,7 @@
               "active": true,
               "name": "verification_status",
               "req": false,
+              "short": "* `passed` - passed * `failed` - failed",
               "type": "`$STRING`"
             }
           ],
@@ -2063,6 +2102,7 @@
               "active": true,
               "name": "amendment_status",
               "req": false,
+              "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
               "type": "`$STRING`"
             },
             {
@@ -2081,12 +2121,14 @@
               "active": true,
               "name": "company",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "company_member",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$OBJECT`"
             },
             {
@@ -2117,6 +2159,7 @@
               "active": true,
               "name": "document_upload_status",
               "req": false,
+              "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
               "type": "`$STRING`"
             },
             {
@@ -2147,24 +2190,28 @@
               "active": true,
               "name": "goods_presentation_status",
               "req": false,
+              "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "hrcm_status",
               "req": false,
+              "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "invalidation_status",
               "req": false,
+              "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
               "type": "`$STRING`"
             },
             {
@@ -2177,6 +2224,7 @@
               "active": true,
               "name": "latest_notification_item",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -2213,12 +2261,14 @@
               "active": true,
               "name": "refund_application_status",
               "req": false,
+              "short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "route",
               "req": false,
+              "short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
               "type": "`$STRING`"
             },
             {
@@ -2237,24 +2287,28 @@
               "active": true,
               "name": "source",
               "req": false,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "source_type",
               "req": false,
+              "short": "* `template` - template * `automated_import` - automated_import",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "submission",
               "req": true,
+              "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
             },
             {
@@ -2291,6 +2345,7 @@
               "active": true,
               "name": "verification_status",
               "req": false,
+              "short": "* `passed` - passed * `failed` - failed",
               "type": "`$STRING`"
             }
           ],
@@ -2330,6 +2385,7 @@
       "feature": {
         "test": {
           "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
@@ -2390,6 +2446,8 @@
             }
           },
           "name": "test",
+          "origname": "",
+          "package": "@voxgig/sdkgen",
           "target": {
             "go": {
               "deps": {}
@@ -2861,6 +2919,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -2879,12 +2938,14 @@
             "path": ""
           },
           "name": "go",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -2918,6 +2979,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -2934,12 +2996,14 @@
             "path": ""
           },
           "name": "go-cli",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "phase": {
             "agentguide": {
               "active": false
@@ -2989,6 +3053,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3005,12 +3070,14 @@
             "path": ""
           },
           "name": "go-mcp",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "phase": {
             "agentguide": {
               "active": false
@@ -3060,6 +3127,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "--"
           },
@@ -3082,12 +3150,14 @@
             "path": ""
           },
           "name": "lua",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3121,6 +3191,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3137,12 +3208,14 @@
             "path": ""
           },
           "name": "php",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3176,6 +3249,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -3198,12 +3272,14 @@
             "path": ""
           },
           "name": "py",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3237,6 +3313,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -3264,12 +3341,14 @@
             "path": ""
           },
           "name": "rb",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3336,12 +3415,14 @@
             "path": ""
           },
           "name": "ts",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,

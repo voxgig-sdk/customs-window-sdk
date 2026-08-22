@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "CustomsWindow",
+      slug = "customs-window",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -39,6 +42,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "active_transport_nationality",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -52,11 +56,13 @@ local function make_config()
           {
             ["name"] = "client",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "company_member",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -67,6 +73,7 @@ local function make_config()
           {
             ["name"] = "declarant",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -98,6 +105,7 @@ local function make_config()
           {
             ["name"] = "file",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$OBJECT`",
           },
           {
@@ -106,6 +114,7 @@ local function make_config()
           },
           {
             ["name"] = "h1_fallback_template",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -114,6 +123,7 @@ local function make_config()
           },
           {
             ["name"] = "id",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -122,6 +132,7 @@ local function make_config()
           },
           {
             ["name"] = "mapping",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -134,6 +145,7 @@ local function make_config()
           },
           {
             ["name"] = "parser",
+            ["short"] = "* `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform",
             ["type"] = "`$STRING`",
           },
           {
@@ -146,6 +158,7 @@ local function make_config()
           },
           {
             ["name"] = "passive_transport_nationality",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -174,14 +187,17 @@ local function make_config()
           },
           {
             ["name"] = "receipt_request_status",
+            ["short"] = "* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "receipt_request_user",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "receipts_zip",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -194,10 +210,12 @@ local function make_config()
           },
           {
             ["name"] = "status",
+            ["short"] = "* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "template",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -473,6 +491,7 @@ local function make_config()
           {
             ["name"] = "company",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -492,6 +511,7 @@ local function make_config()
           },
           {
             ["name"] = "id",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -611,6 +631,7 @@ local function make_config()
           {
             ["name"] = "company",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -633,6 +654,7 @@ local function make_config()
           },
           {
             ["name"] = "id",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -679,6 +701,7 @@ local function make_config()
           },
           {
             ["name"] = "type",
+            ["short"] = "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…",
             ["type"] = "`$STRING`",
           },
           {
@@ -880,6 +903,7 @@ local function make_config()
           },
           {
             ["name"] = "amendment_status",
+            ["short"] = "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
             ["type"] = "`$STRING`",
           },
           {
@@ -914,6 +938,7 @@ local function make_config()
               },
             },
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$OBJECT`",
           },
           {
@@ -934,10 +959,12 @@ local function make_config()
           {
             ["name"] = "declarant",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "document_upload_status",
+            ["short"] = "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
             ["type"] = "`$STRING`",
           },
           {
@@ -955,22 +982,27 @@ local function make_config()
           {
             ["name"] = "form",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "goods_presentation_status",
+            ["short"] = "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "hrcm_status",
+            ["short"] = "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "invalidation_status",
+            ["short"] = "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
             ["type"] = "`$STRING`",
           },
           {
@@ -979,6 +1011,7 @@ local function make_config()
           },
           {
             ["name"] = "latest_notification_item",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -1009,10 +1042,12 @@ local function make_config()
           },
           {
             ["name"] = "refund_application_status",
+            ["short"] = "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "route",
+            ["short"] = "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
             ["type"] = "`$STRING`",
           },
           {
@@ -1025,14 +1060,17 @@ local function make_config()
           },
           {
             ["name"] = "source",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "source_type",
+            ["short"] = "* `template` - template * `automated_import` - automated_import",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "status",
+            ["short"] = "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
             ["type"] = "`$STRING`",
           },
           {
@@ -1041,6 +1079,7 @@ local function make_config()
           },
           {
             ["name"] = "template_id",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -1062,6 +1101,7 @@ local function make_config()
           },
           {
             ["name"] = "verification_status",
+            ["short"] = "* `passed` - passed * `failed` - failed",
             ["type"] = "`$STRING`",
           },
         },
@@ -1741,6 +1781,7 @@ local function make_config()
           },
           {
             ["name"] = "amendment_status",
+            ["short"] = "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
             ["type"] = "`$STRING`",
           },
           {
@@ -1756,11 +1797,13 @@ local function make_config()
           {
             ["name"] = "company",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "company_member",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$OBJECT`",
           },
           {
@@ -1785,6 +1828,7 @@ local function make_config()
           },
           {
             ["name"] = "document_upload_status",
+            ["short"] = "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
             ["type"] = "`$STRING`",
           },
           {
@@ -1806,18 +1850,22 @@ local function make_config()
           },
           {
             ["name"] = "goods_presentation_status",
+            ["short"] = "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "hrcm_status",
+            ["short"] = "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "invalidation_status",
+            ["short"] = "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
             ["type"] = "`$STRING`",
           },
           {
@@ -1826,6 +1874,7 @@ local function make_config()
           },
           {
             ["name"] = "latest_notification_item",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -1852,10 +1901,12 @@ local function make_config()
           },
           {
             ["name"] = "refund_application_status",
+            ["short"] = "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "route",
+            ["short"] = "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
             ["type"] = "`$STRING`",
           },
           {
@@ -1868,19 +1919,23 @@ local function make_config()
           },
           {
             ["name"] = "source",
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "source_type",
+            ["short"] = "* `template` - template * `automated_import` - automated_import",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "status",
+            ["short"] = "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "submission",
             ["req"] = true,
+            ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
           },
           {
@@ -1906,6 +1961,7 @@ local function make_config()
           },
           {
             ["name"] = "verification_status",
+            ["short"] = "* `passed` - passed * `failed` - failed",
             ["type"] = "`$STRING`",
           },
         },
