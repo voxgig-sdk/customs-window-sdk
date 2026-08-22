@@ -1,8 +1,8 @@
 # Guide
 
-@"@voxgig/apidef/model/guide.aontu"
+@"@voxgig/apidef/model/guide.aon"
 
-@"base-guide.aontu"
+@"base-guide.aon"
 
 
 # KNOWN ISSUE — three spurious entities, no supported fix yet.

@@ -1,0 +1,10 @@
+# Entity Models
+
+@"bulk_upload.aon"
+@"file.aon"
+@"paginated_bulk_upload_list_list.aon"
+@"paginated_party_list_list.aon"
+@"paginated_submission_list_list.aon"
+@"party.aon"
+@"submission.aon"
+@"submission_detail.aon"

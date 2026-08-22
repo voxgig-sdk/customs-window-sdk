@@ -1,0 +1,10 @@
+# Flows
+
+@"BasicBulkUploadFlow.aon"
+@"BasicFileFlow.aon"
+@"BasicPaginatedBulkUploadListListFlow.aon"
+@"BasicPaginatedPartyListListFlow.aon"
+@"BasicPaginatedSubmissionListListFlow.aon"
+@"BasicPartyFlow.aon"
+@"BasicSubmissionDetailFlow.aon"
+@"BasicSubmissionFlow.aon"
