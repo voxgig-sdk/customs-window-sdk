@@ -1,15 +1,6 @@
 {
-  "NAME": "CUSTOMS-WINDOW",
-  "Name": "CustomsWindow",
   "def": "customs-window-openapi.json",
   "main": {
-    "api": {
-      "entity": {},
-      "guide": {}
-    },
-    "custom": {
-      "plurals": {}
-    },
     "def": {
       "desc": ""
     },
@@ -3469,8 +3460,5 @@
     }
   },
   "name": "customs-window",
-  "name-": "customs-window",
-  "name_": "customs_window",
-  "name__orig": "customs-window",
   "origin": "voxgig-sdk"
 }
