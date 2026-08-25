@@ -28,6 +28,7 @@ module CustomsWindowConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
