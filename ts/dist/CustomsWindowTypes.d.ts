@@ -47,47 +47,7 @@ export interface BulkUploadLoadMatch {
     [action: string]: any;
 }
 export interface BulkUploadListMatch {
-    active_transport_nationality?: string;
-    active_transport_number?: string;
-    arrival_datetime?: string;
-    client?: string;
-    company_member?: string;
-    created_at?: string;
-    declarant?: string;
-    declarations_no?: number;
-    deleted_at?: string;
-    departure_datetime?: string;
-    errors_file?: Record<string, any>;
-    external_id?: string;
-    failed_declarations_no?: number;
-    file?: Record<string, any>;
-    green_routed_no?: number;
-    h1_fallback_template?: string;
-    house_transport_doc_ref?: string;
-    id?: string;
-    issue_date?: string;
-    mapping?: string;
-    orange_routed_no?: number;
-    parsed_declarations_no?: number;
-    parser?: string;
-    parsing_completed_at?: string;
-    parsing_started_at?: string;
-    passive_transport_nationality?: string;
-    passive_transport_number?: string;
-    processed_declarations_no?: number;
-    processing_ended_at?: string;
-    processing_started_at?: string;
-    receipt_generating_started_at?: string;
-    receipt_request_started_at?: string;
-    receipt_request_status?: string;
-    receipt_request_user?: string;
-    receipts_zip?: string;
-    red_routed_no?: number;
-    rejected_status_no?: number;
-    status?: string;
-    template?: string;
-    updated_at?: string;
-    yellow_routed_no?: number;
+    cursor?: string;
 }
 export interface BulkUploadCreateData {
     active_transport_nationality?: string;
@@ -244,32 +204,8 @@ export interface PartyLoadMatch {
     id: string;
 }
 export interface PartyListMatch {
-    additional_declaration_type?: Record<string, any>;
-    address?: Record<string, any>;
-    authorisation?: Record<string, any>;
-    bank_details?: string;
-    certificate?: Record<string, any>;
-    certificate_type?: string;
-    company?: string;
-    created_at?: string;
-    customs_office_of_lodgement?: Record<string, any>;
-    deleted_at?: string;
-    email?: string;
-    id?: string;
-    identification_number?: string;
-    indirect_representative?: boolean;
-    name?: string;
-    nhd_last_submission_year?: number;
-    nhd_submission_counter?: number;
-    person_paying_customs_duty?: string;
-    phone_country_code?: string;
-    phone_number?: string;
-    preferred_payment_method?: Record<string, any>;
-    signed_form?: Record<string, any>;
+    cursor?: string;
     type?: string;
-    type_of_person?: Record<string, any>;
-    unlocode?: string;
-    updated_at?: string;
 }
 export interface PartyCreateData {
     additional_declaration_type: Record<string, any>;
@@ -381,49 +317,11 @@ export interface SubmissionLoadMatch {
     [action: string]: any;
 }
 export interface SubmissionListMatch {
-    additional_external_ids?: any[];
-    amendment_reason?: string;
-    amendment_status?: string;
-    answers?: any[];
-    bypass_restricted_code?: boolean;
-    clearance_slip?: Record<string, any>;
-    client?: Record<string, any>;
-    company_member?: Record<string, any>;
-    consignee?: Record<string, any>;
-    consignor?: Record<string, any>;
-    created_at?: string;
-    declarant?: Record<string, any>;
-    document_upload_status?: string;
-    documents_presentation_requested?: boolean;
-    documents_upload_requested?: boolean;
-    external_id?: string;
-    form?: string;
-    goods_presentation_status?: string;
-    hrcm_status?: string;
-    id?: string;
-    invalidation_status?: string;
-    is_global_template?: boolean;
-    latest_notification_item?: string;
-    latest_state?: Record<string, any>;
-    lrn?: string;
-    mrn?: string;
-    name?: string;
-    partial_answers?: boolean;
-    receipt?: Record<string, any>;
-    refund_application_status?: string;
+    cursor?: string;
+    form_subtype?: string;
     route?: string;
-    shipment_items_no?: number;
-    shipment_items_quantity_no?: number;
-    source?: string;
-    source_type?: string;
     status?: string;
     template?: boolean;
-    template_id?: string;
-    template_properties?: any[];
-    total_tax_amount?: string;
-    updated_at?: string;
-    verification_errors?: any[];
-    verification_status?: string;
 }
 export interface SubmissionCreateData {
     additional_external_ids?: any[];

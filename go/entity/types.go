@@ -64,47 +64,7 @@ type BulkUploadLoadMatch struct {
 
 // BulkUploadListMatch is the typed request payload for BulkUpload.ListTyped.
 type BulkUploadListMatch struct {
-	ActiveTransportNationality *string `json:"active_transport_nationality,omitempty"`
-	ActiveTransportNumber *string `json:"active_transport_number,omitempty"`
-	ArrivalDatetime *string `json:"arrival_datetime,omitempty"`
-	Client *string `json:"client,omitempty"`
-	CompanyMember *string `json:"company_member,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Declarant *string `json:"declarant,omitempty"`
-	DeclarationsNo *int `json:"declarations_no,omitempty"`
-	DeletedAt *string `json:"deleted_at,omitempty"`
-	DepartureDatetime *string `json:"departure_datetime,omitempty"`
-	ErrorsFile *map[string]any `json:"errors_file,omitempty"`
-	ExternalId *string `json:"external_id,omitempty"`
-	FailedDeclarationsNo *int `json:"failed_declarations_no,omitempty"`
-	File *map[string]any `json:"file,omitempty"`
-	GreenRoutedNo *int `json:"green_routed_no,omitempty"`
-	H1FallbackTemplate *string `json:"h1_fallback_template,omitempty"`
-	HouseTransportDocRef *string `json:"house_transport_doc_ref,omitempty"`
-	Id *string `json:"id,omitempty"`
-	IssueDate *string `json:"issue_date,omitempty"`
-	Mapping *string `json:"mapping,omitempty"`
-	OrangeRoutedNo *int `json:"orange_routed_no,omitempty"`
-	ParsedDeclarationsNo *int `json:"parsed_declarations_no,omitempty"`
-	Parser *string `json:"parser,omitempty"`
-	ParsingCompletedAt *string `json:"parsing_completed_at,omitempty"`
-	ParsingStartedAt *string `json:"parsing_started_at,omitempty"`
-	PassiveTransportNationality *string `json:"passive_transport_nationality,omitempty"`
-	PassiveTransportNumber *string `json:"passive_transport_number,omitempty"`
-	ProcessedDeclarationsNo *int `json:"processed_declarations_no,omitempty"`
-	ProcessingEndedAt *string `json:"processing_ended_at,omitempty"`
-	ProcessingStartedAt *string `json:"processing_started_at,omitempty"`
-	ReceiptGeneratingStartedAt *string `json:"receipt_generating_started_at,omitempty"`
-	ReceiptRequestStartedAt *string `json:"receipt_request_started_at,omitempty"`
-	ReceiptRequestStatus *string `json:"receipt_request_status,omitempty"`
-	ReceiptRequestUser *string `json:"receipt_request_user,omitempty"`
-	ReceiptsZip *string `json:"receipts_zip,omitempty"`
-	RedRoutedNo *int `json:"red_routed_no,omitempty"`
-	RejectedStatusNo *int `json:"rejected_status_no,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Template *string `json:"template,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	YellowRoutedNo *int `json:"yellow_routed_no,omitempty"`
+	Cursor *string `json:"cursor,omitempty"`
 }
 
 // BulkUploadCreateData is the typed request payload for BulkUpload.CreateTyped.
@@ -279,32 +239,8 @@ type PartyLoadMatch struct {
 
 // PartyListMatch is the typed request payload for Party.ListTyped.
 type PartyListMatch struct {
-	AdditionalDeclarationType *map[string]any `json:"additional_declaration_type,omitempty"`
-	Address *map[string]any `json:"address,omitempty"`
-	Authorisation *map[string]any `json:"authorisation,omitempty"`
-	BankDetails *string `json:"bank_details,omitempty"`
-	Certificate *map[string]any `json:"certificate,omitempty"`
-	CertificateType *string `json:"certificate_type,omitempty"`
-	Company *string `json:"company,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	CustomsOfficeOfLodgement *map[string]any `json:"customs_office_of_lodgement,omitempty"`
-	DeletedAt *string `json:"deleted_at,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Id *string `json:"id,omitempty"`
-	IdentificationNumber *string `json:"identification_number,omitempty"`
-	IndirectRepresentative *bool `json:"indirect_representative,omitempty"`
-	Name *string `json:"name,omitempty"`
-	NhdLastSubmissionYear *int `json:"nhd_last_submission_year,omitempty"`
-	NhdSubmissionCounter *int `json:"nhd_submission_counter,omitempty"`
-	PersonPayingCustomsDuty *string `json:"person_paying_customs_duty,omitempty"`
-	PhoneCountryCode *string `json:"phone_country_code,omitempty"`
-	PhoneNumber *string `json:"phone_number,omitempty"`
-	PreferredPaymentMethod *map[string]any `json:"preferred_payment_method,omitempty"`
-	SignedForm *map[string]any `json:"signed_form,omitempty"`
+	Cursor *string `json:"cursor,omitempty"`
 	Type *string `json:"type,omitempty"`
-	TypeOfPerson *map[string]any `json:"type_of_person,omitempty"`
-	Unlocode *string `json:"unlocode,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
 }
 
 // PartyCreateData is the typed request payload for Party.CreateTyped.
@@ -426,49 +362,11 @@ type SubmissionLoadMatch struct {
 
 // SubmissionListMatch is the typed request payload for Submission.ListTyped.
 type SubmissionListMatch struct {
-	AdditionalExternalIds *[]any `json:"additional_external_ids,omitempty"`
-	AmendmentReason *string `json:"amendment_reason,omitempty"`
-	AmendmentStatus *string `json:"amendment_status,omitempty"`
-	Answers *[]any `json:"answers,omitempty"`
-	BypassRestrictedCode *bool `json:"bypass_restricted_code,omitempty"`
-	ClearanceSlip *map[string]any `json:"clearance_slip,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	CompanyMember *map[string]any `json:"company_member,omitempty"`
-	Consignee *map[string]any `json:"consignee,omitempty"`
-	Consignor *map[string]any `json:"consignor,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Declarant *map[string]any `json:"declarant,omitempty"`
-	DocumentUploadStatus *string `json:"document_upload_status,omitempty"`
-	DocumentsPresentationRequested *bool `json:"documents_presentation_requested,omitempty"`
-	DocumentsUploadRequested *bool `json:"documents_upload_requested,omitempty"`
-	ExternalId *string `json:"external_id,omitempty"`
-	Form *string `json:"form,omitempty"`
-	GoodsPresentationStatus *string `json:"goods_presentation_status,omitempty"`
-	HrcmStatus *string `json:"hrcm_status,omitempty"`
-	Id *string `json:"id,omitempty"`
-	InvalidationStatus *string `json:"invalidation_status,omitempty"`
-	IsGlobalTemplate *bool `json:"is_global_template,omitempty"`
-	LatestNotificationItem *string `json:"latest_notification_item,omitempty"`
-	LatestState *map[string]any `json:"latest_state,omitempty"`
-	Lrn *string `json:"lrn,omitempty"`
-	Mrn *string `json:"mrn,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PartialAnswers *bool `json:"partial_answers,omitempty"`
-	Receipt *map[string]any `json:"receipt,omitempty"`
-	RefundApplicationStatus *string `json:"refund_application_status,omitempty"`
+	Cursor *string `json:"cursor,omitempty"`
+	FormSubtype *string `json:"form_subtype,omitempty"`
 	Route *string `json:"route,omitempty"`
-	ShipmentItemsNo *int `json:"shipment_items_no,omitempty"`
-	ShipmentItemsQuantityNo *int `json:"shipment_items_quantity_no,omitempty"`
-	Source *string `json:"source,omitempty"`
-	SourceType *string `json:"source_type,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Template *bool `json:"template,omitempty"`
-	TemplateId *string `json:"template_id,omitempty"`
-	TemplateProperties *[]any `json:"template_properties,omitempty"`
-	TotalTaxAmount *string `json:"total_tax_amount,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	VerificationErrors *[]any `json:"verification_errors,omitempty"`
-	VerificationStatus *string `json:"verification_status,omitempty"`
 }
 
 // SubmissionCreateData is the typed request payload for Submission.CreateTyped.

@@ -32,6 +32,7 @@ main: kit: entity: party: {
     }
     {
       name: "certificate_type"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -42,7 +43,9 @@ main: kit: entity: party: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created_at"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -52,11 +55,13 @@ main: kit: entity: party: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "deleted_at"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "email"
       name: "email"
       req: false
       type: "`$STRING`"
@@ -134,7 +139,9 @@ main: kit: entity: party: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "updated_at"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -153,8 +160,10 @@ main: kit: entity: party: {
         {
           method: "POST"
           orig: "/parties"
-          parts: [
-            "parties"
+          segments: [
+            {
+              lit: "parties"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -187,8 +196,10 @@ main: kit: entity: party: {
           }
           method: "GET"
           orig: "/parties"
-          parts: [
-            "parties"
+          segments: [
+            {
+              lit: "parties"
+            }
           ]
           select: {
             exist: [
@@ -220,9 +231,13 @@ main: kit: entity: party: {
           }
           method: "GET"
           orig: "/parties/{id}"
-          parts: [
-            "parties"
-            "{id}"
+          segments: [
+            {
+              lit: "parties"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -253,9 +268,13 @@ main: kit: entity: party: {
           }
           method: "DELETE"
           orig: "/parties/{id}"
-          parts: [
-            "parties"
-            "{id}"
+          segments: [
+            {
+              lit: "parties"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -286,9 +305,13 @@ main: kit: entity: party: {
           }
           method: "PATCH"
           orig: "/parties/{id}"
-          parts: [
-            "parties"
-            "{id}"
+          segments: [
+            {
+              lit: "parties"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

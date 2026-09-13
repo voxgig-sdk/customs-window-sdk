@@ -52,7 +52,7 @@ func TestFileEntity(t *testing.T) {
 		// CREATE
 		fileRef01Ent := client.File(nil)
 		fileRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "file"}, setup.data), "file_ref01"))
+			vs.GetPath(setup.data, []any{"new", "file"}), "file_ref01"))
 
 		fileRef01DataResult, err := fileRef01Ent.Create(fileRef01Data, nil)
 		if err != nil {
@@ -93,7 +93,7 @@ func fileBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"file01", "file02", "file03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -113,7 +113,7 @@ func fileBasicSetup(extra map[string]any) *entityTestSetup {
 		"CUSTOMS_WINDOW_TEST_FILE_ENTID": idmap,
 		"CUSTOMS_WINDOW_TEST_LIVE":      "FALSE",
 		"CUSTOMS_WINDOW_TEST_EXPLAIN":   "FALSE",
-		"CUSTOMS_WINDOW_APIKEY":         "NONE",
+		"CUSTOMS_WINDOW_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CUSTOMS_WINDOW_TEST_FILE_ENTID"])
@@ -122,11 +122,23 @@ func fileBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["CUSTOMS_WINDOW_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CUSTOMS_WINDOW_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCustomsWindowSDK(core.ToMapAny(mergedOpts))
 	}

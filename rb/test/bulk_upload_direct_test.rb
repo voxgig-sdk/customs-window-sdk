@@ -116,15 +116,17 @@ def bulk_upload_direct_setup(mockres)
   env = Runner.env_override({
     "CUSTOMS_WINDOW_TEST_BULK_UPLOAD_ENTID" => {},
     "CUSTOMS_WINDOW_TEST_LIVE" => "FALSE",
-    "CUSTOMS_WINDOW_APIKEY" => "NONE",
+    "CUSTOMS_WINDOW_APIKEY" => "",
   })
 
   live = env["CUSTOMS_WINDOW_TEST_LIVE"] == "TRUE"
 
   if live
-    merged_opts = {
+    # Merged so the generated fields win: sdk-test-control.json's
+    # test.client.options adds to the live client, it does not redirect it.
+    merged_opts = Runner.live_client_options.merge({
       "apikey" => env["CUSTOMS_WINDOW_APIKEY"],
-    }
+    })
     client = CustomsWindowSDK.new(merged_opts)
     return {
       client: client,

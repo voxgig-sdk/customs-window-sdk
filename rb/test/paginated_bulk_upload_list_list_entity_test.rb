@@ -75,7 +75,7 @@ def paginated_bulk_upload_list_list_basic_setup(extra)
     "CUSTOMS_WINDOW_TEST_PAGINATED_BULK_UPLOAD_LIST_LIST_ENTID" => idmap,
     "CUSTOMS_WINDOW_TEST_LIVE" => "FALSE",
     "CUSTOMS_WINDOW_TEST_EXPLAIN" => "FALSE",
-    "CUSTOMS_WINDOW_APIKEY" => "NONE",
+    "CUSTOMS_WINDOW_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -86,6 +86,9 @@ def paginated_bulk_upload_list_list_basic_setup(extra)
 
   if env["CUSTOMS_WINDOW_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["CUSTOMS_WINDOW_APIKEY"],
       },

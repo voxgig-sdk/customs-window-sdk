@@ -101,7 +101,7 @@ func TestSubmissionEntity(t *testing.T) {
 		// CREATE
 		submissionRef01Ent := client.Submission(nil)
 		submissionRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "submission"}, setup.data), "submission_ref01"))
+			vs.GetPath(setup.data, []any{"new", "submission"}), "submission_ref01"))
 
 		submissionRef01DataResult, err := submissionRef01Ent.Create(submissionRef01Data, nil)
 		if err != nil {
@@ -225,7 +225,7 @@ func submissionBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"submission01", "submission02", "submission03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -245,7 +245,7 @@ func submissionBasicSetup(extra map[string]any) *entityTestSetup {
 		"CUSTOMS_WINDOW_TEST_SUBMISSION_ENTID": idmap,
 		"CUSTOMS_WINDOW_TEST_LIVE":      "FALSE",
 		"CUSTOMS_WINDOW_TEST_EXPLAIN":   "FALSE",
-		"CUSTOMS_WINDOW_APIKEY":         "NONE",
+		"CUSTOMS_WINDOW_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CUSTOMS_WINDOW_TEST_SUBMISSION_ENTID"])
@@ -254,11 +254,23 @@ func submissionBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["CUSTOMS_WINDOW_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CUSTOMS_WINDOW_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCustomsWindowSDK(core.ToMapAny(mergedOpts))
 	}

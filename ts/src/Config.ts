@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -101,6 +112,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "arrival_datetime",
           "type": "`$STRING`"
         },
@@ -117,7 +129,9 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "created_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -133,10 +147,12 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "deleted_at",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "departure_datetime",
           "type": "`$STRING`"
         },
@@ -178,6 +194,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "issue_date",
           "type": "`$STRING`"
         },
@@ -200,10 +217,12 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "parsing_completed_at",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "parsing_started_at",
           "type": "`$STRING`"
         },
@@ -221,18 +240,22 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "processing_ended_at",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "processing_started_at",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "receipt_generating_started_at",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "receipt_request_started_at",
           "type": "`$STRING`"
         },
@@ -270,7 +293,9 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "updated_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -279,6 +304,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "bulk_upload",
       "op": {
         "create": {
@@ -290,14 +319,19 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/bulk-uploads",
-              "parts": [
-                "bulk-uploads"
+              "segments": [
+                {
+                  "lit": "bulk-uploads"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "bulk-uploads"
+              ]
             }
           ]
         },
@@ -319,8 +353,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads",
-              "parts": [
-                "bulk-uploads"
+              "segments": [
+                {
+                  "lit": "bulk-uploads"
+                }
               ],
               "select": {
                 "exist": [
@@ -330,7 +366,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "bulk-uploads"
+              ]
             }
           ]
         },
@@ -353,9 +392,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads/{id}",
-              "parts": [
-                "bulk-uploads",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "bulk-uploads"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -365,7 +408,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "bulk-uploads",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -382,10 +429,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
-              "parts": [
-                "bulk-uploads",
-                "{id}",
-                "generate-pdfs"
+              "segments": [
+                {
+                  "lit": "bulk-uploads"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "generate-pdfs"
+                }
               ],
               "select": {
                 "$action": "generate_pdf",
@@ -396,7 +449,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "bulk-uploads",
+                "{id}",
+                "generate-pdfs"
+              ]
             }
           ]
         },
@@ -419,9 +477,13 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/bulk-uploads/{id}",
-              "parts": [
-                "bulk-uploads",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "bulk-uploads"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -431,7 +493,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "bulk-uploads",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -448,10 +514,16 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
-              "parts": [
-                "bulk-uploads",
-                "{id}",
-                "generate-pdfs"
+              "segments": [
+                {
+                  "lit": "bulk-uploads"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "generate-pdfs"
+                }
               ],
               "select": {
                 "$action": "generate_pdf",
@@ -462,7 +534,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "bulk-uploads",
+                "{id}",
+                "generate-pdfs"
+              ]
             }
           ]
         },
@@ -485,9 +562,13 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/bulk-uploads/{id}",
-              "parts": [
-                "bulk-uploads",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "bulk-uploads"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -497,7 +578,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "bulk-uploads",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -514,10 +599,16 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
-              "parts": [
-                "bulk-uploads",
-                "{id}",
-                "generate-pdfs"
+              "segments": [
+                {
+                  "lit": "bulk-uploads"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "generate-pdfs"
+                }
               ],
               "select": {
                 "$action": "generate_pdf",
@@ -528,7 +619,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "bulk-uploads",
+                "{id}",
+                "generate-pdfs"
+              ]
             }
           ]
         }
@@ -546,16 +642,20 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "created_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
         {
           "name": "extension",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "file",
           "req": true,
           "type": "`$STRING`"
@@ -567,6 +667,7 @@ class Config {
         },
         {
           "name": "name",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -585,16 +686,23 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "updated_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
         {
           "name": "url",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "file",
       "op": {
         "create": {
@@ -606,8 +714,10 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/files",
-              "parts": [
-                "files"
+              "segments": [
+                {
+                  "lit": "files"
+                }
               ],
               "select": {},
               "transform": {
@@ -615,7 +725,10 @@ class Config {
                   "file": "`reqdata`"
                 },
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "files"
+              ]
             }
           ]
         }
@@ -676,6 +789,7 @@ class Config {
         },
         {
           "name": "certificate_type",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -686,7 +800,9 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "created_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -696,10 +812,12 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "date-time",
           "name": "deleted_at",
           "type": "`$STRING`"
         },
         {
+          "format": "email",
           "name": "email",
           "type": "`$STRING`"
         },
@@ -765,11 +883,17 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "updated_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "party",
       "op": {
         "create": {
@@ -781,14 +905,19 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/parties",
-              "parts": [
-                "parties"
+              "segments": [
+                {
+                  "lit": "parties"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "parties"
+              ]
             }
           ]
         },
@@ -816,8 +945,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/parties",
-              "parts": [
-                "parties"
+              "segments": [
+                {
+                  "lit": "parties"
+                }
               ],
               "select": {
                 "exist": [
@@ -828,7 +959,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "parties"
+              ]
             }
           ]
         },
@@ -851,9 +985,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/parties/{id}",
-              "parts": [
-                "parties",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "parties"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -863,7 +1001,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "parties",
+                "{id}"
+              ]
             }
           ]
         },
@@ -886,9 +1028,13 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/parties/{id}",
-              "parts": [
-                "parties",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "parties"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -898,7 +1044,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "parties",
+                "{id}"
+              ]
             }
           ]
         },
@@ -921,9 +1071,13 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/parties/{id}",
-              "parts": [
-                "parties",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "parties"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -933,7 +1087,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "parties",
+                "{id}"
+              ]
             }
           ]
         }
@@ -1003,7 +1161,9 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "date-time",
           "name": "created_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -1032,6 +1192,7 @@ class Config {
         },
         {
           "name": "form",
+          "readOnly": true,
           "req": true,
           "short": "cuid-format identifier for this entity.",
           "type": "`$STRING`"
@@ -1138,11 +1299,14 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "decimal",
           "name": "total_tax_amount",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "updated_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -1156,6 +1320,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "submission",
       "op": {
         "create": {
@@ -1177,10 +1345,16 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/submissions/{id}/refund",
-              "parts": [
-                "submissions",
-                "{id}",
-                "refund"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "refund"
+                }
               ],
               "select": {
                 "$action": "refund",
@@ -1191,30 +1365,44 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "refund"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/submissions",
-              "parts": [
-                "submissions"
+              "segments": [
+                {
+                  "lit": "submissions"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/submissions/retrieve",
-              "parts": [
-                "submissions",
-                "retrieve"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "lit": "retrieve"
+                }
               ],
               "select": {
                 "$action": "retrieve"
@@ -1222,7 +1410,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "retrieve"
+              ]
             }
           ]
         },
@@ -1270,8 +1462,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/submissions",
-              "parts": [
-                "submissions"
+              "segments": [
+                {
+                  "lit": "submissions"
+                }
               ],
               "select": {
                 "exist": [
@@ -1285,7 +1479,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "submissions"
+              ]
             }
           ]
         },
@@ -1308,9 +1505,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}",
-              "parts": [
-                "submissions",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -1320,7 +1521,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -1337,10 +1542,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/clearance-slip",
-              "parts": [
-                "submissions",
-                "{id}",
-                "clearance-slip"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "clearance-slip"
+                }
               ],
               "select": {
                 "$action": "clearance_slip",
@@ -1351,7 +1562,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "clearance-slip"
+              ]
             },
             {
               "args": {
@@ -1368,10 +1584,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/notification-read",
-              "parts": [
-                "submissions",
-                "{id}",
-                "notification-read"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "notification-read"
+                }
               ],
               "select": {
                 "$action": "notification_read",
@@ -1382,7 +1604,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "notification-read"
+              ]
             },
             {
               "args": {
@@ -1399,10 +1626,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/pbn-applicable",
-              "parts": [
-                "submissions",
-                "{id}",
-                "pbn-applicable"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "pbn-applicable"
+                }
               ],
               "select": {
                 "$action": "pbn_applicable",
@@ -1413,7 +1646,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "pbn-applicable"
+              ]
             },
             {
               "args": {
@@ -1430,10 +1668,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/receipt",
-              "parts": [
-                "submissions",
-                "{id}",
-                "receipt"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "receipt"
+                }
               ],
               "select": {
                 "$action": "receipt",
@@ -1444,7 +1688,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "receipt"
+              ]
             },
             {
               "args": {
@@ -1461,10 +1710,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/refund",
-              "parts": [
-                "submissions",
-                "{id}",
-                "refund"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "refund"
+                }
               ],
               "select": {
                 "$action": "refund",
@@ -1475,16 +1730,25 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "refund"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/retrieve",
-              "parts": [
-                "submissions",
-                "retrieve"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "lit": "retrieve"
+                }
               ],
               "select": {
                 "$action": "retrieve"
@@ -1492,7 +1756,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "retrieve"
+              ]
             }
           ]
         },
@@ -1515,9 +1783,13 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}",
-              "parts": [
-                "submissions",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -1527,7 +1799,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -1544,10 +1820,16 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/clearance-slip",
-              "parts": [
-                "submissions",
-                "{id}",
-                "clearance-slip"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "clearance-slip"
+                }
               ],
               "select": {
                 "$action": "clearance_slip",
@@ -1558,7 +1840,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "clearance-slip"
+              ]
             },
             {
               "args": {
@@ -1575,10 +1862,16 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/notification-read",
-              "parts": [
-                "submissions",
-                "{id}",
-                "notification-read"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "notification-read"
+                }
               ],
               "select": {
                 "$action": "notification_read",
@@ -1589,7 +1882,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "notification-read"
+              ]
             },
             {
               "args": {
@@ -1606,10 +1904,16 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/pbn-applicable",
-              "parts": [
-                "submissions",
-                "{id}",
-                "pbn-applicable"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "pbn-applicable"
+                }
               ],
               "select": {
                 "$action": "pbn_applicable",
@@ -1620,7 +1924,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "pbn-applicable"
+              ]
             },
             {
               "args": {
@@ -1637,10 +1946,16 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/receipt",
-              "parts": [
-                "submissions",
-                "{id}",
-                "receipt"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "receipt"
+                }
               ],
               "select": {
                 "$action": "receipt",
@@ -1651,7 +1966,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "receipt"
+              ]
             }
           ]
         },
@@ -1674,9 +1994,13 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}",
-              "parts": [
-                "submissions",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -1686,7 +2010,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -1703,10 +2031,16 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/clearance-slip",
-              "parts": [
-                "submissions",
-                "{id}",
-                "clearance-slip"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "clearance-slip"
+                }
               ],
               "select": {
                 "$action": "clearance_slip",
@@ -1717,7 +2051,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "clearance-slip"
+              ]
             },
             {
               "args": {
@@ -1734,10 +2073,16 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/notification-read",
-              "parts": [
-                "submissions",
-                "{id}",
-                "notification-read"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "notification-read"
+                }
               ],
               "select": {
                 "$action": "notification_read",
@@ -1748,7 +2093,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "notification-read"
+              ]
             },
             {
               "args": {
@@ -1765,10 +2115,16 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/pbn-applicable",
-              "parts": [
-                "submissions",
-                "{id}",
-                "pbn-applicable"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "pbn-applicable"
+                }
               ],
               "select": {
                 "$action": "pbn_applicable",
@@ -1779,7 +2135,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "pbn-applicable"
+              ]
             },
             {
               "args": {
@@ -1796,10 +2157,16 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/receipt",
-              "parts": [
-                "submissions",
-                "{id}",
-                "receipt"
+              "segments": [
+                {
+                  "lit": "submissions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "receipt"
+                }
               ],
               "select": {
                 "$action": "receipt",
@@ -1810,7 +2177,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "submissions",
+                "{id}",
+                "receipt"
+              ]
             }
           ]
         }
@@ -1868,7 +2240,9 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "date-time",
           "name": "created_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -1896,6 +2270,7 @@ class Config {
         },
         {
           "name": "form",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -1998,11 +2373,14 @@ class Config {
           "type": "`$BOOLEAN`"
         },
         {
+          "format": "decimal",
           "name": "total_tax_amount",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "updated_at",
+          "readOnly": true,
           "req": true,
           "type": "`$STRING`"
         },
@@ -2016,6 +2394,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "submission_detail",
       "op": {
         "create": {
@@ -2027,14 +2409,19 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/documents-request",
-              "parts": [
-                "documents-request"
+              "segments": [
+                {
+                  "lit": "documents-request"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "documents-request"
+              ]
             }
           ]
         }
@@ -2050,6 +2437,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

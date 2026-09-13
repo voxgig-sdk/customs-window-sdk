@@ -70,7 +70,9 @@ main: kit: entity: submission: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "created_at"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -103,6 +105,7 @@ main: kit: entity: submission: {
     }
     {
       name: "form"
+      readOnly: true
       req: true
       short: "cuid-format identifier for this entity."
       type: "`$STRING`"
@@ -229,12 +232,15 @@ main: kit: entity: submission: {
       type: "`$ARRAY`"
     }
     {
+      format: "decimal"
       name: "total_tax_amount"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "updated_at"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -275,10 +281,16 @@ main: kit: entity: submission: {
           }
           method: "POST"
           orig: "/submissions/{id}/refund"
-          parts: [
-            "submissions"
-            "{id}"
-            "refund"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "refund"
+            }
           ]
           select: {
             "$action": "refund"
@@ -294,8 +306,10 @@ main: kit: entity: submission: {
         {
           method: "POST"
           orig: "/submissions"
-          parts: [
-            "submissions"
+          segments: [
+            {
+              lit: "submissions"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -305,9 +319,13 @@ main: kit: entity: submission: {
         {
           method: "POST"
           orig: "/submissions/retrieve"
-          parts: [
-            "submissions"
-            "retrieve"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              lit: "retrieve"
+            }
           ]
           select: {
             "$action": "retrieve"
@@ -366,8 +384,10 @@ main: kit: entity: submission: {
           }
           method: "GET"
           orig: "/submissions"
-          parts: [
-            "submissions"
+          segments: [
+            {
+              lit: "submissions"
+            }
           ]
           select: {
             exist: [
@@ -402,9 +422,13 @@ main: kit: entity: submission: {
           }
           method: "GET"
           orig: "/submissions/{id}"
-          parts: [
-            "submissions"
-            "{id}"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -430,10 +454,16 @@ main: kit: entity: submission: {
           }
           method: "GET"
           orig: "/submissions/{id}/clearance-slip"
-          parts: [
-            "submissions"
-            "{id}"
-            "clearance-slip"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "clearance-slip"
+            }
           ]
           select: {
             "$action": "clearance_slip"
@@ -460,10 +490,16 @@ main: kit: entity: submission: {
           }
           method: "GET"
           orig: "/submissions/{id}/notification-read"
-          parts: [
-            "submissions"
-            "{id}"
-            "notification-read"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "notification-read"
+            }
           ]
           select: {
             "$action": "notification_read"
@@ -490,10 +526,16 @@ main: kit: entity: submission: {
           }
           method: "GET"
           orig: "/submissions/{id}/pbn-applicable"
-          parts: [
-            "submissions"
-            "{id}"
-            "pbn-applicable"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pbn-applicable"
+            }
           ]
           select: {
             "$action": "pbn_applicable"
@@ -520,10 +562,16 @@ main: kit: entity: submission: {
           }
           method: "GET"
           orig: "/submissions/{id}/receipt"
-          parts: [
-            "submissions"
-            "{id}"
-            "receipt"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "receipt"
+            }
           ]
           select: {
             "$action": "receipt"
@@ -550,10 +598,16 @@ main: kit: entity: submission: {
           }
           method: "GET"
           orig: "/submissions/{id}/refund"
-          parts: [
-            "submissions"
-            "{id}"
-            "refund"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "refund"
+            }
           ]
           select: {
             "$action": "refund"
@@ -569,9 +623,13 @@ main: kit: entity: submission: {
         {
           method: "GET"
           orig: "/submissions/retrieve"
-          parts: [
-            "submissions"
-            "retrieve"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              lit: "retrieve"
+            }
           ]
           select: {
             "$action": "retrieve"
@@ -600,9 +658,13 @@ main: kit: entity: submission: {
           }
           method: "DELETE"
           orig: "/submissions/{id}"
-          parts: [
-            "submissions"
-            "{id}"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -628,10 +690,16 @@ main: kit: entity: submission: {
           }
           method: "DELETE"
           orig: "/submissions/{id}/clearance-slip"
-          parts: [
-            "submissions"
-            "{id}"
-            "clearance-slip"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "clearance-slip"
+            }
           ]
           select: {
             "$action": "clearance_slip"
@@ -658,10 +726,16 @@ main: kit: entity: submission: {
           }
           method: "DELETE"
           orig: "/submissions/{id}/notification-read"
-          parts: [
-            "submissions"
-            "{id}"
-            "notification-read"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "notification-read"
+            }
           ]
           select: {
             "$action": "notification_read"
@@ -688,10 +762,16 @@ main: kit: entity: submission: {
           }
           method: "DELETE"
           orig: "/submissions/{id}/pbn-applicable"
-          parts: [
-            "submissions"
-            "{id}"
-            "pbn-applicable"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pbn-applicable"
+            }
           ]
           select: {
             "$action": "pbn_applicable"
@@ -718,10 +798,16 @@ main: kit: entity: submission: {
           }
           method: "DELETE"
           orig: "/submissions/{id}/receipt"
-          parts: [
-            "submissions"
-            "{id}"
-            "receipt"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "receipt"
+            }
           ]
           select: {
             "$action": "receipt"
@@ -753,9 +839,13 @@ main: kit: entity: submission: {
           }
           method: "PATCH"
           orig: "/submissions/{id}"
-          parts: [
-            "submissions"
-            "{id}"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -781,10 +871,16 @@ main: kit: entity: submission: {
           }
           method: "PATCH"
           orig: "/submissions/{id}/clearance-slip"
-          parts: [
-            "submissions"
-            "{id}"
-            "clearance-slip"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "clearance-slip"
+            }
           ]
           select: {
             "$action": "clearance_slip"
@@ -811,10 +907,16 @@ main: kit: entity: submission: {
           }
           method: "PATCH"
           orig: "/submissions/{id}/notification-read"
-          parts: [
-            "submissions"
-            "{id}"
-            "notification-read"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "notification-read"
+            }
           ]
           select: {
             "$action": "notification_read"
@@ -841,10 +943,16 @@ main: kit: entity: submission: {
           }
           method: "PATCH"
           orig: "/submissions/{id}/pbn-applicable"
-          parts: [
-            "submissions"
-            "{id}"
-            "pbn-applicable"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pbn-applicable"
+            }
           ]
           select: {
             "$action": "pbn_applicable"
@@ -871,10 +979,16 @@ main: kit: entity: submission: {
           }
           method: "PATCH"
           orig: "/submissions/{id}/receipt"
-          parts: [
-            "submissions"
-            "{id}"
-            "receipt"
+          segments: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "receipt"
+            }
           ]
           select: {
             "$action": "receipt"

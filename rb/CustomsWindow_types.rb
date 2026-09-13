@@ -188,170 +188,10 @@ BulkUploadLoadMatch = Struct.new(
 
 # Request payload for BulkUpload#list.
 #
-# @!attribute [rw] active_transport_nationality
+# @!attribute [rw] cursor
 #   @return [String, nil]
-#
-# @!attribute [rw] active_transport_number
-#   @return [String, nil]
-#
-# @!attribute [rw] arrival_datetime
-#   @return [String, nil]
-#
-# @!attribute [rw] client
-#   @return [String, nil]
-#
-# @!attribute [rw] company_member
-#   @return [String, nil]
-#
-# @!attribute [rw] created_at
-#   @return [String, nil]
-#
-# @!attribute [rw] declarant
-#   @return [String, nil]
-#
-# @!attribute [rw] declarations_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] deleted_at
-#   @return [String, nil]
-#
-# @!attribute [rw] departure_datetime
-#   @return [String, nil]
-#
-# @!attribute [rw] errors_file
-#   @return [Hash, nil]
-#
-# @!attribute [rw] external_id
-#   @return [String, nil]
-#
-# @!attribute [rw] failed_declarations_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] file
-#   @return [Hash, nil]
-#
-# @!attribute [rw] green_routed_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] h1_fallback_template
-#   @return [String, nil]
-#
-# @!attribute [rw] house_transport_doc_ref
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] issue_date
-#   @return [String, nil]
-#
-# @!attribute [rw] mapping
-#   @return [String, nil]
-#
-# @!attribute [rw] orange_routed_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] parsed_declarations_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] parser
-#   @return [String, nil]
-#
-# @!attribute [rw] parsing_completed_at
-#   @return [String, nil]
-#
-# @!attribute [rw] parsing_started_at
-#   @return [String, nil]
-#
-# @!attribute [rw] passive_transport_nationality
-#   @return [String, nil]
-#
-# @!attribute [rw] passive_transport_number
-#   @return [String, nil]
-#
-# @!attribute [rw] processed_declarations_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] processing_ended_at
-#   @return [String, nil]
-#
-# @!attribute [rw] processing_started_at
-#   @return [String, nil]
-#
-# @!attribute [rw] receipt_generating_started_at
-#   @return [String, nil]
-#
-# @!attribute [rw] receipt_request_started_at
-#   @return [String, nil]
-#
-# @!attribute [rw] receipt_request_status
-#   @return [String, nil]
-#
-# @!attribute [rw] receipt_request_user
-#   @return [String, nil]
-#
-# @!attribute [rw] receipts_zip
-#   @return [String, nil]
-#
-# @!attribute [rw] red_routed_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] rejected_status_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] template
-#   @return [String, nil]
-#
-# @!attribute [rw] updated_at
-#   @return [String, nil]
-#
-# @!attribute [rw] yellow_routed_no
-#   @return [Integer, nil]
 BulkUploadListMatch = Struct.new(
-  :active_transport_nationality,
-  :active_transport_number,
-  :arrival_datetime,
-  :client,
-  :company_member,
-  :created_at,
-  :declarant,
-  :declarations_no,
-  :deleted_at,
-  :departure_datetime,
-  :errors_file,
-  :external_id,
-  :failed_declarations_no,
-  :file,
-  :green_routed_no,
-  :h1_fallback_template,
-  :house_transport_doc_ref,
-  :id,
-  :issue_date,
-  :mapping,
-  :orange_routed_no,
-  :parsed_declarations_no,
-  :parser,
-  :parsing_completed_at,
-  :parsing_started_at,
-  :passive_transport_nationality,
-  :passive_transport_number,
-  :processed_declarations_no,
-  :processing_ended_at,
-  :processing_started_at,
-  :receipt_generating_started_at,
-  :receipt_request_started_at,
-  :receipt_request_status,
-  :receipt_request_user,
-  :receipts_zip,
-  :red_routed_no,
-  :rejected_status_no,
-  :status,
-  :template,
-  :updated_at,
-  :yellow_routed_no,
+  :cursor,
   keyword_init: true
 )
 
@@ -924,110 +764,14 @@ PartyLoadMatch = Struct.new(
 
 # Request payload for Party#list.
 #
-# @!attribute [rw] additional_declaration_type
-#   @return [Hash, nil]
-#
-# @!attribute [rw] address
-#   @return [Hash, nil]
-#
-# @!attribute [rw] authorisation
-#   @return [Hash, nil]
-#
-# @!attribute [rw] bank_details
+# @!attribute [rw] cursor
 #   @return [String, nil]
-#
-# @!attribute [rw] certificate
-#   @return [Hash, nil]
-#
-# @!attribute [rw] certificate_type
-#   @return [String, nil]
-#
-# @!attribute [rw] company
-#   @return [String, nil]
-#
-# @!attribute [rw] created_at
-#   @return [String, nil]
-#
-# @!attribute [rw] customs_office_of_lodgement
-#   @return [Hash, nil]
-#
-# @!attribute [rw] deleted_at
-#   @return [String, nil]
-#
-# @!attribute [rw] email
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] identification_number
-#   @return [String, nil]
-#
-# @!attribute [rw] indirect_representative
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] nhd_last_submission_year
-#   @return [Integer, nil]
-#
-# @!attribute [rw] nhd_submission_counter
-#   @return [Integer, nil]
-#
-# @!attribute [rw] person_paying_customs_duty
-#   @return [String, nil]
-#
-# @!attribute [rw] phone_country_code
-#   @return [String, nil]
-#
-# @!attribute [rw] phone_number
-#   @return [String, nil]
-#
-# @!attribute [rw] preferred_payment_method
-#   @return [Hash, nil]
-#
-# @!attribute [rw] signed_form
-#   @return [Hash, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
-#
-# @!attribute [rw] type_of_person
-#   @return [Hash, nil]
-#
-# @!attribute [rw] unlocode
-#   @return [String, nil]
-#
-# @!attribute [rw] updated_at
-#   @return [String, nil]
 PartyListMatch = Struct.new(
-  :additional_declaration_type,
-  :address,
-  :authorisation,
-  :bank_details,
-  :certificate,
-  :certificate_type,
-  :company,
-  :created_at,
-  :customs_office_of_lodgement,
-  :deleted_at,
-  :email,
-  :id,
-  :identification_number,
-  :indirect_representative,
-  :name,
-  :nhd_last_submission_year,
-  :nhd_submission_counter,
-  :person_paying_customs_duty,
-  :phone_country_code,
-  :phone_number,
-  :preferred_payment_method,
-  :signed_form,
+  :cursor,
   :type,
-  :type_of_person,
-  :unlocode,
-  :updated_at,
   keyword_init: true
 )
 
@@ -1446,109 +1190,13 @@ SubmissionLoadMatch = Struct.new(
 
 # Request payload for Submission#list.
 #
-# @!attribute [rw] additional_external_ids
-#   @return [Array, nil]
-#
-# @!attribute [rw] amendment_reason
+# @!attribute [rw] cursor
 #   @return [String, nil]
 #
-# @!attribute [rw] amendment_status
-#   @return [String, nil]
-#
-# @!attribute [rw] answers
-#   @return [Array, nil]
-#
-# @!attribute [rw] bypass_restricted_code
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] clearance_slip
-#   @return [Hash, nil]
-#
-# @!attribute [rw] client
-#   @return [Hash, nil]
-#
-# @!attribute [rw] company_member
-#   @return [Hash, nil]
-#
-# @!attribute [rw] consignee
-#   @return [Hash, nil]
-#
-# @!attribute [rw] consignor
-#   @return [Hash, nil]
-#
-# @!attribute [rw] created_at
-#   @return [String, nil]
-#
-# @!attribute [rw] declarant
-#   @return [Hash, nil]
-#
-# @!attribute [rw] document_upload_status
-#   @return [String, nil]
-#
-# @!attribute [rw] documents_presentation_requested
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] documents_upload_requested
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] external_id
-#   @return [String, nil]
-#
-# @!attribute [rw] form
-#   @return [String, nil]
-#
-# @!attribute [rw] goods_presentation_status
-#   @return [String, nil]
-#
-# @!attribute [rw] hrcm_status
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] invalidation_status
-#   @return [String, nil]
-#
-# @!attribute [rw] is_global_template
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] latest_notification_item
-#   @return [String, nil]
-#
-# @!attribute [rw] latest_state
-#   @return [Hash, nil]
-#
-# @!attribute [rw] lrn
-#   @return [String, nil]
-#
-# @!attribute [rw] mrn
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] partial_answers
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] receipt
-#   @return [Hash, nil]
-#
-# @!attribute [rw] refund_application_status
+# @!attribute [rw] form_subtype
 #   @return [String, nil]
 #
 # @!attribute [rw] route
-#   @return [String, nil]
-#
-# @!attribute [rw] shipment_items_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] shipment_items_quantity_no
-#   @return [Integer, nil]
-#
-# @!attribute [rw] source
-#   @return [String, nil]
-#
-# @!attribute [rw] source_type
 #   @return [String, nil]
 #
 # @!attribute [rw] status
@@ -1556,68 +1204,12 @@ SubmissionLoadMatch = Struct.new(
 #
 # @!attribute [rw] template
 #   @return [Boolean, nil]
-#
-# @!attribute [rw] template_id
-#   @return [String, nil]
-#
-# @!attribute [rw] template_properties
-#   @return [Array, nil]
-#
-# @!attribute [rw] total_tax_amount
-#   @return [String, nil]
-#
-# @!attribute [rw] updated_at
-#   @return [String, nil]
-#
-# @!attribute [rw] verification_errors
-#   @return [Array, nil]
-#
-# @!attribute [rw] verification_status
-#   @return [String, nil]
 SubmissionListMatch = Struct.new(
-  :additional_external_ids,
-  :amendment_reason,
-  :amendment_status,
-  :answers,
-  :bypass_restricted_code,
-  :clearance_slip,
-  :client,
-  :company_member,
-  :consignee,
-  :consignor,
-  :created_at,
-  :declarant,
-  :document_upload_status,
-  :documents_presentation_requested,
-  :documents_upload_requested,
-  :external_id,
-  :form,
-  :goods_presentation_status,
-  :hrcm_status,
-  :id,
-  :invalidation_status,
-  :is_global_template,
-  :latest_notification_item,
-  :latest_state,
-  :lrn,
-  :mrn,
-  :name,
-  :partial_answers,
-  :receipt,
-  :refund_application_status,
+  :cursor,
+  :form_subtype,
   :route,
-  :shipment_items_no,
-  :shipment_items_quantity_no,
-  :source,
-  :source_type,
   :status,
   :template,
-  :template_id,
-  :template_properties,
-  :total_tax_amount,
-  :updated_at,
-  :verification_errors,
-  :verification_status,
   keyword_init: true
 )
 

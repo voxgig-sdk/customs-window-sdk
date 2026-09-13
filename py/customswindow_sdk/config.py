@@ -1,6 +1,14 @@
 # CustomsWindow SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -72,6 +80,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "arrival_datetime",
             "type": "`$STRING`",
           },
@@ -88,7 +97,9 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "created_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -104,10 +115,12 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "date-time",
             "name": "deleted_at",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "departure_datetime",
             "type": "`$STRING`",
           },
@@ -149,6 +162,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "issue_date",
             "type": "`$STRING`",
           },
@@ -171,10 +185,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "parsing_completed_at",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "parsing_started_at",
             "type": "`$STRING`",
           },
@@ -192,18 +208,22 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "date-time",
             "name": "processing_ended_at",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "processing_started_at",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "receipt_generating_started_at",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "receipt_request_started_at",
             "type": "`$STRING`",
           },
@@ -241,7 +261,9 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "updated_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -250,6 +272,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "bulk_upload",
         "op": {
           "create": {
@@ -261,14 +287,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/bulk-uploads",
-                "parts": [
-                  "bulk-uploads",
+                "segments": [
+                  {
+                    "lit": "bulk-uploads",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "bulk-uploads",
+                ],
               },
             ],
           },
@@ -290,8 +321,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/bulk-uploads",
-                "parts": [
-                  "bulk-uploads",
+                "segments": [
+                  {
+                    "lit": "bulk-uploads",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -302,6 +335,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "bulk-uploads",
+                ],
               },
             ],
           },
@@ -324,9 +360,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/bulk-uploads/{id}",
-                "parts": [
-                  "bulk-uploads",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "bulk-uploads",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -337,6 +377,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "bulk-uploads",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -353,10 +397,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/bulk-uploads/{id}/generate-pdfs",
-                "parts": [
-                  "bulk-uploads",
-                  "{id}",
-                  "generate-pdfs",
+                "segments": [
+                  {
+                    "lit": "bulk-uploads",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "generate-pdfs",
+                  },
                 ],
                 "select": {
                   "$action": "generate_pdf",
@@ -368,6 +418,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "bulk-uploads",
+                  "{id}",
+                  "generate-pdfs",
+                ],
               },
             ],
           },
@@ -390,9 +445,13 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/bulk-uploads/{id}",
-                "parts": [
-                  "bulk-uploads",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "bulk-uploads",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -403,6 +462,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "bulk-uploads",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -419,10 +482,16 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/bulk-uploads/{id}/generate-pdfs",
-                "parts": [
-                  "bulk-uploads",
-                  "{id}",
-                  "generate-pdfs",
+                "segments": [
+                  {
+                    "lit": "bulk-uploads",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "generate-pdfs",
+                  },
                 ],
                 "select": {
                   "$action": "generate_pdf",
@@ -434,6 +503,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "bulk-uploads",
+                  "{id}",
+                  "generate-pdfs",
+                ],
               },
             ],
           },
@@ -456,9 +530,13 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/bulk-uploads/{id}",
-                "parts": [
-                  "bulk-uploads",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "bulk-uploads",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -469,6 +547,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "bulk-uploads",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -485,10 +567,16 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/bulk-uploads/{id}/generate-pdfs",
-                "parts": [
-                  "bulk-uploads",
-                  "{id}",
-                  "generate-pdfs",
+                "segments": [
+                  {
+                    "lit": "bulk-uploads",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "generate-pdfs",
+                  },
                 ],
                 "select": {
                   "$action": "generate_pdf",
@@ -500,6 +588,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "bulk-uploads",
+                  "{id}",
+                  "generate-pdfs",
+                ],
               },
             ],
           },
@@ -517,16 +610,20 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "created_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
           {
             "name": "extension",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "file",
             "req": True,
             "type": "`$STRING`",
@@ -538,6 +635,7 @@ def make_config():
           },
           {
             "name": "name",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -556,16 +654,23 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "date-time",
             "name": "updated_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
           {
             "name": "url",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "file",
         "op": {
           "create": {
@@ -577,8 +682,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/files",
-                "parts": [
-                  "files",
+                "segments": [
+                  {
+                    "lit": "files",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -587,6 +694,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "files",
+                ],
               },
             ],
           },
@@ -647,6 +757,7 @@ def make_config():
           },
           {
             "name": "certificate_type",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -657,7 +768,9 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "created_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -667,10 +780,12 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "date-time",
             "name": "deleted_at",
             "type": "`$STRING`",
           },
           {
+            "format": "email",
             "name": "email",
             "type": "`$STRING`",
           },
@@ -736,11 +851,17 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "updated_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "party",
         "op": {
           "create": {
@@ -752,14 +873,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/parties",
-                "parts": [
-                  "parties",
+                "segments": [
+                  {
+                    "lit": "parties",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "parties",
+                ],
               },
             ],
           },
@@ -787,8 +913,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/parties",
-                "parts": [
-                  "parties",
+                "segments": [
+                  {
+                    "lit": "parties",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -800,6 +928,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "parties",
+                ],
               },
             ],
           },
@@ -822,9 +953,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/parties/{id}",
-                "parts": [
-                  "parties",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "parties",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -835,6 +970,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "parties",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -857,9 +996,13 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/parties/{id}",
-                "parts": [
-                  "parties",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "parties",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -870,6 +1013,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "parties",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -892,9 +1039,13 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/parties/{id}",
-                "parts": [
-                  "parties",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "parties",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -905,6 +1056,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "parties",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -974,7 +1129,9 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "date-time",
             "name": "created_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -1003,6 +1160,7 @@ def make_config():
           },
           {
             "name": "form",
+            "readOnly": True,
             "req": True,
             "short": "cuid-format identifier for this entity.",
             "type": "`$STRING`",
@@ -1109,11 +1267,14 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "decimal",
             "name": "total_tax_amount",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "updated_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -1127,6 +1288,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "submission",
         "op": {
           "create": {
@@ -1148,10 +1313,16 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/submissions/{id}/refund",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "refund",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "refund",
+                  },
                 ],
                 "select": {
                   "$action": "refund",
@@ -1163,29 +1334,43 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "refund",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/submissions",
-                "parts": [
-                  "submissions",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/submissions/retrieve",
-                "parts": [
-                  "submissions",
-                  "retrieve",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "lit": "retrieve",
+                  },
                 ],
                 "select": {
                   "$action": "retrieve",
@@ -1194,6 +1379,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "retrieve",
+                ],
               },
             ],
           },
@@ -1241,8 +1430,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/submissions",
-                "parts": [
-                  "submissions",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1257,6 +1448,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "submissions",
+                ],
               },
             ],
           },
@@ -1279,9 +1473,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/submissions/{id}",
-                "parts": [
-                  "submissions",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1292,6 +1490,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -1308,10 +1510,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/submissions/{id}/clearance-slip",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "clearance-slip",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "clearance-slip",
+                  },
                 ],
                 "select": {
                   "$action": "clearance_slip",
@@ -1323,6 +1531,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "clearance-slip",
+                ],
               },
               {
                 "args": {
@@ -1339,10 +1552,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/submissions/{id}/notification-read",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "notification-read",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "notification-read",
+                  },
                 ],
                 "select": {
                   "$action": "notification_read",
@@ -1354,6 +1573,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "notification-read",
+                ],
               },
               {
                 "args": {
@@ -1370,10 +1594,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/submissions/{id}/pbn-applicable",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "pbn-applicable",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "pbn-applicable",
+                  },
                 ],
                 "select": {
                   "$action": "pbn_applicable",
@@ -1385,6 +1615,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "pbn-applicable",
+                ],
               },
               {
                 "args": {
@@ -1401,10 +1636,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/submissions/{id}/receipt",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "receipt",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "receipt",
+                  },
                 ],
                 "select": {
                   "$action": "receipt",
@@ -1416,6 +1657,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "receipt",
+                ],
               },
               {
                 "args": {
@@ -1432,10 +1678,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/submissions/{id}/refund",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "refund",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "refund",
+                  },
                 ],
                 "select": {
                   "$action": "refund",
@@ -1447,15 +1699,24 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "refund",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/submissions/retrieve",
-                "parts": [
-                  "submissions",
-                  "retrieve",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "lit": "retrieve",
+                  },
                 ],
                 "select": {
                   "$action": "retrieve",
@@ -1464,6 +1725,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "retrieve",
+                ],
               },
             ],
           },
@@ -1486,9 +1751,13 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/submissions/{id}",
-                "parts": [
-                  "submissions",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1499,6 +1768,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -1515,10 +1788,16 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/submissions/{id}/clearance-slip",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "clearance-slip",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "clearance-slip",
+                  },
                 ],
                 "select": {
                   "$action": "clearance_slip",
@@ -1530,6 +1809,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "clearance-slip",
+                ],
               },
               {
                 "args": {
@@ -1546,10 +1830,16 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/submissions/{id}/notification-read",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "notification-read",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "notification-read",
+                  },
                 ],
                 "select": {
                   "$action": "notification_read",
@@ -1561,6 +1851,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "notification-read",
+                ],
               },
               {
                 "args": {
@@ -1577,10 +1872,16 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/submissions/{id}/pbn-applicable",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "pbn-applicable",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "pbn-applicable",
+                  },
                 ],
                 "select": {
                   "$action": "pbn_applicable",
@@ -1592,6 +1893,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "pbn-applicable",
+                ],
               },
               {
                 "args": {
@@ -1608,10 +1914,16 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/submissions/{id}/receipt",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "receipt",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "receipt",
+                  },
                 ],
                 "select": {
                   "$action": "receipt",
@@ -1623,6 +1935,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "receipt",
+                ],
               },
             ],
           },
@@ -1645,9 +1962,13 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/submissions/{id}",
-                "parts": [
-                  "submissions",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1658,6 +1979,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -1674,10 +1999,16 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/submissions/{id}/clearance-slip",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "clearance-slip",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "clearance-slip",
+                  },
                 ],
                 "select": {
                   "$action": "clearance_slip",
@@ -1689,6 +2020,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "clearance-slip",
+                ],
               },
               {
                 "args": {
@@ -1705,10 +2041,16 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/submissions/{id}/notification-read",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "notification-read",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "notification-read",
+                  },
                 ],
                 "select": {
                   "$action": "notification_read",
@@ -1720,6 +2062,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "notification-read",
+                ],
               },
               {
                 "args": {
@@ -1736,10 +2083,16 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/submissions/{id}/pbn-applicable",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "pbn-applicable",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "pbn-applicable",
+                  },
                 ],
                 "select": {
                   "$action": "pbn_applicable",
@@ -1751,6 +2104,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "pbn-applicable",
+                ],
               },
               {
                 "args": {
@@ -1767,10 +2125,16 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/submissions/{id}/receipt",
-                "parts": [
-                  "submissions",
-                  "{id}",
-                  "receipt",
+                "segments": [
+                  {
+                    "lit": "submissions",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "receipt",
+                  },
                 ],
                 "select": {
                   "$action": "receipt",
@@ -1782,6 +2146,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "submissions",
+                  "{id}",
+                  "receipt",
+                ],
               },
             ],
           },
@@ -1839,7 +2208,9 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "date-time",
             "name": "created_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -1867,6 +2238,7 @@ def make_config():
           },
           {
             "name": "form",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -1969,11 +2341,14 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "format": "decimal",
             "name": "total_tax_amount",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "updated_at",
+            "readOnly": True,
             "req": True,
             "type": "`$STRING`",
           },
@@ -1987,6 +2362,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "submission_detail",
         "op": {
           "create": {
@@ -1998,14 +2377,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/documents-request",
-                "parts": [
-                  "documents-request",
+                "segments": [
+                  {
+                    "lit": "documents-request",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "documents-request",
+                ],
               },
             ],
           },

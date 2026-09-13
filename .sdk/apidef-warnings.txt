@@ -1,6 +1,5 @@
 {
   point: "warning"
-  when: 1787691372369
   note: "No paths defined for entity=paginated_bulk_upload_list_list"
   entm: {
     name: "paginated_bulk_upload_list_list"
@@ -14,7 +13,6 @@
 
 {
   point: "warning"
-  when: 1787691372370
   note: "No paths defined for entity=paginated_party_list_list"
   entm: {
     name: "paginated_party_list_list"
@@ -28,7 +26,6 @@
 
 {
   point: "warning"
-  when: 1787691372370
   note: "No paths defined for entity=paginated_submission_list_list"
   entm: {
     name: "paginated_submission_list_list"

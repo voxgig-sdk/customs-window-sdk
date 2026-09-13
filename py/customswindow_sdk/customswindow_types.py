@@ -68,47 +68,7 @@ class BulkUploadLoadMatch(TypedDict):
 
 
 class BulkUploadListMatch(TypedDict, total=False):
-    active_transport_nationality: str
-    active_transport_number: str
-    arrival_datetime: str
-    client: str
-    company_member: str
-    created_at: str
-    declarant: str
-    declarations_no: int
-    deleted_at: str
-    departure_datetime: str
-    errors_file: dict
-    external_id: str
-    failed_declarations_no: int
-    file: dict
-    green_routed_no: int
-    h1_fallback_template: str
-    house_transport_doc_ref: str
-    id: str
-    issue_date: str
-    mapping: str
-    orange_routed_no: int
-    parsed_declarations_no: int
-    parser: str
-    parsing_completed_at: str
-    parsing_started_at: str
-    passive_transport_nationality: str
-    passive_transport_number: str
-    processed_declarations_no: int
-    processing_ended_at: str
-    processing_started_at: str
-    receipt_generating_started_at: str
-    receipt_request_started_at: str
-    receipt_request_status: str
-    receipt_request_user: str
-    receipts_zip: str
-    red_routed_no: int
-    rejected_status_no: int
-    status: str
-    template: str
-    updated_at: str
-    yellow_routed_no: int
+    cursor: str
 
 
 class BulkUploadCreateDataRequired(TypedDict):
@@ -290,32 +250,8 @@ class PartyLoadMatch(TypedDict):
 
 
 class PartyListMatch(TypedDict, total=False):
-    additional_declaration_type: dict
-    address: dict
-    authorisation: dict
-    bank_details: str
-    certificate: dict
-    certificate_type: str
-    company: str
-    created_at: str
-    customs_office_of_lodgement: dict
-    deleted_at: str
-    email: str
-    id: str
-    identification_number: str
-    indirect_representative: bool
-    name: str
-    nhd_last_submission_year: int
-    nhd_submission_counter: int
-    person_paying_customs_duty: str
-    phone_country_code: str
-    phone_number: str
-    preferred_payment_method: dict
-    signed_form: dict
+    cursor: str
     type: str
-    type_of_person: dict
-    unlocode: str
-    updated_at: str
 
 
 class PartyCreateDataRequired(TypedDict):
@@ -440,49 +376,11 @@ class SubmissionLoadMatch(TypedDict):
 
 
 class SubmissionListMatch(TypedDict, total=False):
-    additional_external_ids: list
-    amendment_reason: str
-    amendment_status: str
-    answers: list
-    bypass_restricted_code: bool
-    clearance_slip: dict
-    client: dict
-    company_member: dict
-    consignee: dict
-    consignor: dict
-    created_at: str
-    declarant: dict
-    document_upload_status: str
-    documents_presentation_requested: bool
-    documents_upload_requested: bool
-    external_id: str
-    form: str
-    goods_presentation_status: str
-    hrcm_status: str
-    id: str
-    invalidation_status: str
-    is_global_template: bool
-    latest_notification_item: str
-    latest_state: dict
-    lrn: str
-    mrn: str
-    name: str
-    partial_answers: bool
-    receipt: dict
-    refund_application_status: str
+    cursor: str
+    form_subtype: str
     route: str
-    shipment_items_no: int
-    shipment_items_quantity_no: int
-    source: str
-    source_type: str
     status: str
     template: bool
-    template_id: str
-    template_properties: list
-    total_tax_amount: str
-    updated_at: str
-    verification_errors: list
-    verification_status: str
 
 
 class SubmissionCreateDataRequired(TypedDict):

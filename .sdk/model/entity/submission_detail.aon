@@ -54,7 +54,9 @@ main: kit: entity: submission_detail: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "created_at"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -86,6 +88,7 @@ main: kit: entity: submission_detail: {
     }
     {
       name: "form"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -206,12 +209,15 @@ main: kit: entity: submission_detail: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "decimal"
       name: "total_tax_amount"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "updated_at"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -241,8 +247,10 @@ main: kit: entity: submission_detail: {
         {
           method: "POST"
           orig: "/documents-request"
-          parts: [
-            "documents-request"
+          segments: [
+            {
+              lit: "documents-request"
+            }
           ]
           transform: {
             req: "`reqdata`"

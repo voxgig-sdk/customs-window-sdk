@@ -196,14 +196,22 @@ func partyDirectSetup(mockres any) *partyDirectSetupResult {
 	env := envOverride(map[string]any{
 		"CUSTOMS_WINDOW_TEST_PARTY_ENTID": map[string]any{},
 		"CUSTOMS_WINDOW_TEST_LIVE":    "FALSE",
-		"CUSTOMS_WINDOW_APIKEY":       "NONE",
+		"CUSTOMS_WINDOW_APIKEY":       "",
 	})
 
 	live := env["CUSTOMS_WINDOW_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["CUSTOMS_WINDOW_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewCustomsWindowSDK(mergedOpts)
 

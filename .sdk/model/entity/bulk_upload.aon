@@ -17,6 +17,7 @@ main: kit: entity: bulk_upload: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "arrival_datetime"
       req: false
       type: "`$STRING`"
@@ -34,7 +35,9 @@ main: kit: entity: bulk_upload: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created_at"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -50,11 +53,13 @@ main: kit: entity: bulk_upload: {
       type: "`$INTEGER`"
     }
     {
+      format: "date-time"
       name: "deleted_at"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "departure_datetime"
       req: false
       type: "`$STRING`"
@@ -103,6 +108,7 @@ main: kit: entity: bulk_upload: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "issue_date"
       req: false
       type: "`$STRING`"
@@ -130,11 +136,13 @@ main: kit: entity: bulk_upload: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "parsing_completed_at"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "parsing_started_at"
       req: false
       type: "`$STRING`"
@@ -156,21 +164,25 @@ main: kit: entity: bulk_upload: {
       type: "`$INTEGER`"
     }
     {
+      format: "date-time"
       name: "processing_ended_at"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "processing_started_at"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "receipt_generating_started_at"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "receipt_request_started_at"
       req: false
       type: "`$STRING`"
@@ -216,7 +228,9 @@ main: kit: entity: bulk_upload: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "updated_at"
+      readOnly: true
       req: true
       type: "`$STRING`"
     }
@@ -240,8 +254,10 @@ main: kit: entity: bulk_upload: {
         {
           method: "POST"
           orig: "/bulk-uploads"
-          parts: [
-            "bulk-uploads"
+          segments: [
+            {
+              lit: "bulk-uploads"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -267,8 +283,10 @@ main: kit: entity: bulk_upload: {
           }
           method: "GET"
           orig: "/bulk-uploads"
-          parts: [
-            "bulk-uploads"
+          segments: [
+            {
+              lit: "bulk-uploads"
+            }
           ]
           select: {
             exist: [
@@ -299,9 +317,13 @@ main: kit: entity: bulk_upload: {
           }
           method: "GET"
           orig: "/bulk-uploads/{id}"
-          parts: [
-            "bulk-uploads"
-            "{id}"
+          segments: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -327,10 +349,16 @@ main: kit: entity: bulk_upload: {
           }
           method: "GET"
           orig: "/bulk-uploads/{id}/generate-pdfs"
-          parts: [
-            "bulk-uploads"
-            "{id}"
-            "generate-pdfs"
+          segments: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "generate-pdfs"
+            }
           ]
           select: {
             "$action": "generate_pdf"
@@ -362,9 +390,13 @@ main: kit: entity: bulk_upload: {
           }
           method: "DELETE"
           orig: "/bulk-uploads/{id}"
-          parts: [
-            "bulk-uploads"
-            "{id}"
+          segments: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -390,10 +422,16 @@ main: kit: entity: bulk_upload: {
           }
           method: "DELETE"
           orig: "/bulk-uploads/{id}/generate-pdfs"
-          parts: [
-            "bulk-uploads"
-            "{id}"
-            "generate-pdfs"
+          segments: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "generate-pdfs"
+            }
           ]
           select: {
             "$action": "generate_pdf"
@@ -425,9 +463,13 @@ main: kit: entity: bulk_upload: {
           }
           method: "PATCH"
           orig: "/bulk-uploads/{id}"
-          parts: [
-            "bulk-uploads"
-            "{id}"
+          segments: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -453,10 +495,16 @@ main: kit: entity: bulk_upload: {
           }
           method: "PATCH"
           orig: "/bulk-uploads/{id}/generate-pdfs"
-          parts: [
-            "bulk-uploads"
-            "{id}"
-            "generate-pdfs"
+          segments: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "generate-pdfs"
+            }
           ]
           select: {
             "$action": "generate_pdf"

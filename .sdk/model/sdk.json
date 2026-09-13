@@ -47,6 +47,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "arrival_datetime",
               "req": false,
               "type": "`$STRING`"
@@ -67,7 +68,9 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -86,12 +89,14 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "deleted_at",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "departure_datetime",
               "req": false,
               "type": "`$STRING`"
@@ -149,6 +154,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "issue_date",
               "req": false,
               "type": "`$STRING`"
@@ -181,12 +187,14 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "parsing_completed_at",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "parsing_started_at",
               "req": false,
               "type": "`$STRING`"
@@ -212,24 +220,28 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "processing_ended_at",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "processing_started_at",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "receipt_generating_started_at",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "receipt_request_started_at",
               "req": false,
               "type": "`$STRING`"
@@ -283,7 +295,9 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "updated_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -310,8 +324,10 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/bulk-uploads",
-                  "parts": [
-                    "bulk-uploads"
+                  "segments": [
+                    {
+                      "lit": "bulk-uploads"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -342,8 +358,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bulk-uploads",
-                  "parts": [
-                    "bulk-uploads"
+                  "segments": [
+                    {
+                      "lit": "bulk-uploads"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -378,9 +396,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bulk-uploads/{id}",
-                  "parts": [
-                    "bulk-uploads",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "bulk-uploads"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -409,10 +431,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bulk-uploads/{id}/generate-pdfs",
-                  "parts": [
-                    "bulk-uploads",
-                    "{id}",
-                    "generate-pdfs"
+                  "segments": [
+                    {
+                      "lit": "bulk-uploads"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "generate-pdfs"
+                    }
                   ],
                   "select": {
                     "$action": "generate_pdf",
@@ -448,9 +476,13 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/bulk-uploads/{id}",
-                  "parts": [
-                    "bulk-uploads",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "bulk-uploads"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -479,10 +511,16 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/bulk-uploads/{id}/generate-pdfs",
-                  "parts": [
-                    "bulk-uploads",
-                    "{id}",
-                    "generate-pdfs"
+                  "segments": [
+                    {
+                      "lit": "bulk-uploads"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "generate-pdfs"
+                    }
                   ],
                   "select": {
                     "$action": "generate_pdf",
@@ -518,9 +556,13 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/bulk-uploads/{id}",
-                  "parts": [
-                    "bulk-uploads",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "bulk-uploads"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -549,10 +591,16 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/bulk-uploads/{id}/generate-pdfs",
-                  "parts": [
-                    "bulk-uploads",
-                    "{id}",
-                    "generate-pdfs"
+                  "segments": [
+                    {
+                      "lit": "bulk-uploads"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "generate-pdfs"
+                    }
                   ],
                   "select": {
                     "$action": "generate_pdf",
@@ -587,18 +635,22 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "extension",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "uri",
               "name": "file",
               "req": true,
               "type": "`$STRING`"
@@ -613,6 +665,7 @@
             {
               "active": true,
               "name": "name",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -636,13 +689,16 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "updated_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             }
@@ -663,8 +719,10 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/files",
-                  "parts": [
-                    "files"
+                  "segments": [
+                    {
+                      "lit": "files"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -756,6 +814,7 @@
             {
               "active": true,
               "name": "certificate_type",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -768,7 +827,9 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -780,12 +841,14 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "deleted_at",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "email",
               "name": "email",
               "req": false,
               "type": "`$STRING`"
@@ -878,7 +941,9 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "updated_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             }
@@ -899,8 +964,10 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/parties",
-                  "parts": [
-                    "parties"
+                  "segments": [
+                    {
+                      "lit": "parties"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -939,8 +1006,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/parties",
-                  "parts": [
-                    "parties"
+                  "segments": [
+                    {
+                      "lit": "parties"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -976,9 +1045,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/parties/{id}",
-                  "parts": [
-                    "parties",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "parties"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1013,9 +1086,13 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/parties/{id}",
-                  "parts": [
-                    "parties",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "parties"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1050,9 +1127,13 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/parties/{id}",
-                  "parts": [
-                    "parties",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "parties"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1153,7 +1234,9 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -1192,6 +1275,7 @@
             {
               "active": true,
               "name": "form",
+              "readOnly": true,
               "req": true,
               "short": "cuid-format identifier for this entity.",
               "type": "`$STRING`"
@@ -1341,13 +1425,16 @@
             },
             {
               "active": true,
+              "format": "decimal",
               "name": "total_tax_amount",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "updated_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -1392,10 +1479,16 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/submissions/{id}/refund",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "refund"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "refund"
+                    }
                   ],
                   "select": {
                     "$action": "refund",
@@ -1414,8 +1507,10 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/submissions",
-                  "parts": [
-                    "submissions"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1429,9 +1524,13 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/submissions/retrieve",
-                  "parts": [
-                    "submissions",
-                    "retrieve"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "lit": "retrieve"
+                    }
                   ],
                   "select": {
                     "$action": "retrieve"
@@ -1498,8 +1597,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions",
-                  "parts": [
-                    "submissions"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1538,9 +1639,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}",
-                  "parts": [
-                    "submissions",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1569,10 +1674,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/clearance-slip",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "clearance-slip"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "clearance-slip"
+                    }
                   ],
                   "select": {
                     "$action": "clearance_slip",
@@ -1602,10 +1713,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/notification-read",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "notification-read"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "notification-read"
+                    }
                   ],
                   "select": {
                     "$action": "notification_read",
@@ -1635,10 +1752,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/pbn-applicable",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "pbn-applicable"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "pbn-applicable"
+                    }
                   ],
                   "select": {
                     "$action": "pbn_applicable",
@@ -1668,10 +1791,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/receipt",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "receipt"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "receipt"
+                    }
                   ],
                   "select": {
                     "$action": "receipt",
@@ -1701,10 +1830,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/{id}/refund",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "refund"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "refund"
+                    }
                   ],
                   "select": {
                     "$action": "refund",
@@ -1723,9 +1858,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions/retrieve",
-                  "parts": [
-                    "submissions",
-                    "retrieve"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "lit": "retrieve"
+                    }
                   ],
                   "select": {
                     "$action": "retrieve"
@@ -1758,9 +1897,13 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}",
-                  "parts": [
-                    "submissions",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1789,10 +1932,16 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}/clearance-slip",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "clearance-slip"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "clearance-slip"
+                    }
                   ],
                   "select": {
                     "$action": "clearance_slip",
@@ -1822,10 +1971,16 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}/notification-read",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "notification-read"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "notification-read"
+                    }
                   ],
                   "select": {
                     "$action": "notification_read",
@@ -1855,10 +2010,16 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}/pbn-applicable",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "pbn-applicable"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "pbn-applicable"
+                    }
                   ],
                   "select": {
                     "$action": "pbn_applicable",
@@ -1888,10 +2049,16 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/submissions/{id}/receipt",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "receipt"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "receipt"
+                    }
                   ],
                   "select": {
                     "$action": "receipt",
@@ -1927,9 +2094,13 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}",
-                  "parts": [
-                    "submissions",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1958,10 +2129,16 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}/clearance-slip",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "clearance-slip"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "clearance-slip"
+                    }
                   ],
                   "select": {
                     "$action": "clearance_slip",
@@ -1991,10 +2168,16 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}/notification-read",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "notification-read"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "notification-read"
+                    }
                   ],
                   "select": {
                     "$action": "notification_read",
@@ -2024,10 +2207,16 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}/pbn-applicable",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "pbn-applicable"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "pbn-applicable"
+                    }
                   ],
                   "select": {
                     "$action": "pbn_applicable",
@@ -2057,10 +2246,16 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/submissions/{id}/receipt",
-                  "parts": [
-                    "submissions",
-                    "{id}",
-                    "receipt"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "receipt"
+                    }
                   ],
                   "select": {
                     "$action": "receipt",
@@ -2145,7 +2340,9 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -2183,6 +2380,7 @@
             {
               "active": true,
               "name": "form",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -2325,13 +2523,16 @@
             },
             {
               "active": true,
+              "format": "decimal",
               "name": "total_tax_amount",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "updated_at",
+              "readOnly": true,
               "req": true,
               "type": "`$STRING`"
             },
@@ -2365,8 +2566,10 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/documents-request",
-                  "parts": [
-                    "documents-request"
+                  "segments": [
+                    {
+                      "lit": "documents-request"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -2446,8 +2649,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -2948,6 +3154,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2973,6 +3182,10 @@
             "version": "0.1.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -3024,6 +3237,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -3048,6 +3262,7 @@
             },
             "version": "0.1.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -3099,6 +3314,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -3123,6 +3339,7 @@
             },
             "version": "0.1.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -3163,6 +3380,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3188,6 +3408,9 @@
             "version": "0.1.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -3222,6 +3445,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3247,6 +3473,9 @@
             "version": "0.1.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -3287,6 +3516,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3312,6 +3544,9 @@
             "version": "0.1.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -3357,6 +3592,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3382,6 +3620,9 @@
             "version": "0.1.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -3399,11 +3640,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -3432,6 +3668,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3456,6 +3695,14 @@
             },
             "version": "0.1.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

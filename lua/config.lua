@@ -51,6 +51,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "arrival_datetime",
             ["type"] = "`$STRING`",
           },
@@ -67,7 +68,9 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "created_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -83,10 +86,12 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "deleted_at",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "departure_datetime",
             ["type"] = "`$STRING`",
           },
@@ -128,6 +133,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "issue_date",
             ["type"] = "`$STRING`",
           },
@@ -150,10 +156,12 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "parsing_completed_at",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "parsing_started_at",
             ["type"] = "`$STRING`",
           },
@@ -171,18 +179,22 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "processing_ended_at",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "processing_started_at",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "receipt_generating_started_at",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "receipt_request_started_at",
             ["type"] = "`$STRING`",
           },
@@ -220,7 +232,9 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "updated_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -228,6 +242,10 @@ local function make_config()
             ["name"] = "yellow_routed_no",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "bulk_upload",
         ["op"] = {
@@ -240,13 +258,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/bulk-uploads",
-                ["parts"] = {
-                  "bulk-uploads",
+                ["segments"] = {
+                  {
+                    ["lit"] = "bulk-uploads",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "bulk-uploads",
                 },
               },
             },
@@ -269,8 +292,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/bulk-uploads",
-                ["parts"] = {
-                  "bulk-uploads",
+                ["segments"] = {
+                  {
+                    ["lit"] = "bulk-uploads",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -280,6 +305,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.results`",
+                },
+                ["parts"] = {
+                  "bulk-uploads",
                 },
               },
             },
@@ -303,9 +331,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/bulk-uploads/{id}",
-                ["parts"] = {
-                  "bulk-uploads",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "bulk-uploads",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -315,6 +347,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "bulk-uploads",
+                  "{id}",
                 },
               },
               {
@@ -332,10 +368,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/bulk-uploads/{id}/generate-pdfs",
-                ["parts"] = {
-                  "bulk-uploads",
-                  "{id}",
-                  "generate-pdfs",
+                ["segments"] = {
+                  {
+                    ["lit"] = "bulk-uploads",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "generate-pdfs",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "generate_pdf",
@@ -346,6 +388,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "bulk-uploads",
+                  "{id}",
+                  "generate-pdfs",
                 },
               },
             },
@@ -369,9 +416,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/bulk-uploads/{id}",
-                ["parts"] = {
-                  "bulk-uploads",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "bulk-uploads",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -381,6 +432,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "bulk-uploads",
+                  "{id}",
                 },
               },
               {
@@ -398,10 +453,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/bulk-uploads/{id}/generate-pdfs",
-                ["parts"] = {
-                  "bulk-uploads",
-                  "{id}",
-                  "generate-pdfs",
+                ["segments"] = {
+                  {
+                    ["lit"] = "bulk-uploads",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "generate-pdfs",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "generate_pdf",
@@ -412,6 +473,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "bulk-uploads",
+                  "{id}",
+                  "generate-pdfs",
                 },
               },
             },
@@ -435,9 +501,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/bulk-uploads/{id}",
-                ["parts"] = {
-                  "bulk-uploads",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "bulk-uploads",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -447,6 +517,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "bulk-uploads",
+                  "{id}",
                 },
               },
               {
@@ -464,10 +538,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/bulk-uploads/{id}/generate-pdfs",
-                ["parts"] = {
-                  "bulk-uploads",
-                  "{id}",
-                  "generate-pdfs",
+                ["segments"] = {
+                  {
+                    ["lit"] = "bulk-uploads",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "generate-pdfs",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "generate_pdf",
@@ -478,6 +558,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "bulk-uploads",
+                  "{id}",
+                  "generate-pdfs",
                 },
               },
             },
@@ -496,16 +581,20 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "created_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "extension",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "file",
             ["req"] = true,
             ["type"] = "`$STRING`",
@@ -517,6 +606,7 @@ local function make_config()
           },
           {
             ["name"] = "name",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -535,15 +625,22 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "updated_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "url",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "file",
         ["op"] = {
@@ -556,8 +653,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/files",
-                ["parts"] = {
-                  "files",
+                ["segments"] = {
+                  {
+                    ["lit"] = "files",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
@@ -565,6 +664,9 @@ local function make_config()
                     ["file"] = "`reqdata`",
                   },
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "files",
                 },
               },
             },
@@ -626,6 +728,7 @@ local function make_config()
           },
           {
             ["name"] = "certificate_type",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -636,7 +739,9 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "created_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -646,10 +751,12 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "deleted_at",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "email",
             ["name"] = "email",
             ["type"] = "`$STRING`",
           },
@@ -715,10 +822,16 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "updated_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "party",
         ["op"] = {
@@ -731,13 +844,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/parties",
-                ["parts"] = {
-                  "parties",
+                ["segments"] = {
+                  {
+                    ["lit"] = "parties",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "parties",
                 },
               },
             },
@@ -766,8 +884,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/parties",
-                ["parts"] = {
-                  "parties",
+                ["segments"] = {
+                  {
+                    ["lit"] = "parties",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -778,6 +898,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.results`",
+                },
+                ["parts"] = {
+                  "parties",
                 },
               },
             },
@@ -801,9 +924,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/parties/{id}",
-                ["parts"] = {
-                  "parties",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "parties",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -813,6 +940,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "parties",
+                  "{id}",
                 },
               },
             },
@@ -836,9 +967,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/parties/{id}",
-                ["parts"] = {
-                  "parties",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "parties",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -848,6 +983,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "parties",
+                  "{id}",
                 },
               },
             },
@@ -871,9 +1010,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/parties/{id}",
-                ["parts"] = {
-                  "parties",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "parties",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -883,6 +1026,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "parties",
+                  "{id}",
                 },
               },
             },
@@ -953,7 +1100,9 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "created_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -982,6 +1131,7 @@ local function make_config()
           },
           {
             ["name"] = "form",
+            ["readOnly"] = true,
             ["req"] = true,
             ["short"] = "cuid-format identifier for this entity.",
             ["type"] = "`$STRING`",
@@ -1088,11 +1238,14 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
           {
+            ["format"] = "decimal",
             ["name"] = "total_tax_amount",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "updated_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -1105,6 +1258,10 @@ local function make_config()
             ["short"] = "* `passed` - passed * `failed` - failed",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "submission",
         ["op"] = {
@@ -1127,10 +1284,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/submissions/{id}/refund",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "refund",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "refund",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "refund",
@@ -1142,19 +1305,29 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "refund",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/submissions",
-                ["parts"] = {
-                  "submissions",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
                 },
               },
               {
@@ -1162,9 +1335,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/submissions/retrieve",
-                ["parts"] = {
-                  "submissions",
-                  "retrieve",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["lit"] = "retrieve",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "retrieve",
@@ -1172,6 +1349,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "retrieve",
                 },
               },
             },
@@ -1220,8 +1401,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions",
-                ["parts"] = {
-                  "submissions",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1235,6 +1418,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.results`",
+                },
+                ["parts"] = {
+                  "submissions",
                 },
               },
             },
@@ -1258,9 +1444,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1270,6 +1460,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
                 },
               },
               {
@@ -1287,10 +1481,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/clearance-slip",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "clearance-slip",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "clearance-slip",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "clearance_slip",
@@ -1301,6 +1501,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "clearance-slip",
                 },
               },
               {
@@ -1318,10 +1523,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/notification-read",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "notification-read",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "notification-read",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "notification_read",
@@ -1332,6 +1543,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "notification-read",
                 },
               },
               {
@@ -1349,10 +1565,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/pbn-applicable",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "pbn-applicable",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "pbn-applicable",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "pbn_applicable",
@@ -1363,6 +1585,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "pbn-applicable",
                 },
               },
               {
@@ -1380,10 +1607,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/receipt",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "receipt",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "receipt",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "receipt",
@@ -1394,6 +1627,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "receipt",
                 },
               },
               {
@@ -1411,10 +1649,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/{id}/refund",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "refund",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "refund",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "refund",
@@ -1426,15 +1670,24 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "refund",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions/retrieve",
-                ["parts"] = {
-                  "submissions",
-                  "retrieve",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["lit"] = "retrieve",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "retrieve",
@@ -1442,6 +1695,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "retrieve",
                 },
               },
             },
@@ -1465,9 +1722,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1477,6 +1738,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
                 },
               },
               {
@@ -1494,10 +1759,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}/clearance-slip",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "clearance-slip",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "clearance-slip",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "clearance_slip",
@@ -1508,6 +1779,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "clearance-slip",
                 },
               },
               {
@@ -1525,10 +1801,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}/notification-read",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "notification-read",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "notification-read",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "notification_read",
@@ -1539,6 +1821,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "notification-read",
                 },
               },
               {
@@ -1556,10 +1843,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}/pbn-applicable",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "pbn-applicable",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "pbn-applicable",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "pbn_applicable",
@@ -1570,6 +1863,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "pbn-applicable",
                 },
               },
               {
@@ -1587,10 +1885,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/submissions/{id}/receipt",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "receipt",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "receipt",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "receipt",
@@ -1601,6 +1905,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "receipt",
                 },
               },
             },
@@ -1624,9 +1933,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1636,6 +1949,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
                 },
               },
               {
@@ -1653,10 +1970,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}/clearance-slip",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "clearance-slip",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "clearance-slip",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "clearance_slip",
@@ -1667,6 +1990,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "clearance-slip",
                 },
               },
               {
@@ -1684,10 +2012,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}/notification-read",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "notification-read",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "notification-read",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "notification_read",
@@ -1698,6 +2032,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "notification-read",
                 },
               },
               {
@@ -1715,10 +2054,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}/pbn-applicable",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "pbn-applicable",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "pbn-applicable",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "pbn_applicable",
@@ -1729,6 +2074,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "pbn-applicable",
                 },
               },
               {
@@ -1746,10 +2096,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/submissions/{id}/receipt",
-                ["parts"] = {
-                  "submissions",
-                  "{id}",
-                  "receipt",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "receipt",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "receipt",
@@ -1760,6 +2116,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
+                  "{id}",
+                  "receipt",
                 },
               },
             },
@@ -1818,7 +2179,9 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "created_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -1846,6 +2209,7 @@ local function make_config()
           },
           {
             ["name"] = "form",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -1948,11 +2312,14 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["format"] = "decimal",
             ["name"] = "total_tax_amount",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "updated_at",
+            ["readOnly"] = true,
             ["req"] = true,
             ["type"] = "`$STRING`",
           },
@@ -1966,6 +2333,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "submission_detail",
         ["op"] = {
           ["create"] = {
@@ -1977,13 +2348,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/documents-request",
-                ["parts"] = {
-                  "documents-request",
+                ["segments"] = {
+                  {
+                    ["lit"] = "documents-request",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "documents-request",
                 },
               },
             },
