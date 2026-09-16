@@ -9,27 +9,27 @@
         "company_member": "s19e",
         "created_at": "s19f",
         "declarant": "s1a0",
-        "declarations_no": "s1a1",
+        "declarations_no": 417,
         "deleted_at": "s1a2",
         "departure_datetime": "s1a3",
         "errors_file": {},
         "external_id": "EXTERNAL01",
-        "failed_declarations_no": "s1a6",
+        "failed_declarations_no": 422,
         "file": {},
-        "green_routed_no": "s1a8",
+        "green_routed_no": 424,
         "h1_fallback_template": "s1a9",
         "house_transport_doc_ref": "s1aa",
         "id": "BULK_UPLOAD00",
         "issue_date": "s1ac",
         "mapping": "s1ad",
-        "orange_routed_no": "s1ae",
-        "parsed_declarations_no": "s1af",
+        "orange_routed_no": 430,
+        "parsed_declarations_no": 431,
         "parser": "s1b0",
         "parsing_completed_at": "s1b1",
         "parsing_started_at": "s1b2",
         "passive_transport_nationality": "s1b3",
         "passive_transport_number": "s1b4",
-        "processed_declarations_no": "s1b5",
+        "processed_declarations_no": 437,
         "processing_ended_at": "s1b6",
         "processing_started_at": "s1b7",
         "receipt_generating_started_at": "s1b8",
@@ -37,12 +37,12 @@
         "receipt_request_status": "s1ba",
         "receipt_request_user": "s1bb",
         "receipts_zip": "s1bc",
-        "red_routed_no": "s1bd",
-        "rejected_status_no": "s1be",
+        "red_routed_no": 445,
+        "rejected_status_no": 446,
         "status": "s1bf",
         "template": "s1c0",
         "updated_at": "s1c1",
-        "yellow_routed_no": "s1c2"
+        "yellow_routed_no": 450
       },
       "BULK_UPLOAD01": {
         "active_transport_nationality": "s334",
@@ -52,27 +52,27 @@
         "company_member": "s338",
         "created_at": "s339",
         "declarant": "s33a",
-        "declarations_no": "s33b",
+        "declarations_no": 827,
         "deleted_at": "s33c",
         "departure_datetime": "s33d",
         "errors_file": {},
         "external_id": "EXTERNAL01",
-        "failed_declarations_no": "s340",
+        "failed_declarations_no": 832,
         "file": {},
-        "green_routed_no": "s342",
+        "green_routed_no": 834,
         "h1_fallback_template": "s343",
         "house_transport_doc_ref": "s344",
         "id": "BULK_UPLOAD01",
         "issue_date": "s346",
         "mapping": "s347",
-        "orange_routed_no": "s348",
-        "parsed_declarations_no": "s349",
+        "orange_routed_no": 840,
+        "parsed_declarations_no": 841,
         "parser": "s34a",
         "parsing_completed_at": "s34b",
         "parsing_started_at": "s34c",
         "passive_transport_nationality": "s34d",
         "passive_transport_number": "s34e",
-        "processed_declarations_no": "s34f",
+        "processed_declarations_no": 847,
         "processing_ended_at": "s350",
         "processing_started_at": "s351",
         "receipt_generating_started_at": "s352",
@@ -80,12 +80,12 @@
         "receipt_request_status": "s354",
         "receipt_request_user": "s355",
         "receipts_zip": "s356",
-        "red_routed_no": "s357",
-        "rejected_status_no": "s358",
+        "red_routed_no": 855,
+        "rejected_status_no": 856,
         "status": "s359",
         "template": "s35a",
         "updated_at": "s35b",
-        "yellow_routed_no": "s35c"
+        "yellow_routed_no": 860
       },
       "BULK_UPLOAD02": {
         "active_transport_nationality": "s4ce",
@@ -95,27 +95,27 @@
         "company_member": "s4d2",
         "created_at": "s4d3",
         "declarant": "s4d4",
-        "declarations_no": "s4d5",
+        "declarations_no": 1237,
         "deleted_at": "s4d6",
         "departure_datetime": "s4d7",
         "errors_file": {},
         "external_id": "EXTERNAL01",
-        "failed_declarations_no": "s4da",
+        "failed_declarations_no": 1242,
         "file": {},
-        "green_routed_no": "s4dc",
+        "green_routed_no": 1244,
         "h1_fallback_template": "s4dd",
         "house_transport_doc_ref": "s4de",
         "id": "BULK_UPLOAD02",
         "issue_date": "s4e0",
         "mapping": "s4e1",
-        "orange_routed_no": "s4e2",
-        "parsed_declarations_no": "s4e3",
+        "orange_routed_no": 1250,
+        "parsed_declarations_no": 1251,
         "parser": "s4e4",
         "parsing_completed_at": "s4e5",
         "parsing_started_at": "s4e6",
         "passive_transport_nationality": "s4e7",
         "passive_transport_number": "s4e8",
-        "processed_declarations_no": "s4e9",
+        "processed_declarations_no": 1257,
         "processing_ended_at": "s4ea",
         "processing_started_at": "s4eb",
         "receipt_generating_started_at": "s4ec",
@@ -123,12 +123,12 @@
         "receipt_request_status": "s4ee",
         "receipt_request_user": "s4ef",
         "receipts_zip": "s4f0",
-        "red_routed_no": "s4f1",
-        "rejected_status_no": "s4f2",
+        "red_routed_no": 1265,
+        "rejected_status_no": 1266,
         "status": "s4f3",
         "template": "s4f4",
         "updated_at": "s4f5",
-        "yellow_routed_no": "s4f6"
+        "yellow_routed_no": 1270
       }
     }
   },
@@ -142,26 +142,26 @@
         "company_member": "s66c",
         "created_at": "s66d",
         "declarant": "s66e",
-        "declarations_no": "s66f",
+        "declarations_no": 1647,
         "deleted_at": "s670",
         "departure_datetime": "s671",
         "errors_file": {},
         "external_id": "EXTERNAL01",
-        "failed_declarations_no": "s674",
+        "failed_declarations_no": 1652,
         "file": {},
-        "green_routed_no": "s676",
+        "green_routed_no": 1654,
         "h1_fallback_template": "s677",
         "house_transport_doc_ref": "s678",
         "issue_date": "s67a",
         "mapping": "s67b",
-        "orange_routed_no": "s67c",
-        "parsed_declarations_no": "s67d",
+        "orange_routed_no": 1660,
+        "parsed_declarations_no": 1661,
         "parser": "s67e",
         "parsing_completed_at": "s67f",
         "parsing_started_at": "s680",
         "passive_transport_nationality": "s681",
         "passive_transport_number": "s682",
-        "processed_declarations_no": "s683",
+        "processed_declarations_no": 1667,
         "processing_ended_at": "s684",
         "processing_started_at": "s685",
         "receipt_generating_started_at": "s686",
@@ -169,12 +169,1418 @@
         "receipt_request_status": "s688",
         "receipt_request_user": "s689",
         "receipts_zip": "s68a",
-        "red_routed_no": "s68b",
-        "rejected_status_no": "s68c",
+        "red_routed_no": 1675,
+        "rejected_status_no": 1676,
         "status": "s68d",
         "template": "s68e",
         "updated_at": "s68f",
-        "yellow_routed_no": "s690"
+        "yellow_routed_no": 1680
+      }
+    }
+  },
+  "requests": {
+    "POST /bulk-uploads": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "Create a Bulk Upload",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "properties": {
+                  "active_transport_nationality": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "active_transport_number": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "arrival_datetime": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "client": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "company_member": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "declarant": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "departure_datetime": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "external_id": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "file": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "h1_fallback_template": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "house_transport_doc_ref": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "issue_date": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "mapping": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "parser": {
+                    "description": "* `aes_platform` - aes_platform\n* `cds_platform` - cds_platform\n* `cds_export_platform` - cds_export_platform\n* `g4_g3` - g4_g3\n* `nhd_platform` - nhd_platform\n* `platform` - platform\n* `birds` - birds\n* `ics2_platform` - ics2_platform",
+                    "enum": [
+                      "aes_platform",
+                      "cds_platform",
+                      "cds_export_platform",
+                      "g4_g3",
+                      "nhd_platform",
+                      "platform",
+                      "birds",
+                      "ics2_platform"
+                    ],
+                    "type": "string"
+                  },
+                  "passive_transport_nationality": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "passive_transport_number": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "template": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "client",
+                  "company_member",
+                  "declarant",
+                  "file"
+                ],
+                "title": "BulkUpload",
+                "type": "object"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "active_transport_nationality": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "active_transport_number": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "arrival_datetime": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "client": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "company_member": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "declarant": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "departure_datetime": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "external_id": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "file": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "h1_fallback_template": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "house_transport_doc_ref": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "issue_date": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "mapping": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "parser": {
+                    "description": "* `aes_platform` - aes_platform\n* `cds_platform` - cds_platform\n* `cds_export_platform` - cds_export_platform\n* `g4_g3` - g4_g3\n* `nhd_platform` - nhd_platform\n* `platform` - platform\n* `birds` - birds\n* `ics2_platform` - ics2_platform",
+                    "enum": [
+                      "aes_platform",
+                      "cds_platform",
+                      "cds_export_platform",
+                      "g4_g3",
+                      "nhd_platform",
+                      "platform",
+                      "birds",
+                      "ics2_platform"
+                    ],
+                    "type": "string"
+                  },
+                  "passive_transport_nationality": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "passive_transport_number": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "template": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "client",
+                  "company_member",
+                  "declarant",
+                  "file"
+                ],
+                "title": "BulkUpload",
+                "type": "object"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "active_transport_nationality": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "active_transport_number": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "arrival_datetime": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "client": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "company_member": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "declarant": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "departure_datetime": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "external_id": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "file": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "h1_fallback_template": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "house_transport_doc_ref": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "issue_date": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "mapping": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "parser": {
+                    "description": "* `aes_platform` - aes_platform\n* `cds_platform` - cds_platform\n* `cds_export_platform` - cds_export_platform\n* `g4_g3` - g4_g3\n* `nhd_platform` - nhd_platform\n* `platform` - platform\n* `birds` - birds\n* `ics2_platform` - ics2_platform",
+                    "enum": [
+                      "aes_platform",
+                      "cds_platform",
+                      "cds_export_platform",
+                      "g4_g3",
+                      "nhd_platform",
+                      "platform",
+                      "birds",
+                      "ics2_platform"
+                    ],
+                    "type": "string"
+                  },
+                  "passive_transport_nationality": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "passive_transport_number": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "template": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "client",
+                  "company_member",
+                  "declarant",
+                  "file"
+                ],
+                "title": "BulkUpload",
+                "type": "object"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "active_transport_nationality": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "active_transport_number": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "arrival_datetime": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "client": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "company_member": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "declarant": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "departure_datetime": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "external_id": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "file": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "h1_fallback_template": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "house_transport_doc_ref": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "issue_date": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "mapping": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "parser": {
+                    "description": "* `aes_platform` - aes_platform\n* `cds_platform` - cds_platform\n* `cds_export_platform` - cds_export_platform\n* `g4_g3` - g4_g3\n* `nhd_platform` - nhd_platform\n* `platform` - platform\n* `birds` - birds\n* `ics2_platform` - ics2_platform",
+                    "enum": [
+                      "aes_platform",
+                      "cds_platform",
+                      "cds_export_platform",
+                      "g4_g3",
+                      "nhd_platform",
+                      "platform",
+                      "birds",
+                      "ics2_platform"
+                    ],
+                    "type": "string"
+                  },
+                  "passive_transport_nationality": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "passive_transport_number": {
+                    "maxLength": 255,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "template": {
+                    "description": "cuid-format identifier for this entity.",
+                    "nullable": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "client",
+                  "company_member",
+                  "declarant",
+                  "file"
+                ],
+                "title": "BulkUpload",
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "active_transport_nationality": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "active_transport_number": {
+                      "maxLength": 255,
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "arrival_datetime": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "client": {
+                      "description": "cuid-format identifier for this entity.",
+                      "type": "string"
+                    },
+                    "company_member": {
+                      "description": "cuid-format identifier for this entity.",
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "format": "date-time",
+                      "readOnly": true,
+                      "type": "string"
+                    },
+                    "declarant": {
+                      "description": "cuid-format identifier for this entity.",
+                      "type": "string"
+                    },
+                    "declarations_no": {
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "type": "integer"
+                    },
+                    "deleted_at": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "departure_datetime": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "errors_file": {
+                      "properties": {
+                        "company": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "extension": {
+                          "maxLength": 255,
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 30,
+                          "type": "string"
+                        },
+                        "name": {
+                          "maxLength": 255,
+                          "type": "string"
+                        },
+                        "public": {
+                          "type": "boolean"
+                        },
+                        "size": {
+                          "maximum": 2147483647,
+                          "minimum": -2147483648,
+                          "nullable": true,
+                          "type": "integer"
+                        },
+                        "updated_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "url": {
+                          "readOnly": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "company",
+                        "created_at",
+                        "extension",
+                        "name",
+                        "public",
+                        "updated_at",
+                        "url"
+                      ],
+                      "title": "File",
+                      "type": "object"
+                    },
+                    "external_id": {
+                      "maxLength": 255,
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "failed_declarations_no": {
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "type": "integer"
+                    },
+                    "file": {
+                      "properties": {
+                        "company": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "extension": {
+                          "maxLength": 255,
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 30,
+                          "type": "string"
+                        },
+                        "name": {
+                          "maxLength": 255,
+                          "type": "string"
+                        },
+                        "public": {
+                          "type": "boolean"
+                        },
+                        "size": {
+                          "maximum": 2147483647,
+                          "minimum": -2147483648,
+                          "nullable": true,
+                          "type": "integer"
+                        },
+                        "updated_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "url": {
+                          "readOnly": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "company",
+                        "created_at",
+                        "extension",
+                        "name",
+                        "public",
+                        "updated_at",
+                        "url"
+                      ],
+                      "title": "File",
+                      "type": "object"
+                    },
+                    "green_routed_no": {
+                      "maximum": 2147483647,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "h1_fallback_template": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "house_transport_doc_ref": {
+                      "maxLength": 255,
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "cuid-format identifier for this entity.",
+                      "maxLength": 30,
+                      "type": "string"
+                    },
+                    "issue_date": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "mapping": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "orange_routed_no": {
+                      "maximum": 2147483647,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "parsed_declarations_no": {
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "type": "integer"
+                    },
+                    "parser": {
+                      "description": "* `aes_platform` - aes_platform\n* `cds_platform` - cds_platform\n* `cds_export_platform` - cds_export_platform\n* `g4_g3` - g4_g3\n* `nhd_platform` - nhd_platform\n* `platform` - platform\n* `birds` - birds\n* `ics2_platform` - ics2_platform",
+                      "enum": [
+                        "aes_platform",
+                        "cds_platform",
+                        "cds_export_platform",
+                        "g4_g3",
+                        "nhd_platform",
+                        "platform",
+                        "birds",
+                        "ics2_platform"
+                      ],
+                      "type": "string"
+                    },
+                    "parsing_completed_at": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "parsing_started_at": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "passive_transport_nationality": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "passive_transport_number": {
+                      "maxLength": 255,
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "processed_declarations_no": {
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "type": "integer"
+                    },
+                    "processing_ended_at": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "processing_started_at": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "receipt_generating_started_at": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "receipt_request_started_at": {
+                      "format": "date-time",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "receipt_request_status": {
+                      "description": "* `pending` - pending\n* `processing` - processing\n* `generating` - generating\n* `completed` - completed",
+                      "enum": [
+                        "pending",
+                        "processing",
+                        "generating",
+                        "completed",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "receipt_request_user": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "receipts_zip": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "red_routed_no": {
+                      "maximum": 2147483647,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "rejected_status_no": {
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "type": "integer"
+                    },
+                    "status": {
+                      "description": "* `pending` - pending\n* `parsing` - parsing\n* `processing` - processing\n* `complete` - complete",
+                      "enum": [
+                        "pending",
+                        "parsing",
+                        "processing",
+                        "complete"
+                      ],
+                      "type": "string"
+                    },
+                    "template": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "format": "date-time",
+                      "readOnly": true,
+                      "type": "string"
+                    },
+                    "yellow_routed_no": {
+                      "maximum": 2147483647,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "client",
+                    "company_member",
+                    "created_at",
+                    "declarant",
+                    "declarations_no",
+                    "errors_file",
+                    "file",
+                    "updated_at"
+                  ],
+                  "title": "BulkUpload",
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "GET /bulk-uploads": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "List all Bulk Uploads",
+        "parameters": [
+          {
+            "description": "The pagination cursor value.",
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "next": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "previous": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "active_transport_nationality": {
+                            "description": "cuid-format identifier for this entity.",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "active_transport_number": {
+                            "maxLength": 255,
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "arrival_datetime": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "client": {
+                            "description": "cuid-format identifier for this entity.",
+                            "type": "string"
+                          },
+                          "company_member": {
+                            "description": "cuid-format identifier for this entity.",
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                          },
+                          "declarant": {
+                            "description": "cuid-format identifier for this entity.",
+                            "type": "string"
+                          },
+                          "declarations_no": {
+                            "maximum": 2147483647,
+                            "minimum": -2147483648,
+                            "type": "integer"
+                          },
+                          "deleted_at": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "departure_datetime": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "errors_file": {
+                            "properties": {
+                              "company": {
+                                "description": "cuid-format identifier for this entity.",
+                                "type": "string"
+                              },
+                              "created_at": {
+                                "format": "date-time",
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "extension": {
+                                "maxLength": 255,
+                                "type": "string"
+                              },
+                              "id": {
+                                "description": "cuid-format identifier for this entity.",
+                                "maxLength": 30,
+                                "type": "string"
+                              },
+                              "name": {
+                                "maxLength": 255,
+                                "type": "string"
+                              },
+                              "public": {
+                                "type": "boolean"
+                              },
+                              "size": {
+                                "maximum": 2147483647,
+                                "minimum": -2147483648,
+                                "nullable": true,
+                                "type": "integer"
+                              },
+                              "updated_at": {
+                                "format": "date-time",
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "url": {
+                                "readOnly": true,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "company",
+                              "created_at",
+                              "extension",
+                              "name",
+                              "public",
+                              "updated_at",
+                              "url"
+                            ],
+                            "title": "File",
+                            "type": "object"
+                          },
+                          "external_id": {
+                            "maxLength": 255,
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "failed_declarations_no": {
+                            "maximum": 2147483647,
+                            "minimum": -2147483648,
+                            "type": "integer"
+                          },
+                          "file": {
+                            "properties": {
+                              "company": {
+                                "description": "cuid-format identifier for this entity.",
+                                "type": "string"
+                              },
+                              "created_at": {
+                                "format": "date-time",
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "extension": {
+                                "maxLength": 255,
+                                "type": "string"
+                              },
+                              "id": {
+                                "description": "cuid-format identifier for this entity.",
+                                "maxLength": 30,
+                                "type": "string"
+                              },
+                              "name": {
+                                "maxLength": 255,
+                                "type": "string"
+                              },
+                              "public": {
+                                "type": "boolean"
+                              },
+                              "size": {
+                                "maximum": 2147483647,
+                                "minimum": -2147483648,
+                                "nullable": true,
+                                "type": "integer"
+                              },
+                              "updated_at": {
+                                "format": "date-time",
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "url": {
+                                "readOnly": true,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "company",
+                              "created_at",
+                              "extension",
+                              "name",
+                              "public",
+                              "updated_at",
+                              "url"
+                            ],
+                            "title": "File",
+                            "type": "object"
+                          },
+                          "green_routed_no": {
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "h1_fallback_template": {
+                            "description": "cuid-format identifier for this entity.",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "house_transport_doc_ref": {
+                            "maxLength": 255,
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "cuid-format identifier for this entity.",
+                            "maxLength": 30,
+                            "type": "string"
+                          },
+                          "issue_date": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "mapping": {
+                            "description": "cuid-format identifier for this entity.",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "orange_routed_no": {
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "parsed_declarations_no": {
+                            "maximum": 2147483647,
+                            "minimum": -2147483648,
+                            "type": "integer"
+                          },
+                          "parser": {
+                            "description": "* `aes_platform` - aes_platform\n* `cds_platform` - cds_platform\n* `cds_export_platform` - cds_export_platform\n* `g4_g3` - g4_g3\n* `nhd_platform` - nhd_platform\n* `platform` - platform\n* `birds` - birds\n* `ics2_platform` - ics2_platform",
+                            "enum": [
+                              "aes_platform",
+                              "cds_platform",
+                              "cds_export_platform",
+                              "g4_g3",
+                              "nhd_platform",
+                              "platform",
+                              "birds",
+                              "ics2_platform"
+                            ],
+                            "type": "string"
+                          },
+                          "parsing_completed_at": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "parsing_started_at": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "passive_transport_nationality": {
+                            "description": "cuid-format identifier for this entity.",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "passive_transport_number": {
+                            "maxLength": 255,
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "processed_declarations_no": {
+                            "maximum": 2147483647,
+                            "minimum": -2147483648,
+                            "type": "integer"
+                          },
+                          "processing_ended_at": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "processing_started_at": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "receipt_generating_started_at": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "receipt_request_started_at": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "receipt_request_status": {
+                            "description": "* `pending` - pending\n* `processing` - processing\n* `generating` - generating\n* `completed` - completed",
+                            "enum": [
+                              "pending",
+                              "processing",
+                              "generating",
+                              "completed",
+                              null
+                            ],
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "receipt_request_user": {
+                            "description": "cuid-format identifier for this entity.",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "receipts_zip": {
+                            "description": "cuid-format identifier for this entity.",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "red_routed_no": {
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "rejected_status_no": {
+                            "maximum": 2147483647,
+                            "minimum": -2147483648,
+                            "type": "integer"
+                          },
+                          "status": {
+                            "description": "* `pending` - pending\n* `parsing` - parsing\n* `processing` - processing\n* `complete` - complete",
+                            "enum": [
+                              "pending",
+                              "parsing",
+                              "processing",
+                              "complete"
+                            ],
+                            "type": "string"
+                          },
+                          "template": {
+                            "description": "cuid-format identifier for this entity.",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                          },
+                          "yellow_routed_no": {
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "client",
+                          "company_member",
+                          "created_at",
+                          "declarant",
+                          "declarations_no",
+                          "errors_file",
+                          "file",
+                          "updated_at"
+                        ],
+                        "title": "BulkUpload",
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "title": "BulkUpload",
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "GET /bulk-uploads/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "bulk_uploads_retrieve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "No response body"
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "GET /bulk-uploads/{id}/generate-pdfs": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "bulk_uploads_generate_pdfs_retrieve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "No response body"
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "DELETE /bulk-uploads/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "bulk_uploads_destroy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "DELETE /bulk-uploads/{id}/generate-pdfs": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "bulk_uploads_generate_pdfs_destroy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "PATCH /bulk-uploads/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "bulk_uploads_partial_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "No response body"
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "PATCH /bulk-uploads/{id}/generate-pdfs": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "bulk_uploads_generate_pdfs_partial_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "No response body"
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
       }
     }
   }

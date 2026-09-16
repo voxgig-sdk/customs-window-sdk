@@ -1,0 +1,1652 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BulkUpload | API Reference</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">API Reference<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/customs-window-sdk">voxgig-sdk/customs-window-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">API Reference</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a aria-current="page" href="../api/bulk_upload.html">BulkUpload</a><div class="nav-sections"><a class="nav-section" href="#post-bulk-uploads">POST /bulk-uploads</a>
+<a class="nav-section" href="#get-bulk-uploads">GET /bulk-uploads</a>
+<a class="nav-section" href="#get-bulk-uploadsid">GET /bulk-uploads/{id}</a>
+<a class="nav-section" href="#get-bulk-uploadsidgenerate-pdfs">GET /bulk-uploads/{id}/generate-pdfs</a>
+<a class="nav-section" href="#delete-bulk-uploadsid">DELETE /bulk-uploads/{id}</a>
+<a class="nav-section" href="#delete-bulk-uploadsidgenerate-pdfs">DELETE /bulk-uploads/{id}/generate-pdfs</a>
+<a class="nav-section" href="#patch-bulk-uploadsid">PATCH /bulk-uploads/{id}</a>
+<a class="nav-section" href="#patch-bulk-uploadsidgenerate-pdfs">PATCH /bulk-uploads/{id}/generate-pdfs</a></div>
+<a href="../api/file.html">File</a>
+<a href="../api/paginated_bulk_upload_list_list.html">PaginatedBulkUploadListList</a>
+<a href="../api/paginated_party_list_list.html">PaginatedPartyListList</a>
+<a href="../api/paginated_submission_list_list.html">PaginatedSubmissionListList</a>
+<a href="../api/party.html">Party</a>
+<a href="../api/submission.html">Submission</a>
+<a href="../api/submission_detail.html">SubmissionDetail</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="bulkupload">BulkUpload</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-bulk-uploads"><code>/bulk-uploads</code></a></td>
+<td><code>create</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-bulk-uploads"><code>/bulk-uploads</code></a></td>
+<td><code>list</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-bulk-uploadsid"><code>/bulk-uploads/{id}</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-bulk-uploadsidgenerate-pdfs"><code>/bulk-uploads/{id}/generate-pdfs</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-bulk-uploadsid"><code>/bulk-uploads/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-bulk-uploadsidgenerate-pdfs"><code>/bulk-uploads/{id}/generate-pdfs</code></a></td>
+<td><code>remove</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-bulk-uploadsid"><code>/bulk-uploads/{id}</code></a></td>
+<td><code>update</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-bulk-uploadsidgenerate-pdfs"><code>/bulk-uploads/{id}/generate-pdfs</code></a></td>
+<td><code>update</code></td>
+<td>No response body</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>active_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrival_datetime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarations_no</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deleted_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>departure_datetime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors_file</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>failed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>green_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>h1_fallback_template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>house_transport_doc_ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>issue_date</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mapping</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>orange_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>parsed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>parser</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+</tr>
+<tr>
+<td><code>parsing_completed_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>parsing_started_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>passive_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>passive_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>processed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>processing_ended_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>processing_started_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt_generating_started_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt_request_started_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt_request_status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>pending</code> - pending * <code>processing</code> - processing * <code>generating</code> - generating * <code>completed</code> - completed</td>
+</tr>
+<tr>
+<td><code>receipt_request_user</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>receipts_zip</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>red_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>rejected_status_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>pending</code> - pending * <code>parsing</code> - parsing * <code>processing</code> - processing * <code>complete</code> - complete</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>yellow_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-bulk-uploads" class="operation" data-method="post"><code>POST</code> /bulk-uploads</h3>
+<p>Operation ID: <code>Create a Bulk Upload</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>active_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrival_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>departure_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>h1_fallback_template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>house_transport_doc_ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>issue_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mapping</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>parser</code></td>
+<td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
+<td>No</td>
+<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+</tr>
+<tr>
+<td><code>passive_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>passive_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>active_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrival_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>departure_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>h1_fallback_template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>house_transport_doc_ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>issue_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mapping</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>parser</code></td>
+<td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
+<td>No</td>
+<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+</tr>
+<tr>
+<td><code>passive_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>passive_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>active_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrival_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>departure_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>h1_fallback_template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>house_transport_doc_ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>issue_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mapping</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>parser</code></td>
+<td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
+<td>No</td>
+<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+</tr>
+<tr>
+<td><code>passive_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>passive_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>active_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrival_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>departure_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>h1_fallback_template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>house_transport_doc_ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>issue_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mapping</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>parser</code></td>
+<td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
+<td>No</td>
+<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+</tr>
+<tr>
+<td><code>passive_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>passive_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200" class="status" data-status="2xx">200</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>active_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrival_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarations_no</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>departure_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors_file</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>errors_file.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>errors_file.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors_file.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors_file.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>errors_file.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors_file.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors_file.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors_file.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors_file.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>failed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>file.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>file.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>file.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>green_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>h1_fallback_template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>house_transport_doc_ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>issue_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mapping</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>orange_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>parsed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>parser</code></td>
+<td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
+<td>No</td>
+<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+</tr>
+<tr>
+<td><code>parsing_completed_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>parsing_started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>passive_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>passive_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>processed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>processing_ended_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>processing_started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt_generating_started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt_request_started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt_request_status</code></td>
+<td><code>enum: pending, processing, generating, completed, null</code></td>
+<td>No</td>
+<td>* <code>pending</code> - pending * <code>processing</code> - processing * <code>generating</code> - generating * <code>completed</code> - completed</td>
+</tr>
+<tr>
+<td><code>receipt_request_user</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>receipts_zip</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>red_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>rejected_status_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: pending, parsing, processing, complete</code></td>
+<td>No</td>
+<td>* <code>pending</code> - pending * <code>parsing</code> - parsing * <code>processing</code> - processing * <code>complete</code> - complete</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>yellow_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-bulk-uploads" class="operation" data-method="get"><code>GET</code> /bulk-uploads</h3>
+<p>Operation ID: <code>List all Bulk Uploads</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | The pagination cursor value. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-1" class="status" data-status="2xx">200</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>next</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].active_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].active_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].arrival_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].client</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].declarations_no</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].departure_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].errors_file</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>results[].errors_file.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].errors_file.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].errors_file.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].errors_file.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].errors_file.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].errors_file.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].errors_file.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].errors_file.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].errors_file.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].failed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].file</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>results[].file.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].file.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].file.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].file.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].file.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].file.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].file.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].file.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].file.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].green_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].h1_fallback_template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].house_transport_doc_ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].issue_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].mapping</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].orange_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].parsed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].parser</code></td>
+<td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
+<td>No</td>
+<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+</tr>
+<tr>
+<td><code>results[].parsing_completed_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].parsing_started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].passive_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].passive_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].processed_declarations_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].processing_ended_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].processing_started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt_generating_started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt_request_started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt_request_status</code></td>
+<td><code>enum: pending, processing, generating, completed, null</code></td>
+<td>No</td>
+<td>* <code>pending</code> - pending * <code>processing</code> - processing * <code>generating</code> - generating * <code>completed</code> - completed</td>
+</tr>
+<tr>
+<td><code>results[].receipt_request_user</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].receipts_zip</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].red_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].rejected_status_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].status</code></td>
+<td><code>enum: pending, parsing, processing, complete</code></td>
+<td>No</td>
+<td>* <code>pending</code> - pending * <code>parsing</code> - parsing * <code>processing</code> - processing * <code>complete</code> - complete</td>
+</tr>
+<tr>
+<td><code>results[].template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].yellow_routed_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-bulk-uploadsid" class="operation" data-method="get"><code>GET</code> /bulk-uploads/{id}</h3>
+<p>Operation ID: <code>bulk_uploads_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-no-response-body" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="get-bulk-uploadsidgenerate-pdfs" class="operation" data-method="get"><code>GET</code> /bulk-uploads/{id}/generate-pdfs</h3>
+<p>Operation ID: <code>bulk_uploads_generate_pdfs_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-no-response-body-1" class="status" data-status="2xx">200: No response body</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-bulk-uploadsid" class="operation" data-method="delete"><code>DELETE</code> /bulk-uploads/{id}</h3>
+<p>Operation ID: <code>bulk_uploads_destroy</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="204-no-response-body" class="status" data-status="2xx">204: No response body</h5>
+<h3 id="delete-bulk-uploadsidgenerate-pdfs" class="operation" data-method="delete"><code>DELETE</code> /bulk-uploads/{id}/generate-pdfs</h3>
+<p>Operation ID: <code>bulk_uploads_generate_pdfs_destroy</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="204-no-response-body-1" class="status" data-status="2xx">204: No response body</h5>
+<h2 id="update">update</h2>
+<h3 id="patch-bulk-uploadsid" class="operation" data-method="patch"><code>PATCH</code> /bulk-uploads/{id}</h3>
+<p>Operation ID: <code>bulk_uploads_partial_update</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-no-response-body-2" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="patch-bulk-uploadsidgenerate-pdfs" class="operation" data-method="patch"><code>PATCH</code> /bulk-uploads/{id}/generate-pdfs</h3>
+<p>Operation ID: <code>bulk_uploads_generate_pdfs_partial_update</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-no-response-body-3" class="status" data-status="2xx">200: No response body</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

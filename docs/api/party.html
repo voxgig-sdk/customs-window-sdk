@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Party | API Reference</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">API Reference<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/customs-window-sdk">voxgig-sdk/customs-window-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">API Reference</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/bulk_upload.html">BulkUpload</a>
+<a href="../api/file.html">File</a>
+<a href="../api/paginated_bulk_upload_list_list.html">PaginatedBulkUploadListList</a>
+<a href="../api/paginated_party_list_list.html">PaginatedPartyListList</a>
+<a href="../api/paginated_submission_list_list.html">PaginatedSubmissionListList</a>
+<a aria-current="page" href="../api/party.html">Party</a><div class="nav-sections"><a class="nav-section" href="#post-parties">POST /parties</a>
+<a class="nav-section" href="#get-parties">GET /parties</a>
+<a class="nav-section" href="#get-partiesid">GET /parties/{id}</a>
+<a class="nav-section" href="#delete-partiesid">DELETE /parties/{id}</a>
+<a class="nav-section" href="#patch-partiesid">PATCH /parties/{id}</a></div>
+<a href="../api/submission.html">Submission</a>
+<a href="../api/submission_detail.html">SubmissionDetail</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="party">Party</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-parties"><code>/parties</code></a></td>
+<td><code>create</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-parties"><code>/parties</code></a></td>
+<td><code>list</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-partiesid"><code>/parties/{id}</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-partiesid"><code>/parties/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-partiesid"><code>/parties/{id}</code></a></td>
+<td><code>update</code></td>
+<td>No response body</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_declaration_type</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>authorisation</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bank_details</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>certificate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>certificate_type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>customs_office_of_lodgement</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deleted_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>indirect_representative</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>nhd_last_submission_year</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>nhd_submission_counter</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>person_paying_customs_duty</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>phone_country_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>phone_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>preferred_payment_method</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>signed_form</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>exporter</code> - exporter * <code>importer</code> - importer * <code>buyer</code> - buyer * <code>seller</code> - seller * <code>representative</code> - representative * <code>declarant</code> - declarant * <code>owner</code> - owner * <code>authorisation_holder</code> - authorisation_holder * <code>client</code> - client * `co…</td>
+</tr>
+<tr>
+<td><code>type_of_person</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>unlocode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-parties" class="operation" data-method="post"><code>POST</code> /parties</h3>
+<p>Operation ID: <code>parties_create</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-no-response-body" class="status" data-status="2xx">200: No response body</h5>
+<h2 id="list">list</h2>
+<h3 id="get-parties" class="operation" data-method="get"><code>GET</code> /parties</h3>
+<p>Operation ID: <code>List all Parties</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | The pagination cursor value. |
+| <code>type</code> | <code>query</code> | <code>enum: authorisation_holder, buyer, carrier, client, consignee, consignor, ...</code> | No | To filter the parties returned to a specific type, for example declarant, client using the following |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200" class="status" data-status="2xx">200</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>next</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Code</td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type.list</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].additional_declaration_type.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Address</td>
+</tr>
+<tr>
+<td><code>results[].address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.country_code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].address.line_1</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.po_box</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.postal_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.raw</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.sub_division</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].address.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].authorisation</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Code</td>
+</tr>
+<tr>
+<td><code>results[].authorisation.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].authorisation.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].authorisation.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].authorisation.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].authorisation.list</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].authorisation.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].authorisation.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].authorisation.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].bank_details</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].certificate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Certificate</td>
+</tr>
+<tr>
+<td><code>results[].certificate.frequent_processing_ends_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].certificate.last_fetched_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].certificate.processing_start_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].certificate.type</code></td>
+<td><code>enum: ros, hmrc, nhd, ics2</code></td>
+<td>No</td>
+<td>* <code>ros</code> - ros * <code>hmrc</code> - hmrc * <code>nhd</code> - nhd * <code>ics2</code> - ics2</td>
+</tr>
+<tr>
+<td><code>results[].certificate_type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Code</td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement.list</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].customs_office_of_lodgement.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].email</code></td>
+<td><code>string (email)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].indirect_representative</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].nhd_last_submission_year</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].nhd_submission_counter</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].person_paying_customs_duty</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].phone_country_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].phone_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Code</td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method.list</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].preferred_payment_method.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].signed_form</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>results[].signed_form.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].signed_form.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].signed_form.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].signed_form.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].signed_form.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].signed_form.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].signed_form.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].signed_form.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].signed_form.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].type</code></td>
+<td><code>enum: exporter, importer, buyer, seller, representative, declarant, ...</code></td>
+<td>No</td>
+<td>* <code>exporter</code> - exporter * <code>importer</code> - importer * <code>buyer</code> - buyer * <code>seller</code> - seller * <code>representative</code> - representative * <code>declarant</code> - declarant * <code>owner</code> - owner * <code>authorisation_holder</code> - authorisation_holder * <code>client</code> - client * <code>contact</code> - contact * <code>consignee</code> - consignee * <code>consignor</code> - consignor * <code>carrier</code> - carrier</td>
+</tr>
+<tr>
+<td><code>results[].type_of_person</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Code</td>
+</tr>
+<tr>
+<td><code>results[].type_of_person.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].type_of_person.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].type_of_person.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].type_of_person.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].type_of_person.list</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].type_of_person.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].type_of_person.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].type_of_person.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].unlocode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-partiesid" class="operation" data-method="get"><code>GET</code> /parties/{id}</h3>
+<p>Operation ID: <code>parties_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-no-response-body-1" class="status" data-status="2xx">200: No response body</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-partiesid" class="operation" data-method="delete"><code>DELETE</code> /parties/{id}</h3>
+<p>Operation ID: <code>parties_destroy</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="204-no-response-body" class="status" data-status="2xx">204: No response body</h5>
+<h2 id="update">update</h2>
+<h3 id="patch-partiesid" class="operation" data-method="patch"><code>PATCH</code> /parties/{id}</h3>
+<p>Operation ID: <code>parties_partial_update</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-no-response-body-2" class="status" data-status="2xx">200: No response body</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

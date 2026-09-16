@@ -1,0 +1,4749 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Submission | API Reference</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">API Reference<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/customs-window-sdk">voxgig-sdk/customs-window-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">API Reference</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/bulk_upload.html">BulkUpload</a>
+<a href="../api/file.html">File</a>
+<a href="../api/paginated_bulk_upload_list_list.html">PaginatedBulkUploadListList</a>
+<a href="../api/paginated_party_list_list.html">PaginatedPartyListList</a>
+<a href="../api/paginated_submission_list_list.html">PaginatedSubmissionListList</a>
+<a href="../api/party.html">Party</a>
+<a aria-current="page" href="../api/submission.html">Submission</a><div class="nav-sections"><a class="nav-section" href="#post-submissionsidrefund">POST /submissions/{id}/refund</a>
+<a class="nav-section" href="#post-submissions">POST /submissions</a>
+<a class="nav-section" href="#post-submissionsretrieve">POST /submissions/retrieve</a>
+<a class="nav-section" href="#get-submissions">GET /submissions</a>
+<a class="nav-section" href="#get-submissionsid">GET /submissions/{id}</a>
+<a class="nav-section" href="#get-submissionsidclearance-slip">GET /submissions/{id}/clearance-slip</a>
+<a class="nav-section" href="#get-submissionsidnotification-read">GET /submissions/{id}/notification-read</a>
+<a class="nav-section" href="#get-submissionsidpbn-applicable">GET /submissions/{id}/pbn-applicable</a>
+<a class="nav-section" href="#get-submissionsidreceipt">GET /submissions/{id}/receipt</a>
+<a class="nav-section" href="#get-submissionsidrefund">GET /submissions/{id}/refund</a>
+<a class="nav-section" href="#get-submissionsretrieve">GET /submissions/retrieve</a>
+<a class="nav-section" href="#delete-submissionsid">DELETE /submissions/{id}</a>
+<a class="nav-section" href="#delete-submissionsidclearance-slip">DELETE /submissions/{id}/clearance-slip</a>
+<a class="nav-section" href="#delete-submissionsidnotification-read">DELETE /submissions/{id}/notification-read</a>
+<a class="nav-section" href="#delete-submissionsidpbn-applicable">DELETE /submissions/{id}/pbn-applicable</a>
+<a class="nav-section" href="#delete-submissionsidreceipt">DELETE /submissions/{id}/receipt</a>
+<a class="nav-section" href="#patch-submissionsid">PATCH /submissions/{id}</a>
+<a class="nav-section" href="#patch-submissionsidclearance-slip">PATCH /submissions/{id}/clearance-slip</a>
+<a class="nav-section" href="#patch-submissionsidnotification-read">PATCH /submissions/{id}/notification-read</a>
+<a class="nav-section" href="#patch-submissionsidpbn-applicable">PATCH /submissions/{id}/pbn-applicable</a>
+<a class="nav-section" href="#patch-submissionsidreceipt">PATCH /submissions/{id}/receipt</a></div>
+<a href="../api/submission_detail.html">SubmissionDetail</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="submission">Submission</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-submissionsidrefund"><code>/submissions/{id}/refund</code></a></td>
+<td><code>create</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-submissions"><code>/submissions</code></a></td>
+<td><code>create</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-submissionsretrieve"><code>/submissions/retrieve</code></a></td>
+<td><code>create</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-submissions"><code>/submissions</code></a></td>
+<td><code>list</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-submissionsid"><code>/submissions/{id}</code></a></td>
+<td><code>load</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-submissionsidclearance-slip"><code>/submissions/{id}/clearance-slip</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-submissionsidnotification-read"><code>/submissions/{id}/notification-read</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-submissionsidpbn-applicable"><code>/submissions/{id}/pbn-applicable</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-submissionsidreceipt"><code>/submissions/{id}/receipt</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-submissionsidrefund"><code>/submissions/{id}/refund</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-submissionsretrieve"><code>/submissions/retrieve</code></a></td>
+<td><code>load</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-submissionsid"><code>/submissions/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-submissionsidclearance-slip"><code>/submissions/{id}/clearance-slip</code></a></td>
+<td><code>remove</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-submissionsidnotification-read"><code>/submissions/{id}/notification-read</code></a></td>
+<td><code>remove</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-submissionsidpbn-applicable"><code>/submissions/{id}/pbn-applicable</code></a></td>
+<td><code>remove</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-submissionsidreceipt"><code>/submissions/{id}/receipt</code></a></td>
+<td><code>remove</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-submissionsid"><code>/submissions/{id}</code></a></td>
+<td><code>update</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-submissionsidclearance-slip"><code>/submissions/{id}/clearance-slip</code></a></td>
+<td><code>update</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-submissionsidnotification-read"><code>/submissions/{id}/notification-read</code></a></td>
+<td><code>update</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-submissionsidpbn-applicable"><code>/submissions/{id}/pbn-applicable</code></a></td>
+<td><code>update</code></td>
+<td>No response body</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-submissionsidreceipt"><code>/submissions/{id}/receipt</code></a></td>
+<td><code>update</code></td>
+<td>No response body</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bypass_restricted_code</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>consignee</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>document_upload_status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>goods_presentation_status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>hrcm_status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>invalidation_status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>is_global_template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_notification_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>partial_answers</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>refund_application_status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>route</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>shipment_items_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>shipment_items_quantity_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>source_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - re…</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>total_tax_amount</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verification_errors</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verification_status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>* <code>passed</code> - passed * <code>failed</code> - failed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-submissionsidrefund" class="operation" data-method="post"><code>POST</code> /submissions/{id}/refund</h3>
+<p>Operation ID: <code>submissions_refund_create</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-no-response-body" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="post-submissions" class="operation" data-method="post"><code>POST</code> /submissions</h3>
+<p>Operation ID: <code>Create a Submission</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200" class="status" data-status="2xx">200</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>clearance_slip</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>clearance_slip.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>clearance_slip.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>clearance_slip.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>client.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>client.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>CompanyMember</td>
+</tr>
+<tr>
+<td><code>company_member.company</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Company</td>
+</tr>
+<tr>
+<td><code>company_member.company.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member.company.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.hidden_submission_statuses</code></td>
+<td><code>array of enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.role</code></td>
+<td><code>enum: staff, admin</code></td>
+<td>No</td>
+<td>* <code>staff</code> - staff * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>company_member.user</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>User</td>
+</tr>
+<tr>
+<td><code>company_member.user.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.first_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member.user.last_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.role</code></td>
+<td><code>enum: company_member, admin</code></td>
+<td>No</td>
+<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>consignee</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>consignee.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>consignee.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignee.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>consignor.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>consignor.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignor.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>declarant.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>document_upload_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>goods_presentation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>hrcm_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>invalidation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>is_global_template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_notification_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>State</td>
+</tr>
+<tr>
+<td><code>latest_state.amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.answers</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.changes</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.company_member</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.document_upload_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.goods_presentation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>latest_state.hrcm_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.invalidation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.processing_time</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.refund_application_status</code></td>
+<td><code>enum: processing, rejected, accepted, null</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>latest_state.request</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.route</code></td>
+<td><code>enum: green, orange, red, yellow, null</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>latest_state.status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>latest_state.submission</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.transaction_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.type</code></td>
+<td><code>enum: created, modified, completed</code></td>
+<td>No</td>
+<td>* <code>created</code> - created * <code>modified</code> - modified * <code>completed</code> - completed</td>
+</tr>
+<tr>
+<td><code>latest_state.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>receipt.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>receipt.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>receipt.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>refund_application_status</code></td>
+<td><code>enum: processing, rejected, accepted, null</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>route</code></td>
+<td><code>enum: green, orange, red, yellow, null</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>shipment_items_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>shipment_items_quantity_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>source_type</code></td>
+<td><code>enum: template, automated_import, null</code></td>
+<td>No</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>total_tax_amount</code></td>
+<td><code>string (decimal)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verification_errors</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verification_status</code></td>
+<td><code>enum: passed, failed, null</code></td>
+<td>No</td>
+<td>* <code>passed</code> - passed * <code>failed</code> - failed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-submissionsretrieve" class="operation" data-method="post"><code>POST</code> /submissions/retrieve</h3>
+<p>Operation ID: <code>submissions_retrieve_create</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-no-response-body-1" class="status" data-status="2xx">200: No response body</h5>
+<h2 id="list">list</h2>
+<h3 id="get-submissions" class="operation" data-method="get"><code>GET</code> /submissions</h3>
+<p>Operation ID: <code>List all Submissions</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | The pagination cursor value. |
+| <code>form_subtype</code> | <code>query</code> | <code>enum: B1, B2, B4, BIRDS, C1 B&amp;E, C1 C&amp;F, ...</code> | No | To find submissions with a particular declaration type (for example H1, H7….) |
+| <code>route</code> | <code>query</code> | <code>enum: green, orange, red, yellow</code> | No | To filter submissions by their routing (green, orange, yellow, red) |
+| <code>status</code> | <code>query</code> | <code>enum: accepted, complete, draft, export_stopped_at_exit, exported, insufficient_funds, ...</code> | No | To find submissions with a particular status (for example released, rejected etc…) |
+| <code>template</code> | <code>query</code> | <code>boolean</code> | No | To filter/remove templates from being returned |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-1" class="status" data-status="2xx">200</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>next</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].clearance_slip.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>results[].client.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].client.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].client.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>CompanyMember</td>
+</tr>
+<tr>
+<td><code>results[].company_member.company</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Company</td>
+</tr>
+<tr>
+<td><code>results[].company_member.company.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.company.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.company.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].company_member.company.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.company.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.hidden_submission_statuses</code></td>
+<td><code>array of enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.role</code></td>
+<td><code>enum: staff, admin</code></td>
+<td>No</td>
+<td>* <code>staff</code> - staff * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>results[].company_member.user</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>User</td>
+</tr>
+<tr>
+<td><code>results[].company_member.user.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.user.first_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.user.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].company_member.user.last_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].company_member.user.role</code></td>
+<td><code>enum: company_member, admin</code></td>
+<td>No</td>
+<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>results[].consignee</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>results[].consignee.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].consignee.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].consignee.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].consignor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>results[].consignor.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].consignor.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].consignor.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].declarant</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>results[].declarant.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].declarant.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].declarant.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].document_upload_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>results[].documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].form</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Form</td>
+</tr>
+<tr>
+<td><code>results[].form.description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].form.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].form.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].form.subtype</code></td>
+<td><code>enum: H1, H2, H3, H4, H5, H6, ...</code></td>
+<td>No</td>
+<td>* <code>H1</code> - H1 * <code>H2</code> - H2 * <code>H3</code> - H3 * <code>H4</code> - H4 * <code>H5</code> - H5 * <code>H6</code> - H6 * <code>H7</code> - H7 * <code>I1</code> - I1 * <code>G4G3</code> - G4G3 * <code>B1</code> - B1 * <code>B2</code> - B2 * <code>B4</code> - B4 * <code>C1 C&amp;amp;F</code> - C1 C&amp;F * <code>C1 B&amp;amp;E</code> - C1 B&amp;E * <code>I1 C&amp;amp;F</code> - I1 C&amp;F * <code>I1 B&amp;amp;E</code> - I1 B&amp;E * <code>BIRDS</code> - BIRDS * <code>F10</code> - F10 * <code>F11</code> - F11 * <code>F34</code> - F34 * <code>F40</code> - F40 * <code>F43</code> - F43 * <code>F44</code> - F44 * <code>F50</code> - F50</td>
+</tr>
+<tr>
+<td><code>results[].form.type</code></td>
+<td><code>enum: ais, aes, cds, ics2, nhd</code></td>
+<td>No</td>
+<td>* <code>ais</code> - ais * <code>aes</code> - aes * <code>cds</code> - cds * <code>ics2</code> - ics2 * <code>nhd</code> - nhd</td>
+</tr>
+<tr>
+<td><code>results[].goods_presentation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>results[].hrcm_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>results[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].invalidation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>results[].is_global_template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_notification_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].latest_state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>State</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>CompanyMember</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.company</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Company</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.company.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.company.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.company.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.company.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.company.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.hidden_submission_statuses</code></td>
+<td><code>array of enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.role</code></td>
+<td><code>enum: staff, admin</code></td>
+<td>No</td>
+<td>* <code>staff</code> - staff * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.user</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>User</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.user.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.user.first_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.user.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.user.last_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.company_member.user.role</code></td>
+<td><code>enum: company_member, admin</code></td>
+<td>No</td>
+<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.document_upload_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.goods_presentation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.hrcm_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.invalidation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.processing_time</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.refund_application_status</code></td>
+<td><code>enum: processing, rejected, accepted, null</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.request</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.route</code></td>
+<td><code>enum: green, orange, red, yellow, null</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.transaction_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].latest_state.type</code></td>
+<td><code>enum: created, modified, completed</code></td>
+<td>No</td>
+<td>* <code>created</code> - created * <code>modified</code> - modified * <code>completed</code> - completed</td>
+</tr>
+<tr>
+<td><code>results[].latest_state.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].mrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>results[].receipt.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].receipt.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].receipt.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].receipt.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].refund_application_status</code></td>
+<td><code>enum: processing, rejected, accepted, null</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>results[].route</code></td>
+<td><code>enum: green, orange, red, yellow, null</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>results[].shipment_items_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].shipment_items_quantity_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].source</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>results[].source_type</code></td>
+<td><code>enum: template, automated_import, null</code></td>
+<td>No</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+</tr>
+<tr>
+<td><code>results[].status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>results[].template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].total_tax_amount</code></td>
+<td><code>string (decimal)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].verification_errors</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].verification_status</code></td>
+<td><code>enum: passed, failed, null</code></td>
+<td>No</td>
+<td>* <code>passed</code> - passed * <code>failed</code> - failed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-submissionsid" class="operation" data-method="get"><code>GET</code> /submissions/{id}</h3>
+<p>Operation ID: <code>Retrieve a Submission</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-2" class="status" data-status="2xx">200</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>clearance_slip</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>clearance_slip.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>clearance_slip.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>clearance_slip.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>client.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>client.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>CompanyMember</td>
+</tr>
+<tr>
+<td><code>company_member.company</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Company</td>
+</tr>
+<tr>
+<td><code>company_member.company.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member.company.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.hidden_submission_statuses</code></td>
+<td><code>array of enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.role</code></td>
+<td><code>enum: staff, admin</code></td>
+<td>No</td>
+<td>* <code>staff</code> - staff * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>company_member.user</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>User</td>
+</tr>
+<tr>
+<td><code>company_member.user.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.first_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member.user.last_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.role</code></td>
+<td><code>enum: company_member, admin</code></td>
+<td>No</td>
+<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>consignee</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>consignee.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>consignee.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignee.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>consignor.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>consignor.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignor.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>declarant.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>document_upload_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>goods_presentation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>hrcm_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>invalidation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>is_global_template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_notification_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>State</td>
+</tr>
+<tr>
+<td><code>latest_state.amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.answers</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.changes</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.company_member</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.document_upload_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.goods_presentation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>latest_state.hrcm_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.invalidation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.processing_time</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.refund_application_status</code></td>
+<td><code>enum: processing, rejected, accepted, null</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>latest_state.request</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.route</code></td>
+<td><code>enum: green, orange, red, yellow, null</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>latest_state.status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>latest_state.submission</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.transaction_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.type</code></td>
+<td><code>enum: created, modified, completed</code></td>
+<td>No</td>
+<td>* <code>created</code> - created * <code>modified</code> - modified * <code>completed</code> - completed</td>
+</tr>
+<tr>
+<td><code>latest_state.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>receipt.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>receipt.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>receipt.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>refund_application_status</code></td>
+<td><code>enum: processing, rejected, accepted, null</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>route</code></td>
+<td><code>enum: green, orange, red, yellow, null</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>shipment_items_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>shipment_items_quantity_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>source_type</code></td>
+<td><code>enum: template, automated_import, null</code></td>
+<td>No</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>total_tax_amount</code></td>
+<td><code>string (decimal)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verification_errors</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verification_status</code></td>
+<td><code>enum: passed, failed, null</code></td>
+<td>No</td>
+<td>* <code>passed</code> - passed * <code>failed</code> - failed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-submissionsidclearance-slip" class="operation" data-method="get"><code>GET</code> /submissions/{id}/clearance-slip</h3>
+<p>Operation ID: <code>submissions_clearance_slip_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-no-response-body-2" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="get-submissionsidnotification-read" class="operation" data-method="get"><code>GET</code> /submissions/{id}/notification-read</h3>
+<p>Operation ID: <code>submissions_notification_read_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-no-response-body-3" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="get-submissionsidpbn-applicable" class="operation" data-method="get"><code>GET</code> /submissions/{id}/pbn-applicable</h3>
+<p>Operation ID: <code>submissions_pbn_applicable_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-no-response-body-4" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="get-submissionsidreceipt" class="operation" data-method="get"><code>GET</code> /submissions/{id}/receipt</h3>
+<p>Operation ID: <code>submissions_receipt_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-no-response-body-5" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="get-submissionsidrefund" class="operation" data-method="get"><code>GET</code> /submissions/{id}/refund</h3>
+<p>Operation ID: <code>submissions_refund_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-no-response-body-6" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="get-submissionsretrieve" class="operation" data-method="get"><code>GET</code> /submissions/retrieve</h3>
+<p>Operation ID: <code>submissions_retrieve_retrieve</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="responses-10">Responses</h4>
+<h5 id="200-no-response-body-7" class="status" data-status="2xx">200: No response body</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-submissionsid" class="operation" data-method="delete"><code>DELETE</code> /submissions/{id}</h3>
+<p>Operation ID: <code>Delete a Submission</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-11">Responses</h4>
+<h5 id="204-no-response-body" class="status" data-status="2xx">204: No response body</h5>
+<h3 id="delete-submissionsidclearance-slip" class="operation" data-method="delete"><code>DELETE</code> /submissions/{id}/clearance-slip</h3>
+<p>Operation ID: <code>submissions_clearance_slip_destroy</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-12">Responses</h4>
+<h5 id="204-no-response-body-1" class="status" data-status="2xx">204: No response body</h5>
+<h3 id="delete-submissionsidnotification-read" class="operation" data-method="delete"><code>DELETE</code> /submissions/{id}/notification-read</h3>
+<p>Operation ID: <code>submissions_notification_read_destroy</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-13">Responses</h4>
+<h5 id="204-no-response-body-2" class="status" data-status="2xx">204: No response body</h5>
+<h3 id="delete-submissionsidpbn-applicable" class="operation" data-method="delete"><code>DELETE</code> /submissions/{id}/pbn-applicable</h3>
+<p>Operation ID: <code>submissions_pbn_applicable_destroy</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-14">Responses</h4>
+<h5 id="204-no-response-body-3" class="status" data-status="2xx">204: No response body</h5>
+<h3 id="delete-submissionsidreceipt" class="operation" data-method="delete"><code>DELETE</code> /submissions/{id}/receipt</h3>
+<p>Operation ID: <code>submissions_receipt_destroy</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-12">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-15">Responses</h4>
+<h5 id="204-no-response-body-4" class="status" data-status="2xx">204: No response body</h5>
+<h2 id="update">update</h2>
+<h3 id="patch-submissionsid" class="operation" data-method="patch"><code>PATCH</code> /submissions/{id}</h3>
+<p>Operation ID: <code>Update a Submission</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-13">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bypass_restricted_code</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>partial_answers</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template_properties</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].editable</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].hidden</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].section</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bypass_restricted_code</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>partial_answers</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template_properties</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].editable</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].hidden</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].section</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bypass_restricted_code</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>partial_answers</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template_properties</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].editable</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].hidden</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].section</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bypass_restricted_code</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>partial_answers</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template_properties</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].editable</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].hidden</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].section</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-16">Responses</h4>
+<h5 id="200-3" class="status" data-status="2xx">200</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>clearance_slip</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>clearance_slip.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>clearance_slip.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>clearance_slip.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clearance_slip.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>client.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>client.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>CompanyMember</td>
+</tr>
+<tr>
+<td><code>company_member.company</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Company</td>
+</tr>
+<tr>
+<td><code>company_member.company.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member.company.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.company.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.hidden_submission_statuses</code></td>
+<td><code>array of enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.role</code></td>
+<td><code>enum: staff, admin</code></td>
+<td>No</td>
+<td>* <code>staff</code> - staff * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>company_member.user</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>User</td>
+</tr>
+<tr>
+<td><code>company_member.user.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.first_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member.user.last_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member.user.role</code></td>
+<td><code>enum: company_member, admin</code></td>
+<td>No</td>
+<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+</tr>
+<tr>
+<td><code>consignee</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>consignee.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>consignee.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignee.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>consignor.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>consignor.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>consignor.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Party</td>
+</tr>
+<tr>
+<td><code>declarant.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant.identification_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>declarant.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>document_upload_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>goods_presentation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>hrcm_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>invalidation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>is_global_template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_notification_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>State</td>
+</tr>
+<tr>
+<td><code>latest_state.amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.answers</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.changes</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.company_member</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.document_upload_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.documents_presentation_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.documents_upload_requested</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.goods_presentation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+</tr>
+<tr>
+<td><code>latest_state.hrcm_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.invalidation_status</code></td>
+<td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
+<td>No</td>
+<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>latest_state.lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.processing_time</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.refund_application_status</code></td>
+<td><code>enum: processing, rejected, accepted, null</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>latest_state.request</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.route</code></td>
+<td><code>enum: green, orange, red, yellow, null</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>latest_state.status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>latest_state.submission</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>latest_state.transaction_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>latest_state.type</code></td>
+<td><code>enum: created, modified, completed</code></td>
+<td>No</td>
+<td>* <code>created</code> - created * <code>modified</code> - modified * <code>completed</code> - completed</td>
+</tr>
+<tr>
+<td><code>latest_state.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mrn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>receipt.company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>receipt.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>receipt.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.public</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>receipt.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>refund_application_status</code></td>
+<td><code>enum: processing, rejected, accepted, null</code></td>
+<td>No</td>
+<td>* <code>processing</code> - processing * <code>rejected</code> - rejected * <code>accepted</code> - accepted</td>
+</tr>
+<tr>
+<td><code>route</code></td>
+<td><code>enum: green, orange, red, yellow, null</code></td>
+<td>No</td>
+<td>* <code>green</code> - green * <code>orange</code> - orange * <code>red</code> - red * <code>yellow</code> - yellow</td>
+</tr>
+<tr>
+<td><code>shipment_items_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>shipment_items_quantity_no</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>source_type</code></td>
+<td><code>enum: template, automated_import, null</code></td>
+<td>No</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>total_tax_amount</code></td>
+<td><code>string (decimal)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verification_errors</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verification_status</code></td>
+<td><code>enum: passed, failed, null</code></td>
+<td>No</td>
+<td>* <code>passed</code> - passed * <code>failed</code> - failed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="patch-submissionsidclearance-slip" class="operation" data-method="patch"><code>PATCH</code> /submissions/{id}/clearance-slip</h3>
+<p>Operation ID: <code>submissions_clearance_slip_partial_update</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-14">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-17">Responses</h4>
+<h5 id="200-no-response-body-8" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="patch-submissionsidnotification-read" class="operation" data-method="patch"><code>PATCH</code> /submissions/{id}/notification-read</h3>
+<p>Operation ID: <code>submissions_notification_read_partial_update</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-15">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-18">Responses</h4>
+<h5 id="200-no-response-body-9" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="patch-submissionsidpbn-applicable" class="operation" data-method="patch"><code>PATCH</code> /submissions/{id}/pbn-applicable</h3>
+<p>Operation ID: <code>submissions_pbn_applicable_partial_update</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-16">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-19">Responses</h4>
+<h5 id="200-no-response-body-10" class="status" data-status="2xx">200: No response body</h5>
+<h3 id="patch-submissionsidreceipt" class="operation" data-method="patch"><code>PATCH</code> /submissions/{id}/receipt</h3>
+<p>Operation ID: <code>submissions_receipt_partial_update</code>.</p>
+<p>Authentication: API key in the header (<code>Secret Key</code>).</p>
+<h4 id="parameters-17">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
+<h4 id="responses-20">Responses</h4>
+<h5 id="200-no-response-body-11" class="status" data-status="2xx">200: No response body</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

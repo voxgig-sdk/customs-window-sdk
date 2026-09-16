@@ -31,8 +31,8 @@
         "receipt": {},
         "refund_application_status": "s1b5",
         "route": "s1b6",
-        "shipment_items_no": "s1b7",
-        "shipment_items_quantity_no": "s1b8",
+        "shipment_items_no": 439,
+        "shipment_items_quantity_no": 440,
         "source": "s1b9",
         "source_type": "s1ba",
         "status": "s1bb",
@@ -74,8 +74,8 @@
         "receipt": {},
         "refund_application_status": "s34f",
         "route": "s350",
-        "shipment_items_no": "s351",
-        "shipment_items_quantity_no": "s352",
+        "shipment_items_no": 849,
+        "shipment_items_quantity_no": 850,
         "source": "s353",
         "source_type": "s354",
         "status": "s355",
@@ -117,8 +117,8 @@
         "receipt": {},
         "refund_application_status": "s4e9",
         "route": "s4ea",
-        "shipment_items_no": "s4eb",
-        "shipment_items_quantity_no": "s4ec",
+        "shipment_items_no": 1259,
+        "shipment_items_quantity_no": 1260,
         "source": "s4ed",
         "source_type": "s4ee",
         "status": "s4ef",
@@ -163,8 +163,8 @@
         "receipt": {},
         "refund_application_status": "s683",
         "route": "s684",
-        "shipment_items_no": "s685",
-        "shipment_items_quantity_no": "s686",
+        "shipment_items_no": 1669,
+        "shipment_items_quantity_no": 1670,
         "source": "s687",
         "source_type": "s688",
         "status": "s689",
@@ -175,6 +175,1090 @@
         "updated_at": "s68e",
         "verification_errors": [],
         "verification_status": "s690"
+      }
+    }
+  },
+  "requests": {
+    "POST /documents-request": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "Upload Documents",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "properties": {
+                  "additional_information": {
+                    "items": {
+                      "properties": {
+                        "info": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "referral_request_reference": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "info",
+                        "type"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "company": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "company_member": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "submission": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "supporting_documents": {
+                    "items": {
+                      "properties": {
+                        "description": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "file": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "id": {
+                          "maxLength": 512,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "description",
+                        "file",
+                        "id"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "additional_information",
+                  "company",
+                  "company_member",
+                  "submission"
+                ],
+                "type": "object"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "additional_information": {
+                    "items": {
+                      "properties": {
+                        "info": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "referral_request_reference": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "info",
+                        "type"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "company": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "company_member": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "submission": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "supporting_documents": {
+                    "items": {
+                      "properties": {
+                        "description": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "file": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "id": {
+                          "maxLength": 512,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "description",
+                        "file",
+                        "id"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "additional_information",
+                  "company",
+                  "company_member",
+                  "submission"
+                ],
+                "type": "object"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "additional_information": {
+                    "items": {
+                      "properties": {
+                        "info": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "referral_request_reference": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "info",
+                        "type"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "company": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "company_member": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "submission": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "supporting_documents": {
+                    "items": {
+                      "properties": {
+                        "description": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "file": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "id": {
+                          "maxLength": 512,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "description",
+                        "file",
+                        "id"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "additional_information",
+                  "company",
+                  "company_member",
+                  "submission"
+                ],
+                "type": "object"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "additional_information": {
+                    "items": {
+                      "properties": {
+                        "info": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "referral_request_reference": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "info",
+                        "type"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "company": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "company_member": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "submission": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "supporting_documents": {
+                    "items": {
+                      "properties": {
+                        "description": {
+                          "maxLength": 512,
+                          "type": "string"
+                        },
+                        "file": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "id": {
+                          "maxLength": 512,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "description",
+                        "file",
+                        "id"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "additional_information",
+                  "company",
+                  "company_member",
+                  "submission"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "additional_external_ids": {
+                      "items": {
+                        "maxLength": 255,
+                        "type": "string"
+                      },
+                      "nullable": true,
+                      "type": "array"
+                    },
+                    "amendment_status": {
+                      "description": "* `requested` - requested\n* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `accepted` - accepted\n* `rejected` - rejected\n* `cancelled` - cancelled",
+                      "enum": [
+                        "requested",
+                        "draft",
+                        "complete",
+                        "processing",
+                        "accepted",
+                        "rejected",
+                        "cancelled",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "clearance_slip": {
+                      "properties": {
+                        "company": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "extension": {
+                          "maxLength": 255,
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 30,
+                          "type": "string"
+                        },
+                        "name": {
+                          "maxLength": 255,
+                          "type": "string"
+                        },
+                        "public": {
+                          "type": "boolean"
+                        },
+                        "size": {
+                          "maximum": 2147483647,
+                          "minimum": -2147483648,
+                          "nullable": true,
+                          "type": "integer"
+                        },
+                        "updated_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "url": {
+                          "readOnly": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "company",
+                        "created_at",
+                        "extension",
+                        "name",
+                        "public",
+                        "updated_at",
+                        "url"
+                      ],
+                      "title": "File",
+                      "type": "object"
+                    },
+                    "client": {
+                      "properties": {
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 30,
+                          "type": "string"
+                        },
+                        "identification_number": {
+                          "maxLength": 17,
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "name": {
+                          "maxLength": 70,
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "title": "Party",
+                      "type": "object"
+                    },
+                    "company_member": {
+                      "properties": {
+                        "company": {
+                          "properties": {
+                            "created_at": {
+                              "format": "date-time",
+                              "readOnly": true,
+                              "type": "string"
+                            },
+                            "description": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "id": {
+                              "description": "cuid-format identifier for this entity.",
+                              "maxLength": 30,
+                              "type": "string"
+                            },
+                            "name": {
+                              "maxLength": 255,
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "format": "date-time",
+                              "readOnly": true,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "created_at",
+                            "name",
+                            "updated_at"
+                          ],
+                          "title": "Company",
+                          "type": "object"
+                        },
+                        "created_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "hidden_submission_statuses": {
+                          "items": {
+                            "description": "* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `rejected` - rejected\n* `registered` - registered\n* `accepted` - accepted\n* `under_review` - under_review\n* `insufficient_funds` - insufficient_funds\n* `released` - released\n* `not_released` - not_released\n* `exported` - exported\n* `released_for_export` - released_for_export\n* `export_stopped_at_exit` - export_stopped_at_exit",
+                            "enum": [
+                              "draft",
+                              "complete",
+                              "processing",
+                              "rejected",
+                              "registered",
+                              "accepted",
+                              "under_review",
+                              "insufficient_funds",
+                              "released",
+                              "not_released",
+                              "exported",
+                              "released_for_export",
+                              "export_stopped_at_exit"
+                            ],
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "role": {
+                          "description": "* `staff` - staff\n* `admin` - admin",
+                          "enum": [
+                            "staff",
+                            "admin"
+                          ],
+                          "type": "string"
+                        },
+                        "user": {
+                          "properties": {
+                            "email": {
+                              "format": "email",
+                              "maxLength": 255,
+                              "type": "string"
+                            },
+                            "first_name": {
+                              "maxLength": 255,
+                              "type": "string"
+                            },
+                            "id": {
+                              "description": "cuid-format identifier for this entity.",
+                              "maxLength": 30,
+                              "type": "string"
+                            },
+                            "last_name": {
+                              "maxLength": 255,
+                              "type": "string"
+                            },
+                            "role": {
+                              "description": "* `company_member` - company_member\n* `admin` - admin",
+                              "enum": [
+                                "company_member",
+                                "admin"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "email",
+                            "first_name",
+                            "last_name"
+                          ],
+                          "title": "User",
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "company",
+                        "created_at",
+                        "user"
+                      ],
+                      "title": "CompanyMember",
+                      "type": "object"
+                    },
+                    "consignee": {
+                      "properties": {
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 30,
+                          "type": "string"
+                        },
+                        "identification_number": {
+                          "maxLength": 17,
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "name": {
+                          "maxLength": 70,
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "title": "Party",
+                      "type": "object"
+                    },
+                    "consignor": {
+                      "properties": {
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 30,
+                          "type": "string"
+                        },
+                        "identification_number": {
+                          "maxLength": 17,
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "name": {
+                          "maxLength": 70,
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "title": "Party",
+                      "type": "object"
+                    },
+                    "created_at": {
+                      "format": "date-time",
+                      "readOnly": true,
+                      "type": "string"
+                    },
+                    "declarant": {
+                      "properties": {
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 30,
+                          "type": "string"
+                        },
+                        "identification_number": {
+                          "maxLength": 17,
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "name": {
+                          "maxLength": 70,
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "title": "Party",
+                      "type": "object"
+                    },
+                    "document_upload_status": {
+                      "description": "* `requested` - requested\n* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `accepted` - accepted\n* `rejected` - rejected\n* `cancelled` - cancelled",
+                      "enum": [
+                        "requested",
+                        "draft",
+                        "complete",
+                        "processing",
+                        "accepted",
+                        "rejected",
+                        "cancelled",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "documents_presentation_requested": {
+                      "type": "boolean"
+                    },
+                    "documents_upload_requested": {
+                      "type": "boolean"
+                    },
+                    "external_id": {
+                      "maxLength": 255,
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "form": {
+                      "readOnly": true,
+                      "type": "string"
+                    },
+                    "goods_presentation_status": {
+                      "description": "* `in_review` - in_review\n* `rejected` - rejected\n* `accepted` - accepted\n* `requested` - requested",
+                      "enum": [
+                        "in_review",
+                        "rejected",
+                        "accepted",
+                        "requested",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "hrcm_status": {
+                      "description": "* `requested` - requested\n* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `accepted` - accepted\n* `rejected` - rejected\n* `cancelled` - cancelled",
+                      "enum": [
+                        "requested",
+                        "draft",
+                        "complete",
+                        "processing",
+                        "accepted",
+                        "rejected",
+                        "cancelled",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "cuid-format identifier for this entity.",
+                      "maxLength": 30,
+                      "type": "string"
+                    },
+                    "invalidation_status": {
+                      "description": "* `in_review` - in_review\n* `rejected` - rejected\n* `accepted` - accepted\n* `requested` - requested\n* `cancelled` - cancelled",
+                      "enum": [
+                        "in_review",
+                        "rejected",
+                        "accepted",
+                        "requested",
+                        "cancelled",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "is_global_template": {
+                      "type": "boolean"
+                    },
+                    "latest_notification_item": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "latest_state": {
+                      "properties": {
+                        "amendment_status": {
+                          "description": "* `requested` - requested\n* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `accepted` - accepted\n* `rejected` - rejected\n* `cancelled` - cancelled",
+                          "enum": [
+                            "requested",
+                            "draft",
+                            "complete",
+                            "processing",
+                            "accepted",
+                            "rejected",
+                            "cancelled",
+                            null
+                          ],
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "answers": {},
+                        "changes": {},
+                        "company_member": {
+                          "description": "cuid-format identifier for this entity.",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "deleted_at": {
+                          "format": "date-time",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "document_upload_status": {
+                          "description": "* `requested` - requested\n* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `accepted` - accepted\n* `rejected` - rejected\n* `cancelled` - cancelled",
+                          "enum": [
+                            "requested",
+                            "draft",
+                            "complete",
+                            "processing",
+                            "accepted",
+                            "rejected",
+                            "cancelled",
+                            null
+                          ],
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "documents_presentation_requested": {
+                          "type": "boolean"
+                        },
+                        "documents_upload_requested": {
+                          "type": "boolean"
+                        },
+                        "goods_presentation_status": {
+                          "description": "* `in_review` - in_review\n* `rejected` - rejected\n* `accepted` - accepted\n* `requested` - requested",
+                          "enum": [
+                            "in_review",
+                            "rejected",
+                            "accepted",
+                            "requested",
+                            null
+                          ],
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "hrcm_status": {
+                          "description": "* `requested` - requested\n* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `accepted` - accepted\n* `rejected` - rejected\n* `cancelled` - cancelled",
+                          "enum": [
+                            "requested",
+                            "draft",
+                            "complete",
+                            "processing",
+                            "accepted",
+                            "rejected",
+                            "cancelled",
+                            null
+                          ],
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 32,
+                          "type": "string"
+                        },
+                        "invalidation_status": {
+                          "description": "* `in_review` - in_review\n* `rejected` - rejected\n* `accepted` - accepted\n* `requested` - requested\n* `cancelled` - cancelled",
+                          "enum": [
+                            "in_review",
+                            "rejected",
+                            "accepted",
+                            "requested",
+                            "cancelled",
+                            null
+                          ],
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "lrn": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "message": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "processing_time": {
+                          "maximum": 2147483647,
+                          "minimum": -2147483648,
+                          "type": "integer"
+                        },
+                        "reason": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "refund_application_status": {
+                          "description": "* `processing` - processing\n* `rejected` - rejected\n* `accepted` - accepted",
+                          "enum": [
+                            "processing",
+                            "rejected",
+                            "accepted",
+                            null
+                          ],
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "request": {
+                          "nullable": true
+                        },
+                        "route": {
+                          "description": "* `green` - green\n* `orange` - orange\n* `red` - red\n* `yellow` - yellow",
+                          "enum": [
+                            "green",
+                            "orange",
+                            "red",
+                            "yellow",
+                            null
+                          ],
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "status": {
+                          "description": "* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `rejected` - rejected\n* `registered` - registered\n* `accepted` - accepted\n* `under_review` - under_review\n* `insufficient_funds` - insufficient_funds\n* `released` - released\n* `not_released` - not_released\n* `exported` - exported\n* `released_for_export` - released_for_export\n* `export_stopped_at_exit` - export_stopped_at_exit",
+                          "enum": [
+                            "draft",
+                            "complete",
+                            "processing",
+                            "rejected",
+                            "registered",
+                            "accepted",
+                            "under_review",
+                            "insufficient_funds",
+                            "released",
+                            "not_released",
+                            "exported",
+                            "released_for_export",
+                            "export_stopped_at_exit"
+                          ],
+                          "type": "string"
+                        },
+                        "submission": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "transaction_id": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "* `created` - created\n* `modified` - modified\n* `completed` - completed",
+                          "enum": [
+                            "created",
+                            "modified",
+                            "completed"
+                          ],
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "answers",
+                        "changes",
+                        "created_at",
+                        "submission",
+                        "updated_at"
+                      ],
+                      "title": "State",
+                      "type": "object"
+                    },
+                    "lrn": {
+                      "maxLength": 22,
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "mrn": {
+                      "maxLength": 255,
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "name": {
+                      "maxLength": 255,
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "receipt": {
+                      "properties": {
+                        "company": {
+                          "description": "cuid-format identifier for this entity.",
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "extension": {
+                          "maxLength": 255,
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "cuid-format identifier for this entity.",
+                          "maxLength": 30,
+                          "type": "string"
+                        },
+                        "name": {
+                          "maxLength": 255,
+                          "type": "string"
+                        },
+                        "public": {
+                          "type": "boolean"
+                        },
+                        "size": {
+                          "maximum": 2147483647,
+                          "minimum": -2147483648,
+                          "nullable": true,
+                          "type": "integer"
+                        },
+                        "updated_at": {
+                          "format": "date-time",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "url": {
+                          "readOnly": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "company",
+                        "created_at",
+                        "extension",
+                        "name",
+                        "public",
+                        "updated_at",
+                        "url"
+                      ],
+                      "title": "File",
+                      "type": "object"
+                    },
+                    "refund_application_status": {
+                      "description": "* `processing` - processing\n* `rejected` - rejected\n* `accepted` - accepted",
+                      "enum": [
+                        "processing",
+                        "rejected",
+                        "accepted",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "route": {
+                      "description": "* `green` - green\n* `orange` - orange\n* `red` - red\n* `yellow` - yellow",
+                      "enum": [
+                        "green",
+                        "orange",
+                        "red",
+                        "yellow",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "shipment_items_no": {
+                      "maximum": 2147483647,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "shipment_items_quantity_no": {
+                      "maximum": 2147483647,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "source": {
+                      "description": "cuid-format identifier for this entity.",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "source_type": {
+                      "description": "* `template` - template\n* `automated_import` - automated_import",
+                      "enum": [
+                        "template",
+                        "automated_import",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "* `draft` - draft\n* `complete` - complete\n* `processing` - processing\n* `rejected` - rejected\n* `registered` - registered\n* `accepted` - accepted\n* `under_review` - under_review\n* `insufficient_funds` - insufficient_funds\n* `released` - released\n* `not_released` - not_released\n* `exported` - exported\n* `released_for_export` - released_for_export\n* `export_stopped_at_exit` - export_stopped_at_exit",
+                      "enum": [
+                        "draft",
+                        "complete",
+                        "processing",
+                        "rejected",
+                        "registered",
+                        "accepted",
+                        "under_review",
+                        "insufficient_funds",
+                        "released",
+                        "not_released",
+                        "exported",
+                        "released_for_export",
+                        "export_stopped_at_exit"
+                      ],
+                      "type": "string"
+                    },
+                    "template": {
+                      "type": "boolean"
+                    },
+                    "total_tax_amount": {
+                      "format": "decimal",
+                      "nullable": true,
+                      "pattern": "^-?\\d{0,14}(?:\\.\\d{0,2})?$",
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "format": "date-time",
+                      "readOnly": true,
+                      "type": "string"
+                    },
+                    "verification_errors": {
+                      "items": {
+                        "maxLength": 255,
+                        "type": "string"
+                      },
+                      "nullable": true,
+                      "type": "array"
+                    },
+                    "verification_status": {
+                      "description": "* `passed` - passed\n* `failed` - failed",
+                      "enum": [
+                        "passed",
+                        "failed",
+                        null
+                      ],
+                      "nullable": true,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "clearance_slip",
+                    "client",
+                    "company_member",
+                    "consignee",
+                    "consignor",
+                    "created_at",
+                    "declarant",
+                    "form",
+                    "latest_state",
+                    "receipt",
+                    "updated_at"
+                  ],
+                  "title": "Submission",
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
       }
     }
   }

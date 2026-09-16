@@ -9,7 +9,7 @@
         "id": "FILE00",
         "name": "s69",
         "public": true,
-        "size": "s6b",
+        "size": 107,
         "updated_at": "s6c",
         "url": "s6d"
       },
@@ -21,7 +21,7 @@
         "id": "FILE01",
         "name": "scd",
         "public": true,
-        "size": "scf",
+        "size": 207,
         "updated_at": "sd0",
         "url": "sd1"
       },
@@ -33,7 +33,7 @@
         "id": "FILE02",
         "name": "s131",
         "public": true,
-        "size": "s133",
+        "size": 307,
         "updated_at": "s134",
         "url": "s135"
       }
@@ -48,9 +48,350 @@
         "file": "s193",
         "name": "s195",
         "public": true,
-        "size": "s197",
+        "size": 407,
         "updated_at": "s198",
         "url": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /files": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "Create a File",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "properties": {
+                  "company": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "extension": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "file": {
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "id": {
+                    "description": "cuid-format identifier for this entity.",
+                    "maxLength": 30,
+                    "type": "string"
+                  },
+                  "name": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "public": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "size": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "url": {
+                    "readOnly": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "company",
+                  "created_at",
+                  "extension",
+                  "file",
+                  "name",
+                  "updated_at",
+                  "url"
+                ],
+                "title": "File",
+                "type": "object"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "company": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "extension": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "file": {
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "id": {
+                    "description": "cuid-format identifier for this entity.",
+                    "maxLength": 30,
+                    "type": "string"
+                  },
+                  "name": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "public": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "size": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "url": {
+                    "readOnly": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "company",
+                  "created_at",
+                  "extension",
+                  "file",
+                  "name",
+                  "updated_at",
+                  "url"
+                ],
+                "title": "File",
+                "type": "object"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "company": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "extension": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "file": {
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "id": {
+                    "description": "cuid-format identifier for this entity.",
+                    "maxLength": 30,
+                    "type": "string"
+                  },
+                  "name": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "public": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "size": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "url": {
+                    "readOnly": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "company",
+                  "created_at",
+                  "extension",
+                  "file",
+                  "name",
+                  "updated_at",
+                  "url"
+                ],
+                "title": "File",
+                "type": "object"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "company": {
+                    "description": "cuid-format identifier for this entity.",
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "extension": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "file": {
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "id": {
+                    "description": "cuid-format identifier for this entity.",
+                    "maxLength": 30,
+                    "type": "string"
+                  },
+                  "name": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "public": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "size": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "url": {
+                    "readOnly": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "company",
+                  "created_at",
+                  "extension",
+                  "file",
+                  "name",
+                  "updated_at",
+                  "url"
+                ],
+                "title": "File",
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "company": {
+                      "description": "cuid-format identifier for this entity.",
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "format": "date-time",
+                      "readOnly": true,
+                      "type": "string"
+                    },
+                    "extension": {
+                      "maxLength": 255,
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "cuid-format identifier for this entity.",
+                      "maxLength": 30,
+                      "type": "string"
+                    },
+                    "name": {
+                      "maxLength": 255,
+                      "type": "string"
+                    },
+                    "public": {
+                      "type": "boolean"
+                    },
+                    "size": {
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "nullable": true,
+                      "type": "integer"
+                    },
+                    "updated_at": {
+                      "format": "date-time",
+                      "readOnly": true,
+                      "type": "string"
+                    },
+                    "url": {
+                      "readOnly": true,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "company",
+                    "created_at",
+                    "extension",
+                    "name",
+                    "public",
+                    "updated_at",
+                    "url"
+                  ],
+                  "title": "File",
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Secret Key": []
+          }
+        ],
+        "securitySchemes": {
+          "Secret Key": {
+            "description": "Basic authentication with required secret-key",
+            "in": "header",
+            "name": "Basic Auth",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
       }
     }
   }

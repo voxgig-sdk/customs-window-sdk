@@ -158,6 +158,12 @@ main: kit: entity: party: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /parties"
+            json: "{\"operationId\":\"parties_create\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"No response body\"}},\"security\":[{\"Secret Key\":[]}],\"securitySchemes\":{\"Secret Key\":{\"description\":\"Basic authentication with required secret-key\",\"in\":\"header\",\"name\":\"Basic Auth\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/parties"
           segments: [
@@ -194,6 +200,12 @@ main: kit: entity: party: {
               }
             ]
           }
+          contract: {
+            id: "GET /parties"
+            json: "{\"operationId\":\"List all Parties\",\"parameters\":[{\"description\":\"The pagination cursor value.\",\"in\":\"query\",\"name\":\"cursor\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"To filter the parties returned to a specific type, e.g. declarant, client using the following\",\"in\":\"query\",\"name\":\"type\",\"schema\":{\"enum\":[\"authorisation_holder\",\"buyer\",\"carrier\",\"client\",\"consignee\",\"consignor\",\"contact\",\"declarant\",\"exporter\",\"importer\",\"owner\",\"representative\",\"seller\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"additional_declaration_type\":{\"properties\":{\"created_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"deleted_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"cuid-format identifier for this entity.\",\"maxLength\":30,\"type\":\"string\"},\"list\":{\"description\":\"cuid-format identifier for this entity.\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"updated_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"value\":{\"maxLength\":255,\"type\":\"string\"}},\"required\":[\"created_at\",\"list\",\"name\",\"updated_at\",\"value\"],\"title\":\"Code\",\"type\":\"object\"},\"address\":{\"properties\":{\"city\":{\"maxLength\":35,\"nullable\":true,\"type\":\"string\"},\"country_code\":{\"maxLength\":2,\"type\":\"string\"},\"created_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"deleted_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"cuid-format identifier for this entity.\",\"maxLength\":30,\"type\":\"string\"},\"line_1\":{\"maxLength\":70,\"nullable\":true,\"type\":\"string\"},\"number\":{\"maxLength\":35,\"nullable\":true,\"type\":\"string\"},\"po_box\":{\"maxLength\":70,\"nullable\":true,\"type\":\"string\"},\"postal_code\":{\"maxLength\":9,\"nullable\":true,\"type\":\"string\"},\"raw\":{\"type\":\"string\"},\"sub_division\":{\"maxLength\":35,\"nullable\":true,\"type\":\"string\"},\"updated_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"}},\"required\":[\"country_code\",\"created_at\",\"raw\",\"updated_at\"],\"title\":\"Address\",\"type\":\"object\"},\"authorisation\":{\"properties\":{\"created_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"deleted_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"cuid-format identifier for this entity.\",\"maxLength\":30,\"type\":\"string\"},\"list\":{\"description\":\"cuid-format identifier for this entity.\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"updated_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"value\":{\"maxLength\":255,\"type\":\"string\"}},\"required\":[\"created_at\",\"list\",\"name\",\"updated_at\",\"value\"],\"title\":\"Code\",\"type\":\"object\"},\"bank_details\":{\"nullable\":true,\"type\":\"string\"},\"certificate\":{\"properties\":{\"frequent_processing_ends_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"last_fetched_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"processing_start_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"type\":{\"description\":\"* `ros` - ros\\n* `hmrc` - hmrc\\n* `nhd` - nhd\\n* `ics2` - ics2\",\"enum\":[\"ros\",\"hmrc\",\"nhd\",\"ics2\"],\"type\":\"string\"}},\"title\":\"Certificate\",\"type\":\"object\"},\"certificate_type\":{\"readOnly\":true,\"type\":\"string\"},\"company\":{\"description\":\"cuid-format identifier for this entity.\",\"type\":\"string\"},\"created_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"customs_office_of_lodgement\":{\"properties\":{\"created_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"deleted_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"cuid-format identifier for this entity.\",\"maxLength\":30,\"type\":\"string\"},\"list\":{\"description\":\"cuid-format identifier for this entity.\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"updated_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"value\":{\"maxLength\":255,\"type\":\"string\"}},\"required\":[\"created_at\",\"list\",\"name\",\"updated_at\",\"value\"],\"title\":\"Code\",\"type\":\"object\"},\"deleted_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"email\":{\"format\":\"email\",\"maxLength\":255,\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"cuid-format identifier for this entity.\",\"maxLength\":30,\"type\":\"string\"},\"identification_number\":{\"maxLength\":17,\"nullable\":true,\"type\":\"string\"},\"indirect_representative\":{\"nullable\":true,\"type\":\"boolean\"},\"name\":{\"maxLength\":70,\"nullable\":true,\"type\":\"string\"},\"nhd_last_submission_year\":{\"maximum\":2147483647,\"minimum\":-2147483648,\"nullable\":true,\"type\":\"integer\"},\"nhd_submission_counter\":{\"maximum\":2147483647,\"minimum\":-2147483648,\"type\":\"integer\"},\"person_paying_customs_duty\":{\"maxLength\":17,\"nullable\":true,\"type\":\"string\"},\"phone_country_code\":{\"maxLength\":255,\"nullable\":true,\"type\":\"string\"},\"phone_number\":{\"maxLength\":255,\"nullable\":true,\"type\":\"string\"},\"preferred_payment_method\":{\"properties\":{\"created_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"deleted_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"cuid-format identifier for this entity.\",\"maxLength\":30,\"type\":\"string\"},\"list\":{\"description\":\"cuid-format identifier for this entity.\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"updated_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"value\":{\"maxLength\":255,\"type\":\"string\"}},\"required\":[\"created_at\",\"list\",\"name\",\"updated_at\",\"value\"],\"title\":\"Code\",\"type\":\"object\"},\"signed_form\":{\"properties\":{\"company\":{\"description\":\"cuid-format identifier for this entity.\",\"type\":\"string\"},\"created_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"extension\":{\"maxLength\":255,\"type\":\"string\"},\"id\":{\"description\":\"cuid-format identifier for this entity.\",\"maxLength\":30,\"type\":\"string\"},\"name\":{\"maxLength\":255,\"type\":\"string\"},\"public\":{\"type\":\"boolean\"},\"size\":{\"maximum\":2147483647,\"minimum\":-2147483648,\"nullable\":true,\"type\":\"integer\"},\"updated_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"url\":{\"readOnly\":true,\"type\":\"string\"}},\"required\":[\"company\",\"created_at\",\"extension\",\"name\",\"public\",\"updated_at\",\"url\"],\"title\":\"File\",\"type\":\"object\"},\"type\":{\"description\":\"* `exporter` - exporter\\n* `importer` - importer\\n* `buyer` - buyer\\n* `seller` - seller\\n* `representative` - representative\\n* `declarant` - declarant\\n* `owner` - owner\\n* `authorisation_holder` - authorisation_holder\\n* `client` - client\\n* `contact` - contact\\n* `consignee` - consignee\\n* `consignor` - consignor\\n* `carrier` - carrier\",\"enum\":[\"exporter\",\"importer\",\"buyer\",\"seller\",\"representative\",\"declarant\",\"owner\",\"authorisation_holder\",\"client\",\"contact\",\"consignee\",\"consignor\",\"carrier\"],\"type\":\"string\"},\"type_of_person\":{\"properties\":{\"created_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"deleted_at\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"cuid-format identifier for this entity.\",\"maxLength\":30,\"type\":\"string\"},\"list\":{\"description\":\"cuid-format identifier for this entity.\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"updated_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"},\"value\":{\"maxLength\":255,\"type\":\"string\"}},\"required\":[\"created_at\",\"list\",\"name\",\"updated_at\",\"value\"],\"title\":\"Code\",\"type\":\"object\"},\"unlocode\":{\"maxLength\":17,\"nullable\":true,\"type\":\"string\"},\"updated_at\":{\"format\":\"date-time\",\"readOnly\":true,\"type\":\"string\"}},\"required\":[\"additional_declaration_type\",\"address\",\"authorisation\",\"certificate\",\"certificate_type\",\"company\",\"created_at\",\"customs_office_of_lodgement\",\"preferred_payment_method\",\"signed_form\",\"type_of_person\",\"updated_at\"],\"title\":\"Party\",\"type\":\"object\"},\"type\":\"array\"}},\"title\":\"Party\",\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"Secret Key\":[]}],\"securitySchemes\":{\"Secret Key\":{\"description\":\"Basic authentication with required secret-key\",\"in\":\"header\",\"name\":\"Basic Auth\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/parties"
           segments: [
@@ -228,6 +240,12 @@ main: kit: entity: party: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /parties/{id}"
+            json: "{\"operationId\":\"parties_retrieve\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"No response body\"}},\"security\":[{\"Secret Key\":[]}],\"securitySchemes\":{\"Secret Key\":{\"description\":\"Basic authentication with required secret-key\",\"in\":\"header\",\"name\":\"Basic Auth\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/parties/{id}"
@@ -266,6 +284,12 @@ main: kit: entity: party: {
               }
             ]
           }
+          contract: {
+            id: "DELETE /parties/{id}"
+            json: "{\"operationId\":\"parties_destroy\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"No response body\"}},\"security\":[{\"Secret Key\":[]}],\"securitySchemes\":{\"Secret Key\":{\"description\":\"Basic authentication with required secret-key\",\"in\":\"header\",\"name\":\"Basic Auth\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "DELETE"
           orig: "/parties/{id}"
           segments: [
@@ -302,6 +326,12 @@ main: kit: entity: party: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "PATCH /parties/{id}"
+            json: "{\"operationId\":\"parties_partial_update\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"No response body\"}},\"security\":[{\"Secret Key\":[]}],\"securitySchemes\":{\"Secret Key\":{\"description\":\"Basic authentication with required secret-key\",\"in\":\"header\",\"name\":\"Basic Auth\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "PATCH"
           orig: "/parties/{id}"
