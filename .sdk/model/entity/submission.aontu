@@ -1,0 +1,1158 @@
+# Entity: submission
+
+main: kit: entity: submission: {
+
+  alias: field: {}
+
+  fields: {
+    additional_external_ids: {
+      h: "Additional External Ids"
+      n: "additional_external_ids"
+      r: false
+      t: "`$ARRAY`"
+    }
+    amendment_reason: {
+      h: "Amendment Reason"
+      n: "amendment_reason"
+      r: false
+      t: "`$STRING`"
+    }
+    amendment_status: {
+      h: "Amendment Status"
+      n: "amendment_status"
+      r: false
+      sh: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
+      t: "`$STRING`"
+    }
+    answers: {
+      h: "Answers"
+      n: "answers"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      t: "`$ARRAY`"
+    }
+    bypass_restricted_code: {
+      h: "Bypass Restricted Code"
+      n: "bypass_restricted_code"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    clearance_slip: {
+      h: "Clearance Slip"
+      n: "clearance_slip"
+      r: true
+      t: "`$OBJECT`"
+    }
+    client: {
+      h: "Client"
+      n: "client"
+      r: true
+      t: "`$OBJECT`"
+    }
+    company_member: {
+      h: "Company Member"
+      n: "company_member"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$OBJECT`"
+    }
+    consignee: {
+      h: "Consignee"
+      n: "consignee"
+      r: true
+      t: "`$OBJECT`"
+    }
+    consignor: {
+      h: "Consignor"
+      n: "consignor"
+      r: true
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    declarant: {
+      h: "Declarant"
+      n: "declarant"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$OBJECT`"
+    }
+    document_upload_status: {
+      h: "Document Upload Status"
+      n: "document_upload_status"
+      r: false
+      sh: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
+      t: "`$STRING`"
+    }
+    documents_presentation_requested: {
+      h: "Documents Presentation Requested"
+      n: "documents_presentation_requested"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    documents_upload_requested: {
+      h: "Documents Upload Requested"
+      n: "documents_upload_requested"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    external_id: {
+      h: "External Id"
+      n: "external_id"
+      r: false
+      t: "`$STRING`"
+    }
+    form: {
+      h: "Form"
+      n: "form"
+      r: true
+      ro: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    goods_presentation_status: {
+      h: "Goods Presentation Status"
+      n: "goods_presentation_status"
+      r: false
+      sh: "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested"
+      t: "`$STRING`"
+    }
+    hrcm_status: {
+      h: "Hrcm Status"
+      n: "hrcm_status"
+      r: false
+      sh: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    invalidation_status: {
+      h: "Invalidation Status"
+      n: "invalidation_status"
+      r: false
+      sh: "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled"
+      t: "`$STRING`"
+    }
+    is_global_template: {
+      h: "Is Global Template"
+      n: "is_global_template"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    latest_notification_item: {
+      h: "Latest Notification Item"
+      n: "latest_notification_item"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    latest_state: {
+      h: "Latest State"
+      n: "latest_state"
+      r: true
+      t: "`$OBJECT`"
+    }
+    lrn: {
+      h: "Lrn"
+      n: "lrn"
+      r: false
+      t: "`$STRING`"
+    }
+    mrn: {
+      h: "Mrn"
+      n: "mrn"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    partial_answers: {
+      h: "Partial Answers"
+      n: "partial_answers"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    receipt: {
+      h: "Receipt"
+      n: "receipt"
+      r: true
+      t: "`$OBJECT`"
+    }
+    refund_application_status: {
+      h: "Refund Application Status"
+      n: "refund_application_status"
+      r: false
+      sh: "* `processing` - processing * `rejected` - rejected * `accepted` - accepted"
+      t: "`$STRING`"
+    }
+    route: {
+      h: "Route"
+      n: "route"
+      r: false
+      sh: "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow"
+      t: "`$STRING`"
+    }
+    shipment_items_no: {
+      h: "Shipment Items No"
+      n: "shipment_items_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    shipment_items_quantity_no: {
+      h: "Shipment Items Quantity No"
+      n: "shipment_items_quantity_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    source_type: {
+      h: "Source Type"
+      n: "source_type"
+      r: false
+      sh: "* `template` - template * `automated_import` - automated_import"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…"
+      t: "`$STRING`"
+    }
+    template: {
+      h: "Template"
+      n: "template"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    template_id: {
+      h: "Template Id"
+      n: "template_id"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    template_properties: {
+      h: "Template Properties"
+      n: "template_properties"
+      r: false
+      t: "`$ARRAY`"
+    }
+    total_tax_amount: {
+      fo: "decimal"
+      h: "Total Tax Amount"
+      n: "total_tax_amount"
+      r: false
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    verification_errors: {
+      h: "Verification Errors"
+      n: "verification_errors"
+      r: false
+      t: "`$ARRAY`"
+    }
+    verification_status: {
+      h: "Verification Status"
+      n: "verification_status"
+      r: false
+      sh: "* `passed` - passed * `failed` - failed"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "submission"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /submissions/{id}/refund"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/submissions/{id}/refund"
+          q: {
+            "$action": "refund"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "refund"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /submissions"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/submissions"
+          s: [
+            {
+              lit: "submissions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /submissions/retrieve"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/submissions/retrieve"
+          q: {
+            "$action": "retrieve"
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              lit: "retrieve"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /submissions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "form_subtype"
+                or: "form_subtype"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "green"
+                k: "query"
+                n: "route"
+                or: "route"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "released"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "template"
+                or: "template"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/submissions"
+          q: {
+            exist: [
+              "cursor"
+              "form_subtype"
+              "route"
+              "status"
+              "template"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /submissions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/submissions/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /submissions/{id}/clearance-slip"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/submissions/{id}/clearance-slip"
+          q: {
+            "$action": "clearance_slip"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "clearance-slip"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /submissions/{id}/notification-read"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/submissions/{id}/notification-read"
+          q: {
+            "$action": "notification_read"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "notification-read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /submissions/{id}/pbn-applicable"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/submissions/{id}/pbn-applicable"
+          q: {
+            "$action": "pbn_applicable"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pbn-applicable"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /submissions/{id}/receipt"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/submissions/{id}/receipt"
+          q: {
+            "$action": "receipt"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "receipt"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /submissions/{id}/refund"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/submissions/{id}/refund"
+          q: {
+            "$action": "refund"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "refund"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /submissions/retrieve"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/submissions/retrieve"
+          q: {
+            "$action": "retrieve"
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              lit: "retrieve"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /submissions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/submissions/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /submissions/{id}/clearance-slip"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/submissions/{id}/clearance-slip"
+          q: {
+            "$action": "clearance_slip"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "clearance-slip"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /submissions/{id}/notification-read"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/submissions/{id}/notification-read"
+          q: {
+            "$action": "notification_read"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "notification-read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /submissions/{id}/pbn-applicable"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/submissions/{id}/pbn-applicable"
+          q: {
+            "$action": "pbn_applicable"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pbn-applicable"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /submissions/{id}/receipt"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/submissions/{id}/receipt"
+          q: {
+            "$action": "receipt"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "receipt"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /submissions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/submissions/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /submissions/{id}/clearance-slip"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/submissions/{id}/clearance-slip"
+          q: {
+            "$action": "clearance_slip"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "clearance-slip"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /submissions/{id}/notification-read"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/submissions/{id}/notification-read"
+          q: {
+            "$action": "notification_read"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "notification-read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /submissions/{id}/pbn-applicable"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/submissions/{id}/pbn-applicable"
+          q: {
+            "$action": "pbn_applicable"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pbn-applicable"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /submissions/{id}/receipt"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/submissions/{id}/receipt"
+          q: {
+            "$action": "receipt"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "receipt"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

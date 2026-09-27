@@ -20,7 +20,7 @@ local SDK_MODULE = "customs-window_sdk"
 -- A test-mode client seeded with a fixture for every entity. The constructor
 -- of each runnable snippet is rewritten to this form so the offline mock has
 -- data to return.
-local TEST_SEED = '{ entity = { ["bulk_upload"] = { ["test01"] = { id = "test01" } }, ["file"] = { ["test01"] = { id = "test01" } }, ["paginated_bulk_upload_list_list"] = { ["test01"] = { id = "test01" } }, ["paginated_party_list_list"] = { ["test01"] = { id = "test01" } }, ["paginated_submission_list_list"] = { ["test01"] = { id = "test01" } }, ["party"] = { ["test01"] = { id = "test01" } }, ["submission"] = { ["test01"] = { id = "test01" } }, ["submission_detail"] = { ["test01"] = { id = "test01" } } } }'
+local TEST_SEED = '{ entity = { ["bulk_upload"] = { ["test01"] = { id = "test01" } }, ["file"] = { ["test01"] = { id = "test01" } }, ["party"] = { ["test01"] = { id = "test01" } }, ["submission"] = { ["test01"] = { id = "test01" } }, ["submission_detail"] = { ["test01"] = { id = "test01" } } } }'
 local TEST_CTOR = "sdk.test(" .. TEST_SEED .. ")"
 
 local function script_dir()

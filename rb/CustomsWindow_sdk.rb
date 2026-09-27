@@ -303,27 +303,6 @@ class CustomsWindowSDK
   end
 
 
-  # Canonical facade: client.PaginatedBulkUploadListList.list / client.PaginatedBulkUploadListList.load({ "id" => ... })
-  def PaginatedBulkUploadListList(data = nil)
-    require_relative 'entity/paginated_bulk_upload_list_list_entity'
-    PaginatedBulkUploadListListEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.PaginatedPartyListList.list / client.PaginatedPartyListList.load({ "id" => ... })
-  def PaginatedPartyListList(data = nil)
-    require_relative 'entity/paginated_party_list_list_entity'
-    PaginatedPartyListListEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.PaginatedSubmissionListList.list / client.PaginatedSubmissionListList.load({ "id" => ... })
-  def PaginatedSubmissionListList(data = nil)
-    require_relative 'entity/paginated_submission_list_list_entity'
-    PaginatedSubmissionListListEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.Party.list / client.Party.load({ "id" => ... })
   def Party(data = nil)
     require_relative 'entity/party_entity'

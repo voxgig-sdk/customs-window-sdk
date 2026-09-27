@@ -59,15 +59,6 @@ func init() {
 	core.NewFileEntityFunc = func(client *core.CustomsWindowSDK, entopts map[string]any) core.CustomsWindowEntity {
 		return entity.NewFileEntity(client, entopts)
 	}
-	core.NewPaginatedBulkUploadListListEntityFunc = func(client *core.CustomsWindowSDK, entopts map[string]any) core.CustomsWindowEntity {
-		return entity.NewPaginatedBulkUploadListListEntity(client, entopts)
-	}
-	core.NewPaginatedPartyListListEntityFunc = func(client *core.CustomsWindowSDK, entopts map[string]any) core.CustomsWindowEntity {
-		return entity.NewPaginatedPartyListListEntity(client, entopts)
-	}
-	core.NewPaginatedSubmissionListListEntityFunc = func(client *core.CustomsWindowSDK, entopts map[string]any) core.CustomsWindowEntity {
-		return entity.NewPaginatedSubmissionListListEntity(client, entopts)
-	}
 	core.NewPartyEntityFunc = func(client *core.CustomsWindowSDK, entopts map[string]any) core.CustomsWindowEntity {
 		return entity.NewPartyEntity(client, entopts)
 	}

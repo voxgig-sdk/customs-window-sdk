@@ -12,7 +12,7 @@ func MakeConfig() map[string]any {
 		"main": map[string]any{
 			"name": "CustomsWindow",
 			"slug": "customs-window",
-			"version": "0.0.1",
+			"version": "0.1.1",
 			"target": "go",
 		},
 		"feature": map[string]any{
@@ -151,6 +151,7 @@ func MakeConfig() map[string]any {
 			"base": "https://api.customswindow.com",
 			"auth": map[string]any{
 				"prefix": "",
+				"name": "Basic Auth",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",
@@ -158,9 +159,6 @@ func MakeConfig() map[string]any {
 			"entity": map[string]any{
 				"bulk_upload": map[string]any{},
 				"file": map[string]any{},
-				"paginated_bulk_upload_list_list": map[string]any{},
-				"paginated_party_list_list": map[string]any{},
-				"paginated_submission_list_list": map[string]any{},
 				"party": map[string]any{},
 				"submission": map[string]any{},
 				"submission_detail": map[string]any{},
@@ -171,203 +169,244 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "active_transport_nationality",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Active Transport Nationality",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "active_transport_number",
+						"title": "Active Transport Number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "arrival_datetime",
+						"title": "Arrival Datetime",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "client",
+						"title": "Client",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "company_member",
+						"title": "Company Member",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "created_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Created At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "declarant",
+						"title": "Declarant",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "declarations_no",
-						"req": true,
+						"title": "Declarations No",
 						"type": "`$INTEGER`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "deleted_at",
+						"title": "Deleted At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "departure_datetime",
+						"title": "Departure Datetime",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "errors_file",
-						"req": true,
+						"title": "Errors File",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "external_id",
+						"title": "External Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "failed_declarations_no",
+						"title": "Failed Declarations No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "file",
+						"title": "File",
+						"type": "`$OBJECT`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "green_routed_no",
+						"title": "Green Routed No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "h1_fallback_template",
-						"short": "cuid-format identifier for this entity.",
+						"title": "H1 Fallback Template",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "house_transport_doc_ref",
+						"title": "House Transport Doc Ref",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "issue_date",
+						"title": "Issue Date",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "mapping",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Mapping",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "orange_routed_no",
+						"title": "Orange Routed No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "parsed_declarations_no",
+						"title": "Parsed Declarations No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "parser",
+						"title": "Parser",
+						"type": "`$STRING`",
 						"short": "* `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "parsing_completed_at",
+						"title": "Parsing Completed At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "parsing_started_at",
+						"title": "Parsing Started At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "passive_transport_nationality",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Passive Transport Nationality",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "passive_transport_number",
+						"title": "Passive Transport Number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "processed_declarations_no",
+						"title": "Processed Declarations No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "processing_ended_at",
+						"title": "Processing Ended At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "processing_started_at",
+						"title": "Processing Started At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "receipt_generating_started_at",
+						"title": "Receipt Generating Started At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "receipt_request_started_at",
+						"title": "Receipt Request Started At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "receipt_request_status",
-						"short": "* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed",
+						"title": "Receipt Request Status",
 						"type": "`$STRING`",
+						"short": "* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed",
 					},
 					map[string]any{
 						"name": "receipt_request_user",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Receipt Request User",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "receipts_zip",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Receipts Zip",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "red_routed_no",
+						"title": "Red Routed No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rejected_status_no",
+						"title": "Rejected Status No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "status",
-						"short": "* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete",
 					},
 					map[string]any{
 						"name": "template",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Template",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updated_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "yellow_routed_no",
+						"title": "Yellow Routed No",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -382,7 +421,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/bulk-uploads",
@@ -391,14 +429,16 @@ func MakeConfig() map[string]any {
 										"lit": "bulk-uploads",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"bulk-uploads",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"bulk-uploads",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -407,16 +447,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "cursor",
-											"orig": "cursor",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/bulk-uploads",
@@ -425,17 +455,28 @@ func MakeConfig() map[string]any {
 										"lit": "bulk-uploads",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"cursor",
-									},
+								"parts": []any{
+									"bulk-uploads",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.results`",
 								},
-								"parts": []any{
-									"bulk-uploads",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "cursor",
+											"orig": "cursor",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"cursor",
+									},
 								},
 							},
 						},
@@ -445,17 +486,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/bulk-uploads/{id}",
@@ -467,32 +497,33 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
+								"parts": []any{
+									"bulk-uploads",
+									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"bulk-uploads",
-									"{id}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/bulk-uploads/{id}/generate-pdfs",
@@ -507,20 +538,32 @@ func MakeConfig() map[string]any {
 										"lit": "generate-pdfs",
 									},
 								},
+								"parts": []any{
+									"bulk-uploads",
+									"{id}",
+									"generate-pdfs",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "generate_pdf",
 									"exist": []any{
 										"id",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"bulk-uploads",
-									"{id}",
-									"generate-pdfs",
 								},
 							},
 						},
@@ -530,17 +573,6 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/bulk-uploads/{id}",
@@ -552,32 +584,33 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
+								"parts": []any{
+									"bulk-uploads",
+									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"bulk-uploads",
-									"{id}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/bulk-uploads/{id}/generate-pdfs",
@@ -592,20 +625,32 @@ func MakeConfig() map[string]any {
 										"lit": "generate-pdfs",
 									},
 								},
+								"parts": []any{
+									"bulk-uploads",
+									"{id}",
+									"generate-pdfs",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "generate_pdf",
 									"exist": []any{
 										"id",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"bulk-uploads",
-									"{id}",
-									"generate-pdfs",
 								},
 							},
 						},
@@ -615,17 +660,6 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/bulk-uploads/{id}",
@@ -637,32 +671,33 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
+								"parts": []any{
+									"bulk-uploads",
+									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"bulk-uploads",
-									"{id}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/bulk-uploads/{id}/generate-pdfs",
@@ -677,20 +712,32 @@ func MakeConfig() map[string]any {
 										"lit": "generate-pdfs",
 									},
 								},
+								"parts": []any{
+									"bulk-uploads",
+									"{id}",
+									"generate-pdfs",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "generate_pdf",
 									"exist": []any{
 										"id",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"bulk-uploads",
-									"{id}",
-									"generate-pdfs",
 								},
 							},
 						},
@@ -704,66 +751,76 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "company",
+						"title": "Company",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "created_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Created At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "extension",
-						"readOnly": true,
-						"req": true,
+						"title": "Extension",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "file",
-						"req": true,
+						"title": "File",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "name",
-						"readOnly": true,
-						"req": true,
+						"title": "Name",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
 					},
 					map[string]any{
 						"name": "public",
+						"title": "Public",
+						"type": "`$BOOLEAN`",
+						"req": true,
 						"op": map[string]any{
 							"create": map[string]any{
 								"type": "`$BOOLEAN`",
 							},
 						},
-						"req": true,
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "size",
+						"title": "Size",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updated_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "url",
-						"readOnly": true,
-						"req": true,
+						"title": "Url",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
 					},
 				},
 				"id": map[string]any{
@@ -777,7 +834,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/files",
@@ -786,16 +842,18 @@ func MakeConfig() map[string]any {
 										"lit": "files",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"files",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": map[string]any{
 										"file": "`reqdata`",
 									},
 									"res": "`body`",
 								},
-								"parts": []any{
-									"files",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -804,157 +862,159 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{},
 				},
 			},
-			"paginated_bulk_upload_list_list": map[string]any{
-				"fields": []any{},
-				"name": "paginated_bulk_upload_list_list",
-				"op": map[string]any{},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"paginated_party_list_list": map[string]any{
-				"fields": []any{},
-				"name": "paginated_party_list_list",
-				"op": map[string]any{},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"paginated_submission_list_list": map[string]any{
-				"fields": []any{},
-				"name": "paginated_submission_list_list",
-				"op": map[string]any{},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
 			"party": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "additional_declaration_type",
-						"req": true,
+						"title": "Additional Declaration Type",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "address",
-						"req": true,
+						"title": "Address",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "authorisation",
-						"req": true,
+						"title": "Authorisation",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "bank_details",
+						"title": "Bank Details",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "certificate",
-						"req": true,
+						"title": "Certificate",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "certificate_type",
-						"readOnly": true,
-						"req": true,
+						"title": "Certificate Type",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
 					},
 					map[string]any{
 						"name": "company",
+						"title": "Company",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "created_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Created At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "customs_office_of_lodgement",
-						"req": true,
+						"title": "Customs Office Of Lodgement",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "deleted_at",
+						"title": "Deleted At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "email",
 						"name": "email",
+						"title": "Email",
 						"type": "`$STRING`",
+						"format": "email",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "identification_number",
+						"title": "Identification Number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "indirect_representative",
+						"title": "Indirect Representative",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "nhd_last_submission_year",
+						"title": "Nhd Last Submission Year",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "nhd_submission_counter",
+						"title": "Nhd Submission Counter",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "person_paying_customs_duty",
+						"title": "Person Paying Customs Duty",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "phone_country_code",
+						"title": "Phone Country Code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "phone_number",
+						"title": "Phone Number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "preferred_payment_method",
-						"req": true,
+						"title": "Preferred Payment Method",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "signed_form",
-						"req": true,
+						"title": "Signed Form",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "type",
-						"short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…",
+						"title": "Type",
 						"type": "`$STRING`",
+						"short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…",
 					},
 					map[string]any{
 						"name": "type_of_person",
-						"req": true,
+						"title": "Type Of Person",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "unlocode",
+						"title": "Unlocode",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updated_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 				},
 				"id": map[string]any{
@@ -968,7 +1028,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/parties",
@@ -977,14 +1036,16 @@ func MakeConfig() map[string]any {
 										"lit": "parties",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"parties",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"parties",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -993,22 +1054,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "cursor",
-											"orig": "cursor",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "type",
-											"orig": "type",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/parties",
@@ -1017,18 +1062,35 @@ func MakeConfig() map[string]any {
 										"lit": "parties",
 									},
 								},
+								"parts": []any{
+									"parties",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "cursor",
+											"orig": "cursor",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "type",
+											"orig": "type",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"cursor",
 										"type",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
-								},
-								"parts": []any{
-									"parties",
 								},
 							},
 						},
@@ -1038,17 +1100,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/parties/{id}",
@@ -1060,18 +1111,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"parties",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"parties",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -1081,17 +1144,6 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/parties/{id}",
@@ -1103,18 +1155,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"parties",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"parties",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -1124,17 +1188,6 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/parties/{id}",
@@ -1146,18 +1199,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"parties",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"parties",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -1171,220 +1236,263 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "additional_external_ids",
+						"title": "Additional External Ids",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "amendment_reason",
+						"title": "Amendment Reason",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "amendment_status",
-						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
+						"title": "Amendment Status",
 						"type": "`$STRING`",
+						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
 					},
 					map[string]any{
 						"name": "answers",
+						"title": "Answers",
+						"type": "`$ARRAY`",
+						"req": true,
 						"op": map[string]any{
 							"update": map[string]any{
 								"type": "`$ARRAY`",
 							},
 						},
-						"req": true,
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "bypass_restricted_code",
+						"title": "Bypass Restricted Code",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "clearance_slip",
-						"req": true,
+						"title": "Clearance Slip",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "client",
-						"req": true,
+						"title": "Client",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "company_member",
+						"title": "Company Member",
+						"type": "`$OBJECT`",
+						"req": true,
 						"op": map[string]any{
 							"update": map[string]any{
 								"type": "`$STRING`",
 							},
 						},
-						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "consignee",
-						"req": true,
+						"title": "Consignee",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "consignor",
-						"req": true,
+						"title": "Consignor",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "created_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Created At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "declarant",
+						"title": "Declarant",
+						"type": "`$OBJECT`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "document_upload_status",
-						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
+						"title": "Document Upload Status",
 						"type": "`$STRING`",
+						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
 					},
 					map[string]any{
 						"name": "documents_presentation_requested",
+						"title": "Documents Presentation Requested",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "documents_upload_requested",
+						"title": "Documents Upload Requested",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "external_id",
+						"title": "External Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "form",
-						"readOnly": true,
+						"title": "Form",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$STRING`",
+						"readOnly": true,
 					},
 					map[string]any{
 						"name": "goods_presentation_status",
-						"short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
+						"title": "Goods Presentation Status",
 						"type": "`$STRING`",
+						"short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
 					},
 					map[string]any{
 						"name": "hrcm_status",
-						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
+						"title": "Hrcm Status",
 						"type": "`$STRING`",
+						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "invalidation_status",
-						"short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
+						"title": "Invalidation Status",
 						"type": "`$STRING`",
+						"short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
 					},
 					map[string]any{
 						"name": "is_global_template",
+						"title": "Is Global Template",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "latest_notification_item",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Latest Notification Item",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "latest_state",
-						"req": true,
+						"title": "Latest State",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "lrn",
+						"title": "Lrn",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "mrn",
+						"title": "Mrn",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "partial_answers",
+						"title": "Partial Answers",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "receipt",
-						"req": true,
+						"title": "Receipt",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "refund_application_status",
-						"short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
+						"title": "Refund Application Status",
 						"type": "`$STRING`",
+						"short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
 					},
 					map[string]any{
 						"name": "route",
-						"short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
+						"title": "Route",
 						"type": "`$STRING`",
+						"short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
 					},
 					map[string]any{
 						"name": "shipment_items_no",
+						"title": "Shipment Items No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "shipment_items_quantity_no",
+						"title": "Shipment Items Quantity No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "source",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Source",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "source_type",
-						"short": "* `template` - template * `automated_import` - automated_import",
+						"title": "Source Type",
 						"type": "`$STRING`",
+						"short": "* `template` - template * `automated_import` - automated_import",
 					},
 					map[string]any{
 						"name": "status",
-						"short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
 					},
 					map[string]any{
 						"name": "template",
+						"title": "Template",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "template_id",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Template Id",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "template_properties",
+						"title": "Template Properties",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
-						"format": "decimal",
 						"name": "total_tax_amount",
+						"title": "Total Tax Amount",
 						"type": "`$STRING`",
+						"format": "decimal",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updated_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "verification_errors",
+						"title": "Verification Errors",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "verification_status",
-						"short": "* `passed` - passed * `failed` - failed",
+						"title": "Verification Status",
 						"type": "`$STRING`",
+						"short": "* `passed` - passed * `failed` - failed",
 					},
 				},
 				"id": map[string]any{
@@ -1398,17 +1506,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/submissions/{id}/refund",
@@ -1423,24 +1520,35 @@ func MakeConfig() map[string]any {
 										"lit": "refund",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"refund",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "refund",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"refund",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/submissions",
@@ -1449,17 +1557,18 @@ func MakeConfig() map[string]any {
 										"lit": "submissions",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"submissions",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"submissions",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/submissions/retrieve",
@@ -1471,16 +1580,18 @@ func MakeConfig() map[string]any {
 										"lit": "retrieve",
 									},
 								},
-								"select": map[string]any{
-									"$action": "retrieve",
+								"parts": []any{
+									"submissions",
+									"retrieve",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"submissions",
-									"retrieve",
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "retrieve",
 								},
 							},
 						},
@@ -1490,48 +1601,56 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "cursor",
-											"orig": "cursor",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "form_subtype",
-											"orig": "form_subtype",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "green",
-											"kind": "query",
-											"name": "route",
-											"orig": "route",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "released",
-											"kind": "query",
-											"name": "status",
-											"orig": "status",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "template",
-											"orig": "template",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions",
 								"segments": []any{
 									map[string]any{
 										"lit": "submissions",
+									},
+								},
+								"parts": []any{
+									"submissions",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "cursor",
+											"orig": "cursor",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "form_subtype",
+											"orig": "form_subtype",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "route",
+											"orig": "route",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "green",
+										},
+										map[string]any{
+											"name": "status",
+											"orig": "status",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "released",
+										},
+										map[string]any{
+											"name": "template",
+											"orig": "template",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1543,13 +1662,6 @@ func MakeConfig() map[string]any {
 										"template",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
-								},
-								"parts": []any{
-									"submissions",
-								},
 							},
 						},
 					},
@@ -1558,17 +1670,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}",
@@ -1580,32 +1681,33 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/clearance-slip",
@@ -1620,34 +1722,35 @@ func MakeConfig() map[string]any {
 										"lit": "clearance-slip",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"clearance-slip",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "clearance_slip",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"clearance-slip",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/notification-read",
@@ -1662,34 +1765,35 @@ func MakeConfig() map[string]any {
 										"lit": "notification-read",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"notification-read",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "notification_read",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"notification-read",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/pbn-applicable",
@@ -1704,34 +1808,35 @@ func MakeConfig() map[string]any {
 										"lit": "pbn-applicable",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"pbn-applicable",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "pbn_applicable",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"pbn-applicable",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/receipt",
@@ -1746,34 +1851,35 @@ func MakeConfig() map[string]any {
 										"lit": "receipt",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"receipt",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "receipt",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"receipt",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/{id}/refund",
@@ -1788,24 +1894,35 @@ func MakeConfig() map[string]any {
 										"lit": "refund",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"refund",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "refund",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"refund",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions/retrieve",
@@ -1817,16 +1934,18 @@ func MakeConfig() map[string]any {
 										"lit": "retrieve",
 									},
 								},
-								"select": map[string]any{
-									"$action": "retrieve",
+								"parts": []any{
+									"submissions",
+									"retrieve",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"submissions",
-									"retrieve",
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "retrieve",
 								},
 							},
 						},
@@ -1836,17 +1955,6 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}",
@@ -1858,32 +1966,33 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}/clearance-slip",
@@ -1898,34 +2007,35 @@ func MakeConfig() map[string]any {
 										"lit": "clearance-slip",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"clearance-slip",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "clearance_slip",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"clearance-slip",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}/notification-read",
@@ -1940,34 +2050,35 @@ func MakeConfig() map[string]any {
 										"lit": "notification-read",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"notification-read",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "notification_read",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"notification-read",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}/pbn-applicable",
@@ -1982,34 +2093,35 @@ func MakeConfig() map[string]any {
 										"lit": "pbn-applicable",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"pbn-applicable",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "pbn_applicable",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"pbn-applicable",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/submissions/{id}/receipt",
@@ -2024,20 +2136,32 @@ func MakeConfig() map[string]any {
 										"lit": "receipt",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"receipt",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "receipt",
 									"exist": []any{
 										"id",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"receipt",
 								},
 							},
 						},
@@ -2047,17 +2171,6 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}",
@@ -2069,32 +2182,33 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}/clearance-slip",
@@ -2109,34 +2223,35 @@ func MakeConfig() map[string]any {
 										"lit": "clearance-slip",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"clearance-slip",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "clearance_slip",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"clearance-slip",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}/notification-read",
@@ -2151,34 +2266,35 @@ func MakeConfig() map[string]any {
 										"lit": "notification-read",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"notification-read",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "notification_read",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"notification-read",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}/pbn-applicable",
@@ -2193,34 +2309,35 @@ func MakeConfig() map[string]any {
 										"lit": "pbn-applicable",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"pbn-applicable",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "pbn_applicable",
 									"exist": []any{
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"pbn-applicable",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/submissions/{id}/receipt",
@@ -2235,20 +2352,32 @@ func MakeConfig() map[string]any {
 										"lit": "receipt",
 									},
 								},
+								"parts": []any{
+									"submissions",
+									"{id}",
+									"receipt",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "receipt",
 									"exist": []any{
 										"id",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"submissions",
-									"{id}",
-									"receipt",
 								},
 							},
 						},
@@ -2262,203 +2391,244 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "additional_external_ids",
+						"title": "Additional External Ids",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "additional_information",
-						"req": true,
+						"title": "Additional Information",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "amendment_status",
-						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
+						"title": "Amendment Status",
 						"type": "`$STRING`",
+						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
 					},
 					map[string]any{
 						"name": "clearance_slip",
-						"req": true,
+						"title": "Clearance Slip",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "client",
-						"req": true,
+						"title": "Client",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "company",
+						"title": "Company",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "company_member",
+						"title": "Company Member",
+						"type": "`$OBJECT`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "consignee",
-						"req": true,
+						"title": "Consignee",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "consignor",
-						"req": true,
+						"title": "Consignor",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "created_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Created At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "declarant",
-						"req": true,
+						"title": "Declarant",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "document_upload_status",
-						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
+						"title": "Document Upload Status",
 						"type": "`$STRING`",
+						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
 					},
 					map[string]any{
 						"name": "documents_presentation_requested",
+						"title": "Documents Presentation Requested",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "documents_upload_requested",
+						"title": "Documents Upload Requested",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "external_id",
+						"title": "External Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "form",
-						"readOnly": true,
-						"req": true,
+						"title": "Form",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
 					},
 					map[string]any{
 						"name": "goods_presentation_status",
-						"short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
+						"title": "Goods Presentation Status",
 						"type": "`$STRING`",
+						"short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
 					},
 					map[string]any{
 						"name": "hrcm_status",
-						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
+						"title": "Hrcm Status",
 						"type": "`$STRING`",
+						"short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "invalidation_status",
-						"short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
+						"title": "Invalidation Status",
 						"type": "`$STRING`",
+						"short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
 					},
 					map[string]any{
 						"name": "is_global_template",
+						"title": "Is Global Template",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "latest_notification_item",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Latest Notification Item",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "latest_state",
-						"req": true,
+						"title": "Latest State",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "lrn",
+						"title": "Lrn",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "mrn",
+						"title": "Mrn",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "receipt",
-						"req": true,
+						"title": "Receipt",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "refund_application_status",
-						"short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
+						"title": "Refund Application Status",
 						"type": "`$STRING`",
+						"short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
 					},
 					map[string]any{
 						"name": "route",
-						"short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
+						"title": "Route",
 						"type": "`$STRING`",
+						"short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
 					},
 					map[string]any{
 						"name": "shipment_items_no",
+						"title": "Shipment Items No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "shipment_items_quantity_no",
+						"title": "Shipment Items Quantity No",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "source",
-						"short": "cuid-format identifier for this entity.",
+						"title": "Source",
 						"type": "`$STRING`",
+						"short": "cuid-format identifier for this entity.",
 					},
 					map[string]any{
 						"name": "source_type",
-						"short": "* `template` - template * `automated_import` - automated_import",
+						"title": "Source Type",
 						"type": "`$STRING`",
+						"short": "* `template` - template * `automated_import` - automated_import",
 					},
 					map[string]any{
 						"name": "status",
-						"short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
 					},
 					map[string]any{
 						"name": "submission",
+						"title": "Submission",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "cuid-format identifier for this entity.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "supporting_documents",
+						"title": "Supporting Documents",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "template",
+						"title": "Template",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
-						"format": "decimal",
 						"name": "total_tax_amount",
+						"title": "Total Tax Amount",
 						"type": "`$STRING`",
+						"format": "decimal",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updated_at",
-						"readOnly": true,
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"readOnly": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "verification_errors",
+						"title": "Verification Errors",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "verification_status",
-						"short": "* `passed` - passed * `failed` - failed",
+						"title": "Verification Status",
 						"type": "`$STRING`",
+						"short": "* `passed` - passed * `failed` - failed",
 					},
 				},
 				"id": map[string]any{
@@ -2472,7 +2642,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/documents-request",
@@ -2481,14 +2650,16 @@ func MakeConfig() map[string]any {
 										"lit": "documents-request",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"documents-request",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"documents-request",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

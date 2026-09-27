@@ -8,9 +8,6 @@
 <details open><summary>API</summary><a href="../api/index.html">API overview</a>
 <a href="../api/bulk_upload.html">BulkUpload</a>
 <a href="../api/file.html">File</a>
-<a href="../api/paginated_bulk_upload_list_list.html">PaginatedBulkUploadListList</a>
-<a href="../api/paginated_party_list_list.html">PaginatedPartyListList</a>
-<a href="../api/paginated_submission_list_list.html">PaginatedSubmissionListList</a>
 <a aria-current="page" href="../api/party.html">Party</a><div class="nav-sections"><a class="nav-section" href="#post-parties">POST /parties</a>
 <a class="nav-section" href="#get-parties">GET /parties</a>
 <a class="nav-section" href="#get-partiesid">GET /parties/{id}</a>
@@ -30,14 +27,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="party">Party</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="party">Party</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -82,6 +79,76 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">partys, err := client.Party(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(partys)
+party, err := client.Party(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(party)
+created, err := client.Party(nil).Create(map[string]any{&quot;additional_declaration_type&quot;: map[string]any{}, &quot;address&quot;: map[string]any{}, &quot;authorisation&quot;: map[string]any{}, &quot;certificate&quot;: map[string]any{}, &quot;certificate_type&quot;: &quot;example&quot;, &quot;company&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;customs_office_of_lodgement&quot;: map[string]any{}, &quot;preferred_payment_method&quot;: map[string]any{}, &quot;signed_form&quot;: map[string]any{}, &quot;type_of_person&quot;: map[string]any{}, &quot;updated_at&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Party(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;additional_declaration_type&quot;: map[string]any{}, &quot;address&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Party(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local partys, err = client:Party():list()
+local party, err = client:Party():load({ id = &quot;example_id&quot; })
+local created, err = client:Party():create({ additional_declaration_type = {}, address = {}, authorisation = {}, certificate = {}, certificate_type = &quot;example&quot;, company = &quot;example&quot;, created_at = &quot;example&quot;, customs_office_of_lodgement = {}, preferred_payment_method = {}, signed_form = {}, type_of_person = {}, updated_at = &quot;example&quot; })
+local updated, err = client:Party():update({ id = &quot;example_id&quot;, additional_declaration_type = {}, address = {} })
+local removed, err = client:Party():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$partys = $client-&gt;Party()-&gt;list();
+$party = $client-&gt;Party()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Party()-&gt;create([&quot;additional_declaration_type&quot; =&gt; [], &quot;address&quot; =&gt; [], &quot;authorisation&quot; =&gt; [], &quot;certificate&quot; =&gt; [], &quot;certificate_type&quot; =&gt; &quot;example&quot;, &quot;company&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;customs_office_of_lodgement&quot; =&gt; [], &quot;preferred_payment_method&quot; =&gt; [], &quot;signed_form&quot; =&gt; [], &quot;type_of_person&quot; =&gt; [], &quot;updated_at&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;Party()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;additional_declaration_type&quot; =&gt; [], &quot;address&quot; =&gt; []]);
+$client-&gt;Party()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">partys = client.Party().list()
+party = client.Party().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.Party().create({ &quot;additional_declaration_type&quot;: {}, &quot;address&quot;: {}, &quot;authorisation&quot;: {}, &quot;certificate&quot;: {}, &quot;certificate_type&quot;: &quot;example&quot;, &quot;company&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;customs_office_of_lodgement&quot;: {}, &quot;preferred_payment_method&quot;: {}, &quot;signed_form&quot;: {}, &quot;type_of_person&quot;: {}, &quot;updated_at&quot;: &quot;example&quot; })
+updated = client.Party().update({&quot;id&quot;: &quot;example_id&quot;, &quot;additional_declaration_type&quot;: {}, &quot;address&quot;: {}})
+client.Party().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">partys = client.Party.list()
+party = client.Party.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.Party.create({ &quot;additional_declaration_type&quot; =&gt; {}, &quot;address&quot; =&gt; {}, &quot;authorisation&quot; =&gt; {}, &quot;certificate&quot; =&gt; {}, &quot;certificate_type&quot; =&gt; &quot;example&quot;, &quot;company&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;customs_office_of_lodgement&quot; =&gt; {}, &quot;preferred_payment_method&quot; =&gt; {}, &quot;signed_form&quot; =&gt; {}, &quot;type_of_person&quot; =&gt; {}, &quot;updated_at&quot; =&gt; &quot;example&quot; })
+updated = client.Party.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;additional_declaration_type&quot; =&gt; {}, &quot;address&quot; =&gt; {} })
+client.Party.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const partys = await client.Party().list()
+const party = await client.Party().load({ id: &quot;example_id&quot; })
+const created = await client.Party().create({ additional_declaration_type: {}, address: {}, authorisation: {}, certificate: {}, certificate_type: &quot;example&quot;, company: &quot;example&quot;, created_at: &quot;example&quot;, customs_office_of_lodgement: {}, preferred_payment_method: {}, signed_form: {}, type_of_person: {}, updated_at: &quot;example&quot; })
+const updated = await client.Party().update({ id: &quot;example_id&quot;, additional_declaration_type: {}, address: {} })
+await client.Party().remove({ id: &quot;example_id&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -97,37 +164,37 @@
 <td><code>additional_declaration_type</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Additional Declaration Type</td>
 </tr>
 <tr>
 <td><code>address</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Address</td>
 </tr>
 <tr>
 <td><code>authorisation</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Authorisation</td>
 </tr>
 <tr>
 <td><code>bank_details</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Bank Details</td>
 </tr>
 <tr>
 <td><code>certificate</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Certificate</td>
 </tr>
 <tr>
 <td><code>certificate_type</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Certificate Type</td>
 </tr>
 <tr>
 <td><code>company</code></td>
@@ -139,25 +206,25 @@
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>customs_office_of_lodgement</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Customs Office Of Lodgement</td>
 </tr>
 <tr>
 <td><code>deleted_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Deleted At</td>
 </tr>
 <tr>
 <td><code>email</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Email</td>
 </tr>
 <tr>
 <td><code>id</code></td>
@@ -169,85 +236,85 @@
 <td><code>identification_number</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Identification Number</td>
 </tr>
 <tr>
 <td><code>indirect_representative</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Indirect Representative</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>nhd_last_submission_year</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Nhd Last Submission Year</td>
 </tr>
 <tr>
 <td><code>nhd_submission_counter</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Nhd Submission Counter</td>
 </tr>
 <tr>
 <td><code>person_paying_customs_duty</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Person Paying Customs Duty</td>
 </tr>
 <tr>
 <td><code>phone_country_code</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Phone Country Code</td>
 </tr>
 <tr>
 <td><code>phone_number</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Phone Number</td>
 </tr>
 <tr>
 <td><code>preferred_payment_method</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Preferred Payment Method</td>
 </tr>
 <tr>
 <td><code>signed_form</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Signed Form</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>* <code>exporter</code> - exporter * <code>importer</code> - importer * <code>buyer</code> - buyer * <code>seller</code> - seller * <code>representative</code> - representative * <code>declarant</code> - declarant * <code>owner</code> - owner * <code>authorisation_holder</code> - authorisation_holder * <code>client</code> - client * `co…</td>
+<td>* <code>exporter</code> - exporter * <code>importer</code> - importer * <code>buyer</code> - buyer * <code>seller</code> - seller * <code>representative</code> - representative * <code>declarant</code> - declarant * <code>owner</code> - owner * <code>authorisation_holder</code> - <code>authorisation_holder</code> * <code>client</code> - client * `co…</td>
 </tr>
 <tr>
 <td><code>type_of_person</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Type Of Person</td>
 </tr>
 <tr>
 <td><code>unlocode</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Unlocode</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 </tbody>
 </table>
@@ -775,7 +842,7 @@
 <td><code>results[].type</code></td>
 <td><code>enum: exporter, importer, buyer, seller, representative, declarant, ...</code></td>
 <td>No</td>
-<td>* <code>exporter</code> - exporter * <code>importer</code> - importer * <code>buyer</code> - buyer * <code>seller</code> - seller * <code>representative</code> - representative * <code>declarant</code> - declarant * <code>owner</code> - owner * <code>authorisation_holder</code> - authorisation_holder * <code>client</code> - client * <code>contact</code> - contact * <code>consignee</code> - consignee * <code>consignor</code> - consignor * <code>carrier</code> - carrier</td>
+<td>* <code>exporter</code> - exporter * <code>importer</code> - importer * <code>buyer</code> - buyer * <code>seller</code> - seller * <code>representative</code> - representative * <code>declarant</code> - declarant * <code>owner</code> - owner * <code>authorisation_holder</code> - <code>authorisation_holder</code> * <code>client</code> - client * <code>contact</code> - contact * <code>consignee</code> - consignee * <code>consignor</code> - consignor * <code>carrier</code> - carrier</td>
 </tr>
 <tr>
 <td><code>results[].type_of_person</code></td>

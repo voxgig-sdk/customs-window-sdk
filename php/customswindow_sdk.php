@@ -377,60 +377,6 @@ class CustomsWindowSDK
     }
 
 
-    private $_paginated_bulk_upload_list_list = null;
-
-    // Canonical facade: $client->PaginatedBulkUploadListList()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->paginated_bulk_upload_list_list()
-    // resolves here too.
-    public function PaginatedBulkUploadListList($data = null)
-    {
-        require_once __DIR__ . '/entity/paginated_bulk_upload_list_list_entity.php';
-        if ($data === null) {
-            if ($this->_paginated_bulk_upload_list_list === null) {
-                $this->_paginated_bulk_upload_list_list = new PaginatedBulkUploadListListEntity($this, null);
-            }
-            return $this->_paginated_bulk_upload_list_list;
-        }
-        return new PaginatedBulkUploadListListEntity($this, $data);
-    }
-
-
-    private $_paginated_party_list_list = null;
-
-    // Canonical facade: $client->PaginatedPartyListList()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->paginated_party_list_list()
-    // resolves here too.
-    public function PaginatedPartyListList($data = null)
-    {
-        require_once __DIR__ . '/entity/paginated_party_list_list_entity.php';
-        if ($data === null) {
-            if ($this->_paginated_party_list_list === null) {
-                $this->_paginated_party_list_list = new PaginatedPartyListListEntity($this, null);
-            }
-            return $this->_paginated_party_list_list;
-        }
-        return new PaginatedPartyListListEntity($this, $data);
-    }
-
-
-    private $_paginated_submission_list_list = null;
-
-    // Canonical facade: $client->PaginatedSubmissionListList()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->paginated_submission_list_list()
-    // resolves here too.
-    public function PaginatedSubmissionListList($data = null)
-    {
-        require_once __DIR__ . '/entity/paginated_submission_list_list_entity.php';
-        if ($data === null) {
-            if ($this->_paginated_submission_list_list === null) {
-                $this->_paginated_submission_list_list = new PaginatedSubmissionListListEntity($this, null);
-            }
-            return $this->_paginated_submission_list_list;
-        }
-        return new PaginatedSubmissionListListEntity($this, $data);
-    }
-
-
     private $_party = null;
 
     // Canonical facade: $client->Party()->list() / ->load(["id" => ...]).

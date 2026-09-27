@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 // Typed models for the CustomsWindow SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
@@ -196,21 +196,6 @@ class FileCreateData
     public ?int $size = null;
     public string $updated_at;
     public string $url;
-}
-
-/** PaginatedBulkUploadListList entity data model. */
-class PaginatedBulkUploadListList
-{
-}
-
-/** PaginatedPartyListList entity data model. */
-class PaginatedPartyListList
-{
-}
-
-/** PaginatedSubmissionListList entity data model. */
-class PaginatedSubmissionListList
-{
 }
 
 /** Party entity data model. */

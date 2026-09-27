@@ -1,0 +1,7 @@
+# Flows
+
+@"./BasicBulkUploadFlow.aontu"
+@"./BasicFileFlow.aontu"
+@"./BasicPartyFlow.aontu"
+@"./BasicSubmissionDetailFlow.aontu"
+@"./BasicSubmissionFlow.aontu"

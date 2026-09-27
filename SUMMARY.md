@@ -6,7 +6,7 @@ The API Reference.
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 8 entities and 36 HTTP routes. There are 6 SDK targets and 2 companion tools.
+The selected API surface contains 5 entities and 36 HTTP routes. There are 6 SDK targets and 2 companion tools.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
@@ -34,18 +34,6 @@ Key fields to recognise:
 
 - `company`: cuid-format identifier for this entity.
 - `id`: cuid-format identifier for this entity.
-
-### [PaginatedBulkUploadListList](docs/api/paginated_bulk_upload_list_list.html)
-
-SDK operations: .
-
-### [PaginatedPartyListList](docs/api/paginated_party_list_list.html)
-
-SDK operations: .
-
-### [PaginatedSubmissionListList](docs/api/paginated_submission_list_list.html)
-
-SDK operations: .
 
 ### [Party](docs/api/party.html)
 

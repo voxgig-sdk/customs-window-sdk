@@ -1,0 +1,383 @@
+# Entity: party
+
+main: kit: entity: party: {
+
+  alias: field: {}
+
+  fields: {
+    additional_declaration_type: {
+      h: "Additional Declaration Type"
+      n: "additional_declaration_type"
+      r: true
+      t: "`$OBJECT`"
+    }
+    address: {
+      h: "Address"
+      n: "address"
+      r: true
+      t: "`$OBJECT`"
+    }
+    authorisation: {
+      h: "Authorisation"
+      n: "authorisation"
+      r: true
+      t: "`$OBJECT`"
+    }
+    bank_details: {
+      h: "Bank Details"
+      n: "bank_details"
+      r: false
+      t: "`$STRING`"
+    }
+    certificate: {
+      h: "Certificate"
+      n: "certificate"
+      r: true
+      t: "`$OBJECT`"
+    }
+    certificate_type: {
+      h: "Certificate Type"
+      n: "certificate_type"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    company: {
+      h: "Company"
+      n: "company"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    customs_office_of_lodgement: {
+      h: "Customs Office Of Lodgement"
+      n: "customs_office_of_lodgement"
+      r: true
+      t: "`$OBJECT`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      t: "`$STRING`"
+    }
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    identification_number: {
+      h: "Identification Number"
+      n: "identification_number"
+      r: false
+      t: "`$STRING`"
+    }
+    indirect_representative: {
+      h: "Indirect Representative"
+      n: "indirect_representative"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    nhd_last_submission_year: {
+      h: "Nhd Last Submission Year"
+      n: "nhd_last_submission_year"
+      r: false
+      t: "`$INTEGER`"
+    }
+    nhd_submission_counter: {
+      h: "Nhd Submission Counter"
+      n: "nhd_submission_counter"
+      r: false
+      t: "`$INTEGER`"
+    }
+    person_paying_customs_duty: {
+      h: "Person Paying Customs Duty"
+      n: "person_paying_customs_duty"
+      r: false
+      t: "`$STRING`"
+    }
+    phone_country_code: {
+      h: "Phone Country Code"
+      n: "phone_country_code"
+      r: false
+      t: "`$STRING`"
+    }
+    phone_number: {
+      h: "Phone Number"
+      n: "phone_number"
+      r: false
+      t: "`$STRING`"
+    }
+    preferred_payment_method: {
+      h: "Preferred Payment Method"
+      n: "preferred_payment_method"
+      r: true
+      t: "`$OBJECT`"
+    }
+    signed_form: {
+      h: "Signed Form"
+      n: "signed_form"
+      r: true
+      t: "`$OBJECT`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…"
+      t: "`$STRING`"
+    }
+    type_of_person: {
+      h: "Type Of Person"
+      n: "type_of_person"
+      r: true
+      t: "`$OBJECT`"
+    }
+    unlocode: {
+      h: "Unlocode"
+      n: "unlocode"
+      r: false
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "party"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /parties"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/parties"
+          s: [
+            {
+              lit: "parties"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /parties"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/parties"
+          q: {
+            exist: [
+              "cursor"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "parties"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /parties/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/parties/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "parties"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /parties/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/parties/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "parties"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /parties/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/parties/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "parties"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

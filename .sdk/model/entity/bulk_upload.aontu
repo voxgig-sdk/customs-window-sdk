@@ -1,0 +1,607 @@
+# Entity: bulk_upload
+
+main: kit: entity: bulk_upload: {
+
+  alias: field: {}
+
+  fields: {
+    active_transport_nationality: {
+      h: "Active Transport Nationality"
+      n: "active_transport_nationality"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    active_transport_number: {
+      h: "Active Transport Number"
+      n: "active_transport_number"
+      r: false
+      t: "`$STRING`"
+    }
+    arrival_datetime: {
+      fo: "date-time"
+      h: "Arrival Datetime"
+      n: "arrival_datetime"
+      r: false
+      t: "`$STRING`"
+    }
+    client: {
+      h: "Client"
+      n: "client"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    company_member: {
+      h: "Company Member"
+      n: "company_member"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    declarant: {
+      h: "Declarant"
+      n: "declarant"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    declarations_no: {
+      h: "Declarations No"
+      n: "declarations_no"
+      r: true
+      t: "`$INTEGER`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      t: "`$STRING`"
+    }
+    departure_datetime: {
+      fo: "date-time"
+      h: "Departure Datetime"
+      n: "departure_datetime"
+      r: false
+      t: "`$STRING`"
+    }
+    errors_file: {
+      h: "Errors File"
+      n: "errors_file"
+      r: true
+      t: "`$OBJECT`"
+    }
+    external_id: {
+      h: "External Id"
+      n: "external_id"
+      r: false
+      t: "`$STRING`"
+    }
+    failed_declarations_no: {
+      h: "Failed Declarations No"
+      n: "failed_declarations_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    file: {
+      h: "File"
+      n: "file"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$OBJECT`"
+    }
+    green_routed_no: {
+      h: "Green Routed No"
+      n: "green_routed_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    h1_fallback_template: {
+      h: "H1 Fallback Template"
+      n: "h1_fallback_template"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    house_transport_doc_ref: {
+      h: "House Transport Doc Ref"
+      n: "house_transport_doc_ref"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    issue_date: {
+      fo: "date-time"
+      h: "Issue Date"
+      n: "issue_date"
+      r: false
+      t: "`$STRING`"
+    }
+    mapping: {
+      h: "Mapping"
+      n: "mapping"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    orange_routed_no: {
+      h: "Orange Routed No"
+      n: "orange_routed_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    parsed_declarations_no: {
+      h: "Parsed Declarations No"
+      n: "parsed_declarations_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    parser: {
+      h: "Parser"
+      n: "parser"
+      r: false
+      sh: "* `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform"
+      t: "`$STRING`"
+    }
+    parsing_completed_at: {
+      fo: "date-time"
+      h: "Parsing Completed At"
+      n: "parsing_completed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    parsing_started_at: {
+      fo: "date-time"
+      h: "Parsing Started At"
+      n: "parsing_started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    passive_transport_nationality: {
+      h: "Passive Transport Nationality"
+      n: "passive_transport_nationality"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    passive_transport_number: {
+      h: "Passive Transport Number"
+      n: "passive_transport_number"
+      r: false
+      t: "`$STRING`"
+    }
+    processed_declarations_no: {
+      h: "Processed Declarations No"
+      n: "processed_declarations_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    processing_ended_at: {
+      fo: "date-time"
+      h: "Processing Ended At"
+      n: "processing_ended_at"
+      r: false
+      t: "`$STRING`"
+    }
+    processing_started_at: {
+      fo: "date-time"
+      h: "Processing Started At"
+      n: "processing_started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    receipt_generating_started_at: {
+      fo: "date-time"
+      h: "Receipt Generating Started At"
+      n: "receipt_generating_started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    receipt_request_started_at: {
+      fo: "date-time"
+      h: "Receipt Request Started At"
+      n: "receipt_request_started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    receipt_request_status: {
+      h: "Receipt Request Status"
+      n: "receipt_request_status"
+      r: false
+      sh: "* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed"
+      t: "`$STRING`"
+    }
+    receipt_request_user: {
+      h: "Receipt Request User"
+      n: "receipt_request_user"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    receipts_zip: {
+      h: "Receipts Zip"
+      n: "receipts_zip"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    red_routed_no: {
+      h: "Red Routed No"
+      n: "red_routed_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    rejected_status_no: {
+      h: "Rejected Status No"
+      n: "rejected_status_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete"
+      t: "`$STRING`"
+    }
+    template: {
+      h: "Template"
+      n: "template"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    yellow_routed_no: {
+      h: "Yellow Routed No"
+      n: "yellow_routed_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "bulk_upload"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /bulk-uploads"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/bulk-uploads"
+          s: [
+            {
+              lit: "bulk-uploads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /bulk-uploads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/bulk-uploads"
+          q: {
+            exist: [
+              "cursor"
+            ]
+          }
+          s: [
+            {
+              lit: "bulk-uploads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /bulk-uploads/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/bulk-uploads/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /bulk-uploads/{id}/generate-pdfs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/bulk-uploads/{id}/generate-pdfs"
+          q: {
+            "$action": "generate_pdf"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "generate-pdfs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /bulk-uploads/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/bulk-uploads/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /bulk-uploads/{id}/generate-pdfs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/bulk-uploads/{id}/generate-pdfs"
+          q: {
+            "$action": "generate_pdf"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "generate-pdfs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /bulk-uploads/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/bulk-uploads/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /bulk-uploads/{id}/generate-pdfs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/bulk-uploads/{id}/generate-pdfs"
+          q: {
+            "$action": "generate_pdf"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "bulk-uploads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "generate-pdfs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

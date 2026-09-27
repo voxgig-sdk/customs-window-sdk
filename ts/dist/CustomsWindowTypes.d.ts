@@ -166,12 +166,6 @@ export interface FileCreateData {
     updated_at: string;
     url: string;
 }
-export interface PaginatedBulkUploadListList {
-}
-export interface PaginatedPartyListList {
-}
-export interface PaginatedSubmissionListList {
-}
 export interface Party {
     additional_declaration_type: Record<string, any>;
     address: Record<string, any>;

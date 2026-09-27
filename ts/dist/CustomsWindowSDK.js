@@ -4,9 +4,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.CustomsWindowSDK = exports.CustomsWindowEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
 const BulkUploadEntity_1 = require("./entity/BulkUploadEntity");
 const FileEntity_1 = require("./entity/FileEntity");
-const PaginatedBulkUploadListListEntity_1 = require("./entity/PaginatedBulkUploadListListEntity");
-const PaginatedPartyListListEntity_1 = require("./entity/PaginatedPartyListListEntity");
-const PaginatedSubmissionListListEntity_1 = require("./entity/PaginatedSubmissionListListEntity");
 const PartyEntity_1 = require("./entity/PartyEntity");
 const SubmissionEntity_1 = require("./entity/SubmissionEntity");
 const SubmissionDetailEntity_1 = require("./entity/SubmissionDetailEntity");
@@ -91,7 +88,6 @@ class CustomsWindowSDK {
             ctrl: fetchargs.ctrl || {},
         }, this._rootctx);
         const options = this._options;
-        // Build spec directly from SDK options + user-provided fetch args.
         const spec = {
             base: options.base,
             prefix: options.prefix,
@@ -105,14 +101,12 @@ class CustomsWindowSDK {
             step: 'start',
         };
         ctx.spec = spec;
-        // Merge user-provided headers over SDK defaults.
         if (fetchargs.headers) {
             const uheaders = fetchargs.headers;
             for (let key in uheaders) {
                 spec.headers[key] = uheaders[key];
             }
         }
-        // Apply SDK auth (apikey, auth prefix, etc.)
         const authResult = prepareAuth(ctx);
         if (authResult instanceof Error) {
             return authResult;
@@ -187,18 +181,6 @@ class CustomsWindowSDK {
             return { ok: false, err };
         }
     }
-    // Raw GraphQL access: the pressure valve that makes the generated
-    // surface's deliberate omissions (per-call selection sets, typed filter
-    // builders, batching, subscriptions) livable — the whole schema stays
-    // reachable.
-    //
-    // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-    // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-    // HTTP 200 as a top-level `errors` array, so status alone would report a
-    // failed query as ok.
-    //
-    // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-    // ratelimit or paging features apply.
     async graphql(query, variables, ctrl) {
         const options = this._options;
         if (!options.allow.op.includes('graphql')) {
@@ -245,27 +227,6 @@ class CustomsWindowSDK {
     File(entopts) {
         const self = this;
         return new FileEntity_1.FileEntity(self, entopts);
-    }
-    // Entity access: `client.PaginatedBulkUploadListList().list()` / `client.PaginatedBulkUploadListList().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    PaginatedBulkUploadListList(entopts) {
-        const self = this;
-        return new PaginatedBulkUploadListListEntity_1.PaginatedBulkUploadListListEntity(self, entopts);
-    }
-    // Entity access: `client.PaginatedPartyListList().list()` / `client.PaginatedPartyListList().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    PaginatedPartyListList(entopts) {
-        const self = this;
-        return new PaginatedPartyListListEntity_1.PaginatedPartyListListEntity(self, entopts);
-    }
-    // Entity access: `client.PaginatedSubmissionListList().list()` / `client.PaginatedSubmissionListList().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    PaginatedSubmissionListList(entopts) {
-        const self = this;
-        return new PaginatedSubmissionListListEntity_1.PaginatedSubmissionListListEntity(self, entopts);
     }
     // Entity access: `client.Party().list()` / `client.Party().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

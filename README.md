@@ -10,14 +10,14 @@ Learn more about Voxgig SDKs at [voxgig.com/sdk](https://voxgig.com/sdk/).
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `debug`, `idempotency`, `metrics`, `paging`, `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as **8 semantic entities** that you
-call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
+This SDK exposes the API as a small set of **semantic entities** — BulkUpload, File, Party, Submission and SubmissionDetail — that you
+call directly, instead of assembling URL paths and query strings. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`, `create`, `update`, `remove`):
 
@@ -101,12 +101,12 @@ local results, err = client:Submission():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/customs-window` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/releases) |
-| Python | `voxgig-sdk-customs-window` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/releases) |
-| PHP | `voxgig-sdk/customs-window` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/releases) |
+| TypeScript | `@voxgig-sdk/customs-window-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/tags) |
+| Python | `voxgig-sdk-customs-window-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/tags) |
+| PHP | `voxgig-sdk/customs-window-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/customs-window-sdk/go` | `go get github.com/voxgig-sdk/customs-window-sdk/go@latest` |
-| Ruby | `voxgig-sdk-customs-window` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/releases) |
-| Lua | `voxgig-sdk-customs-window` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/releases) |
+| Ruby | `voxgig-sdk-customs-window-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/tags) |
+| Lua | `voxgig-sdk-customs-window-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/customs-window-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/customs-window-sdk/go-cli` | `go install github.com/voxgig-sdk/customs-window-sdk/go-cli/cmd/customs-window@latest` |
 | Go MCP server | `github.com/voxgig-sdk/customs-window-sdk/go-mcp` | `go get github.com/voxgig-sdk/customs-window-sdk/go-mcp@latest` |
 
@@ -115,7 +115,7 @@ local results, err = client:Submission():list()
 ### TypeScript
 
 ```ts
-import { CustomsWindowSDK } from '@voxgig-sdk/customs-window'
+import { CustomsWindowSDK } from '@voxgig-sdk/customs-window-sdk'
 
 const client = new CustomsWindowSDK({
   apikey: process.env.CUSTOMS_WINDOW_APIKEY,
@@ -162,15 +162,12 @@ Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
 
 ## Entities
 
-The API exposes 8 entities:
+The API exposes 5 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
 | **BulkUpload** | The BulkUpload entity (create, list, load, remove, update). | `/bulk-uploads` |
 | **File** | The File entity (create). | `/files` |
-| **PaginatedBulkUploadListList** | The PaginatedBulkUploadListList entity. | `` |
-| **PaginatedPartyListList** | The PaginatedPartyListList entity. | `` |
-| **PaginatedSubmissionListList** | The PaginatedSubmissionListList entity. | `` |
 | **Party** | The Party entity (create, list, load, remove, update). | `/parties` |
 | **Submission** | The Submission entity (create, list, load, remove, update). | `/submissions` |
 | **SubmissionDetail** | The SubmissionDetail entity (create). | `/documents-request` |
@@ -371,14 +368,14 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **DebugFeature** | Request/response capture ring buffer for debugging |
-| **IdempotencyFeature** | Idempotency keys for safe retries of mutating operations |
-| **MetricsFeature** | Statistics capture: per-operation counters and latency |
-| **PagingFeature** | Pagination signals for list operations |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **DebugFeature** | Debug capture |
+| **IdempotencyFeature** | Idempotency |
+| **MetricsFeature** | Metrics |
+| **PagingFeature** | Paging |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 

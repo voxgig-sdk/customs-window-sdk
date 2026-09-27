@@ -1,0 +1,312 @@
+# Entity: submission_detail
+
+main: kit: entity: submission_detail: {
+
+  alias: field: {}
+
+  fields: {
+    additional_external_ids: {
+      h: "Additional External Ids"
+      n: "additional_external_ids"
+      r: false
+      t: "`$ARRAY`"
+    }
+    additional_information: {
+      h: "Additional Information"
+      n: "additional_information"
+      r: true
+      t: "`$ARRAY`"
+    }
+    amendment_status: {
+      h: "Amendment Status"
+      n: "amendment_status"
+      r: false
+      sh: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
+      t: "`$STRING`"
+    }
+    clearance_slip: {
+      h: "Clearance Slip"
+      n: "clearance_slip"
+      r: true
+      t: "`$OBJECT`"
+    }
+    client: {
+      h: "Client"
+      n: "client"
+      r: true
+      t: "`$OBJECT`"
+    }
+    company: {
+      h: "Company"
+      n: "company"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    company_member: {
+      h: "Company Member"
+      n: "company_member"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$OBJECT`"
+    }
+    consignee: {
+      h: "Consignee"
+      n: "consignee"
+      r: true
+      t: "`$OBJECT`"
+    }
+    consignor: {
+      h: "Consignor"
+      n: "consignor"
+      r: true
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    declarant: {
+      h: "Declarant"
+      n: "declarant"
+      r: true
+      t: "`$OBJECT`"
+    }
+    document_upload_status: {
+      h: "Document Upload Status"
+      n: "document_upload_status"
+      r: false
+      sh: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
+      t: "`$STRING`"
+    }
+    documents_presentation_requested: {
+      h: "Documents Presentation Requested"
+      n: "documents_presentation_requested"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    documents_upload_requested: {
+      h: "Documents Upload Requested"
+      n: "documents_upload_requested"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    external_id: {
+      h: "External Id"
+      n: "external_id"
+      r: false
+      t: "`$STRING`"
+    }
+    form: {
+      h: "Form"
+      n: "form"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    goods_presentation_status: {
+      h: "Goods Presentation Status"
+      n: "goods_presentation_status"
+      r: false
+      sh: "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested"
+      t: "`$STRING`"
+    }
+    hrcm_status: {
+      h: "Hrcm Status"
+      n: "hrcm_status"
+      r: false
+      sh: "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    invalidation_status: {
+      h: "Invalidation Status"
+      n: "invalidation_status"
+      r: false
+      sh: "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled"
+      t: "`$STRING`"
+    }
+    is_global_template: {
+      h: "Is Global Template"
+      n: "is_global_template"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    latest_notification_item: {
+      h: "Latest Notification Item"
+      n: "latest_notification_item"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    latest_state: {
+      h: "Latest State"
+      n: "latest_state"
+      r: true
+      t: "`$OBJECT`"
+    }
+    lrn: {
+      h: "Lrn"
+      n: "lrn"
+      r: false
+      t: "`$STRING`"
+    }
+    mrn: {
+      h: "Mrn"
+      n: "mrn"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    receipt: {
+      h: "Receipt"
+      n: "receipt"
+      r: true
+      t: "`$OBJECT`"
+    }
+    refund_application_status: {
+      h: "Refund Application Status"
+      n: "refund_application_status"
+      r: false
+      sh: "* `processing` - processing * `rejected` - rejected * `accepted` - accepted"
+      t: "`$STRING`"
+    }
+    route: {
+      h: "Route"
+      n: "route"
+      r: false
+      sh: "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow"
+      t: "`$STRING`"
+    }
+    shipment_items_no: {
+      h: "Shipment Items No"
+      n: "shipment_items_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    shipment_items_quantity_no: {
+      h: "Shipment Items Quantity No"
+      n: "shipment_items_quantity_no"
+      r: false
+      t: "`$INTEGER`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    source_type: {
+      h: "Source Type"
+      n: "source_type"
+      r: false
+      sh: "* `template` - template * `automated_import` - automated_import"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…"
+      t: "`$STRING`"
+    }
+    submission: {
+      h: "Submission"
+      n: "submission"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    supporting_documents: {
+      h: "Supporting Documents"
+      n: "supporting_documents"
+      r: false
+      t: "`$ARRAY`"
+    }
+    template: {
+      h: "Template"
+      n: "template"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    total_tax_amount: {
+      fo: "decimal"
+      h: "Total Tax Amount"
+      n: "total_tax_amount"
+      r: false
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    verification_errors: {
+      h: "Verification Errors"
+      n: "verification_errors"
+      r: false
+      t: "`$ARRAY`"
+    }
+    verification_status: {
+      h: "Verification Status"
+      n: "verification_status"
+      r: false
+      sh: "* `passed` - passed * `failed` - failed"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "submission_detail"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /documents-request"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/documents-request"
+          s: [
+            {
+              lit: "documents-request"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

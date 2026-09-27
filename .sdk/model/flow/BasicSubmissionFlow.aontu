@@ -1,0 +1,96 @@
+# BasicSubmissionFlow
+
+main: kit: flow: BasicSubmissionFlow:
+{
+  entity: "submission",
+  kind: "basic",
+  name: "BasicSubmissionFlow",
+  step: [
+    {
+      i: {
+        ref: "submission_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "submission_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "submission_ref01",
+        srcdatavar: "submission_ref01_data",
+        suffix: "_up0",
+        textfield: "amendment_reason"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-submission_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "submission_ref01",
+        srcdatavar: "submission_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-submission_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "submission_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "submission01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "submission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubmissionFlow"
+}

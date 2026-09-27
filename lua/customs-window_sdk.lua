@@ -381,48 +381,6 @@ function CustomsWindowSDK:File(data)
 end
 
 
--- Idiomatic facade: client:PaginatedBulkUploadListList():list() / client:PaginatedBulkUploadListList():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CustomsWindowSDK:PaginatedBulkUploadListList(data)
-  local EntityMod = require("entity.paginated_bulk_upload_list_list_entity")
-  if data == nil then
-    if self._paginated_bulk_upload_list_list == nil then
-      self._paginated_bulk_upload_list_list = EntityMod.new(self, nil)
-    end
-    return self._paginated_bulk_upload_list_list
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:PaginatedPartyListList():list() / client:PaginatedPartyListList():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CustomsWindowSDK:PaginatedPartyListList(data)
-  local EntityMod = require("entity.paginated_party_list_list_entity")
-  if data == nil then
-    if self._paginated_party_list_list == nil then
-      self._paginated_party_list_list = EntityMod.new(self, nil)
-    end
-    return self._paginated_party_list_list
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:PaginatedSubmissionListList():list() / client:PaginatedSubmissionListList():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CustomsWindowSDK:PaginatedSubmissionListList(data)
-  local EntityMod = require("entity.paginated_submission_list_list_entity")
-  if data == nil then
-    if self._paginated_submission_list_list == nil then
-      self._paginated_submission_list_list = EntityMod.new(self, nil)
-    end
-    return self._paginated_submission_list_list
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:Party():list() / client:Party():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function CustomsWindowSDK:Party(data)

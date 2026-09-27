@@ -42,9 +42,6 @@ class ReadmeExamplesTest extends TestCase
     private const ENTITIES = [
         "BulkUpload" => "bulk_upload",
         "File" => "file",
-        "PaginatedBulkUploadListList" => "paginated_bulk_upload_list_list",
-        "PaginatedPartyListList" => "paginated_party_list_list",
-        "PaginatedSubmissionListList" => "paginated_submission_list_list",
         "Party" => "party",
         "Submission" => "submission",
         "SubmissionDetail" => "submission_detail",

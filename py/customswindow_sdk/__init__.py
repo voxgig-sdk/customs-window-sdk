@@ -319,24 +319,6 @@ class CustomsWindowSDK:
         return FileEntity(self, data)
 
 
-    def PaginatedBulkUploadListList(self, data=None) -> "PaginatedBulkUploadListListEntity":
-        """Entity factory: client.PaginatedBulkUploadListList().list() / client.PaginatedBulkUploadListList().load({"id": ...})."""
-        from customswindow_sdk.entity.paginated_bulk_upload_list_list_entity import PaginatedBulkUploadListListEntity
-        return PaginatedBulkUploadListListEntity(self, data)
-
-
-    def PaginatedPartyListList(self, data=None) -> "PaginatedPartyListListEntity":
-        """Entity factory: client.PaginatedPartyListList().list() / client.PaginatedPartyListList().load({"id": ...})."""
-        from customswindow_sdk.entity.paginated_party_list_list_entity import PaginatedPartyListListEntity
-        return PaginatedPartyListListEntity(self, data)
-
-
-    def PaginatedSubmissionListList(self, data=None) -> "PaginatedSubmissionListListEntity":
-        """Entity factory: client.PaginatedSubmissionListList().list() / client.PaginatedSubmissionListList().load({"id": ...})."""
-        from customswindow_sdk.entity.paginated_submission_list_list_entity import PaginatedSubmissionListListEntity
-        return PaginatedSubmissionListListEntity(self, data)
-
-
     def Party(self, data=None) -> "PartyEntity":
         """Entity factory: client.Party().list() / client.Party().load({"id": ...})."""
         from customswindow_sdk.entity.party_entity import PartyEntity
@@ -384,9 +366,6 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from customswindow_sdk.entity.bulk_upload_entity import BulkUploadEntity
     from customswindow_sdk.entity.file_entity import FileEntity
-    from customswindow_sdk.entity.paginated_bulk_upload_list_list_entity import PaginatedBulkUploadListListEntity
-    from customswindow_sdk.entity.paginated_party_list_list_entity import PaginatedPartyListListEntity
-    from customswindow_sdk.entity.paginated_submission_list_list_entity import PaginatedSubmissionListListEntity
     from customswindow_sdk.entity.party_entity import PartyEntity
     from customswindow_sdk.entity.submission_entity import SubmissionEntity
     from customswindow_sdk.entity.submission_detail_entity import SubmissionDetailEntity

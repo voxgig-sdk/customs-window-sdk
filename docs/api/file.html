@@ -8,9 +8,6 @@
 <details open><summary>API</summary><a href="../api/index.html">API overview</a>
 <a href="../api/bulk_upload.html">BulkUpload</a>
 <a aria-current="page" href="../api/file.html">File</a><div class="nav-sections"><a class="nav-section" href="#post-files">POST /files</a></div>
-<a href="../api/paginated_bulk_upload_list_list.html">PaginatedBulkUploadListList</a>
-<a href="../api/paginated_party_list_list.html">PaginatedPartyListList</a>
-<a href="../api/paginated_submission_list_list.html">PaginatedSubmissionListList</a>
 <a href="../api/party.html">Party</a>
 <a href="../api/submission.html">Submission</a>
 <a href="../api/submission_detail.html">SubmissionDetail</a></details>
@@ -26,14 +23,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="file">File</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="file">File</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -54,6 +51,36 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">created, err := client.File(nil).Create(map[string]any{&quot;company&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;extension&quot;: &quot;example&quot;, &quot;file&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;public&quot;: true, &quot;updated_at&quot;: &quot;example&quot;, &quot;url&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local created, err = client:File():create({ company = &quot;example&quot;, created_at = &quot;example&quot;, extension = &quot;example&quot;, file = &quot;example&quot;, name = &quot;example&quot;, public = true, updated_at = &quot;example&quot;, url = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$created = $client-&gt;File()-&gt;create([&quot;company&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;extension&quot; =&gt; &quot;example&quot;, &quot;file&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;public&quot; =&gt; true, &quot;updated_at&quot; =&gt; &quot;example&quot;, &quot;url&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">created = client.File().create({ &quot;company&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;extension&quot;: &quot;example&quot;, &quot;file&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;public&quot;: True, &quot;updated_at&quot;: &quot;example&quot;, &quot;url&quot;: &quot;example&quot; })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">created = client.File.create({ &quot;company&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;extension&quot; =&gt; &quot;example&quot;, &quot;file&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;public&quot; =&gt; true, &quot;updated_at&quot; =&gt; &quot;example&quot;, &quot;url&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const created = await client.File().create({ company: &quot;example&quot;, created_at: &quot;example&quot;, extension: &quot;example&quot;, file: &quot;example&quot;, name: &quot;example&quot;, public: true, updated_at: &quot;example&quot;, url: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -75,19 +102,19 @@
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>extension</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Extension</td>
 </tr>
 <tr>
 <td><code>file</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>File</td>
 </tr>
 <tr>
 <td><code>id</code></td>
@@ -99,31 +126,31 @@
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>public</code></td>
 <td><code>boolean</code></td>
 <td>Yes</td>
-<td></td>
+<td>Public</td>
 </tr>
 <tr>
 <td><code>size</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Size</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 <tr>
 <td><code>url</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Url</td>
 </tr>
 </tbody>
 </table>
@@ -132,79 +159,6 @@
 <p>Operation ID: <code>Create a File</code>.</p>
 <p>Authentication: API key in the header (<code>Secret Key</code>).</p>
 <h4 id="request-body">Request body</h4>
-<p><code>*/*</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>company</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>extension</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>file</code></td>
-<td><code>string (uri)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>public</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>url</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -352,6 +306,79 @@
 </tbody>
 </table>
 <p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>company</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>extension</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>*/*</code></p>
 <table>
 <thead>
 <tr>

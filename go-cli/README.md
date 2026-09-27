@@ -128,7 +128,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 ### Discover the available entities
 
 `/help` in the REPL prints the full entity list, or see [Entities](#entities)
-below — this SDK exposes 8 entities.
+below — this SDK exposes 5 entities.
 
 ## Reference
 
@@ -183,9 +183,9 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 ### Entities
 
-The 8 entities this SDK exposes (any is valid as `<entity>`):
+The 5 entities this SDK exposes (any is valid as `<entity>`):
 
-bulk_upload file paginated_bulk_upload_list_list paginated_party_list_list paginated_submission_list_list party submission submission_detail
+bulk_upload file party submission submission_detail
 
 ## Explanation
 

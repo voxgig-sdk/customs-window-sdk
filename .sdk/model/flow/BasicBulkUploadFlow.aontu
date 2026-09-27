@@ -1,0 +1,100 @@
+# BasicBulkUploadFlow
+
+main: kit: flow: BasicBulkUploadFlow:
+{
+  entity: "bulk_upload",
+  kind: "basic",
+  name: "BasicBulkUploadFlow",
+  step: [
+    {
+      i: {
+        ref: "bulk_upload_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "bulk_upload_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bulk_upload_ref01",
+        srcdatavar: "bulk_upload_ref01_data",
+        suffix: "_up0",
+        textfield: "active_transport_nationality"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bulk_upload_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bulk_upload_ref01",
+        srcdatavar: "bulk_upload_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "bulk_upload01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bulk_upload_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bulk_upload_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "bulk_upload01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "bulk_upload_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBulkUploadFlow"
+}

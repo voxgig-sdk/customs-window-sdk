@@ -24,12 +24,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -40,7 +34,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -55,7 +48,7 @@ class Config {
   main = {
     name: 'CustomsWindow',
         slug: "customs-window",
-    version: "0.0.1",
+    version: "0.1.1",
     target: "ts",
 
   }
@@ -201,6 +194,7 @@ class Config {
 
     auth: {
       prefix: '',
+      name: 'Basic Auth',
     },
 
     headers: {
@@ -213,15 +207,6 @@ class Config {
         },
   
         file: {
-        },
-  
-        paginated_bulk_upload_list_list: {
-        },
-  
-        paginated_party_list_list: {
-        },
-  
-        paginated_submission_list_list: {
         },
   
         party: {
@@ -242,203 +227,244 @@ class Config {
       "fields": [
         {
           "name": "active_transport_nationality",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Active Transport Nationality",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "active_transport_number",
+          "title": "Active Transport Number",
           "type": "`$STRING`"
         },
         {
-          "format": "date-time",
           "name": "arrival_datetime",
-          "type": "`$STRING`"
+          "title": "Arrival Datetime",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
           "name": "client",
+          "title": "Client",
+          "type": "`$STRING`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "company_member",
+          "title": "Company Member",
+          "type": "`$STRING`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "short": "cuid-format identifier for this entity."
         },
         {
-          "format": "date-time",
           "name": "created_at",
-          "readOnly": true,
+          "title": "Created At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "declarant",
+          "title": "Declarant",
+          "type": "`$STRING`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "declarations_no",
-          "req": true,
-          "type": "`$INTEGER`"
+          "title": "Declarations No",
+          "type": "`$INTEGER`",
+          "req": true
         },
         {
-          "format": "date-time",
           "name": "deleted_at",
-          "type": "`$STRING`"
+          "title": "Deleted At",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
-          "format": "date-time",
           "name": "departure_datetime",
-          "type": "`$STRING`"
+          "title": "Departure Datetime",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
           "name": "errors_file",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Errors File",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "external_id",
+          "title": "External Id",
           "type": "`$STRING`"
         },
         {
           "name": "failed_declarations_no",
+          "title": "Failed Declarations No",
           "type": "`$INTEGER`"
         },
         {
           "name": "file",
+          "title": "File",
+          "type": "`$OBJECT`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$OBJECT`"
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "green_routed_no",
+          "title": "Green Routed No",
           "type": "`$INTEGER`"
         },
         {
           "name": "h1_fallback_template",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "H1 Fallback Template",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "house_transport_doc_ref",
+          "title": "House Transport Doc Ref",
           "type": "`$STRING`"
         },
         {
           "name": "id",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
-          "format": "date-time",
           "name": "issue_date",
-          "type": "`$STRING`"
+          "title": "Issue Date",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
           "name": "mapping",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Mapping",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "orange_routed_no",
+          "title": "Orange Routed No",
           "type": "`$INTEGER`"
         },
         {
           "name": "parsed_declarations_no",
+          "title": "Parsed Declarations No",
           "type": "`$INTEGER`"
         },
         {
           "name": "parser",
-          "short": "* `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform",
-          "type": "`$STRING`"
+          "title": "Parser",
+          "type": "`$STRING`",
+          "short": "* `aes_platform` - aes_platform * `cds_platform` - cds_platform * `cds_export_platform` - cds_export_platform * `g4_g3` - g4_g3 * `nhd_platform` - nhd_platform * `platform` - platform * `birds` - birds * `ics2_platform` - ics2_platform"
         },
         {
-          "format": "date-time",
           "name": "parsing_completed_at",
-          "type": "`$STRING`"
+          "title": "Parsing Completed At",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
-          "format": "date-time",
           "name": "parsing_started_at",
-          "type": "`$STRING`"
+          "title": "Parsing Started At",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
           "name": "passive_transport_nationality",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Passive Transport Nationality",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "passive_transport_number",
+          "title": "Passive Transport Number",
           "type": "`$STRING`"
         },
         {
           "name": "processed_declarations_no",
+          "title": "Processed Declarations No",
           "type": "`$INTEGER`"
         },
         {
-          "format": "date-time",
           "name": "processing_ended_at",
-          "type": "`$STRING`"
+          "title": "Processing Ended At",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
-          "format": "date-time",
           "name": "processing_started_at",
-          "type": "`$STRING`"
+          "title": "Processing Started At",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
-          "format": "date-time",
           "name": "receipt_generating_started_at",
-          "type": "`$STRING`"
+          "title": "Receipt Generating Started At",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
-          "format": "date-time",
           "name": "receipt_request_started_at",
-          "type": "`$STRING`"
+          "title": "Receipt Request Started At",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
           "name": "receipt_request_status",
-          "short": "* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed",
-          "type": "`$STRING`"
+          "title": "Receipt Request Status",
+          "type": "`$STRING`",
+          "short": "* `pending` - pending * `processing` - processing * `generating` - generating * `completed` - completed"
         },
         {
           "name": "receipt_request_user",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Receipt Request User",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "receipts_zip",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Receipts Zip",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "red_routed_no",
+          "title": "Red Routed No",
           "type": "`$INTEGER`"
         },
         {
           "name": "rejected_status_no",
+          "title": "Rejected Status No",
           "type": "`$INTEGER`"
         },
         {
           "name": "status",
-          "short": "* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete",
-          "type": "`$STRING`"
+          "title": "Status",
+          "type": "`$STRING`",
+          "short": "* `pending` - pending * `parsing` - parsing * `processing` - processing * `complete` - complete"
         },
         {
           "name": "template",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Template",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
-          "format": "date-time",
           "name": "updated_at",
-          "readOnly": true,
+          "title": "Updated At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "yellow_routed_no",
+          "title": "Yellow Routed No",
           "type": "`$INTEGER`"
         }
       ],
@@ -453,7 +479,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/bulk-uploads",
@@ -462,14 +487,16 @@ class Config {
                   "lit": "bulk-uploads"
                 }
               ],
-              "select": {},
+              "parts": [
+                "bulk-uploads"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "bulk-uploads"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -478,16 +505,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "cursor",
-                    "orig": "cursor",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads",
@@ -496,18 +513,29 @@ class Config {
                   "lit": "bulk-uploads"
                 }
               ],
-              "select": {
-                "exist": [
-                  "cursor"
-                ]
-              },
+              "parts": [
+                "bulk-uploads"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
               },
-              "parts": [
-                "bulk-uploads"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "cursor",
+                    "orig": "cursor",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "cursor"
+                ]
+              }
             }
           ]
         },
@@ -516,17 +544,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads/{id}",
@@ -538,32 +555,33 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "bulk-uploads",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "bulk-uploads",
-                "{id}"
-              ]
-            },
-            {
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "id",
                     "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
@@ -578,21 +596,33 @@ class Config {
                   "lit": "generate-pdfs"
                 }
               ],
+              "parts": [
+                "bulk-uploads",
+                "{id}",
+                "generate-pdfs"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "generate_pdf",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "bulk-uploads",
-                "{id}",
-                "generate-pdfs"
-              ]
+              }
             }
           ]
         },
@@ -601,17 +631,6 @@ class Config {
           "name": "remove",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "DELETE",
               "orig": "/bulk-uploads/{id}",
@@ -623,32 +642,33 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "bulk-uploads",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "bulk-uploads",
-                "{id}"
-              ]
-            },
-            {
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "id",
                     "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "DELETE",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
@@ -663,21 +683,33 @@ class Config {
                   "lit": "generate-pdfs"
                 }
               ],
+              "parts": [
+                "bulk-uploads",
+                "{id}",
+                "generate-pdfs"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "generate_pdf",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "bulk-uploads",
-                "{id}",
-                "generate-pdfs"
-              ]
+              }
             }
           ]
         },
@@ -686,17 +718,6 @@ class Config {
           "name": "update",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "PATCH",
               "orig": "/bulk-uploads/{id}",
@@ -708,32 +729,33 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "bulk-uploads",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "bulk-uploads",
-                "{id}"
-              ]
-            },
-            {
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "id",
                     "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "PATCH",
               "orig": "/bulk-uploads/{id}/generate-pdfs",
@@ -748,21 +770,33 @@ class Config {
                   "lit": "generate-pdfs"
                 }
               ],
+              "parts": [
+                "bulk-uploads",
+                "{id}",
+                "generate-pdfs"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "generate_pdf",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "bulk-uploads",
-                "{id}",
-                "generate-pdfs"
-              ]
+              }
             }
           ]
         }
@@ -775,66 +809,76 @@ class Config {
       "fields": [
         {
           "name": "company",
+          "title": "Company",
+          "type": "`$STRING`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "short": "cuid-format identifier for this entity."
         },
         {
-          "format": "date-time",
           "name": "created_at",
-          "readOnly": true,
+          "title": "Created At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "extension",
-          "readOnly": true,
+          "title": "Extension",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true
         },
         {
-          "format": "uri",
           "name": "file",
+          "title": "File",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "id",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "name",
-          "readOnly": true,
+          "title": "Name",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true
         },
         {
           "name": "public",
+          "title": "Public",
+          "type": "`$BOOLEAN`",
+          "req": true,
           "op": {
             "create": {
               "type": "`$BOOLEAN`"
             }
-          },
-          "req": true,
-          "type": "`$BOOLEAN`"
+          }
         },
         {
           "name": "size",
+          "title": "Size",
           "type": "`$INTEGER`"
         },
         {
-          "format": "date-time",
           "name": "updated_at",
-          "readOnly": true,
+          "title": "Updated At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "url",
-          "readOnly": true,
+          "title": "Url",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true
         }
       ],
       "id": {
@@ -848,7 +892,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/files",
@@ -857,16 +900,18 @@ class Config {
                   "lit": "files"
                 }
               ],
-              "select": {},
+              "parts": [
+                "files"
+              ],
+              "rename": {},
               "transform": {
                 "req": {
                   "file": "`reqdata`"
                 },
                 "res": "`body`"
               },
-              "parts": [
-                "files"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -875,157 +920,159 @@ class Config {
         "ancestors": []
       }
     },
-    "paginated_bulk_upload_list_list": {
-      "fields": [],
-      "name": "paginated_bulk_upload_list_list",
-      "op": {},
-      "relations": {
-        "ancestors": []
-      }
-    },
-    "paginated_party_list_list": {
-      "fields": [],
-      "name": "paginated_party_list_list",
-      "op": {},
-      "relations": {
-        "ancestors": []
-      }
-    },
-    "paginated_submission_list_list": {
-      "fields": [],
-      "name": "paginated_submission_list_list",
-      "op": {},
-      "relations": {
-        "ancestors": []
-      }
-    },
     "party": {
       "fields": [
         {
           "name": "additional_declaration_type",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Additional Declaration Type",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "address",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Address",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "authorisation",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Authorisation",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "bank_details",
+          "title": "Bank Details",
           "type": "`$STRING`"
         },
         {
           "name": "certificate",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Certificate",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "certificate_type",
-          "readOnly": true,
+          "title": "Certificate Type",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true
         },
         {
           "name": "company",
+          "title": "Company",
+          "type": "`$STRING`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "short": "cuid-format identifier for this entity."
         },
         {
-          "format": "date-time",
           "name": "created_at",
-          "readOnly": true,
+          "title": "Created At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "customs_office_of_lodgement",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Customs Office Of Lodgement",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
-          "format": "date-time",
           "name": "deleted_at",
-          "type": "`$STRING`"
+          "title": "Deleted At",
+          "type": "`$STRING`",
+          "format": "date-time"
         },
         {
-          "format": "email",
           "name": "email",
-          "type": "`$STRING`"
+          "title": "Email",
+          "type": "`$STRING`",
+          "format": "email"
         },
         {
           "name": "id",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "identification_number",
+          "title": "Identification Number",
           "type": "`$STRING`"
         },
         {
           "name": "indirect_representative",
+          "title": "Indirect Representative",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "name",
+          "title": "Name",
           "type": "`$STRING`"
         },
         {
           "name": "nhd_last_submission_year",
+          "title": "Nhd Last Submission Year",
           "type": "`$INTEGER`"
         },
         {
           "name": "nhd_submission_counter",
+          "title": "Nhd Submission Counter",
           "type": "`$INTEGER`"
         },
         {
           "name": "person_paying_customs_duty",
+          "title": "Person Paying Customs Duty",
           "type": "`$STRING`"
         },
         {
           "name": "phone_country_code",
+          "title": "Phone Country Code",
           "type": "`$STRING`"
         },
         {
           "name": "phone_number",
+          "title": "Phone Number",
           "type": "`$STRING`"
         },
         {
           "name": "preferred_payment_method",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Preferred Payment Method",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "signed_form",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Signed Form",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "type",
-          "short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…"
         },
         {
           "name": "type_of_person",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Type Of Person",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "unlocode",
+          "title": "Unlocode",
           "type": "`$STRING`"
         },
         {
-          "format": "date-time",
           "name": "updated_at",
-          "readOnly": true,
+          "title": "Updated At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         }
       ],
       "id": {
@@ -1039,7 +1086,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/parties",
@@ -1048,14 +1094,16 @@ class Config {
                   "lit": "parties"
                 }
               ],
-              "select": {},
+              "parts": [
+                "parties"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "parties"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1064,22 +1112,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "cursor",
-                    "orig": "cursor",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "type",
-                    "orig": "type",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/parties",
@@ -1088,19 +1120,36 @@ class Config {
                   "lit": "parties"
                 }
               ],
+              "parts": [
+                "parties"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.results`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "cursor",
+                    "orig": "cursor",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "type",
+                    "orig": "type",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "cursor",
                   "type"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.results`"
-              },
-              "parts": [
-                "parties"
-              ]
+              }
             }
           ]
         },
@@ -1109,17 +1158,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/parties/{id}",
@@ -1131,19 +1169,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "parties",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "parties",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         },
@@ -1152,17 +1202,6 @@ class Config {
           "name": "remove",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "DELETE",
               "orig": "/parties/{id}",
@@ -1174,19 +1213,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "parties",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "parties",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         },
@@ -1195,17 +1246,6 @@ class Config {
           "name": "update",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "PATCH",
               "orig": "/parties/{id}",
@@ -1217,19 +1257,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "parties",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "parties",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1242,220 +1294,263 @@ class Config {
       "fields": [
         {
           "name": "additional_external_ids",
+          "title": "Additional External Ids",
           "type": "`$ARRAY`"
         },
         {
           "name": "amendment_reason",
+          "title": "Amendment Reason",
           "type": "`$STRING`"
         },
         {
           "name": "amendment_status",
-          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
-          "type": "`$STRING`"
+          "title": "Amendment Status",
+          "type": "`$STRING`",
+          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
         },
         {
           "name": "answers",
+          "title": "Answers",
+          "type": "`$ARRAY`",
+          "req": true,
           "op": {
             "update": {
               "type": "`$ARRAY`"
             }
-          },
-          "req": true,
-          "type": "`$ARRAY`"
+          }
         },
         {
           "name": "bypass_restricted_code",
+          "title": "Bypass Restricted Code",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "clearance_slip",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Clearance Slip",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "client",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Client",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "company_member",
+          "title": "Company Member",
+          "type": "`$OBJECT`",
+          "req": true,
           "op": {
             "update": {
               "type": "`$STRING`"
             }
           },
-          "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$OBJECT`"
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "consignee",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Consignee",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "consignor",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Consignor",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
-          "format": "date-time",
           "name": "created_at",
-          "readOnly": true,
+          "title": "Created At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "declarant",
+          "title": "Declarant",
+          "type": "`$OBJECT`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$OBJECT`"
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "document_upload_status",
-          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
-          "type": "`$STRING`"
+          "title": "Document Upload Status",
+          "type": "`$STRING`",
+          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
         },
         {
           "name": "documents_presentation_requested",
+          "title": "Documents Presentation Requested",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "documents_upload_requested",
+          "title": "Documents Upload Requested",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "external_id",
+          "title": "External Id",
           "type": "`$STRING`"
         },
         {
           "name": "form",
-          "readOnly": true,
+          "title": "Form",
+          "type": "`$STRING`",
           "req": true,
           "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "readOnly": true
         },
         {
           "name": "goods_presentation_status",
-          "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
-          "type": "`$STRING`"
+          "title": "Goods Presentation Status",
+          "type": "`$STRING`",
+          "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested"
         },
         {
           "name": "hrcm_status",
-          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
-          "type": "`$STRING`"
+          "title": "Hrcm Status",
+          "type": "`$STRING`",
+          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
         },
         {
           "name": "id",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "invalidation_status",
-          "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
-          "type": "`$STRING`"
+          "title": "Invalidation Status",
+          "type": "`$STRING`",
+          "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled"
         },
         {
           "name": "is_global_template",
+          "title": "Is Global Template",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "latest_notification_item",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Latest Notification Item",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "latest_state",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Latest State",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "lrn",
+          "title": "Lrn",
           "type": "`$STRING`"
         },
         {
           "name": "mrn",
+          "title": "Mrn",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "title": "Name",
           "type": "`$STRING`"
         },
         {
           "name": "partial_answers",
+          "title": "Partial Answers",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "receipt",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Receipt",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "refund_application_status",
-          "short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
-          "type": "`$STRING`"
+          "title": "Refund Application Status",
+          "type": "`$STRING`",
+          "short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted"
         },
         {
           "name": "route",
-          "short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
-          "type": "`$STRING`"
+          "title": "Route",
+          "type": "`$STRING`",
+          "short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow"
         },
         {
           "name": "shipment_items_no",
+          "title": "Shipment Items No",
           "type": "`$INTEGER`"
         },
         {
           "name": "shipment_items_quantity_no",
+          "title": "Shipment Items Quantity No",
           "type": "`$INTEGER`"
         },
         {
           "name": "source",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Source",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "source_type",
-          "short": "* `template` - template * `automated_import` - automated_import",
-          "type": "`$STRING`"
+          "title": "Source Type",
+          "type": "`$STRING`",
+          "short": "* `template` - template * `automated_import` - automated_import"
         },
         {
           "name": "status",
-          "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
-          "type": "`$STRING`"
+          "title": "Status",
+          "type": "`$STRING`",
+          "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…"
         },
         {
           "name": "template",
+          "title": "Template",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "template_id",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Template Id",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "template_properties",
+          "title": "Template Properties",
           "type": "`$ARRAY`"
         },
         {
-          "format": "decimal",
           "name": "total_tax_amount",
-          "type": "`$STRING`"
+          "title": "Total Tax Amount",
+          "type": "`$STRING`",
+          "format": "decimal"
         },
         {
-          "format": "date-time",
           "name": "updated_at",
-          "readOnly": true,
+          "title": "Updated At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "verification_errors",
+          "title": "Verification Errors",
           "type": "`$ARRAY`"
         },
         {
           "name": "verification_status",
-          "short": "* `passed` - passed * `failed` - failed",
-          "type": "`$STRING`"
+          "title": "Verification Status",
+          "type": "`$STRING`",
+          "short": "* `passed` - passed * `failed` - failed"
         }
       ],
       "id": {
@@ -1469,17 +1564,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "POST",
               "orig": "/submissions/{id}/refund",
@@ -1494,24 +1578,35 @@ class Config {
                   "lit": "refund"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "refund"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "refund",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "refund"
-              ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/submissions",
@@ -1520,17 +1615,18 @@ class Config {
                   "lit": "submissions"
                 }
               ],
-              "select": {},
+              "parts": [
+                "submissions"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "submissions"
-              ]
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/submissions/retrieve",
@@ -1542,17 +1638,19 @@ class Config {
                   "lit": "retrieve"
                 }
               ],
-              "select": {
-                "$action": "retrieve"
-              },
+              "parts": [
+                "submissions",
+                "retrieve"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "submissions",
-                "retrieve"
-              ]
+              "args": {},
+              "select": {
+                "$action": "retrieve"
+              }
             }
           ]
         },
@@ -1561,42 +1659,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "cursor",
-                    "orig": "cursor",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "form_subtype",
-                    "orig": "form_subtype",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "green",
-                    "kind": "query",
-                    "name": "route",
-                    "orig": "route",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "released",
-                    "kind": "query",
-                    "name": "status",
-                    "orig": "status",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "template",
-                    "orig": "template",
-                    "type": "`$BOOLEAN`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/submissions",
@@ -1605,6 +1667,50 @@ class Config {
                   "lit": "submissions"
                 }
               ],
+              "parts": [
+                "submissions"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.results`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "cursor",
+                    "orig": "cursor",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "form_subtype",
+                    "orig": "form_subtype",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "route",
+                    "orig": "route",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "green"
+                  },
+                  {
+                    "name": "status",
+                    "orig": "status",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "released"
+                  },
+                  {
+                    "name": "template",
+                    "orig": "template",
+                    "type": "`$BOOLEAN`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "cursor",
@@ -1613,14 +1719,7 @@ class Config {
                   "status",
                   "template"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.results`"
-              },
-              "parts": [
-                "submissions"
-              ]
+              }
             }
           ]
         },
@@ -1629,17 +1728,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}",
@@ -1651,32 +1739,33 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "submissions",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "submissions",
-                "{id}"
-              ]
-            },
-            {
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "id",
                     "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/clearance-slip",
@@ -1691,34 +1780,35 @@ class Config {
                   "lit": "clearance-slip"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "clearance-slip"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "clearance_slip",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "clearance-slip"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/notification-read",
@@ -1733,34 +1823,35 @@ class Config {
                   "lit": "notification-read"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "notification-read"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "notification_read",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "notification-read"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/pbn-applicable",
@@ -1775,34 +1866,35 @@ class Config {
                   "lit": "pbn-applicable"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "pbn-applicable"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "pbn_applicable",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "pbn-applicable"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/receipt",
@@ -1817,34 +1909,35 @@ class Config {
                   "lit": "receipt"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "receipt"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "receipt",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "receipt"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/{id}/refund",
@@ -1859,24 +1952,35 @@ class Config {
                   "lit": "refund"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "refund"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "refund",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "refund"
-              ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/submissions/retrieve",
@@ -1888,17 +1992,19 @@ class Config {
                   "lit": "retrieve"
                 }
               ],
-              "select": {
-                "$action": "retrieve"
-              },
+              "parts": [
+                "submissions",
+                "retrieve"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "submissions",
-                "retrieve"
-              ]
+              "args": {},
+              "select": {
+                "$action": "retrieve"
+              }
             }
           ]
         },
@@ -1907,17 +2013,6 @@ class Config {
           "name": "remove",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}",
@@ -1929,32 +2024,33 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "submissions",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "submissions",
-                "{id}"
-              ]
-            },
-            {
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "id",
                     "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/clearance-slip",
@@ -1969,34 +2065,35 @@ class Config {
                   "lit": "clearance-slip"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "clearance-slip"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "clearance_slip",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "clearance-slip"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/notification-read",
@@ -2011,34 +2108,35 @@ class Config {
                   "lit": "notification-read"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "notification-read"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "notification_read",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "notification-read"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/pbn-applicable",
@@ -2053,34 +2151,35 @@ class Config {
                   "lit": "pbn-applicable"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "pbn-applicable"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "pbn_applicable",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "pbn-applicable"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "DELETE",
               "orig": "/submissions/{id}/receipt",
@@ -2095,21 +2194,33 @@ class Config {
                   "lit": "receipt"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "receipt"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "receipt",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "receipt"
-              ]
+              }
             }
           ]
         },
@@ -2118,17 +2229,6 @@ class Config {
           "name": "update",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}",
@@ -2140,32 +2240,33 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "submissions",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "submissions",
-                "{id}"
-              ]
-            },
-            {
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "id",
                     "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/clearance-slip",
@@ -2180,34 +2281,35 @@ class Config {
                   "lit": "clearance-slip"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "clearance-slip"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "clearance_slip",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "clearance-slip"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/notification-read",
@@ -2222,34 +2324,35 @@ class Config {
                   "lit": "notification-read"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "notification-read"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "notification_read",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "notification-read"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/pbn-applicable",
@@ -2264,34 +2367,35 @@ class Config {
                   "lit": "pbn-applicable"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "pbn-applicable"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "pbn_applicable",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "pbn-applicable"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "PATCH",
               "orig": "/submissions/{id}/receipt",
@@ -2306,21 +2410,33 @@ class Config {
                   "lit": "receipt"
                 }
               ],
+              "parts": [
+                "submissions",
+                "{id}",
+                "receipt"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
               "select": {
                 "$action": "receipt",
                 "exist": [
                   "id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "submissions",
-                "{id}",
-                "receipt"
-              ]
+              }
             }
           ]
         }
@@ -2333,203 +2449,244 @@ class Config {
       "fields": [
         {
           "name": "additional_external_ids",
+          "title": "Additional External Ids",
           "type": "`$ARRAY`"
         },
         {
           "name": "additional_information",
-          "req": true,
-          "type": "`$ARRAY`"
+          "title": "Additional Information",
+          "type": "`$ARRAY`",
+          "req": true
         },
         {
           "name": "amendment_status",
-          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
-          "type": "`$STRING`"
+          "title": "Amendment Status",
+          "type": "`$STRING`",
+          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
         },
         {
           "name": "clearance_slip",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Clearance Slip",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "client",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Client",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "company",
+          "title": "Company",
+          "type": "`$STRING`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "company_member",
+          "title": "Company Member",
+          "type": "`$OBJECT`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$OBJECT`"
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "consignee",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Consignee",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "consignor",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Consignor",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
-          "format": "date-time",
           "name": "created_at",
-          "readOnly": true,
+          "title": "Created At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "declarant",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Declarant",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "document_upload_status",
-          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
-          "type": "`$STRING`"
+          "title": "Document Upload Status",
+          "type": "`$STRING`",
+          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
         },
         {
           "name": "documents_presentation_requested",
+          "title": "Documents Presentation Requested",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "documents_upload_requested",
+          "title": "Documents Upload Requested",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "external_id",
+          "title": "External Id",
           "type": "`$STRING`"
         },
         {
           "name": "form",
-          "readOnly": true,
+          "title": "Form",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true
         },
         {
           "name": "goods_presentation_status",
-          "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
-          "type": "`$STRING`"
+          "title": "Goods Presentation Status",
+          "type": "`$STRING`",
+          "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested"
         },
         {
           "name": "hrcm_status",
-          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
-          "type": "`$STRING`"
+          "title": "Hrcm Status",
+          "type": "`$STRING`",
+          "short": "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled"
         },
         {
           "name": "id",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "invalidation_status",
-          "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled",
-          "type": "`$STRING`"
+          "title": "Invalidation Status",
+          "type": "`$STRING`",
+          "short": "* `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested * `cancelled` - cancelled"
         },
         {
           "name": "is_global_template",
+          "title": "Is Global Template",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "latest_notification_item",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Latest Notification Item",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "latest_state",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Latest State",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "lrn",
+          "title": "Lrn",
           "type": "`$STRING`"
         },
         {
           "name": "mrn",
+          "title": "Mrn",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "title": "Name",
           "type": "`$STRING`"
         },
         {
           "name": "receipt",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Receipt",
+          "type": "`$OBJECT`",
+          "req": true
         },
         {
           "name": "refund_application_status",
-          "short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted",
-          "type": "`$STRING`"
+          "title": "Refund Application Status",
+          "type": "`$STRING`",
+          "short": "* `processing` - processing * `rejected` - rejected * `accepted` - accepted"
         },
         {
           "name": "route",
-          "short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow",
-          "type": "`$STRING`"
+          "title": "Route",
+          "type": "`$STRING`",
+          "short": "* `green` - green * `orange` - orange * `red` - red * `yellow` - yellow"
         },
         {
           "name": "shipment_items_no",
+          "title": "Shipment Items No",
           "type": "`$INTEGER`"
         },
         {
           "name": "shipment_items_quantity_no",
+          "title": "Shipment Items Quantity No",
           "type": "`$INTEGER`"
         },
         {
           "name": "source",
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "title": "Source",
+          "type": "`$STRING`",
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "source_type",
-          "short": "* `template` - template * `automated_import` - automated_import",
-          "type": "`$STRING`"
+          "title": "Source Type",
+          "type": "`$STRING`",
+          "short": "* `template` - template * `automated_import` - automated_import"
         },
         {
           "name": "status",
-          "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
-          "type": "`$STRING`"
+          "title": "Status",
+          "type": "`$STRING`",
+          "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…"
         },
         {
           "name": "submission",
+          "title": "Submission",
+          "type": "`$STRING`",
           "req": true,
-          "short": "cuid-format identifier for this entity.",
-          "type": "`$STRING`"
+          "short": "cuid-format identifier for this entity."
         },
         {
           "name": "supporting_documents",
+          "title": "Supporting Documents",
           "type": "`$ARRAY`"
         },
         {
           "name": "template",
+          "title": "Template",
           "type": "`$BOOLEAN`"
         },
         {
-          "format": "decimal",
           "name": "total_tax_amount",
-          "type": "`$STRING`"
+          "title": "Total Tax Amount",
+          "type": "`$STRING`",
+          "format": "decimal"
         },
         {
-          "format": "date-time",
           "name": "updated_at",
-          "readOnly": true,
+          "title": "Updated At",
+          "type": "`$STRING`",
           "req": true,
-          "type": "`$STRING`"
+          "readOnly": true,
+          "format": "date-time"
         },
         {
           "name": "verification_errors",
+          "title": "Verification Errors",
           "type": "`$ARRAY`"
         },
         {
           "name": "verification_status",
-          "short": "* `passed` - passed * `failed` - failed",
-          "type": "`$STRING`"
+          "title": "Verification Status",
+          "type": "`$STRING`",
+          "short": "* `passed` - passed * `failed` - failed"
         }
       ],
       "id": {
@@ -2543,7 +2700,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/documents-request",
@@ -2552,14 +2708,16 @@ class Config {
                   "lit": "documents-request"
                 }
               ],
-              "select": {},
+              "parts": [
+                "documents-request"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "documents-request"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }

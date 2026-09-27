@@ -1,7 +1,7 @@
 # Typed models for the CustomsWindow SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -199,18 +199,6 @@ class FileCreateDataRequired(TypedDict):
 class FileCreateData(FileCreateDataRequired, total=False):
     id: str
     size: int
-
-
-class PaginatedBulkUploadListList(TypedDict):
-    pass
-
-
-class PaginatedPartyListList(TypedDict):
-    pass
-
-
-class PaginatedSubmissionListList(TypedDict):
-    pass
 
 
 class PartyRequired(TypedDict):

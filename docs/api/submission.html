@@ -8,9 +8,6 @@
 <details open><summary>API</summary><a href="../api/index.html">API overview</a>
 <a href="../api/bulk_upload.html">BulkUpload</a>
 <a href="../api/file.html">File</a>
-<a href="../api/paginated_bulk_upload_list_list.html">PaginatedBulkUploadListList</a>
-<a href="../api/paginated_party_list_list.html">PaginatedPartyListList</a>
-<a href="../api/paginated_submission_list_list.html">PaginatedSubmissionListList</a>
 <a href="../api/party.html">Party</a>
 <a aria-current="page" href="../api/submission.html">Submission</a><div class="nav-sections"><a class="nav-section" href="#post-submissionsidrefund">POST /submissions/{id}/refund</a>
 <a class="nav-section" href="#post-submissions">POST /submissions</a>
@@ -46,14 +43,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="submission">Submission</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="submission">Submission</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -194,6 +191,76 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">submissions, err := client.Submission(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(submissions)
+submission, err := client.Submission(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(submission)
+created, err := client.Submission(nil).Create(map[string]any{&quot;answers&quot;: []any{}, &quot;clearance_slip&quot;: map[string]any{}, &quot;client&quot;: map[string]any{}, &quot;company_member&quot;: map[string]any{}, &quot;consignee&quot;: map[string]any{}, &quot;consignor&quot;: map[string]any{}, &quot;created_at&quot;: &quot;example&quot;, &quot;declarant&quot;: map[string]any{}, &quot;form&quot;: &quot;example&quot;, &quot;latest_state&quot;: map[string]any{}, &quot;receipt&quot;: map[string]any{}, &quot;updated_at&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Submission(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;additional_external_ids&quot;: []any{}, &quot;amendment_reason&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Submission(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local submissions, err = client:Submission():list()
+local submission, err = client:Submission():load({ id = &quot;example_id&quot; })
+local created, err = client:Submission():create({ answers = {}, clearance_slip = {}, client = {}, company_member = {}, consignee = {}, consignor = {}, created_at = &quot;example&quot;, declarant = {}, form = &quot;example&quot;, latest_state = {}, receipt = {}, updated_at = &quot;example&quot; })
+local updated, err = client:Submission():update({ id = &quot;example_id&quot;, additional_external_ids = {}, amendment_reason = &quot;example&quot; })
+local removed, err = client:Submission():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$submissions = $client-&gt;Submission()-&gt;list();
+$submission = $client-&gt;Submission()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Submission()-&gt;create([&quot;answers&quot; =&gt; [], &quot;clearance_slip&quot; =&gt; [], &quot;client&quot; =&gt; [], &quot;company_member&quot; =&gt; [], &quot;consignee&quot; =&gt; [], &quot;consignor&quot; =&gt; [], &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;declarant&quot; =&gt; [], &quot;form&quot; =&gt; &quot;example&quot;, &quot;latest_state&quot; =&gt; [], &quot;receipt&quot; =&gt; [], &quot;updated_at&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;Submission()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;additional_external_ids&quot; =&gt; [], &quot;amendment_reason&quot; =&gt; &quot;example&quot;]);
+$client-&gt;Submission()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">submissions = client.Submission().list()
+submission = client.Submission().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.Submission().create({ &quot;answers&quot;: [], &quot;clearance_slip&quot;: {}, &quot;client&quot;: {}, &quot;company_member&quot;: {}, &quot;consignee&quot;: {}, &quot;consignor&quot;: {}, &quot;created_at&quot;: &quot;example&quot;, &quot;declarant&quot;: {}, &quot;form&quot;: &quot;example&quot;, &quot;latest_state&quot;: {}, &quot;receipt&quot;: {}, &quot;updated_at&quot;: &quot;example&quot; })
+updated = client.Submission().update({&quot;id&quot;: &quot;example_id&quot;, &quot;additional_external_ids&quot;: [], &quot;amendment_reason&quot;: &quot;example&quot;})
+client.Submission().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">submissions = client.Submission.list()
+submission = client.Submission.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.Submission.create({ &quot;answers&quot; =&gt; [], &quot;clearance_slip&quot; =&gt; {}, &quot;client&quot; =&gt; {}, &quot;company_member&quot; =&gt; {}, &quot;consignee&quot; =&gt; {}, &quot;consignor&quot; =&gt; {}, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;declarant&quot; =&gt; {}, &quot;form&quot; =&gt; &quot;example&quot;, &quot;latest_state&quot; =&gt; {}, &quot;receipt&quot; =&gt; {}, &quot;updated_at&quot; =&gt; &quot;example&quot; })
+updated = client.Submission.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;additional_external_ids&quot; =&gt; [], &quot;amendment_reason&quot; =&gt; &quot;example&quot; })
+client.Submission.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const submissions = await client.Submission().list()
+const submission = await client.Submission().load({ id: &quot;example_id&quot; })
+const created = await client.Submission().create({ answers: [], clearance_slip: {}, client: {}, company_member: {}, consignee: {}, consignor: {}, created_at: &quot;example&quot;, declarant: {}, form: &quot;example&quot;, latest_state: {}, receipt: {}, updated_at: &quot;example&quot; })
+const updated = await client.Submission().update({ id: &quot;example_id&quot;, additional_external_ids: [], amendment_reason: &quot;example&quot; })
+await client.Submission().remove({ id: &quot;example_id&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -209,13 +276,13 @@
 <td><code>additional_external_ids</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Additional External Ids</td>
 </tr>
 <tr>
 <td><code>amendment_reason</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Amendment Reason</td>
 </tr>
 <tr>
 <td><code>amendment_status</code></td>
@@ -227,25 +294,25 @@
 <td><code>answers</code></td>
 <td><code>array</code></td>
 <td>Yes</td>
-<td></td>
+<td>Answers</td>
 </tr>
 <tr>
 <td><code>bypass_restricted_code</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Bypass Restricted Code</td>
 </tr>
 <tr>
 <td><code>clearance_slip</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Clearance Slip</td>
 </tr>
 <tr>
 <td><code>client</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Client</td>
 </tr>
 <tr>
 <td><code>company_member</code></td>
@@ -257,19 +324,19 @@
 <td><code>consignee</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Consignee</td>
 </tr>
 <tr>
 <td><code>consignor</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Consignor</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>declarant</code></td>
@@ -287,19 +354,19 @@
 <td><code>documents_presentation_requested</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Documents Presentation Requested</td>
 </tr>
 <tr>
 <td><code>documents_upload_requested</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Documents Upload Requested</td>
 </tr>
 <tr>
 <td><code>external_id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>External Id</td>
 </tr>
 <tr>
 <td><code>form</code></td>
@@ -311,7 +378,7 @@
 <td><code>goods_presentation_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>hrcm_status</code></td>
@@ -329,13 +396,13 @@
 <td><code>invalidation_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>is_global_template</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Is Global Template</td>
 </tr>
 <tr>
 <td><code>latest_notification_item</code></td>
@@ -347,37 +414,37 @@
 <td><code>latest_state</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Latest State</td>
 </tr>
 <tr>
 <td><code>lrn</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Lrn</td>
 </tr>
 <tr>
 <td><code>mrn</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Mrn</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>partial_answers</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Partial Answers</td>
 </tr>
 <tr>
 <td><code>receipt</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Receipt</td>
 </tr>
 <tr>
 <td><code>refund_application_status</code></td>
@@ -395,13 +462,13 @@
 <td><code>shipment_items_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Shipment Items No</td>
 </tr>
 <tr>
 <td><code>shipment_items_quantity_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Shipment Items Quantity No</td>
 </tr>
 <tr>
 <td><code>source</code></td>
@@ -413,19 +480,19 @@
 <td><code>source_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - <code>automated_import</code></td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - re…</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - re…</td>
 </tr>
 <tr>
 <td><code>template</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Template</td>
 </tr>
 <tr>
 <td><code>template_id</code></td>
@@ -437,25 +504,25 @@
 <td><code>template_properties</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Template Properties</td>
 </tr>
 <tr>
 <td><code>total_tax_amount</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Total Tax Amount</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 <tr>
 <td><code>verification_errors</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Verification Errors</td>
 </tr>
 <tr>
 <td><code>verification_status</code></td>
@@ -479,145 +546,6 @@
 <p>Operation ID: <code>Create a Submission</code>.</p>
 <p>Authentication: API key in the header (<code>Secret Key</code>).</p>
 <h4 id="request-body">Request body</h4>
-<p><code>*/*</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>additional_external_ids</code></td>
-<td><code>array of string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].address</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].created_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].deleted_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].field</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].group</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].guarantee</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].party</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].shipment_item</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].submission</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].updated_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].value</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>company_member</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>declarant</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>form</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
-<td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
-</tr>
-<tr>
-<td><code>template</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>template_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-</tbody>
-</table>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -741,7 +669,7 @@
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template</code></td>
@@ -880,7 +808,7 @@
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template</code></td>
@@ -1019,7 +947,146 @@
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template</code></td>
@@ -1238,7 +1305,7 @@
 <td><code>company_member.user.role</code></td>
 <td><code>enum: company_member, admin</code></td>
 <td>No</td>
-<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+<td>* <code>company_member</code> - <code>company_member</code> * <code>admin</code> - admin</td>
 </tr>
 <tr>
 <td><code>consignee</code></td>
@@ -1352,7 +1419,7 @@
 <td><code>goods_presentation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>hrcm_status</code></td>
@@ -1370,7 +1437,7 @@
 <td><code>invalidation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>is_global_template</code></td>
@@ -1448,7 +1515,7 @@
 <td><code>latest_state.goods_presentation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>latest_state.hrcm_status</code></td>
@@ -1466,7 +1533,7 @@
 <td><code>latest_state.invalidation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>latest_state.lrn</code></td>
@@ -1514,7 +1581,7 @@
 <td><code>latest_state.status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>latest_state.submission</code></td>
@@ -1652,13 +1719,13 @@
 <td><code>source_type</code></td>
 <td><code>enum: template, automated_import, null</code></td>
 <td>No</td>
-<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - <code>automated_import</code></td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template</code></td>
@@ -1930,7 +1997,7 @@
 <td><code>results[].company_member.user.role</code></td>
 <td><code>enum: company_member, admin</code></td>
 <td>No</td>
-<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+<td>* <code>company_member</code> - <code>company_member</code> * <code>admin</code> - admin</td>
 </tr>
 <tr>
 <td><code>results[].consignee</code></td>
@@ -2074,7 +2141,7 @@
 <td><code>results[].goods_presentation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>results[].hrcm_status</code></td>
@@ -2092,7 +2159,7 @@
 <td><code>results[].invalidation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>results[].is_global_template</code></td>
@@ -2212,7 +2279,7 @@
 <td><code>results[].latest_state.company_member.user.role</code></td>
 <td><code>enum: company_member, admin</code></td>
 <td>No</td>
-<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+<td>* <code>company_member</code> - <code>company_member</code> * <code>admin</code> - admin</td>
 </tr>
 <tr>
 <td><code>results[].latest_state.created_at</code></td>
@@ -2248,7 +2315,7 @@
 <td><code>results[].latest_state.goods_presentation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>results[].latest_state.hrcm_status</code></td>
@@ -2266,7 +2333,7 @@
 <td><code>results[].latest_state.invalidation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>results[].latest_state.lrn</code></td>
@@ -2314,7 +2381,7 @@
 <td><code>results[].latest_state.status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>results[].latest_state.transaction_id</code></td>
@@ -2446,13 +2513,13 @@
 <td><code>results[].source_type</code></td>
 <td><code>enum: template, automated_import, null</code></td>
 <td>No</td>
-<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - <code>automated_import</code></td>
 </tr>
 <tr>
 <td><code>results[].status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>results[].template</code></td>
@@ -2697,7 +2764,7 @@
 <td><code>company_member.user.role</code></td>
 <td><code>enum: company_member, admin</code></td>
 <td>No</td>
-<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+<td>* <code>company_member</code> - <code>company_member</code> * <code>admin</code> - admin</td>
 </tr>
 <tr>
 <td><code>consignee</code></td>
@@ -2811,7 +2878,7 @@
 <td><code>goods_presentation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>hrcm_status</code></td>
@@ -2829,7 +2896,7 @@
 <td><code>invalidation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>is_global_template</code></td>
@@ -2907,7 +2974,7 @@
 <td><code>latest_state.goods_presentation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>latest_state.hrcm_status</code></td>
@@ -2925,7 +2992,7 @@
 <td><code>latest_state.invalidation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>latest_state.lrn</code></td>
@@ -2973,7 +3040,7 @@
 <td><code>latest_state.status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>latest_state.submission</code></td>
@@ -3111,13 +3178,13 @@
 <td><code>source_type</code></td>
 <td><code>enum: template, automated_import, null</code></td>
 <td>No</td>
-<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - <code>automated_import</code></td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template</code></td>
@@ -3256,205 +3323,6 @@
 | --- | --- | --- | --- |
 | <code>id</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
 <h4 id="request-body-1">Request body</h4>
-<p><code>*/*</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>additional_external_ids</code></td>
-<td><code>array of string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>amendment_reason</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>amendment_status</code></td>
-<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
-<td>No</td>
-<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
-</tr>
-<tr>
-<td><code>answers</code></td>
-<td><code>array of object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].address</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].created_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].deleted_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].field</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].group</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].guarantee</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].party</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].shipment_item</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].submission</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>answers[].updated_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>answers[].value</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>bypass_restricted_code</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>company_member</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>partial_answers</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
-<td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
-</tr>
-<tr>
-<td><code>template_properties</code></td>
-<td><code>array of object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>template_properties[].created_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>template_properties[].deleted_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>template_properties[].editable</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>template_properties[].field</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>template_properties[].hidden</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>template_properties[].id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>template_properties[].section</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>template_properties[].submission</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>template_properties[].updated_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -3590,7 +3458,7 @@
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template_properties</code></td>
@@ -3789,7 +3657,7 @@
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template_properties</code></td>
@@ -3988,7 +3856,206 @@
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
+</tr>
+<tr>
+<td><code>template_properties</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].editable</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].hidden</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template_properties[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].section</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>template_properties[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_external_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amendment_status</code></td>
+<td><code>enum: requested, draft, complete, processing, accepted, rejected, ...</code></td>
+<td>No</td>
+<td>* <code>requested</code> - requested * <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>accepted</code> - accepted * <code>rejected</code> - rejected * <code>cancelled</code> - cancelled</td>
+</tr>
+<tr>
+<td><code>answers</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].deleted_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].group</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].guarantee</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].party</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].shipment_item</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].submission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>answers[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>answers[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bypass_restricted_code</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>partial_answers</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
+<td>No</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template_properties</code></td>
@@ -4255,7 +4322,7 @@
 <td><code>company_member.user.role</code></td>
 <td><code>enum: company_member, admin</code></td>
 <td>No</td>
-<td>* <code>company_member</code> - company_member * <code>admin</code> - admin</td>
+<td>* <code>company_member</code> - <code>company_member</code> * <code>admin</code> - admin</td>
 </tr>
 <tr>
 <td><code>consignee</code></td>
@@ -4369,7 +4436,7 @@
 <td><code>goods_presentation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>hrcm_status</code></td>
@@ -4387,7 +4454,7 @@
 <td><code>invalidation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>is_global_template</code></td>
@@ -4465,7 +4532,7 @@
 <td><code>latest_state.goods_presentation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested</td>
 </tr>
 <tr>
 <td><code>latest_state.hrcm_status</code></td>
@@ -4483,7 +4550,7 @@
 <td><code>latest_state.invalidation_status</code></td>
 <td><code>enum: in_review, rejected, accepted, requested, cancelled, null</code></td>
 <td>No</td>
-<td>* <code>in_review</code> - in_review * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
+<td>* <code>in_review</code> - <code>in_review</code> * <code>rejected</code> - rejected * <code>accepted</code> - accepted * <code>requested</code> - requested * <code>cancelled</code> - cancelled</td>
 </tr>
 <tr>
 <td><code>latest_state.lrn</code></td>
@@ -4531,7 +4598,7 @@
 <td><code>latest_state.status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>latest_state.submission</code></td>
@@ -4669,13 +4736,13 @@
 <td><code>source_type</code></td>
 <td><code>enum: template, automated_import, null</code></td>
 <td>No</td>
-<td>* <code>template</code> - template * <code>automated_import</code> - automated_import</td>
+<td>* <code>template</code> - template * <code>automated_import</code> - <code>automated_import</code></td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><code>enum: draft, complete, processing, rejected, registered, accepted, ...</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - under_review * <code>insufficient_funds</code> - insufficient_funds * <code>released</code> - released * <code>not_released</code> - not_released * <code>exported</code> - exported * <code>released_for_export</code> - released_for_export * <code>export_stopped_at_exit</code> - export_stopped_at_exit</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - released * <code>not_released</code> - <code>not_released</code> * <code>exported</code> - exported * <code>released_for_export</code> - <code>released_for_export</code> * <code>export_stopped_at_exit</code> - <code>export_stopped_at_exit</code></td>
 </tr>
 <tr>
 <td><code>template</code></td>

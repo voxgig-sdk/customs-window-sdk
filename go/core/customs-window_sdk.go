@@ -264,7 +264,6 @@ func (sdk *CustomsWindowSDK) rawRequest(fetchargs map[string]any) (map[string]an
 		if !noBody {
 			if jf := vs.GetProp(fm, "json"); jf != nil {
 				if f, ok := jf.(func() any); ok {
-					// f() returns nil on parse error in our fetcher.
 					jsonData = f()
 				}
 			}
@@ -281,17 +280,6 @@ func (sdk *CustomsWindowSDK) rawRequest(fetchargs map[string]any) (map[string]an
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
 }
 
-// Raw GraphQL access: the pressure valve that makes the generated surface's
-// deliberate omissions (per-call selection sets, typed filter builders,
-// batching, subscriptions) livable — the whole schema stays reachable.
-//
-// Thin wrapper over the same prepare/fetch path Direct uses, with the one
-// thing raw Direct cannot do for GraphQL: a GraphQL failure rides HTTP 200
-// as a top-level `errors` array, so status alone would report a failed query
-// as ok.
-//
-// NOTE: like Direct, this bypasses the feature pipeline — no retry,
-// ratelimit or paging features apply.
 func (sdk *CustomsWindowSDK) Graphql(
 	query string, variables map[string]any, ctrl map[string]any,
 ) (map[string]any, error) {
@@ -351,30 +339,6 @@ func (sdk *CustomsWindowSDK) BulkUpload(data map[string]any) CustomsWindowEntity
 // client.File(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CustomsWindowSDK) File(data map[string]any) CustomsWindowEntity {
 	return NewFileEntityFunc(sdk, data)
-}
-
-
-// PaginatedBulkUploadListList returns a PaginatedBulkUploadListList entity bound to this client.
-// Idiomatic usage: client.PaginatedBulkUploadListList(nil).List(nil, nil) or
-// client.PaginatedBulkUploadListList(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CustomsWindowSDK) PaginatedBulkUploadListList(data map[string]any) CustomsWindowEntity {
-	return NewPaginatedBulkUploadListListEntityFunc(sdk, data)
-}
-
-
-// PaginatedPartyListList returns a PaginatedPartyListList entity bound to this client.
-// Idiomatic usage: client.PaginatedPartyListList(nil).List(nil, nil) or
-// client.PaginatedPartyListList(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CustomsWindowSDK) PaginatedPartyListList(data map[string]any) CustomsWindowEntity {
-	return NewPaginatedPartyListListEntityFunc(sdk, data)
-}
-
-
-// PaginatedSubmissionListList returns a PaginatedSubmissionListList entity bound to this client.
-// Idiomatic usage: client.PaginatedSubmissionListList(nil).List(nil, nil) or
-// client.PaginatedSubmissionListList(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CustomsWindowSDK) PaginatedSubmissionListList(data map[string]any) CustomsWindowEntity {
-	return NewPaginatedSubmissionListListEntityFunc(sdk, data)
 }
 
 

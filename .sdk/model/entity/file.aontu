@@ -1,0 +1,122 @@
+# Entity: file
+
+main: kit: entity: file: {
+
+  alias: field: {}
+
+  fields: {
+    company: {
+      h: "Company"
+      n: "company"
+      r: true
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    extension: {
+      h: "Extension"
+      n: "extension"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    file: {
+      fo: "uri"
+      h: "File"
+      n: "file"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "cuid-format identifier for this entity."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    public: {
+      h: "Public"
+      n: "public"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      t: "`$INTEGER`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      ro: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "file"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /files"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/files"
+          s: [
+            {
+              lit: "files"
+            }
+          ]
+          t: {
+            req: {
+              file: "`reqdata`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

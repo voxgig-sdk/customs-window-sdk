@@ -15,9 +15,6 @@
 <a class="nav-section" href="#patch-bulk-uploadsid">PATCH /bulk-uploads/{id}</a>
 <a class="nav-section" href="#patch-bulk-uploadsidgenerate-pdfs">PATCH /bulk-uploads/{id}/generate-pdfs</a></div>
 <a href="../api/file.html">File</a>
-<a href="../api/paginated_bulk_upload_list_list.html">PaginatedBulkUploadListList</a>
-<a href="../api/paginated_party_list_list.html">PaginatedPartyListList</a>
-<a href="../api/paginated_submission_list_list.html">PaginatedSubmissionListList</a>
 <a href="../api/party.html">Party</a>
 <a href="../api/submission.html">Submission</a>
 <a href="../api/submission_detail.html">SubmissionDetail</a></details>
@@ -33,14 +30,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="bulkupload">BulkUpload</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="bulkupload">BulkUpload</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -103,6 +100,76 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">bulk_uploads, err := client.BulkUpload(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(bulk_uploads)
+bulk_upload, err := client.BulkUpload(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(bulk_upload)
+created, err := client.BulkUpload(nil).Create(map[string]any{&quot;client&quot;: &quot;example&quot;, &quot;company_member&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;declarant&quot;: &quot;example&quot;, &quot;declarations_no&quot;: 1, &quot;errors_file&quot;: map[string]any{}, &quot;file&quot;: map[string]any{}, &quot;updated_at&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.BulkUpload(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;active_transport_nationality&quot;: &quot;example&quot;, &quot;active_transport_number&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.BulkUpload(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local bulk_uploads, err = client:BulkUpload():list()
+local bulk_upload, err = client:BulkUpload():load({ id = &quot;example_id&quot; })
+local created, err = client:BulkUpload():create({ client = &quot;example&quot;, company_member = &quot;example&quot;, created_at = &quot;example&quot;, declarant = &quot;example&quot;, declarations_no = 1, errors_file = {}, file = {}, updated_at = &quot;example&quot; })
+local updated, err = client:BulkUpload():update({ id = &quot;example_id&quot;, active_transport_nationality = &quot;example&quot;, active_transport_number = &quot;example&quot; })
+local removed, err = client:BulkUpload():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$bulk_uploads = $client-&gt;BulkUpload()-&gt;list();
+$bulk_upload = $client-&gt;BulkUpload()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;BulkUpload()-&gt;create([&quot;client&quot; =&gt; &quot;example&quot;, &quot;company_member&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;declarant&quot; =&gt; &quot;example&quot;, &quot;declarations_no&quot; =&gt; 1, &quot;errors_file&quot; =&gt; [], &quot;file&quot; =&gt; [], &quot;updated_at&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;BulkUpload()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;active_transport_nationality&quot; =&gt; &quot;example&quot;, &quot;active_transport_number&quot; =&gt; &quot;example&quot;]);
+$client-&gt;BulkUpload()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">bulk_uploads = client.BulkUpload().list()
+bulk_upload = client.BulkUpload().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.BulkUpload().create({ &quot;client&quot;: &quot;example&quot;, &quot;company_member&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;declarant&quot;: &quot;example&quot;, &quot;declarations_no&quot;: 1, &quot;errors_file&quot;: {}, &quot;file&quot;: {}, &quot;updated_at&quot;: &quot;example&quot; })
+updated = client.BulkUpload().update({&quot;id&quot;: &quot;example_id&quot;, &quot;active_transport_nationality&quot;: &quot;example&quot;, &quot;active_transport_number&quot;: &quot;example&quot;})
+client.BulkUpload().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">bulk_uploads = client.BulkUpload.list()
+bulk_upload = client.BulkUpload.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.BulkUpload.create({ &quot;client&quot; =&gt; &quot;example&quot;, &quot;company_member&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;declarant&quot; =&gt; &quot;example&quot;, &quot;declarations_no&quot; =&gt; 1, &quot;errors_file&quot; =&gt; {}, &quot;file&quot; =&gt; {}, &quot;updated_at&quot; =&gt; &quot;example&quot; })
+updated = client.BulkUpload.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;active_transport_nationality&quot; =&gt; &quot;example&quot;, &quot;active_transport_number&quot; =&gt; &quot;example&quot; })
+client.BulkUpload.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const bulk_uploads = await client.BulkUpload().list()
+const bulk_upload = await client.BulkUpload().load({ id: &quot;example_id&quot; })
+const created = await client.BulkUpload().create({ client: &quot;example&quot;, company_member: &quot;example&quot;, created_at: &quot;example&quot;, declarant: &quot;example&quot;, declarations_no: 1, errors_file: {}, file: {}, updated_at: &quot;example&quot; })
+const updated = await client.BulkUpload().update({ id: &quot;example_id&quot;, active_transport_nationality: &quot;example&quot;, active_transport_number: &quot;example&quot; })
+await client.BulkUpload().remove({ id: &quot;example_id&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -124,13 +191,13 @@
 <td><code>active_transport_number</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Active Transport Number</td>
 </tr>
 <tr>
 <td><code>arrival_datetime</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Arrival Datetime</td>
 </tr>
 <tr>
 <td><code>client</code></td>
@@ -148,7 +215,7 @@
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>declarant</code></td>
@@ -160,37 +227,37 @@
 <td><code>declarations_no</code></td>
 <td><code>integer</code></td>
 <td>Yes</td>
-<td></td>
+<td>Declarations No</td>
 </tr>
 <tr>
 <td><code>deleted_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Deleted At</td>
 </tr>
 <tr>
 <td><code>departure_datetime</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Departure Datetime</td>
 </tr>
 <tr>
 <td><code>errors_file</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Errors File</td>
 </tr>
 <tr>
 <td><code>external_id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>External Id</td>
 </tr>
 <tr>
 <td><code>failed_declarations_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Failed Declarations No</td>
 </tr>
 <tr>
 <td><code>file</code></td>
@@ -202,7 +269,7 @@
 <td><code>green_routed_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Green Routed No</td>
 </tr>
 <tr>
 <td><code>h1_fallback_template</code></td>
@@ -214,7 +281,7 @@
 <td><code>house_transport_doc_ref</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>House Transport Doc Ref</td>
 </tr>
 <tr>
 <td><code>id</code></td>
@@ -226,7 +293,7 @@
 <td><code>issue_date</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Issue Date</td>
 </tr>
 <tr>
 <td><code>mapping</code></td>
@@ -238,31 +305,31 @@
 <td><code>orange_routed_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Orange Routed No</td>
 </tr>
 <tr>
 <td><code>parsed_declarations_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Parsed Declarations No</td>
 </tr>
 <tr>
 <td><code>parser</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+<td>* <code>aes_platform</code> - <code>aes_platform</code> * <code>cds_platform</code> - <code>cds_platform</code> * <code>cds_export_platform</code> - <code>cds_export_platform</code> * <code>g4_g3</code> - <code>g4_g3</code> * <code>nhd_platform</code> - <code>nhd_platform</code> * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - <code>ics2_platform</code></td>
 </tr>
 <tr>
 <td><code>parsing_completed_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Parsing Completed At</td>
 </tr>
 <tr>
 <td><code>parsing_started_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Parsing Started At</td>
 </tr>
 <tr>
 <td><code>passive_transport_nationality</code></td>
@@ -274,37 +341,37 @@
 <td><code>passive_transport_number</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Passive Transport Number</td>
 </tr>
 <tr>
 <td><code>processed_declarations_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Processed Declarations No</td>
 </tr>
 <tr>
 <td><code>processing_ended_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Processing Ended At</td>
 </tr>
 <tr>
 <td><code>processing_started_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Processing Started At</td>
 </tr>
 <tr>
 <td><code>receipt_generating_started_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Receipt Generating Started At</td>
 </tr>
 <tr>
 <td><code>receipt_request_started_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Receipt Request Started At</td>
 </tr>
 <tr>
 <td><code>receipt_request_status</code></td>
@@ -328,13 +395,13 @@
 <td><code>red_routed_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Red Routed No</td>
 </tr>
 <tr>
 <td><code>rejected_status_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Rejected Status No</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -352,13 +419,13 @@
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 <tr>
 <td><code>yellow_routed_no</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Yellow Routed No</td>
 </tr>
 </tbody>
 </table>
@@ -367,121 +434,6 @@
 <p>Operation ID: <code>Create a Bulk Upload</code>.</p>
 <p>Authentication: API key in the header (<code>Secret Key</code>).</p>
 <h4 id="request-body">Request body</h4>
-<p><code>*/*</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>active_transport_nationality</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>active_transport_number</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>arrival_datetime</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>client</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>company_member</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>declarant</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>departure_datetime</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>external_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>file</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>h1_fallback_template</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>house_transport_doc_ref</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>issue_date</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>mapping</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>parser</code></td>
-<td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
-<td>No</td>
-<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
-</tr>
-<tr>
-<td><code>passive_transport_nationality</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-<tr>
-<td><code>passive_transport_number</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>template</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>cuid-format identifier for this entity.</td>
-</tr>
-</tbody>
-</table>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -575,7 +527,7 @@
 <td><code>parser</code></td>
 <td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
 <td>No</td>
-<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+<td>* <code>aes_platform</code> - <code>aes_platform</code> * <code>cds_platform</code> - <code>cds_platform</code> * <code>cds_export_platform</code> - <code>cds_export_platform</code> * <code>g4_g3</code> - <code>g4_g3</code> * <code>nhd_platform</code> - <code>nhd_platform</code> * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - <code>ics2_platform</code></td>
 </tr>
 <tr>
 <td><code>passive_transport_nationality</code></td>
@@ -690,7 +642,7 @@
 <td><code>parser</code></td>
 <td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
 <td>No</td>
-<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+<td>* <code>aes_platform</code> - <code>aes_platform</code> * <code>cds_platform</code> - <code>cds_platform</code> * <code>cds_export_platform</code> - <code>cds_export_platform</code> * <code>g4_g3</code> - <code>g4_g3</code> * <code>nhd_platform</code> - <code>nhd_platform</code> * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - <code>ics2_platform</code></td>
 </tr>
 <tr>
 <td><code>passive_transport_nationality</code></td>
@@ -805,7 +757,122 @@
 <td><code>parser</code></td>
 <td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
 <td>No</td>
-<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+<td>* <code>aes_platform</code> - <code>aes_platform</code> * <code>cds_platform</code> - <code>cds_platform</code> * <code>cds_export_platform</code> - <code>cds_export_platform</code> * <code>g4_g3</code> - <code>g4_g3</code> * <code>nhd_platform</code> - <code>nhd_platform</code> * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - <code>ics2_platform</code></td>
+</tr>
+<tr>
+<td><code>passive_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>passive_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+</tbody>
+</table>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_transport_nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>active_transport_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrival_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>company_member</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>declarant</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>departure_datetime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>h1_fallback_template</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>house_transport_doc_ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>issue_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mapping</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>cuid-format identifier for this entity.</td>
+</tr>
+<tr>
+<td><code>parser</code></td>
+<td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
+<td>No</td>
+<td>* <code>aes_platform</code> - <code>aes_platform</code> * <code>cds_platform</code> - <code>cds_platform</code> * <code>cds_export_platform</code> - <code>cds_export_platform</code> * <code>g4_g3</code> - <code>g4_g3</code> * <code>nhd_platform</code> - <code>nhd_platform</code> * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - <code>ics2_platform</code></td>
 </tr>
 <tr>
 <td><code>passive_transport_nationality</code></td>
@@ -1084,7 +1151,7 @@
 <td><code>parser</code></td>
 <td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
 <td>No</td>
-<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+<td>* <code>aes_platform</code> - <code>aes_platform</code> * <code>cds_platform</code> - <code>cds_platform</code> * <code>cds_export_platform</code> - <code>cds_export_platform</code> * <code>g4_g3</code> - <code>g4_g3</code> * <code>nhd_platform</code> - <code>nhd_platform</code> * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - <code>ics2_platform</code></td>
 </tr>
 <tr>
 <td><code>parsing_completed_at</code></td>
@@ -1479,7 +1546,7 @@
 <td><code>results[].parser</code></td>
 <td><code>enum: aes_platform, cds_platform, cds_export_platform, g4_g3, nhd_platform, platform, ...</code></td>
 <td>No</td>
-<td>* <code>aes_platform</code> - aes_platform * <code>cds_platform</code> - cds_platform * <code>cds_export_platform</code> - cds_export_platform * <code>g4_g3</code> - g4_g3 * <code>nhd_platform</code> - nhd_platform * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - ics2_platform</td>
+<td>* <code>aes_platform</code> - <code>aes_platform</code> * <code>cds_platform</code> - <code>cds_platform</code> * <code>cds_export_platform</code> - <code>cds_export_platform</code> * <code>g4_g3</code> - <code>g4_g3</code> * <code>nhd_platform</code> - <code>nhd_platform</code> * <code>platform</code> - platform * <code>birds</code> - birds * <code>ics2_platform</code> - <code>ics2_platform</code></td>
 </tr>
 <tr>
 <td><code>results[].parsing_completed_at</code></td>

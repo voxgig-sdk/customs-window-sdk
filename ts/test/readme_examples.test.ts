@@ -37,7 +37,7 @@ const SDK_NAME = 'CustomsWindowSDK'
 
 // A fixture for every entity, so list()/load() resolve offline with no
 // network. Snippet client construction is rewritten to seed this.
-const TEST_SEED = {"entity":{"bulk_upload":{"test01":{"id":"test01"}},"file":{"test01":{"id":"test01"}},"paginated_bulk_upload_list_list":{"test01":{"id":"test01"}},"paginated_party_list_list":{"test01":{"id":"test01"}},"paginated_submission_list_list":{"test01":{"id":"test01"}},"party":{"test01":{"id":"test01"}},"submission":{"test01":{"id":"test01"}},"submission_detail":{"test01":{"id":"test01"}}}}
+const TEST_SEED = {"entity":{"bulk_upload":{"test01":{"id":"test01"}},"file":{"test01":{"id":"test01"}},"party":{"test01":{"id":"test01"}},"submission":{"test01":{"id":"test01"}},"submission_detail":{"test01":{"id":"test01"}}}}
 const SEED_ARG = JSON.stringify(TEST_SEED)
 const SEEDED_CTOR = SDK_NAME + '.test(' + SEED_ARG + ')'
 

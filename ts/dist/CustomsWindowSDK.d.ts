@@ -1,8 +1,5 @@
 import { BulkUploadEntity } from './entity/BulkUploadEntity';
 import { FileEntity } from './entity/FileEntity';
-import { PaginatedBulkUploadListListEntity } from './entity/PaginatedBulkUploadListListEntity';
-import { PaginatedPartyListListEntity } from './entity/PaginatedPartyListListEntity';
-import { PaginatedSubmissionListListEntity } from './entity/PaginatedSubmissionListListEntity';
 import { PartyEntity } from './entity/PartyEntity';
 import { SubmissionEntity } from './entity/SubmissionEntity';
 import { SubmissionDetailEntity } from './entity/SubmissionDetailEntity';
@@ -53,9 +50,6 @@ declare class CustomsWindowSDK {
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
     BulkUpload(entopts?: Record<string, any>): BulkUploadEntity;
     File(entopts?: Record<string, any>): FileEntity;
-    PaginatedBulkUploadListList(entopts?: Record<string, any>): PaginatedBulkUploadListListEntity;
-    PaginatedPartyListList(entopts?: Record<string, any>): PaginatedPartyListListEntity;
-    PaginatedSubmissionListList(entopts?: Record<string, any>): PaginatedSubmissionListListEntity;
     Party(entopts?: Record<string, any>): PartyEntity;
     Submission(entopts?: Record<string, any>): SubmissionEntity;
     SubmissionDetail(entopts?: Record<string, any>): SubmissionDetailEntity;

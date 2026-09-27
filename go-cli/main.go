@@ -20,7 +20,7 @@ import (
 const prompt = "customs-window"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "bulk_upload file paginated_bulk_upload_list_list paginated_party_list_list paginated_submission_list_list party submission submission_detail"
+const entitiesHelp = "bulk_upload file party submission submission_detail"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

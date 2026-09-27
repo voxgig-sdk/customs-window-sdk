@@ -2,8 +2,8 @@
 
 # Typed models for the CustomsWindow SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Member types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Member types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
@@ -631,18 +631,6 @@ FileCreateData = Struct.new(
   :url,
   keyword_init: true
 )
-
-# PaginatedBulkUploadListList entity data model.
-class PaginatedBulkUploadListList
-end
-
-# PaginatedPartyListList entity data model.
-class PaginatedPartyListList
-end
-
-# PaginatedSubmissionListList entity data model.
-class PaginatedSubmissionListList
-end
 
 # Party entity data model.
 #

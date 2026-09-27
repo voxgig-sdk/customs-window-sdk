@@ -1,0 +1,7 @@
+# Entity Models
+
+@"./bulk_upload.aontu"
+@"./file.aontu"
+@"./party.aontu"
+@"./submission.aontu"
+@"./submission_detail.aontu"
