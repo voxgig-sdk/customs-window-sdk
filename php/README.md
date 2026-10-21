@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/customs-window-sdk/tags)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/customs-window-sdk/releases](https://github.com/voxgig-sdk/customs-window-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/customs-window-sdk
+composer config repositories.customs-window-sdk path ./customs-window-sdk/php
+composer require voxgig-sdk/customs-window-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
@@ -64,7 +69,7 @@ try {
 
 ```php
 // create() returns the ENTITY — call data_get() for the created BulkUpload record.
-$created = $client->BulkUpload()->create(["client" => "example_client", "company_member" => "example_company_member", "created_at" => "example_created_at", "declarant" => "example_declarant", "declarations_no" => 1, "errors_file" => [], "file" => [], "updated_at" => "example_updated_at"]);
+$created = $client->BulkUpload()->create(["client" => "example_client", "company_member" => "example_company_member", "declarant" => "example_declarant", "file" => []]);
 
 // Update — index the record via data_get() ($created->data_get()["id"]).
 $client->BulkUpload()->update(["id" => $created->data_get()["id"], "active_transport_nationality" => "example_active_transport_nationality", "active_transport_number" => "example_active_transport_number"]);
@@ -252,11 +257,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
+| `create` | `($reqdata, $ctrl): mixed` | Create a new entity, and return it. |
+| `update` | `($reqdata, $ctrl): mixed` | Update an existing entity, and return it. |
+| `remove` | `($reqmatch, $ctrl): mixed` | Remove an entity, and return it marked as deleted. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -266,9 +271,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -379,7 +384,7 @@ API path: `/files`
 | `phone_number` |  |
 | `preferred_payment_method` |  |
 | `signed_form` |  |
-| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` |  |
 | `unlocode` |  |
 | `updated_at` |  |
@@ -427,7 +432,7 @@ API path: `/parties`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` |  |
 | `template_id` | cuid-format identifier for this entity. |
 | `template_properties` |  |
@@ -477,7 +482,7 @@ API path: `/submissions/{id}/refund`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | cuid-format identifier for this entity. |
 | `supporting_documents` |  |
 | `template` |  |
@@ -565,7 +570,7 @@ $bulk_upload = $client->BulkUpload()->load(["id" => "bulk_upload_id"]);
 #### Example: List
 
 ```php
-// list() returns an array of BulkUpload records (throws on error).
+// list() returns an array of BulkUpload entities, one per record (throws on error).
 $bulk_uploads = $client->BulkUpload()->list();
 ```
 
@@ -575,12 +580,8 @@ $bulk_uploads = $client->BulkUpload()->list();
 $bulk_upload = $client->BulkUpload()->create([
     "client" => null, // string
     "company_member" => null, // string
-    "created_at" => null, // string
     "declarant" => null, // string
-    "declarations_no" => null, // int
-    "errors_file" => null, // array
     "file" => null, // array
-    "updated_at" => null, // string
 ]);
 ```
 
@@ -615,13 +616,7 @@ Create an instance: `$file = $client->File();`
 ```php
 $file = $client->File()->create([
     "company" => null, // string
-    "created_at" => null, // string
-    "extension" => null, // string
     "file" => null, // string
-    "name" => null, // string
-    "public" => null, // bool
-    "updated_at" => null, // string
-    "url" => null, // string
 ]);
 ```
 
@@ -666,7 +661,7 @@ Create an instance: `$party = $client->Party();`
 | `phone_number` | `string` |  |
 | `preferred_payment_method` | `array` |  |
 | `signed_form` | `array` |  |
-| `type` | `string` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `string` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `array` |  |
 | `unlocode` | `string` |  |
 | `updated_at` | `string` |  |
@@ -681,7 +676,7 @@ $party = $client->Party()->load(["id" => "party_id"]);
 #### Example: List
 
 ```php
-// list() returns an array of Party records (throws on error).
+// list() returns an array of Party entities, one per record (throws on error).
 $partys = $client->Party()->list();
 ```
 
@@ -693,14 +688,11 @@ $party = $client->Party()->create([
     "address" => null, // array
     "authorisation" => null, // array
     "certificate" => null, // array
-    "certificate_type" => null, // string
     "company" => null, // string
-    "created_at" => null, // string
     "customs_office_of_lodgement" => null, // array
     "preferred_payment_method" => null, // array
     "signed_form" => null, // array
     "type_of_person" => null, // array
-    "updated_at" => null, // string
 ]);
 ```
 
@@ -758,7 +750,7 @@ Create an instance: `$submission = $client->Submission();`
 | `shipment_items_quantity_no` | `int` |  |
 | `source` | `string` | cuid-format identifier for this entity. |
 | `source_type` | `string` | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `bool` |  |
 | `template_id` | `string` | cuid-format identifier for this entity. |
 | `template_properties` | `array` |  |
@@ -777,7 +769,7 @@ $submission = $client->Submission()->load(["id" => "submission_id"]);
 #### Example: List
 
 ```php
-// list() returns an array of Submission records (throws on error).
+// list() returns an array of Submission entities, one per record (throws on error).
 $submissions = $client->Submission()->list();
 ```
 
@@ -786,17 +778,8 @@ $submissions = $client->Submission()->list();
 ```php
 $submission = $client->Submission()->create([
     "answers" => null, // array
-    "clearance_slip" => null, // array
-    "client" => null, // array
     "company_member" => null, // array
-    "consignee" => null, // array
-    "consignor" => null, // array
-    "created_at" => null, // string
     "declarant" => null, // array
-    "form" => null, // string
-    "latest_state" => null, // array
-    "receipt" => null, // array
-    "updated_at" => null, // string
 ]);
 ```
 
@@ -848,7 +831,7 @@ Create an instance: `$submission_detail = $client->SubmissionDetail();`
 | `shipment_items_quantity_no` | `int` |  |
 | `source` | `string` | cuid-format identifier for this entity. |
 | `source_type` | `string` | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `string` | cuid-format identifier for this entity. |
 | `supporting_documents` | `array` |  |
 | `template` | `bool` |  |
@@ -862,25 +845,15 @@ Create an instance: `$submission_detail = $client->SubmissionDetail();`
 ```php
 $submission_detail = $client->SubmissionDetail()->create([
     "additional_information" => null, // array
-    "clearance_slip" => null, // array
-    "client" => null, // array
     "company" => null, // string
     "company_member" => null, // array
-    "consignee" => null, // array
-    "consignor" => null, // array
-    "created_at" => null, // string
-    "declarant" => null, // array
-    "form" => null, // string
-    "latest_state" => null, // array
-    "receipt" => null, // array
     "submission" => null, // string
-    "updated_at" => null, // string
 ]);
 ```
 
 ## Features
 
-This SDK ships 8 optional features. Each is **inactive until you
+This SDK ships 9 optional features. Each is **inactive until you
 switch it on**, so an SDK you have not configured behaves exactly as if none of
 them existed — no retries, no cache, no logging, no measurable overhead.
 
@@ -895,10 +868,11 @@ above:
 | [`paging`](#paging) | Paging |
 | [`ratelimit`](#ratelimit) | Rate limiting |
 | [`retry`](#retry) | Retry |
+| [`secrets`](#secrets) | Secrets |
 | [`test`](#test) | Test transport |
 | [`timeout`](#timeout) | Timeout |
 
-> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> **Order matters for `ratelimit`, `retry`, `secrets`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
 > activate them in IS the nesting order. Activating them as an ordered list
 > rather than a map is what fixes that order.
@@ -989,6 +963,24 @@ Set `feature.retry.active` to enable it, then override any of the options above.
 transport features decides what it sees. A feature activated later wraps one
 activated earlier.
 
+### secrets
+
+Secrets.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+Set `feature.secrets.active` to enable it, then override any of the options above.
+
+`secrets` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
 ### test
 
 Test transport.
@@ -1059,6 +1051,7 @@ The SDK ships with built-in features:
 - **PagingFeature**: Paging
 - **RatelimitFeature**: Rate limiting
 - **RetryFeature**: Retry
+- **SecretsFeature**: Secrets
 - **TestFeature**: Test transport
 - **TimeoutFeature**: Timeout
 

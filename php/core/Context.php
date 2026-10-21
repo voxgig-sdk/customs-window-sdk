@@ -11,7 +11,7 @@ require_once __DIR__ . '/Response.php';
 require_once __DIR__ . '/Error.php';
 require_once __DIR__ . '/Helpers.php';
 
-class CustomsWindowContext
+class CustomsWindowContext implements \JsonSerializable
 {
     public string $id;
     public array $out;
@@ -34,6 +34,9 @@ class CustomsWindowContext
     public ?CustomsWindowResult $result;
     public ?CustomsWindowResponse $response;
     public CustomsWindowOperation $op;
+    // Set by make_error as it fires PreUnexpected, which fires once per
+    // operation.
+    public bool $unexpected_fired = false;
 
     public function __construct(array $ctxmap = [], ?self $basectx = null)
     {
@@ -125,7 +128,7 @@ class CustomsWindowContext
 
         $opcfg = \Voxgig\Struct\Struct::getpath($this->config, "entity.{$entname}.op.{$opname}");
 
-        $input = ($opname === 'update' || $opname === 'create') ? 'data' : 'match';
+        $input = ($opname === 'update' || $opname === 'create' || $opname === 'patch') ? 'data' : 'match';
 
         $points = [];
         if (is_array($opcfg)) {
@@ -148,5 +151,28 @@ class CustomsWindowContext
     public function make_error(string $code, string $msg): CustomsWindowError
     {
         return new CustomsWindowError($code, $msg, $this);
+    }
+
+    // The serialised context leaves the pipeline (a logger, a dump), so it
+    // is cleaned; the live fields stay raw for the pipeline's own use.
+    public function jsonSerialize(): mixed
+    {
+        $record = [
+            'id' => $this->id,
+            'op' => $this->op,
+            'spec' => $this->spec,
+            'entity' => $this->entity,
+            'result' => $this->result,
+            'response' => $this->response,
+            'meta' => $this->meta,
+        ];
+        $clean = null === $this->utility ? null : $this->utility->clean;
+        return is_callable($clean) ? $clean($this, $record) : $record;
+    }
+
+    public function __debugInfo(): array
+    {
+        $record = $this->jsonSerialize();
+        return is_array($record) ? $record : ['record' => $record];
     }
 }

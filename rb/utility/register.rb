@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 CustomsWindowUtility.registrar = ->(u) {
   u.clean = CustomsWindowUtilities::Clean
+  u.clean_add = CustomsWindowUtilities::CleanAdd
+  u.clean_explain = CustomsWindowUtilities::CleanExplain
   u.done = CustomsWindowUtilities::Done
   u.make_error = CustomsWindowUtilities::MakeError
   u.feature_add = CustomsWindowUtilities::FeatureAdd

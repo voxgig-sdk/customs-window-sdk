@@ -29,6 +29,7 @@
 <a href="../features/paging.html">Paging</a>
 <a href="../features/ratelimit.html">Rate limiting</a>
 <a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
 <a href="../features/test.html">Test transport</a>
 <a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="submissiondetail">SubmissionDetail</h1>
 <h2 id="operations">Operations</h2>
@@ -55,7 +56,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">created, err := client.SubmissionDetail(nil).Create(map[string]any{&quot;additional_information&quot;: []any{}, &quot;clearance_slip&quot;: map[string]any{}, &quot;client&quot;: map[string]any{}, &quot;company&quot;: &quot;example&quot;, &quot;company_member&quot;: map[string]any{}, &quot;consignee&quot;: map[string]any{}, &quot;consignor&quot;: map[string]any{}, &quot;created_at&quot;: &quot;example&quot;, &quot;declarant&quot;: map[string]any{}, &quot;form&quot;: &quot;example&quot;, &quot;latest_state&quot;: map[string]any{}, &quot;receipt&quot;: map[string]any{}, &quot;submission&quot;: &quot;example&quot;, &quot;updated_at&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">created, err := client.SubmissionDetail(nil).Create(map[string]any{&quot;additional_information&quot;: []any{}, &quot;company&quot;: &quot;example&quot;, &quot;company_member&quot;: map[string]any{}, &quot;submission&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -63,23 +64,23 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local created, err = client:SubmissionDetail():create({ additional_information = {}, clearance_slip = {}, client = {}, company = &quot;example&quot;, company_member = {}, consignee = {}, consignor = {}, created_at = &quot;example&quot;, declarant = {}, form = &quot;example&quot;, latest_state = {}, receipt = {}, submission = &quot;example&quot;, updated_at = &quot;example&quot; })
+<pre><code class="language-lua">local created, err = client:SubmissionDetail():create({ additional_information = {}, company = &quot;example&quot;, company_member = {}, submission = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$created = $client-&gt;SubmissionDetail()-&gt;create([&quot;additional_information&quot; =&gt; [], &quot;clearance_slip&quot; =&gt; [], &quot;client&quot; =&gt; [], &quot;company&quot; =&gt; &quot;example&quot;, &quot;company_member&quot; =&gt; [], &quot;consignee&quot; =&gt; [], &quot;consignor&quot; =&gt; [], &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;declarant&quot; =&gt; [], &quot;form&quot; =&gt; &quot;example&quot;, &quot;latest_state&quot; =&gt; [], &quot;receipt&quot; =&gt; [], &quot;submission&quot; =&gt; &quot;example&quot;, &quot;updated_at&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$created = $client-&gt;SubmissionDetail()-&gt;create([&quot;additional_information&quot; =&gt; [], &quot;company&quot; =&gt; &quot;example&quot;, &quot;company_member&quot; =&gt; [], &quot;submission&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">created = client.SubmissionDetail().create({ &quot;additional_information&quot;: [], &quot;clearance_slip&quot;: {}, &quot;client&quot;: {}, &quot;company&quot;: &quot;example&quot;, &quot;company_member&quot;: {}, &quot;consignee&quot;: {}, &quot;consignor&quot;: {}, &quot;created_at&quot;: &quot;example&quot;, &quot;declarant&quot;: {}, &quot;form&quot;: &quot;example&quot;, &quot;latest_state&quot;: {}, &quot;receipt&quot;: {}, &quot;submission&quot;: &quot;example&quot;, &quot;updated_at&quot;: &quot;example&quot; })
+<pre><code class="language-py">created = client.SubmissionDetail().create({ &quot;additional_information&quot;: [], &quot;company&quot;: &quot;example&quot;, &quot;company_member&quot;: {}, &quot;submission&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">created = client.SubmissionDetail.create({ &quot;additional_information&quot; =&gt; [], &quot;clearance_slip&quot; =&gt; {}, &quot;client&quot; =&gt; {}, &quot;company&quot; =&gt; &quot;example&quot;, &quot;company_member&quot; =&gt; {}, &quot;consignee&quot; =&gt; {}, &quot;consignor&quot; =&gt; {}, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;declarant&quot; =&gt; {}, &quot;form&quot; =&gt; &quot;example&quot;, &quot;latest_state&quot; =&gt; {}, &quot;receipt&quot; =&gt; {}, &quot;submission&quot; =&gt; &quot;example&quot;, &quot;updated_at&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">created = client.SubmissionDetail.create({ &quot;additional_information&quot; =&gt; [], &quot;company&quot; =&gt; &quot;example&quot;, &quot;company_member&quot; =&gt; {}, &quot;submission&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const created = await client.SubmissionDetail().create({ additional_information: [], clearance_slip: {}, client: {}, company: &quot;example&quot;, company_member: {}, consignee: {}, consignor: {}, created_at: &quot;example&quot;, declarant: {}, form: &quot;example&quot;, latest_state: {}, receipt: {}, submission: &quot;example&quot;, updated_at: &quot;example&quot; })
+<pre><code class="language-ts">const created = await client.SubmissionDetail().create({ additional_information: [], company: &quot;example&quot;, company_member: {}, submission: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -294,7 +295,7 @@ fmt.Println(created)
 <td><code>status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - re…</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> -…</td>
 </tr>
 <tr>
 <td><code>submission</code></td>

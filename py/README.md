@@ -15,7 +15,7 @@ keeps the cognitive load low.
 
 ## Install
 This package is not yet published to PyPI. Install it from the GitHub
-release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/customs-window-sdk/releases)) or
+release tag (`py/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/customs-window-sdk/tags)) or
 from a source checkout:
 
 ```bash
@@ -41,14 +41,14 @@ client = CustomsWindowSDK({
 
 ### 2. List bulkupload records
 
-`list()` returns a `list` of records (each a `dict`) and raises on
-error — iterate it directly.
+`list()` returns a `list` of entities, one per record, and raises on
+error; an entity's `data_get()` reads its record (a `dict`).
 
 ```python
 try:
     bulkuploads = client.BulkUpload().list()
     for bulkupload in bulkuploads:
-        print(bulkupload)
+        print(bulkupload.data_get())
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -60,7 +60,7 @@ except Exception as err:
 ```python
 try:
     bulkupload = client.BulkUpload().load({"id": "example_id"})
-    print(bulkupload)
+    print(bulkupload.data_get())
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -69,9 +69,9 @@ except Exception as err:
 
 ```python
 # Create — returns the ENTITY (call data_get() for the record)
-created = client.BulkUpload().create({"client": "example_client", "company_member": "example_company_member", "created_at": "example_created_at", "declarant": "example_declarant", "declarations_no": 1, "errors_file": {}, "file": {}, "updated_at": "example_updated_at"})
+created = client.BulkUpload().create({"client": "example_client", "company_member": "example_company_member", "declarant": "example_declarant", "file": {}})
 
-# Update — the created record's id is a plain dict key
+# Update — the created entity's record holds its id
 client.BulkUpload().update({"id": created.data_get()["id"], "active_transport_nationality": "example_active_transport_nationality", "active_transport_number": "example_active_transport_number"})
 
 # Remove
@@ -86,7 +86,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 ```python
 try:
     submissions = client.Submission().list()
-    print(submissions)
+    print([item.data_get() for item in submissions])
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -152,10 +152,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = CustomsWindowSDK.test()
 
-# Entity ops return the ENTITY and raises on error;
-# call data_get() for the record.
+# Entity ops return the entity, and list one per record; they raise on error.
 submission = client.Submission().list()
-# submission contains the mock response record
+# data_get() on an entity reads its mock response record
 ```
 
 ### Use a custom fetch function
@@ -245,11 +244,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria, one per record. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity, and return it. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity, and return it. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity, and return it marked as deleted. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -259,9 +258,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
-ops, a `list` for `list`) and raise on error. Wrap calls in
-`try`/`except` to handle failures.
+Entity operations return the entity, and `list` a `list` of entities, one
+per record; an entity's `data_get()` reads its record (a `dict`). They raise
+on error, so wrap calls in `try`/`except` to handle failures.
 
 The `direct()` escape hatch never raises — it returns a result `dict`
 you branch on via `result["ok"]`:
@@ -372,7 +371,7 @@ API path: `/files`
 | `phone_number` |  |
 | `preferred_payment_method` |  |
 | `signed_form` |  |
-| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` |  |
 | `unlocode` |  |
 | `updated_at` |  |
@@ -420,7 +419,7 @@ API path: `/parties`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` |  |
 | `template_id` | cuid-format identifier for this entity. |
 | `template_properties` |  |
@@ -470,7 +469,7 @@ API path: `/submissions/{id}/refund`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | cuid-format identifier for this entity. |
 | `supporting_documents` |  |
 | `template` |  |
@@ -566,12 +565,8 @@ bulk_uploads = client.BulkUpload().list()
 bulk_upload = client.BulkUpload().create({
     "client": "example_client",  # str
     "company_member": "example_company_member",  # str
-    "created_at": "example_created_at",  # str
     "declarant": "example_declarant",  # str
-    "declarations_no": 1,  # int
-    "errors_file": {},  # dict
     "file": {},  # dict
-    "updated_at": "example_updated_at",  # str
 })
 ```
 
@@ -606,13 +601,7 @@ Create an instance: `file = client.File()`
 ```python
 file = client.File().create({
     "company": "example_company",  # str
-    "created_at": "example_created_at",  # str
-    "extension": "example_extension",  # str
     "file": "example_file",  # str
-    "name": "example_name",  # str
-    "public": True,  # bool
-    "updated_at": "example_updated_at",  # str
-    "url": "example_url",  # str
 })
 ```
 
@@ -657,7 +646,7 @@ Create an instance: `party = client.Party()`
 | `phone_number` | `str` |  |
 | `preferred_payment_method` | `dict` |  |
 | `signed_form` | `dict` |  |
-| `type` | `str` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `str` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `dict` |  |
 | `unlocode` | `str` |  |
 | `updated_at` | `str` |  |
@@ -682,14 +671,11 @@ party = client.Party().create({
     "address": {},  # dict
     "authorisation": {},  # dict
     "certificate": {},  # dict
-    "certificate_type": "example_certificate_type",  # str
     "company": "example_company",  # str
-    "created_at": "example_created_at",  # str
     "customs_office_of_lodgement": {},  # dict
     "preferred_payment_method": {},  # dict
     "signed_form": {},  # dict
     "type_of_person": {},  # dict
-    "updated_at": "example_updated_at",  # str
 })
 ```
 
@@ -747,7 +733,7 @@ Create an instance: `submission = client.Submission()`
 | `shipment_items_quantity_no` | `int` |  |
 | `source` | `str` | cuid-format identifier for this entity. |
 | `source_type` | `str` | * `template` - template * `automated_import` - automated_import |
-| `status` | `str` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `str` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `bool` |  |
 | `template_id` | `str` | cuid-format identifier for this entity. |
 | `template_properties` | `list` |  |
@@ -773,17 +759,8 @@ submissions = client.Submission().list()
 ```python
 submission = client.Submission().create({
     "answers": [],  # list
-    "clearance_slip": {},  # dict
-    "client": {},  # dict
     "company_member": {},  # dict
-    "consignee": {},  # dict
-    "consignor": {},  # dict
-    "created_at": "example_created_at",  # str
     "declarant": {},  # dict
-    "form": "example_form",  # str
-    "latest_state": {},  # dict
-    "receipt": {},  # dict
-    "updated_at": "example_updated_at",  # str
 })
 ```
 
@@ -835,7 +812,7 @@ Create an instance: `submission_detail = client.SubmissionDetail()`
 | `shipment_items_quantity_no` | `int` |  |
 | `source` | `str` | cuid-format identifier for this entity. |
 | `source_type` | `str` | * `template` - template * `automated_import` - automated_import |
-| `status` | `str` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `str` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `str` | cuid-format identifier for this entity. |
 | `supporting_documents` | `list` |  |
 | `template` | `bool` |  |
@@ -849,25 +826,15 @@ Create an instance: `submission_detail = client.SubmissionDetail()`
 ```python
 submission_detail = client.SubmissionDetail().create({
     "additional_information": [],  # list
-    "clearance_slip": {},  # dict
-    "client": {},  # dict
     "company": "example_company",  # str
     "company_member": {},  # dict
-    "consignee": {},  # dict
-    "consignor": {},  # dict
-    "created_at": "example_created_at",  # str
-    "declarant": {},  # dict
-    "form": "example_form",  # str
-    "latest_state": {},  # dict
-    "receipt": {},  # dict
     "submission": "example_submission",  # str
-    "updated_at": "example_updated_at",  # str
 })
 ```
 
 ## Features
 
-This SDK ships 8 optional features. Each is **inactive until you
+This SDK ships 9 optional features. Each is **inactive until you
 switch it on**, so an SDK you have not configured behaves exactly as if none of
 them existed — no retries, no cache, no logging, no measurable overhead.
 
@@ -882,10 +849,11 @@ above:
 | [`paging`](#paging) | Paging |
 | [`ratelimit`](#ratelimit) | Rate limiting |
 | [`retry`](#retry) | Retry |
+| [`secrets`](#secrets) | Secrets |
 | [`test`](#test) | Test transport |
 | [`timeout`](#timeout) | Timeout |
 
-> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> **Order matters for `ratelimit`, `retry`, `secrets`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
 > activate them in IS the nesting order. Activating them as an ordered list
 > rather than a map is what fixes that order.
@@ -976,6 +944,24 @@ Set `feature.retry.active` to enable it, then override any of the options above.
 transport features decides what it sees. A feature activated later wraps one
 activated earlier.
 
+### secrets
+
+Secrets.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+Set `feature.secrets.active` to enable it, then override any of the options above.
+
+`secrets` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
 ### test
 
 Test transport.
@@ -1046,6 +1032,7 @@ The SDK ships with built-in features:
 - **PagingFeature**: Paging
 - **RatelimitFeature**: Rate limiting
 - **RetryFeature**: Retry
+- **SecretsFeature**: Secrets
 - **TestFeature**: Test transport
 - **TimeoutFeature**: Timeout
 

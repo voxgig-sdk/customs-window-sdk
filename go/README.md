@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/customs-window-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/customs-window-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/customs-window-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -35,9 +35,10 @@ loading a specific record.
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -53,42 +54,42 @@ func main() {
         "apikey": os.Getenv("CUSTOMS_WINDOW_APIKEY"),
     })
 
-    // List bulkUpload records — the value is the array of records itself.
+    // List bulkUpload records — the value is a []any of entities, one per record.
     bulkUploads, err := client.BulkUpload(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
     for _, item := range bulkUploads.([]any) {
-        fmt.Println(item)
+        fmt.Println(item.(sdk.Entity).Data())
     }
 
-    // Load a single bulkUpload — the value is the loaded record.
+    // Load a single bulkUpload — the value is the entity; Data() reads its record.
     bulkUpload, err := client.BulkUpload(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(bulkUpload)
+    fmt.Println(bulkUpload.(sdk.Entity).Data())
 
     // Create a bulkUpload.
-    created, err := client.BulkUpload(nil).Create(map[string]any{"client": "example_client", "company_member": "example_company_member", "created_at": "example_created_at", "declarant": "example_declarant", "declarations_no": 1, "errors_file": map[string]any{}, "file": map[string]any{}, "updated_at": "example_updated_at"}, nil)
+    created, err := client.BulkUpload(nil).Create(map[string]any{"client": "example_client", "company_member": "example_company_member", "declarant": "example_declarant", "file": map[string]any{}}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(created)
+    fmt.Println(created.(sdk.Entity).Data())
 
     // Update a bulkUpload.
     updated, err := client.BulkUpload(nil).Update(map[string]any{"id": "example_id", "active_transport_nationality": "example_active_transport_nationality", "active_transport_number": "example_active_transport_number"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(updated)
+    fmt.Println(updated.(sdk.Entity).Data())
 
     // Remove a bulkUpload.
     removed, err := client.BulkUpload(nil).Remove(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(removed)
+    fmt.Println(removed.(sdk.Entity).Data())
 }
 ```
 
@@ -168,13 +169,16 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-submission, err := client.Submission(nil).List(
+submissions, err := client.Submission(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(submission) // the returned mock data
+// A []any of entities, one per mock record.
+for _, item := range submissions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Use a custom fetch function
@@ -265,11 +269,11 @@ All entities implement the `CustomsWindowEntity` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria, and return it. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria, one per record. |
+| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity, and return it. |
+| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity, and return it. |
+| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity, and return it marked as deleted. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -277,21 +281,21 @@ All entities implement the `CustomsWindowEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
-| `List` | a `[]any` of entity records |
+| `Load` / `Create` / `Update` / `Remove` | the entity, whose `Data()` reads its record (`map[string]any`) |
+| `List` | a `[]any` of entities, one per record |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    bulkUpload, err := client.BulkUpload(nil).List(map[string]any{/* fields */}, nil)
+    bulkUpload, err := client.BulkUpload(nil).List(nil, nil)
     if err != nil { /* handle */ }
-    // bulkUpload is the returned record
+    // bulkUpload is a []any of entities, one per record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -393,7 +397,7 @@ API path: `/files`
 | `"phone_number"` |  |
 | `"preferred_payment_method"` |  |
 | `"signed_form"` |  |
-| `"type"` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `"type"` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `"type_of_person"` |  |
 | `"unlocode"` |  |
 | `"updated_at"` |  |
@@ -441,7 +445,7 @@ API path: `/parties`
 | `"shipment_items_quantity_no"` |  |
 | `"source"` | cuid-format identifier for this entity. |
 | `"source_type"` | * `template` - template * `automated_import` - automated_import |
-| `"status"` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `"status"` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `"template"` |  |
 | `"template_id"` | cuid-format identifier for this entity. |
 | `"template_properties"` |  |
@@ -491,7 +495,7 @@ API path: `/submissions/{id}/refund`
 | `"shipment_items_quantity_no"` |  |
 | `"source"` | cuid-format identifier for this entity. |
 | `"source_type"` | * `template` - template * `automated_import` - automated_import |
-| `"status"` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `"status"` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `"submission"` | cuid-format identifier for this entity. |
 | `"supporting_documents"` |  |
 | `"template"` |  |
@@ -576,7 +580,7 @@ bulkUpload, err := client.BulkUpload(nil).Load(map[string]any{"id": "bulk_upload
 if err != nil {
     panic(err)
 }
-fmt.Println(bulkUpload) // the loaded record
+fmt.Println(bulkUpload.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -586,7 +590,10 @@ bulkUploads, err := client.BulkUpload(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(bulkUploads) // the array of records
+// A []any of entities, one per record.
+for _, item := range bulkUploads.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 #### Example: Create
@@ -595,17 +602,13 @@ fmt.Println(bulkUploads) // the array of records
 result, err := client.BulkUpload(nil).Create(map[string]any{
     "client": "example_client",
     "company_member": "example_company_member",
-    "created_at": "example_created_at",
     "declarant": "example_declarant",
-    "declarations_no": 1,
-    "errors_file": map[string]any{},
     "file": map[string]any{},
-    "updated_at": "example_updated_at",
 }, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
@@ -639,18 +642,12 @@ Create an instance: `file := client.File(nil)`
 ```go
 result, err := client.File(nil).Create(map[string]any{
     "company": "example_company",
-    "created_at": "example_created_at",
-    "extension": "example_extension",
     "file": "example_file",
-    "name": "example_name",
-    "public": true,
-    "updated_at": "example_updated_at",
-    "url": "example_url",
 }, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
@@ -694,7 +691,7 @@ Create an instance: `party := client.Party(nil)`
 | `phone_number` | `string` |  |
 | `preferred_payment_method` | `map[string]any` |  |
 | `signed_form` | `map[string]any` |  |
-| `type` | `string` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `string` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `map[string]any` |  |
 | `unlocode` | `string` |  |
 | `updated_at` | `string` |  |
@@ -706,7 +703,7 @@ party, err := client.Party(nil).Load(map[string]any{"id": "party_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(party) // the loaded record
+fmt.Println(party.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -716,7 +713,10 @@ partys, err := client.Party(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(partys) // the array of records
+// A []any of entities, one per record.
+for _, item := range partys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 #### Example: Create
@@ -727,19 +727,16 @@ result, err := client.Party(nil).Create(map[string]any{
     "address": map[string]any{},
     "authorisation": map[string]any{},
     "certificate": map[string]any{},
-    "certificate_type": "example_certificate_type",
     "company": "example_company",
-    "created_at": "example_created_at",
     "customs_office_of_lodgement": map[string]any{},
     "preferred_payment_method": map[string]any{},
     "signed_form": map[string]any{},
     "type_of_person": map[string]any{},
-    "updated_at": "example_updated_at",
 }, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
@@ -796,7 +793,7 @@ Create an instance: `submission := client.Submission(nil)`
 | `shipment_items_quantity_no` | `int` |  |
 | `source` | `string` | cuid-format identifier for this entity. |
 | `source_type` | `string` | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `bool` |  |
 | `template_id` | `string` | cuid-format identifier for this entity. |
 | `template_properties` | `[]any` |  |
@@ -812,7 +809,7 @@ submission, err := client.Submission(nil).Load(map[string]any{"id": "submission_
 if err != nil {
     panic(err)
 }
-fmt.Println(submission) // the loaded record
+fmt.Println(submission.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -822,7 +819,10 @@ submissions, err := client.Submission(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(submissions) // the array of records
+// A []any of entities, one per record.
+for _, item := range submissions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 #### Example: Create
@@ -830,22 +830,13 @@ fmt.Println(submissions) // the array of records
 ```go
 result, err := client.Submission(nil).Create(map[string]any{
     "answers": []any{},
-    "clearance_slip": map[string]any{},
-    "client": map[string]any{},
     "company_member": map[string]any{},
-    "consignee": map[string]any{},
-    "consignor": map[string]any{},
-    "created_at": "example_created_at",
     "declarant": map[string]any{},
-    "form": "example_form",
-    "latest_state": map[string]any{},
-    "receipt": map[string]any{},
-    "updated_at": "example_updated_at",
 }, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
@@ -896,7 +887,7 @@ Create an instance: `submissionDetail := client.SubmissionDetail(nil)`
 | `shipment_items_quantity_no` | `int` |  |
 | `source` | `string` | cuid-format identifier for this entity. |
 | `source_type` | `string` | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `string` | cuid-format identifier for this entity. |
 | `supporting_documents` | `[]any` |  |
 | `template` | `bool` |  |
@@ -910,29 +901,19 @@ Create an instance: `submissionDetail := client.SubmissionDetail(nil)`
 ```go
 result, err := client.SubmissionDetail(nil).Create(map[string]any{
     "additional_information": []any{},
-    "clearance_slip": map[string]any{},
-    "client": map[string]any{},
     "company": "example_company",
     "company_member": map[string]any{},
-    "consignee": map[string]any{},
-    "consignor": map[string]any{},
-    "created_at": "example_created_at",
-    "declarant": map[string]any{},
-    "form": "example_form",
-    "latest_state": map[string]any{},
-    "receipt": map[string]any{},
     "submission": "example_submission",
-    "updated_at": "example_updated_at",
 }, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 ## Features
 
-This SDK ships 8 optional features. Each is **inactive until you
+This SDK ships 9 optional features. Each is **inactive until you
 switch it on**, so an SDK you have not configured behaves exactly as if none of
 them existed — no retries, no cache, no logging, no measurable overhead.
 
@@ -947,10 +928,11 @@ above:
 | [`paging`](#paging) | Paging |
 | [`ratelimit`](#ratelimit) | Rate limiting |
 | [`retry`](#retry) | Retry |
+| [`secrets`](#secrets) | Secrets |
 | [`test`](#test) | Test transport |
 | [`timeout`](#timeout) | Timeout |
 
-> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> **Order matters for `ratelimit`, `retry`, `secrets`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
 > activate them in IS the nesting order. Activating them as an ordered list
 > rather than a map is what fixes that order.
@@ -1041,6 +1023,24 @@ Set `feature.retry.active` to enable it, then override any of the options above.
 transport features decides what it sees. A feature activated later wraps one
 activated earlier.
 
+### secrets
+
+Secrets.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+Set `feature.secrets.active` to enable it, then override any of the options above.
+
+`secrets` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
 ### test
 
 Test transport.
@@ -1111,6 +1111,7 @@ The SDK ships with built-in features:
 - **PagingFeature**: Paging
 - **RatelimitFeature**: Rate limiting
 - **RetryFeature**: Retry
+- **SecretsFeature**: Secrets
 - **TestFeature**: Test transport
 - **TimeoutFeature**: Timeout
 
@@ -1123,7 +1124,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 

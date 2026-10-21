@@ -14,6 +14,7 @@ type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
 type CustomsWindowEntity = core.CustomsWindowEntity
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -46,6 +47,9 @@ func init() {
 	}
 	core.NewRetryFeatureFunc = func() core.Feature {
 		return feature.NewRetryFeature()
+	}
+	core.NewSecretsFeatureFunc = func() core.Feature {
+		return feature.NewSecretsFeature()
 	}
 	core.NewTestFeatureFunc = func() core.Feature {
 		return feature.NewTestFeature()
@@ -94,5 +98,6 @@ var NewMetricsFeature = feature.NewMetricsFeature
 var NewPagingFeature = feature.NewPagingFeature
 var NewRatelimitFeature = feature.NewRatelimitFeature
 var NewRetryFeature = feature.NewRetryFeature
+var NewSecretsFeature = feature.NewSecretsFeature
 var NewTestFeature = feature.NewTestFeature
 var NewTimeoutFeature = feature.NewTimeoutFeature

@@ -31,18 +31,23 @@ class CustomsWindowMakeError
             $err = $ctx->make_error('unknown', 'unknown error');
         }
 
-        $errmsg = ($err instanceof CustomsWindowError) ? $err->msg : (string)$err;
+        $errmsg = ($err instanceof CustomsWindowError) ? $err->msg
+            : (($err instanceof \Throwable) ? $err->getMessage() : (string)$err);
         $msg = "CustomsWindowSDK: {$opname}: {$errmsg}";
-        $msg = ($ctx->utility->clean)($ctx, $msg);
 
         $result->err = null;
         $spec = $ctx->spec;
 
+        $sdk_err = new CustomsWindowError(
+            ($err instanceof CustomsWindowError) ? $err->sdk_code : '', $msg, $ctx);
+        ($ctx->utility->clean)($ctx, $sdk_err);
+
         if ($ctx->ctrl->explain) {
-            $ctx->ctrl->explain['err'] = ['message' => $msg];
+            $ctx->ctrl->explain['err'] = ['message' => $sdk_err->msg];
+            // A failure before done() leaves the record holding the live spec.
+            ($ctx->utility->clean_explain)($ctx);
         }
 
-        $sdk_err = new CustomsWindowError('', $msg, $ctx);
         $sdk_err->result = ($ctx->utility->clean)($ctx, $result);
         $sdk_err->spec = ($ctx->utility->clean)($ctx, $spec);
 
@@ -50,9 +55,6 @@ class CustomsWindowMakeError
         // on `err->status` / `err->notFound()` rather than reaching into
         // `err->result`.
         $sdk_err->status = null === $result->status ? -1 : (int)$result->status;
-        if ($err instanceof CustomsWindowError) {
-            $sdk_err->sdk_code = $err->sdk_code;
-        }
 
         $ctx->ctrl->err = $sdk_err;
 
@@ -62,6 +64,7 @@ class CustomsWindowMakeError
         // so hooks can read the error; features guard against double-recording
         // when PreDone already fired.
         if (isset($ctx->utility) && isset($ctx->utility->feature_hook)) {
+            $ctx->unexpected_fired = true;
             ($ctx->utility->feature_hook)($ctx, "PreUnexpected");
         }
 

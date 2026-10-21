@@ -223,7 +223,7 @@ main: kit: entity: submission_detail: {
       h: "Status"
       n: "status"
       r: false
-      sh: "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…"
+      sh: "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -…"
       t: "`$STRING`"
     }
     submission: {
@@ -286,6 +286,13 @@ main: kit: entity: submission_detail: {
       name: "create"
       points: [
         {
+          bf: [
+            "additional_information"
+            "company"
+            "company_member"
+            "submission"
+            "supporting_documents"
+          ]
           co: {
             id: "POST /documents-request"
             source: "openapi3"
@@ -293,6 +300,62 @@ main: kit: entity: submission_detail: {
           }
           m: "POST"
           o: "/documents-request"
+          rb: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    list: true
+                    name: "additional_information"
+                  }
+                  {
+                    name: "company"
+                  }
+                  {
+                    name: "company_member"
+                  }
+                  {
+                    name: "submission"
+                  }
+                  {
+                    list: true
+                    name: "supporting_documents"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    list: true
+                    name: "additional_information"
+                  }
+                  {
+                    name: "company"
+                  }
+                  {
+                    name: "company_member"
+                  }
+                  {
+                    name: "submission"
+                  }
+                  {
+                    list: true
+                    name: "supporting_documents"
+                  }
+                ]
+                kind: "form"
+                media: "application/x-www-form-urlencoded"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "documents-request"

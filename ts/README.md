@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/customs-window-sdk/tags)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/customs-window-sdk/releases](https://github.com/voxgig-sdk/customs-window-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/customs-window-sdk
+npm install ./customs-window-sdk/ts
+```
 
 
 ## Tutorial: your first API call
@@ -45,18 +49,18 @@ resolves to entities, not raw records. Iterate them directly, and call
 const bulkuploads = await client.BulkUpload().list()
 
 for (const bulkupload of bulkuploads) {
-  console.log(bulkupload)
+  console.log(bulkupload.data())
 }
 ```
 
 ### 3. Load a bulkupload
 
-`load()` returns the entity directly and throws on failure:
+`load()` returns the entity and throws on failure; `.data()` reads its record:
 
 ```ts
 try {
   const bulkupload = await client.BulkUpload().load({ id: 'example_id' })
-  console.log(bulkupload)
+  console.log(bulkupload.data())
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -69,12 +73,8 @@ try {
 const created = await client.BulkUpload().create({
   client: 'example_client',
   company_member: 'example_company_member',
-  created_at: 'example_created_at',
   declarant: 'example_declarant',
-  declarations_no: 1,
-  errors_file: {},
   file: {},
-  updated_at: 'example_updated_at',
 })
 
 // Update — the id comes off the returned entity's data()
@@ -98,14 +98,15 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 ```ts
 try {
   const submissions = await client.Submission().list()
-  console.log(submissions)
+  console.log(submissions.map((item) => item.data()))
 } catch (err) {
   console.error('list failed:', err)
 }
 ```
 
 The low-level `direct()` method does **not** throw — it returns the
-value or an `Error`, so check the result before using it:
+result envelope. Branch on `ok`; on failure `status` holds the HTTP status
+(for error responses) and `err` holds the error:
 
 ```ts
 const result = await client.direct({
@@ -114,8 +115,8 @@ const result = await client.direct({
   params: { id: 'example_id' },
 })
 
-if (result instanceof Error) {
-  throw result
+if (!result.ok) {
+  console.error('request failed:', result.status, result.err)
 }
 ```
 
@@ -133,9 +134,6 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
-if (result instanceof Error) {
-  throw result
-}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -164,10 +162,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CustomsWindowSDK.test()
 
-const submission = await client.Submission().list()
-// submission is the entity, populated with mock response data
-// — call submission.data() for the record itself
-console.log(submission)
+const submissions = await client.Submission().list()
+// submissions is an array of Submission entities, one per mock record
+console.log(submissions.map((submission) => submission.data()))
 ```
 
 You can also use the instance method:
@@ -290,11 +287,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria, and return it. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria, one per record. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity, and return it. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity, and return it. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<Entity>` | Remove an entity, and return it marked as deleted. |
 | `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
 | `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
@@ -303,13 +300,13 @@ All entities share the same interface.
 
 #### Return values
 
-Entity operations resolve to the entity data directly — there is no
-result envelope:
+Entity operations resolve to the entity itself — there is no result
+envelope, and an entity's `data()` reads its record:
 
 - `load`, `create` and `update` resolve to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
+- `remove` resolves to the entity, marked as deleted.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -440,7 +437,7 @@ API path: `/files`
 | `phone_number` |  |
 | `preferred_payment_method` |  |
 | `signed_form` |  |
-| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` |  |
 | `unlocode` |  |
 | `updated_at` |  |
@@ -488,7 +485,7 @@ API path: `/parties`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` |  |
 | `template_id` | cuid-format identifier for this entity. |
 | `template_properties` |  |
@@ -538,7 +535,7 @@ API path: `/submissions/{id}/refund`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | cuid-format identifier for this entity. |
 | `supporting_documents` |  |
 | `template` |  |
@@ -634,12 +631,8 @@ const bulk_uploads = await client.BulkUpload().list()
 const bulk_upload = await client.BulkUpload().create({
   client: 'example_client',
   company_member: 'example_company_member',
-  created_at: 'example_created_at',
   declarant: 'example_declarant',
-  declarations_no: 1,
-  errors_file: {},
   file: {},
-  updated_at: 'example_updated_at',
 })
 ```
 
@@ -674,13 +667,7 @@ Create an instance: `const file = client.File()`
 ```ts
 const file = await client.File().create({
   company: 'example_company',
-  created_at: 'example_created_at',
-  extension: 'example_extension',
   file: 'example_file',
-  name: 'example_name',
-  public: true,
-  updated_at: 'example_updated_at',
-  url: 'example_url',
 })
 ```
 
@@ -725,7 +712,7 @@ Create an instance: `const party = client.Party()`
 | `phone_number` | `string` |  |
 | `preferred_payment_method` | `Record<string, any>` |  |
 | `signed_form` | `Record<string, any>` |  |
-| `type` | `string` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `string` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `Record<string, any>` |  |
 | `unlocode` | `string` |  |
 | `updated_at` | `string` |  |
@@ -750,14 +737,11 @@ const party = await client.Party().create({
   address: {},
   authorisation: {},
   certificate: {},
-  certificate_type: 'example_certificate_type',
   company: 'example_company',
-  created_at: 'example_created_at',
   customs_office_of_lodgement: {},
   preferred_payment_method: {},
   signed_form: {},
   type_of_person: {},
-  updated_at: 'example_updated_at',
 })
 ```
 
@@ -815,7 +799,7 @@ Create an instance: `const submission = client.Submission()`
 | `shipment_items_quantity_no` | `number` |  |
 | `source` | `string` | cuid-format identifier for this entity. |
 | `source_type` | `string` | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `boolean` |  |
 | `template_id` | `string` | cuid-format identifier for this entity. |
 | `template_properties` | `any[]` |  |
@@ -841,17 +825,8 @@ const submissions = await client.Submission().list()
 ```ts
 const submission = await client.Submission().create({
   answers: [],
-  clearance_slip: {},
-  client: {},
   company_member: {},
-  consignee: {},
-  consignor: {},
-  created_at: 'example_created_at',
   declarant: {},
-  form: 'example_form',
-  latest_state: {},
-  receipt: {},
-  updated_at: 'example_updated_at',
 })
 ```
 
@@ -903,7 +878,7 @@ Create an instance: `const submission_detail = client.SubmissionDetail()`
 | `shipment_items_quantity_no` | `number` |  |
 | `source` | `string` | cuid-format identifier for this entity. |
 | `source_type` | `string` | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `string` | cuid-format identifier for this entity. |
 | `supporting_documents` | `any[]` |  |
 | `template` | `boolean` |  |
@@ -917,25 +892,15 @@ Create an instance: `const submission_detail = client.SubmissionDetail()`
 ```ts
 const submission_detail = await client.SubmissionDetail().create({
   additional_information: [],
-  clearance_slip: {},
-  client: {},
   company: 'example_company',
   company_member: {},
-  consignee: {},
-  consignor: {},
-  created_at: 'example_created_at',
-  declarant: {},
-  form: 'example_form',
-  latest_state: {},
-  receipt: {},
   submission: 'example_submission',
-  updated_at: 'example_updated_at',
 })
 ```
 
 ## Features
 
-This SDK ships 8 optional features. Each is **inactive until you
+This SDK ships 9 optional features. Each is **inactive until you
 switch it on**, so an SDK you have not configured behaves exactly as if none of
 them existed — no retries, no cache, no logging, no measurable overhead.
 
@@ -950,10 +915,11 @@ above:
 | [`paging`](#paging) | Paging |
 | [`ratelimit`](#ratelimit) | Rate limiting |
 | [`retry`](#retry) | Retry |
+| [`secrets`](#secrets) | Secrets |
 | [`test`](#test) | Test transport |
 | [`timeout`](#timeout) | Timeout |
 
-> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> **Order matters for `ratelimit`, `retry`, `secrets`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
 > activate them in IS the nesting order. Activating them as an ordered list
 > rather than a map is what fixes that order.
@@ -1044,6 +1010,24 @@ Set `feature.retry.active` to enable it, then override any of the options above.
 transport features decides what it sees. A feature activated later wraps one
 activated earlier.
 
+### secrets
+
+Secrets.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+Set `feature.secrets.active` to enable it, then override any of the options above.
+
+`secrets` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
 ### test
 
 Test transport.
@@ -1114,6 +1098,7 @@ The SDK ships with built-in features:
 - **PagingFeature**: Paging
 - **RatelimitFeature**: Rate limiting
 - **RetryFeature**: Retry
+- **SecretsFeature**: Secrets
 - **TestFeature**: Test transport
 - **TimeoutFeature**: Timeout
 

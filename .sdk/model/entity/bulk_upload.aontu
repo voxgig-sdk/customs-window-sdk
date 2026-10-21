@@ -293,6 +293,25 @@ main: kit: entity: bulk_upload: {
       name: "create"
       points: [
         {
+          bf: [
+            "active_transport_nationality"
+            "active_transport_number"
+            "arrival_datetime"
+            "client"
+            "company_member"
+            "declarant"
+            "departure_datetime"
+            "external_id"
+            "file"
+            "h1_fallback_template"
+            "house_transport_doc_ref"
+            "issue_date"
+            "mapping"
+            "parser"
+            "passive_transport_nationality"
+            "passive_transport_number"
+            "template"
+          ]
           co: {
             id: "POST /bulk-uploads"
             source: "openapi3"
@@ -300,6 +319,130 @@ main: kit: entity: bulk_upload: {
           }
           m: "POST"
           o: "/bulk-uploads"
+          rb: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    name: "active_transport_nationality"
+                  }
+                  {
+                    name: "active_transport_number"
+                  }
+                  {
+                    name: "arrival_datetime"
+                  }
+                  {
+                    name: "client"
+                  }
+                  {
+                    name: "company_member"
+                  }
+                  {
+                    name: "declarant"
+                  }
+                  {
+                    name: "departure_datetime"
+                  }
+                  {
+                    name: "external_id"
+                  }
+                  {
+                    name: "file"
+                  }
+                  {
+                    name: "h1_fallback_template"
+                  }
+                  {
+                    name: "house_transport_doc_ref"
+                  }
+                  {
+                    name: "issue_date"
+                  }
+                  {
+                    name: "mapping"
+                  }
+                  {
+                    name: "parser"
+                  }
+                  {
+                    name: "passive_transport_nationality"
+                  }
+                  {
+                    name: "passive_transport_number"
+                  }
+                  {
+                    name: "template"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    name: "active_transport_nationality"
+                  }
+                  {
+                    name: "active_transport_number"
+                  }
+                  {
+                    name: "arrival_datetime"
+                  }
+                  {
+                    name: "client"
+                  }
+                  {
+                    name: "company_member"
+                  }
+                  {
+                    name: "declarant"
+                  }
+                  {
+                    name: "departure_datetime"
+                  }
+                  {
+                    name: "external_id"
+                  }
+                  {
+                    name: "file"
+                  }
+                  {
+                    name: "h1_fallback_template"
+                  }
+                  {
+                    name: "house_transport_doc_ref"
+                  }
+                  {
+                    name: "issue_date"
+                  }
+                  {
+                    name: "mapping"
+                  }
+                  {
+                    name: "parser"
+                  }
+                  {
+                    name: "passive_transport_nationality"
+                  }
+                  {
+                    name: "passive_transport_number"
+                  }
+                  {
+                    name: "template"
+                  }
+                ]
+                kind: "form"
+                media: "application/x-www-form-urlencoded"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "bulk-uploads"
@@ -334,10 +477,9 @@ main: kit: entity: bulk_upload: {
           }
           m: "GET"
           o: "/bulk-uploads"
-          q: {
-            exist: [
-              "cursor"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

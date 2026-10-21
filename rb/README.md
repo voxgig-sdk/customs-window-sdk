@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/customs-window-sdk/tags)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/customs-window-sdk/releases](https://github.com/voxgig-sdk/customs-window-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/customs-window-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-customs-window-sdk", path: "./customs-window-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -36,10 +45,11 @@ client = CustomsWindowSDK.new({
 
 ```ruby
 begin
-  # list returns an Array of BulkUpload records — iterate directly.
+  # list returns an Array of BulkUpload entities, one per record; data_get reads the record.
   bulkuploads = client.BulkUpload.list
   bulkuploads.each do |item|
-    puts "#{item["id"]} #{item["active_transport_nationality"]}"
+    record = item.data_get
+    puts "#{record["id"]} #{record["active_transport_nationality"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -52,7 +62,7 @@ end
 begin
   # load returns the ENTITY — call data_get for the BulkUpload record (raises on error).
   bulkupload = client.BulkUpload.load({ "id" => "example_id" })
-  puts bulkupload
+  puts bulkupload.data_get
 rescue => err
   warn "load failed: #{err}"
 end
@@ -62,7 +72,7 @@ end
 
 ```ruby
 # create returns the ENTITY — call data_get for the created BulkUpload record.
-created = client.BulkUpload.create({ "client" => "example_client", "company_member" => "example_company_member", "created_at" => "example_created_at", "declarant" => "example_declarant", "declarations_no" => 1, "errors_file" => {}, "file" => {}, "updated_at" => "example_updated_at" })
+created = client.BulkUpload.create({ "client" => "example_client", "company_member" => "example_company_member", "declarant" => "example_declarant", "file" => {} })
 
 # Update — index the record via data_get (created.data_get["id"]).
 client.BulkUpload.update({ "id" => created.data_get["id"], "active_transport_nationality" => "example_active_transport_nationality", "active_transport_number" => "example_active_transport_number" })
@@ -149,10 +159,10 @@ client = CustomsWindowSDK.test({
   "entity" => { "submission" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-submission = client.Submission.list()
-puts submission
+# list returns an Array of Submission entities, one per mock record (raises on
+# error); data_get reads each record.
+submissions = client.Submission.list()
+submissions.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -242,11 +252,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity, and return it. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity, and return it. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity, and return it marked as deleted. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -256,9 +266,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `CustomsWindowError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`CustomsWindowError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -368,7 +379,7 @@ API path: `/files`
 | `phone_number` |  |
 | `preferred_payment_method` |  |
 | `signed_form` |  |
-| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` |  |
 | `unlocode` |  |
 | `updated_at` |  |
@@ -416,7 +427,7 @@ API path: `/parties`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` |  |
 | `template_id` | cuid-format identifier for this entity. |
 | `template_properties` |  |
@@ -466,7 +477,7 @@ API path: `/submissions/{id}/refund`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | cuid-format identifier for this entity. |
 | `supporting_documents` |  |
 | `template` |  |
@@ -554,8 +565,9 @@ bulk_upload = client.BulkUpload.load({ "id" => "bulk_upload_id" })
 #### Example: List
 
 ```ruby
-# list returns an Array of BulkUpload records (raises on error).
+# list returns an Array of BulkUpload entities, one per record (raises on error).
 bulk_uploads = client.BulkUpload.list
+bulk_uploads.each { |item| puts item.data_get }
 ```
 
 #### Example: Create
@@ -564,12 +576,8 @@ bulk_uploads = client.BulkUpload.list
 bulk_upload = client.BulkUpload.create({
   "client" => "example_client", # String
   "company_member" => "example_company_member", # String
-  "created_at" => "example_created_at", # String
   "declarant" => "example_declarant", # String
-  "declarations_no" => 1, # Integer
-  "errors_file" => {}, # Hash
   "file" => {}, # Hash
-  "updated_at" => "example_updated_at", # String
 })
 ```
 
@@ -604,13 +612,7 @@ Create an instance: `file = client.File`
 ```ruby
 file = client.File.create({
   "company" => "example_company", # String
-  "created_at" => "example_created_at", # String
-  "extension" => "example_extension", # String
   "file" => "example_file", # String
-  "name" => "example_name", # String
-  "public" => true, # Boolean
-  "updated_at" => "example_updated_at", # String
-  "url" => "example_url", # String
 })
 ```
 
@@ -655,7 +657,7 @@ Create an instance: `party = client.Party`
 | `phone_number` | `String` |  |
 | `preferred_payment_method` | `Hash` |  |
 | `signed_form` | `Hash` |  |
-| `type` | `String` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `String` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `Hash` |  |
 | `unlocode` | `String` |  |
 | `updated_at` | `String` |  |
@@ -670,8 +672,9 @@ party = client.Party.load({ "id" => "party_id" })
 #### Example: List
 
 ```ruby
-# list returns an Array of Party records (raises on error).
+# list returns an Array of Party entities, one per record (raises on error).
 partys = client.Party.list
+partys.each { |item| puts item.data_get }
 ```
 
 #### Example: Create
@@ -682,14 +685,11 @@ party = client.Party.create({
   "address" => {}, # Hash
   "authorisation" => {}, # Hash
   "certificate" => {}, # Hash
-  "certificate_type" => "example_certificate_type", # String
   "company" => "example_company", # String
-  "created_at" => "example_created_at", # String
   "customs_office_of_lodgement" => {}, # Hash
   "preferred_payment_method" => {}, # Hash
   "signed_form" => {}, # Hash
   "type_of_person" => {}, # Hash
-  "updated_at" => "example_updated_at", # String
 })
 ```
 
@@ -747,7 +747,7 @@ Create an instance: `submission = client.Submission`
 | `shipment_items_quantity_no` | `Integer` |  |
 | `source` | `String` | cuid-format identifier for this entity. |
 | `source_type` | `String` | * `template` - template * `automated_import` - automated_import |
-| `status` | `String` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `String` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `Boolean` |  |
 | `template_id` | `String` | cuid-format identifier for this entity. |
 | `template_properties` | `Array` |  |
@@ -766,8 +766,9 @@ submission = client.Submission.load({ "id" => "submission_id" })
 #### Example: List
 
 ```ruby
-# list returns an Array of Submission records (raises on error).
+# list returns an Array of Submission entities, one per record (raises on error).
 submissions = client.Submission.list
+submissions.each { |item| puts item.data_get }
 ```
 
 #### Example: Create
@@ -775,17 +776,8 @@ submissions = client.Submission.list
 ```ruby
 submission = client.Submission.create({
   "answers" => [], # Array
-  "clearance_slip" => {}, # Hash
-  "client" => {}, # Hash
   "company_member" => {}, # Hash
-  "consignee" => {}, # Hash
-  "consignor" => {}, # Hash
-  "created_at" => "example_created_at", # String
   "declarant" => {}, # Hash
-  "form" => "example_form", # String
-  "latest_state" => {}, # Hash
-  "receipt" => {}, # Hash
-  "updated_at" => "example_updated_at", # String
 })
 ```
 
@@ -837,7 +829,7 @@ Create an instance: `submission_detail = client.SubmissionDetail`
 | `shipment_items_quantity_no` | `Integer` |  |
 | `source` | `String` | cuid-format identifier for this entity. |
 | `source_type` | `String` | * `template` - template * `automated_import` - automated_import |
-| `status` | `String` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `String` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `String` | cuid-format identifier for this entity. |
 | `supporting_documents` | `Array` |  |
 | `template` | `Boolean` |  |
@@ -851,25 +843,15 @@ Create an instance: `submission_detail = client.SubmissionDetail`
 ```ruby
 submission_detail = client.SubmissionDetail.create({
   "additional_information" => [], # Array
-  "clearance_slip" => {}, # Hash
-  "client" => {}, # Hash
   "company" => "example_company", # String
   "company_member" => {}, # Hash
-  "consignee" => {}, # Hash
-  "consignor" => {}, # Hash
-  "created_at" => "example_created_at", # String
-  "declarant" => {}, # Hash
-  "form" => "example_form", # String
-  "latest_state" => {}, # Hash
-  "receipt" => {}, # Hash
   "submission" => "example_submission", # String
-  "updated_at" => "example_updated_at", # String
 })
 ```
 
 ## Features
 
-This SDK ships 8 optional features. Each is **inactive until you
+This SDK ships 9 optional features. Each is **inactive until you
 switch it on**, so an SDK you have not configured behaves exactly as if none of
 them existed — no retries, no cache, no logging, no measurable overhead.
 
@@ -884,10 +866,11 @@ above:
 | [`paging`](#paging) | Paging |
 | [`ratelimit`](#ratelimit) | Rate limiting |
 | [`retry`](#retry) | Retry |
+| [`secrets`](#secrets) | Secrets |
 | [`test`](#test) | Test transport |
 | [`timeout`](#timeout) | Timeout |
 
-> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> **Order matters for `ratelimit`, `retry`, `secrets`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
 > activate them in IS the nesting order. Activating them as an ordered list
 > rather than a map is what fixes that order.
@@ -978,6 +961,24 @@ Set `feature.retry.active` to enable it, then override any of the options above.
 transport features decides what it sees. A feature activated later wraps one
 activated earlier.
 
+### secrets
+
+Secrets.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+Set `feature.secrets.active` to enable it, then override any of the options above.
+
+`secrets` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
 ### test
 
 Test transport.
@@ -1048,6 +1049,7 @@ The SDK ships with built-in features:
 - **PagingFeature**: Paging
 - **RatelimitFeature**: Rate limiting
 - **RetryFeature**: Retry
+- **SecretsFeature**: Secrets
 - **TestFeature**: Test transport
 - **TimeoutFeature**: Timeout
 

@@ -148,7 +148,7 @@ main: kit: entity: party: {
       h: "Type"
       n: "type"
       r: false
-      sh: "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…"
+      sh: "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *…"
       t: "`$STRING`"
     }
     type_of_person: {
@@ -232,11 +232,9 @@ main: kit: entity: party: {
           }
           m: "GET"
           o: "/parties"
-          q: {
-            exist: [
-              "cursor"
-              "type"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -119,6 +119,29 @@ local function make_config()
         ["strict"] = false,
         ["transport"] = "wrap",
       },
+      ["secrets"] = {
+        ["options"] = {
+          ["active"] = false,
+          ["cache"] = true,
+          ["exchange"] = {
+            ["active"] = false,
+            ["method"] = "POST",
+            ["path"] = "auth/token",
+            ["refresh"] = "",
+            ["request"] = "refresh_token",
+            ["response"] = "access_token",
+            ["retries"] = 1,
+            ["statuses"] = {
+              401,
+            },
+          },
+          ["name"] = "apikey",
+          ["providers"] = {},
+        },
+        ["optspec"] = {},
+        ["strict"] = false,
+        ["transport"] = "wrap",
+      },
       ["test"] = {
         ["options"] = {
           ["active"] = false,
@@ -137,6 +160,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -146,8 +170,7 @@ local function make_config()
     options = {
       base = "https://api.customswindow.com",
       auth = {
-        prefix = "",
-        name = "Basic Auth",
+        prefix = "Basic",
       },
       headers = {
         ["content-type"] = "application/json",
@@ -435,6 +458,130 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["body"] = {
+                  ["alternatives"] = {
+                    {
+                      ["fields"] = {
+                        {
+                          ["name"] = "active_transport_nationality",
+                        },
+                        {
+                          ["name"] = "active_transport_number",
+                        },
+                        {
+                          ["name"] = "arrival_datetime",
+                        },
+                        {
+                          ["name"] = "client",
+                        },
+                        {
+                          ["name"] = "company_member",
+                        },
+                        {
+                          ["name"] = "declarant",
+                        },
+                        {
+                          ["name"] = "departure_datetime",
+                        },
+                        {
+                          ["name"] = "external_id",
+                        },
+                        {
+                          ["name"] = "file",
+                        },
+                        {
+                          ["name"] = "h1_fallback_template",
+                        },
+                        {
+                          ["name"] = "house_transport_doc_ref",
+                        },
+                        {
+                          ["name"] = "issue_date",
+                        },
+                        {
+                          ["name"] = "mapping",
+                        },
+                        {
+                          ["name"] = "parser",
+                        },
+                        {
+                          ["name"] = "passive_transport_nationality",
+                        },
+                        {
+                          ["name"] = "passive_transport_number",
+                        },
+                        {
+                          ["name"] = "template",
+                        },
+                      },
+                      ["kind"] = "multipart",
+                      ["media"] = "multipart/form-data",
+                    },
+                    {
+                      ["fields"] = {
+                        {
+                          ["name"] = "active_transport_nationality",
+                        },
+                        {
+                          ["name"] = "active_transport_number",
+                        },
+                        {
+                          ["name"] = "arrival_datetime",
+                        },
+                        {
+                          ["name"] = "client",
+                        },
+                        {
+                          ["name"] = "company_member",
+                        },
+                        {
+                          ["name"] = "declarant",
+                        },
+                        {
+                          ["name"] = "departure_datetime",
+                        },
+                        {
+                          ["name"] = "external_id",
+                        },
+                        {
+                          ["name"] = "file",
+                        },
+                        {
+                          ["name"] = "h1_fallback_template",
+                        },
+                        {
+                          ["name"] = "house_transport_doc_ref",
+                        },
+                        {
+                          ["name"] = "issue_date",
+                        },
+                        {
+                          ["name"] = "mapping",
+                        },
+                        {
+                          ["name"] = "parser",
+                        },
+                        {
+                          ["name"] = "passive_transport_nationality",
+                        },
+                        {
+                          ["name"] = "passive_transport_number",
+                        },
+                        {
+                          ["name"] = "template",
+                        },
+                      },
+                      ["kind"] = "form",
+                      ["media"] = "application/x-www-form-urlencoded",
+                    },
+                  },
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -469,10 +616,10 @@ local function make_config()
                     },
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "cursor",
-                  },
+                ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -843,13 +990,93 @@ local function make_config()
                 },
                 ["rename"] = {},
                 ["transform"] = {
-                  ["req"] = {
-                    ["file"] = "`reqdata`",
-                  },
+                  ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["body"] = {
+                  ["alternatives"] = {
+                    {
+                      ["fields"] = {
+                        {
+                          ["name"] = "company",
+                        },
+                        {
+                          ["name"] = "created_at",
+                        },
+                        {
+                          ["name"] = "extension",
+                        },
+                        {
+                          ["name"] = "file",
+                        },
+                        {
+                          ["name"] = "id",
+                        },
+                        {
+                          ["name"] = "name",
+                        },
+                        {
+                          ["name"] = "public",
+                        },
+                        {
+                          ["name"] = "size",
+                        },
+                        {
+                          ["name"] = "updated_at",
+                        },
+                        {
+                          ["name"] = "url",
+                        },
+                      },
+                      ["kind"] = "multipart",
+                      ["media"] = "multipart/form-data",
+                    },
+                    {
+                      ["fields"] = {
+                        {
+                          ["name"] = "company",
+                        },
+                        {
+                          ["name"] = "created_at",
+                        },
+                        {
+                          ["name"] = "extension",
+                        },
+                        {
+                          ["name"] = "file",
+                        },
+                        {
+                          ["name"] = "id",
+                        },
+                        {
+                          ["name"] = "name",
+                        },
+                        {
+                          ["name"] = "public",
+                        },
+                        {
+                          ["name"] = "size",
+                        },
+                        {
+                          ["name"] = "updated_at",
+                        },
+                        {
+                          ["name"] = "url",
+                        },
+                      },
+                      ["kind"] = "form",
+                      ["media"] = "application/x-www-form-urlencoded",
+                    },
+                  },
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -991,7 +1218,7 @@ local function make_config()
             ["name"] = "type",
             ["title"] = "Type",
             ["type"] = "`$STRING`",
-            ["short"] = "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…",
+            ["short"] = "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *…",
           },
           {
             ["name"] = "type_of_person",
@@ -1079,14 +1306,14 @@ local function make_config()
                       ["orig"] = "type",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
+                      ["field"] = true,
                     },
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "cursor",
-                    "type",
-                  },
+                ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -1447,7 +1674,7 @@ local function make_config()
             ["name"] = "status",
             ["title"] = "Status",
             ["type"] = "`$STRING`",
-            ["short"] = "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
+            ["short"] = "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -…",
           },
           {
             ["name"] = "template",
@@ -1563,6 +1790,86 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["body"] = {
+                  ["alternatives"] = {
+                    {
+                      ["fields"] = {
+                        {
+                          ["list"] = true,
+                          ["name"] = "additional_external_ids",
+                        },
+                        {
+                          ["list"] = true,
+                          ["name"] = "answers",
+                        },
+                        {
+                          ["name"] = "company_member",
+                        },
+                        {
+                          ["name"] = "declarant",
+                        },
+                        {
+                          ["name"] = "form",
+                        },
+                        {
+                          ["name"] = "name",
+                        },
+                        {
+                          ["name"] = "status",
+                        },
+                        {
+                          ["name"] = "template",
+                        },
+                        {
+                          ["name"] = "template_id",
+                        },
+                      },
+                      ["kind"] = "multipart",
+                      ["media"] = "multipart/form-data",
+                    },
+                    {
+                      ["fields"] = {
+                        {
+                          ["list"] = true,
+                          ["name"] = "additional_external_ids",
+                        },
+                        {
+                          ["list"] = true,
+                          ["name"] = "answers",
+                        },
+                        {
+                          ["name"] = "company_member",
+                        },
+                        {
+                          ["name"] = "declarant",
+                        },
+                        {
+                          ["name"] = "form",
+                        },
+                        {
+                          ["name"] = "name",
+                        },
+                        {
+                          ["name"] = "status",
+                        },
+                        {
+                          ["name"] = "template",
+                        },
+                        {
+                          ["name"] = "template_id",
+                        },
+                      },
+                      ["kind"] = "form",
+                      ["media"] = "application/x-www-form-urlencoded",
+                    },
+                  },
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
               {
                 ["kind"] = "http",
@@ -1633,6 +1940,7 @@ local function make_config()
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["example"] = "green",
+                      ["field"] = true,
                     },
                     {
                       ["name"] = "status",
@@ -1640,23 +1948,21 @@ local function make_config()
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["example"] = "released",
+                      ["field"] = true,
                     },
                     {
                       ["name"] = "template",
                       ["orig"] = "template",
                       ["type"] = "`$BOOLEAN`",
                       ["kind"] = "query",
+                      ["field"] = true,
                     },
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "cursor",
-                    "form_subtype",
-                    "route",
-                    "status",
-                    "template",
-                  },
+                ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -1701,6 +2007,10 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
               {
@@ -2202,6 +2512,94 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["body"] = {
+                  ["alternatives"] = {
+                    {
+                      ["fields"] = {
+                        {
+                          ["list"] = true,
+                          ["name"] = "additional_external_ids",
+                        },
+                        {
+                          ["name"] = "amendment_reason",
+                        },
+                        {
+                          ["name"] = "amendment_status",
+                        },
+                        {
+                          ["list"] = true,
+                          ["name"] = "answers",
+                        },
+                        {
+                          ["name"] = "bypass_restricted_code",
+                        },
+                        {
+                          ["name"] = "company_member",
+                        },
+                        {
+                          ["name"] = "name",
+                        },
+                        {
+                          ["name"] = "partial_answers",
+                        },
+                        {
+                          ["name"] = "status",
+                        },
+                        {
+                          ["list"] = true,
+                          ["name"] = "template_properties",
+                        },
+                      },
+                      ["kind"] = "multipart",
+                      ["media"] = "multipart/form-data",
+                    },
+                    {
+                      ["fields"] = {
+                        {
+                          ["list"] = true,
+                          ["name"] = "additional_external_ids",
+                        },
+                        {
+                          ["name"] = "amendment_reason",
+                        },
+                        {
+                          ["name"] = "amendment_status",
+                        },
+                        {
+                          ["list"] = true,
+                          ["name"] = "answers",
+                        },
+                        {
+                          ["name"] = "bypass_restricted_code",
+                        },
+                        {
+                          ["name"] = "company_member",
+                        },
+                        {
+                          ["name"] = "name",
+                        },
+                        {
+                          ["name"] = "partial_answers",
+                        },
+                        {
+                          ["name"] = "status",
+                        },
+                        {
+                          ["list"] = true,
+                          ["name"] = "template_properties",
+                        },
+                      },
+                      ["kind"] = "form",
+                      ["media"] = "application/x-www-form-urlencoded",
+                    },
+                  },
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
               {
@@ -2582,7 +2980,7 @@ local function make_config()
             ["name"] = "status",
             ["title"] = "Status",
             ["type"] = "`$STRING`",
-            ["short"] = "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
+            ["short"] = "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -…",
           },
           {
             ["name"] = "submission",
@@ -2656,6 +3054,62 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["body"] = {
+                  ["alternatives"] = {
+                    {
+                      ["fields"] = {
+                        {
+                          ["list"] = true,
+                          ["name"] = "additional_information",
+                        },
+                        {
+                          ["name"] = "company",
+                        },
+                        {
+                          ["name"] = "company_member",
+                        },
+                        {
+                          ["name"] = "submission",
+                        },
+                        {
+                          ["list"] = true,
+                          ["name"] = "supporting_documents",
+                        },
+                      },
+                      ["kind"] = "multipart",
+                      ["media"] = "multipart/form-data",
+                    },
+                    {
+                      ["fields"] = {
+                        {
+                          ["list"] = true,
+                          ["name"] = "additional_information",
+                        },
+                        {
+                          ["name"] = "company",
+                        },
+                        {
+                          ["name"] = "company_member",
+                        },
+                        {
+                          ["name"] = "submission",
+                        },
+                        {
+                          ["list"] = true,
+                          ["name"] = "supporting_documents",
+                        },
+                      },
+                      ["kind"] = "form",
+                      ["media"] = "application/x-www-form-urlencoded",
+                    },
+                  },
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },

@@ -156,32 +156,29 @@ bulk_upload = client.BulkUpload
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.BulkUpload.create({
   "client" => "example_client", # String
   "company_member" => "example_company_member", # String
-  "created_at" => "example_created_at", # String
   "declarant" => "example_declarant", # String
-  "declarations_no" => 1, # Integer
-  "errors_file" => {}, # Hash
   "file" => {}, # Hash
-  "updated_at" => "example_updated_at", # String
 })
 ```
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.BulkUpload.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.BulkUpload.load({ "id" => "bulk_upload_id" })
@@ -189,7 +186,7 @@ result = client.BulkUpload.load({ "id" => "bulk_upload_id" })
 
 #### `remove(reqmatch, ctrl = nil) -> result`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
 result = client.BulkUpload.remove({ "id" => "bulk_upload_id" })
@@ -197,7 +194,7 @@ result = client.BulkUpload.remove({ "id" => "bulk_upload_id" })
 
 #### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`. Raises on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```ruby
 result = client.BulkUpload.update({
@@ -276,18 +273,12 @@ file = client.File
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.File.create({
   "company" => "example_company", # String
-  "created_at" => "example_created_at", # String
-  "extension" => "example_extension", # String
   "file" => "example_file", # String
-  "name" => "example_name", # String
-  "public" => true, # Boolean
-  "updated_at" => "example_updated_at", # String
-  "url" => "example_url", # String
 })
 ```
 
@@ -353,7 +344,7 @@ party = client.Party
 | `phone_number` | `String` | No |  |
 | `preferred_payment_method` | `Hash` | Yes |  |
 | `signed_form` | `Hash` | Yes |  |
-| `type` | `String` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `String` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `Hash` | Yes |  |
 | `unlocode` | `String` | No |  |
 | `updated_at` | `String` | Yes |  |
@@ -362,7 +353,7 @@ party = client.Party
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.Party.create({
@@ -370,28 +361,26 @@ result = client.Party.create({
   "address" => {}, # Hash
   "authorisation" => {}, # Hash
   "certificate" => {}, # Hash
-  "certificate_type" => "example_certificate_type", # String
   "company" => "example_company", # String
-  "created_at" => "example_created_at", # String
   "customs_office_of_lodgement" => {}, # Hash
   "preferred_payment_method" => {}, # Hash
   "signed_form" => {}, # Hash
   "type_of_person" => {}, # Hash
-  "updated_at" => "example_updated_at", # String
 })
 ```
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Party.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.Party.load({ "id" => "party_id" })
@@ -399,7 +388,7 @@ result = client.Party.load({ "id" => "party_id" })
 
 #### `remove(reqmatch, ctrl = nil) -> result`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
 result = client.Party.remove({ "id" => "party_id" })
@@ -407,7 +396,7 @@ result = client.Party.remove({ "id" => "party_id" })
 
 #### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`. Raises on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```ruby
 result = client.Party.update({
@@ -491,7 +480,7 @@ submission = client.Submission
 | `shipment_items_quantity_no` | `Integer` | No |  |
 | `source` | `String` | No | cuid-format identifier for this entity. |
 | `source_type` | `String` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `String` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `String` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `Boolean` | No |  |
 | `template_id` | `String` | No | cuid-format identifier for this entity. |
 | `template_properties` | `Array` | No |  |
@@ -552,36 +541,28 @@ submission = client.Submission
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.Submission.create({
   "answers" => [], # Array
-  "clearance_slip" => {}, # Hash
-  "client" => {}, # Hash
   "company_member" => {}, # Hash
-  "consignee" => {}, # Hash
-  "consignor" => {}, # Hash
-  "created_at" => "example_created_at", # String
   "declarant" => {}, # Hash
-  "form" => "example_form", # String
-  "latest_state" => {}, # Hash
-  "receipt" => {}, # Hash
-  "updated_at" => "example_updated_at", # String
 })
 ```
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Submission.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.Submission.load({ "id" => "submission_id" })
@@ -589,7 +570,7 @@ result = client.Submission.load({ "id" => "submission_id" })
 
 #### `remove(reqmatch, ctrl = nil) -> result`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
 result = client.Submission.remove({ "id" => "submission_id" })
@@ -597,7 +578,7 @@ result = client.Submission.remove({ "id" => "submission_id" })
 
 #### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`. Raises on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```ruby
 result = client.Submission.update({
@@ -679,7 +660,7 @@ submission_detail = client.SubmissionDetail
 | `shipment_items_quantity_no` | `Integer` | No |  |
 | `source` | `String` | No | cuid-format identifier for this entity. |
 | `source_type` | `String` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `String` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `String` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `String` | Yes | cuid-format identifier for this entity. |
 | `supporting_documents` | `Array` | No |  |
 | `template` | `Boolean` | No |  |
@@ -692,24 +673,14 @@ submission_detail = client.SubmissionDetail
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.SubmissionDetail.create({
   "additional_information" => [], # Array
-  "clearance_slip" => {}, # Hash
-  "client" => {}, # Hash
   "company" => "example_company", # String
   "company_member" => {}, # Hash
-  "consignee" => {}, # Hash
-  "consignor" => {}, # Hash
-  "created_at" => "example_created_at", # String
-  "declarant" => {}, # Hash
-  "form" => "example_form", # String
-  "latest_state" => {}, # Hash
-  "receipt" => {}, # Hash
   "submission" => "example_submission", # String
-  "updated_at" => "example_updated_at", # String
 })
 ```
 
@@ -753,6 +724,7 @@ Return the entity name.
 | `paging` | 0.0.1 | Paging |
 | `ratelimit` | 0.0.1 | Rate limiting |
 | `retry` | 0.0.1 | Retry |
+| `secrets` | 0.1.0 | Secrets |
 | `test` | 0.0.1 | Test transport |
 | `timeout` | 0.0.1 | Timeout |
 
@@ -768,6 +740,7 @@ client = CustomsWindowSDK.new({
     "paging" => { "active" => true },
     "ratelimit" => { "active" => true },
     "retry" => { "active" => true },
+    "secrets" => { "active" => true },
     "test" => { "active" => true },
     "timeout" => { "active" => true },
   },
@@ -786,7 +759,7 @@ transport, and the order you list them in is the order they nest.
 
 #### Ordering
 
-`ratelimit`, `retry`, `timeout` wrap the transport. Each
+`ratelimit`, `retry`, `secrets`, `timeout` wrap the transport. Each
 wraps whatever is already installed, so **activation order is nesting order**:
 a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
@@ -988,6 +961,31 @@ its default unless you name it.
   sees. See [Ordering](#ordering) above.
 - Inactive by default: leaving it out costs nothing at runtime.
 
+#### `secrets`
+
+Secrets.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+**Usage**
+
+Set `feature.secrets.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
 #### `test`
 
 Test transport.
@@ -1033,6 +1031,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

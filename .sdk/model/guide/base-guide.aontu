@@ -30,7 +30,6 @@ guide: {
   entity: file: {
     path: "/files": {
       op: create: method: *POST
-      op: create: transform: req: "file": *("`reqdata`")|top
     }
   }
 

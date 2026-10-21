@@ -248,7 +248,7 @@ main: kit: entity: submission: {
       h: "Status"
       n: "status"
       r: false
-      sh: "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…"
+      sh: "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -…"
       t: "`$STRING`"
     }
     template: {
@@ -352,6 +352,17 @@ main: kit: entity: submission: {
           }
         }
         {
+          bf: [
+            "additional_external_ids"
+            "answers"
+            "company_member"
+            "declarant"
+            "form"
+            "name"
+            "status"
+            "template"
+            "template_id"
+          ]
           co: {
             id: "POST /submissions"
             source: "openapi3"
@@ -359,6 +370,86 @@ main: kit: entity: submission: {
           }
           m: "POST"
           o: "/submissions"
+          rb: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    list: true
+                    name: "additional_external_ids"
+                  }
+                  {
+                    list: true
+                    name: "answers"
+                  }
+                  {
+                    name: "company_member"
+                  }
+                  {
+                    name: "declarant"
+                  }
+                  {
+                    name: "form"
+                  }
+                  {
+                    name: "name"
+                  }
+                  {
+                    name: "status"
+                  }
+                  {
+                    name: "template"
+                  }
+                  {
+                    name: "template_id"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    list: true
+                    name: "additional_external_ids"
+                  }
+                  {
+                    list: true
+                    name: "answers"
+                  }
+                  {
+                    name: "company_member"
+                  }
+                  {
+                    name: "declarant"
+                  }
+                  {
+                    name: "form"
+                  }
+                  {
+                    name: "name"
+                  }
+                  {
+                    name: "status"
+                  }
+                  {
+                    name: "template"
+                  }
+                  {
+                    name: "template_id"
+                  }
+                ]
+                kind: "form"
+                media: "application/x-www-form-urlencoded"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "submissions"
@@ -447,14 +538,9 @@ main: kit: entity: submission: {
           }
           m: "GET"
           o: "/submissions"
-          q: {
-            exist: [
-              "cursor"
-              "form_subtype"
-              "route"
-              "status"
-              "template"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -494,6 +580,10 @@ main: kit: entity: submission: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -949,6 +1039,18 @@ main: kit: entity: submission: {
       name: "update"
       points: [
         {
+          bf: [
+            "additional_external_ids"
+            "amendment_reason"
+            "amendment_status"
+            "answers"
+            "bypass_restricted_code"
+            "company_member"
+            "name"
+            "partial_answers"
+            "status"
+            "template_properties"
+          ]
           co: {
             id: "PATCH /submissions/{id}"
             source: "openapi3"
@@ -971,6 +1073,94 @@ main: kit: entity: submission: {
             exist: [
               "id"
             ]
+          }
+          rb: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    list: true
+                    name: "additional_external_ids"
+                  }
+                  {
+                    name: "amendment_reason"
+                  }
+                  {
+                    name: "amendment_status"
+                  }
+                  {
+                    list: true
+                    name: "answers"
+                  }
+                  {
+                    name: "bypass_restricted_code"
+                  }
+                  {
+                    name: "company_member"
+                  }
+                  {
+                    name: "name"
+                  }
+                  {
+                    name: "partial_answers"
+                  }
+                  {
+                    name: "status"
+                  }
+                  {
+                    list: true
+                    name: "template_properties"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    list: true
+                    name: "additional_external_ids"
+                  }
+                  {
+                    name: "amendment_reason"
+                  }
+                  {
+                    name: "amendment_status"
+                  }
+                  {
+                    list: true
+                    name: "answers"
+                  }
+                  {
+                    name: "bypass_restricted_code"
+                  }
+                  {
+                    name: "company_member"
+                  }
+                  {
+                    name: "name"
+                  }
+                  {
+                    name: "partial_answers"
+                  }
+                  {
+                    name: "status"
+                  }
+                  {
+                    list: true
+                    name: "template_properties"
+                  }
+                ]
+                kind: "form"
+                media: "application/x-www-form-urlencoded"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -148,52 +148,48 @@ bulk_upload = client.BulkUpload()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> BulkUploadEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.BulkUpload().create({
     "client": "example_client",  # str
     "company_member": "example_company_member",  # str
-    "created_at": "example_created_at",  # str
     "declarant": "example_declarant",  # str
-    "declarations_no": 1,  # int
-    "errors_file": {},  # dict
     "file": {},  # dict
-    "updated_at": "example_updated_at",  # str
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[BulkUploadEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.BulkUpload().list()
 for bulk_upload in results:
-    print(bulk_upload)
+    print(bulk_upload.data_get())
 ```
 
-#### `load(reqmatch, ctrl=None) -> dict`
+#### `load(reqmatch, ctrl=None) -> BulkUploadEntity`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
 result = client.BulkUpload().load({"id": "bulk_upload_id"})
 ```
 
-#### `remove(reqmatch, ctrl=None) -> dict`
+#### `remove(reqmatch, ctrl=None) -> BulkUploadEntity`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
 result = client.BulkUpload().remove({"id": "bulk_upload_id"})
 ```
 
-#### `update(reqdata, ctrl=None) -> dict`
+#### `update(reqdata, ctrl=None) -> BulkUploadEntity`
 
-Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```python
 result = client.BulkUpload().update({
@@ -269,20 +265,14 @@ file = client.File()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> FileEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.File().create({
     "company": "example_company",  # str
-    "created_at": "example_created_at",  # str
-    "extension": "example_extension",  # str
     "file": "example_file",  # str
-    "name": "example_name",  # str
-    "public": True,  # bool
-    "updated_at": "example_updated_at",  # str
-    "url": "example_url",  # str
 })
 ```
 
@@ -347,16 +337,16 @@ party = client.Party()
 | `phone_number` | `str` | No |  |
 | `preferred_payment_method` | `dict` | Yes |  |
 | `signed_form` | `dict` | Yes |  |
-| `type` | `str` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `str` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `dict` | Yes |  |
 | `unlocode` | `str` | No |  |
 | `updated_at` | `str` | Yes |  |
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> PartyEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.Party().create({
@@ -364,46 +354,43 @@ result = client.Party().create({
     "address": {},  # dict
     "authorisation": {},  # dict
     "certificate": {},  # dict
-    "certificate_type": "example_certificate_type",  # str
     "company": "example_company",  # str
-    "created_at": "example_created_at",  # str
     "customs_office_of_lodgement": {},  # dict
     "preferred_payment_method": {},  # dict
     "signed_form": {},  # dict
     "type_of_person": {},  # dict
-    "updated_at": "example_updated_at",  # str
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[PartyEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.Party().list()
 for party in results:
-    print(party)
+    print(party.data_get())
 ```
 
-#### `load(reqmatch, ctrl=None) -> dict`
+#### `load(reqmatch, ctrl=None) -> PartyEntity`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
 result = client.Party().load({"id": "party_id"})
 ```
 
-#### `remove(reqmatch, ctrl=None) -> dict`
+#### `remove(reqmatch, ctrl=None) -> PartyEntity`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
 result = client.Party().remove({"id": "party_id"})
 ```
 
-#### `update(reqdata, ctrl=None) -> dict`
+#### `update(reqdata, ctrl=None) -> PartyEntity`
 
-Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```python
 result = client.Party().update({
@@ -486,7 +473,7 @@ submission = client.Submission()
 | `shipment_items_quantity_no` | `int` | No |  |
 | `source` | `str` | No | cuid-format identifier for this entity. |
 | `source_type` | `str` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `str` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `str` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `bool` | No |  |
 | `template_id` | `str` | No | cuid-format identifier for this entity. |
 | `template_properties` | `list` | No |  |
@@ -545,56 +532,47 @@ submission = client.Submission()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> SubmissionEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.Submission().create({
     "answers": [],  # list
-    "clearance_slip": {},  # dict
-    "client": {},  # dict
     "company_member": {},  # dict
-    "consignee": {},  # dict
-    "consignor": {},  # dict
-    "created_at": "example_created_at",  # str
     "declarant": {},  # dict
-    "form": "example_form",  # str
-    "latest_state": {},  # dict
-    "receipt": {},  # dict
-    "updated_at": "example_updated_at",  # str
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[SubmissionEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.Submission().list()
 for submission in results:
-    print(submission)
+    print(submission.data_get())
 ```
 
-#### `load(reqmatch, ctrl=None) -> dict`
+#### `load(reqmatch, ctrl=None) -> SubmissionEntity`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
 result = client.Submission().load({"id": "submission_id"})
 ```
 
-#### `remove(reqmatch, ctrl=None) -> dict`
+#### `remove(reqmatch, ctrl=None) -> SubmissionEntity`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
 result = client.Submission().remove({"id": "submission_id"})
 ```
 
-#### `update(reqdata, ctrl=None) -> dict`
+#### `update(reqdata, ctrl=None) -> SubmissionEntity`
 
-Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```python
 result = client.Submission().update({
@@ -675,7 +653,7 @@ submission_detail = client.SubmissionDetail()
 | `shipment_items_quantity_no` | `int` | No |  |
 | `source` | `str` | No | cuid-format identifier for this entity. |
 | `source_type` | `str` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `str` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `str` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `str` | Yes | cuid-format identifier for this entity. |
 | `supporting_documents` | `list` | No |  |
 | `template` | `bool` | No |  |
@@ -686,26 +664,16 @@ submission_detail = client.SubmissionDetail()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> SubmissionDetailEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.SubmissionDetail().create({
     "additional_information": [],  # list
-    "clearance_slip": {},  # dict
-    "client": {},  # dict
     "company": "example_company",  # str
     "company_member": {},  # dict
-    "consignee": {},  # dict
-    "consignor": {},  # dict
-    "created_at": "example_created_at",  # str
-    "declarant": {},  # dict
-    "form": "example_form",  # str
-    "latest_state": {},  # dict
-    "receipt": {},  # dict
     "submission": "example_submission",  # str
-    "updated_at": "example_updated_at",  # str
 })
 ```
 
@@ -748,6 +716,7 @@ Return the entity name.
 | `paging` | 0.0.1 | Paging |
 | `ratelimit` | 0.0.1 | Rate limiting |
 | `retry` | 0.0.1 | Retry |
+| `secrets` | 0.1.0 | Secrets |
 | `test` | 0.0.1 | Test transport |
 | `timeout` | 0.0.1 | Timeout |
 
@@ -763,6 +732,7 @@ client = CustomsWindowSDK({
         "paging": {"active": True},
         "ratelimit": {"active": True},
         "retry": {"active": True},
+        "secrets": {"active": True},
         "test": {"active": True},
         "timeout": {"active": True},
     },
@@ -781,7 +751,7 @@ transport, and the order you list them in is the order they nest.
 
 #### Ordering
 
-`ratelimit`, `retry`, `timeout` wrap the transport. Each
+`ratelimit`, `retry`, `secrets`, `timeout` wrap the transport. Each
 wraps whatever is already installed, so **activation order is nesting order**:
 a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
@@ -983,6 +953,31 @@ its default unless you name it.
   sees. See [Ordering](#ordering) above.
 - Inactive by default: leaving it out costs nothing at runtime.
 
+#### `secrets`
+
+Secrets.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+**Usage**
+
+Set `feature.secrets.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
 #### `test`
 
 Test transport.
@@ -1028,6 +1023,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

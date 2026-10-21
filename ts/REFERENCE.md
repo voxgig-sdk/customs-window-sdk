@@ -136,8 +136,10 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs.headers` | `object` | Request headers (merged with defaults). |
 | `fetchargs.body` | `any` | Request body (objects are JSON-serialized). |
 | `fetchargs.ctrl` | `object` | Control options (e.g. `{ explain: true }`). |
+| `fetchargs.ctrl.signal` | `AbortSignal` | Aborts the request in flight: `ok` is then `false` and `err.code` is `request_aborted`. |
 
-**Returns:** `Promise<{ ok, status, headers, data } | Error>`
+**Returns:** `Promise<{ ok, status, headers, data }>`. On a failure
+`ok` is `false` and `err` holds the error.
 
 #### `prepare(fetchargs?: object)`
 
@@ -151,6 +153,15 @@ same parameters as `direct()`.
 Alias for `CustomsWindowSDK.test()`.
 
 **Returns:** `CustomsWindowSDK` instance in test mode.
+
+#### Cancelling a call
+
+Every entity operation takes an optional `ctrl` object after its match or
+data, and an `AbortSignal` in `ctrl.signal` cancels the request in flight.
+The operation then rejects with an error whose `code` is
+`request_aborted` and whose `cause` is the signal's reason. A request
+whose signal has already aborted is not sent. `stream()` takes the signal
+as `callopts.signal`, and ends when it aborts.
 
 
 ---
@@ -233,24 +244,20 @@ const result = await client.BulkUpload().load({
 
 #### `create(data: object, ctrl?: object)`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.BulkUpload().create({
   client: 'example_client',
   company_member: 'example_company_member',
-  created_at: 'example_created_at',
   declarant: 'example_declarant',
-  declarations_no: 1,
-  errors_file: {},
   file: {},
-  updated_at: 'example_updated_at',
 })
 ```
 
 #### `list(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
 const results = await client.BulkUpload().list()
@@ -258,7 +265,7 @@ const results = await client.BulkUpload().list()
 
 #### `load(match: object, ctrl?: object)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
 const result = await client.BulkUpload().load({ id: 'bulk_upload_id' })
@@ -266,7 +273,7 @@ const result = await client.BulkUpload().load({ id: 'bulk_upload_id' })
 
 #### `remove(match: object, ctrl?: object)`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
 const result = await client.BulkUpload().remove({ id: 'bulk_upload_id' })
@@ -274,7 +281,7 @@ const result = await client.BulkUpload().remove({ id: 'bulk_upload_id' })
 
 #### `update(data: object, ctrl?: object)`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
 
 ```ts
 const result = await client.BulkUpload().update({
@@ -351,18 +358,12 @@ const file = client.File()
 
 #### `create(data: object, ctrl?: object)`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.File().create({
   company: 'example_company',
-  created_at: 'example_created_at',
-  extension: 'example_extension',
   file: 'example_file',
-  name: 'example_name',
-  public: true,
-  updated_at: 'example_updated_at',
-  url: 'example_url',
 })
 ```
 
@@ -426,7 +427,7 @@ const party = client.Party()
 | `phone_number` | `string` | No |  |
 | `preferred_payment_method` | `Record<string, any>` | Yes |  |
 | `signed_form` | `Record<string, any>` | Yes |  |
-| `type` | `string` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `string` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `Record<string, any>` | Yes |  |
 | `unlocode` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
@@ -435,7 +436,7 @@ const party = client.Party()
 
 #### `create(data: object, ctrl?: object)`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.Party().create({
@@ -443,20 +444,17 @@ const result = await client.Party().create({
   address: {},
   authorisation: {},
   certificate: {},
-  certificate_type: 'example_certificate_type',
   company: 'example_company',
-  created_at: 'example_created_at',
   customs_office_of_lodgement: {},
   preferred_payment_method: {},
   signed_form: {},
   type_of_person: {},
-  updated_at: 'example_updated_at',
 })
 ```
 
 #### `list(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
 const results = await client.Party().list()
@@ -464,7 +462,7 @@ const results = await client.Party().list()
 
 #### `load(match: object, ctrl?: object)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
 const result = await client.Party().load({ id: 'party_id' })
@@ -472,7 +470,7 @@ const result = await client.Party().load({ id: 'party_id' })
 
 #### `remove(match: object, ctrl?: object)`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
 const result = await client.Party().remove({ id: 'party_id' })
@@ -480,7 +478,7 @@ const result = await client.Party().remove({ id: 'party_id' })
 
 #### `update(data: object, ctrl?: object)`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
 
 ```ts
 const result = await client.Party().update({
@@ -562,7 +560,7 @@ const submission = client.Submission()
 | `shipment_items_quantity_no` | `number` | No |  |
 | `source` | `string` | No | cuid-format identifier for this entity. |
 | `source_type` | `string` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `boolean` | No |  |
 | `template_id` | `string` | No | cuid-format identifier for this entity. |
 | `template_properties` | `any[]` | No |  |
@@ -658,28 +656,19 @@ const result = await client.Submission().create({
 
 #### `create(data: object, ctrl?: object)`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.Submission().create({
   answers: [],
-  clearance_slip: {},
-  client: {},
   company_member: {},
-  consignee: {},
-  consignor: {},
-  created_at: 'example_created_at',
   declarant: {},
-  form: 'example_form',
-  latest_state: {},
-  receipt: {},
-  updated_at: 'example_updated_at',
 })
 ```
 
 #### `list(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
 const results = await client.Submission().list()
@@ -687,7 +676,7 @@ const results = await client.Submission().list()
 
 #### `load(match: object, ctrl?: object)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
 const result = await client.Submission().load({ id: 'submission_id' })
@@ -695,7 +684,7 @@ const result = await client.Submission().load({ id: 'submission_id' })
 
 #### `remove(match: object, ctrl?: object)`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
 const result = await client.Submission().remove({ id: 'submission_id' })
@@ -703,7 +692,7 @@ const result = await client.Submission().remove({ id: 'submission_id' })
 
 #### `update(data: object, ctrl?: object)`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
 
 ```ts
 const result = await client.Submission().update({
@@ -783,7 +772,7 @@ const submission_detail = client.SubmissionDetail()
 | `shipment_items_quantity_no` | `number` | No |  |
 | `source` | `string` | No | cuid-format identifier for this entity. |
 | `source_type` | `string` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `string` | Yes | cuid-format identifier for this entity. |
 | `supporting_documents` | `any[]` | No |  |
 | `template` | `boolean` | No |  |
@@ -796,24 +785,14 @@ const submission_detail = client.SubmissionDetail()
 
 #### `create(data: object, ctrl?: object)`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.SubmissionDetail().create({
   additional_information: [],
-  clearance_slip: {},
-  client: {},
   company: 'example_company',
   company_member: {},
-  consignee: {},
-  consignor: {},
-  created_at: 'example_created_at',
-  declarant: {},
-  form: 'example_form',
-  latest_state: {},
-  receipt: {},
   submission: 'example_submission',
-  updated_at: 'example_updated_at',
 })
 ```
 
@@ -855,6 +834,7 @@ Return a copy of the entity options.
 | `paging` | 0.0.1 | Paging |
 | `ratelimit` | 0.0.1 | Rate limiting |
 | `retry` | 0.0.1 | Retry |
+| `secrets` | 0.1.0 | Secrets |
 | `test` | 0.0.1 | Test transport |
 | `timeout` | 0.0.1 | Timeout |
 
@@ -870,6 +850,7 @@ const client = new CustomsWindowSDK({
     paging: { active: true },
     ratelimit: { active: true },
     retry: { active: true },
+    secrets: { active: true },
     test: { active: true },
     timeout: { active: true },
   }
@@ -888,7 +869,7 @@ transport, and the order you list them in is the order they nest.
 
 #### Ordering
 
-`ratelimit`, `retry`, `timeout` wrap the transport. Each
+`ratelimit`, `retry`, `secrets`, `timeout` wrap the transport. Each
 wraps whatever is already installed, so **activation order is nesting order**:
 a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
@@ -1090,6 +1071,31 @@ its default unless you name it.
   sees. See [Ordering](#ordering) above.
 - Inactive by default: leaving it out costs nothing at runtime.
 
+#### `secrets`
+
+Secrets.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+**Usage**
+
+Set `feature.secrets.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
 #### `test`
 
 Test transport.
@@ -1135,6 +1141,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

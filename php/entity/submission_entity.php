@@ -14,7 +14,7 @@ class SubmissionEntity
     private $_client;
     private $_utility;
     private array $_entopts;
-    private array $_data;
+    private mixed $_data;
     private array $_match;
     private $_entctx;
     private bool $_deleted = false;
@@ -50,6 +50,22 @@ class SubmissionEntity
         return $this->_name;
     }
 
+    // What print_r shows: the record, cleaned. The client and utility this
+    // instance holds print every feature's state through their closures,
+    // credentials included.
+    public function __debugInfo(): array
+    {
+        $record = [
+            'name' => $this->_name,
+            'data' => $this->_data,
+            'match' => $this->_match,
+            'deleted' => $this->_deleted,
+        ];
+        $clean = $this->_utility->clean ?? null;
+        $cleaned = is_callable($clean) ? $clean($this->_entctx, $record) : $record;
+        return is_array($cleaned) ? $cleaned : $record;
+    }
+
     /**
      * A `remove` marks the entity deleted. The instance KEEPS the data it
      * held — a caller can still read what was removed — but it is no longer a
@@ -82,8 +98,9 @@ class SubmissionEntity
      */
     public function data_set($args): void
     {
-        if ($args) {
-            $this->_data = CustomsWindowHelpers::to_map(Struct::clone($args)) ?? [];
+        if ($args !== null) {
+            $data = Struct::clone($args);
+            $this->_data = $data instanceof \stdClass ? (array)$data : $data;
             ($this->_utility->feature_hook)($this->_entctx, "SetData");
         }
     }
@@ -172,73 +189,104 @@ class SubmissionEntity
             return false;
         };
 
+        // The pipeline runs as the caller iterates, so its errors leave
+        // through the same catch path as an operation's.
+        try {
+            $failed = $this->_stream_steps($ctx);
+            $result = $ctx->result;
+
+            // Inbound: prefer the streaming feature's incremental generator;
+            // else fall back to the materialised items so stream always yields.
+            $streamfn = ($failed === null && $result !== null && isset($result->stream)
+                && is_callable($result->stream)) ? $result->stream : null;
+            if ($streamfn !== null) {
+                // done() does not run on this path, so its record is cleaned here.
+                ($utility->clean_explain)($ctx);
+                foreach ($streamfn() as $item) {
+                    if ($aborted()) {
+                        return;
+                    }
+                    yield $item;
+                }
+                return;
+            }
+
+            // A failed step leaves through make_error, as an operation's does.
+            $data = $failed === null
+                ? ($utility->done)($ctx)
+                : ($utility->make_error)($ctx, $failed);
+            if (is_array($data) && array_is_list($data)) {
+                $items = $data;
+            } elseif ($data === null) {
+                $items = [];
+            } else {
+                $items = [$data];
+            }
+            foreach ($items as $item) {
+                if ($aborted()) {
+                    return;
+                }
+                yield $item;
+            }
+        } catch (\Throwable $err) {
+            // What a hook throws here must not escape the cleaning below.
+            try {
+                if (!$ctx->unexpected_fired) {
+                    ($utility->feature_hook)($ctx, "PreUnexpected");
+                }
+            } catch (\Throwable $hookerr) {
+                $err = $hookerr;
+            }
+            $err = $this->_unexpected($ctx, $err);
+            if ($err !== null) {
+                throw $err;
+            }
+        }
+    }
+
+    // The steps an operation runs, with their hooks; the first that fails
+    // hands back its error.
+    private function _stream_steps($ctx): mixed
+    {
+        $utility = $this->_utility;
+
         ($utility->feature_hook)($ctx, "PrePoint");
         [$point, $err] = ($utility->make_point)($ctx);
         $ctx->out["point"] = $point;
         if ($err) {
-            return;
+            return $err;
         }
 
         ($utility->feature_hook)($ctx, "PreSpec");
         [$spec, $err] = ($utility->make_spec)($ctx);
         $ctx->out["spec"] = $spec;
         if ($err) {
-            return;
+            return $err;
         }
 
         ($utility->feature_hook)($ctx, "PreRequest");
         [$resp, $err] = ($utility->make_request)($ctx);
         $ctx->out["request"] = $resp;
         if ($err) {
-            return;
+            return $err;
         }
 
         ($utility->feature_hook)($ctx, "PreResponse");
         [$resp2, $err] = ($utility->make_response)($ctx);
         $ctx->out["response"] = $resp2;
         if ($err) {
-            return;
+            return $err;
         }
 
         ($utility->feature_hook)($ctx, "PreResult");
         [$result, $err] = ($utility->make_result)($ctx);
         $ctx->out["result"] = $result;
         if ($err) {
-            return;
+            return $err;
         }
 
         ($utility->feature_hook)($ctx, "PreDone");
-
-        $result = $ctx->result;
-
-        // Inbound: prefer the streaming feature's incremental generator; else
-        // fall back to the materialised items so stream always yields.
-        $streamfn = ($result !== null && isset($result->stream) && is_callable($result->stream))
-            ? $result->stream : null;
-        if ($streamfn !== null) {
-            foreach ($streamfn() as $item) {
-                if ($aborted()) {
-                    return;
-                }
-                yield $item;
-            }
-            return;
-        }
-
-        $data = ($utility->done)($ctx);
-        if (is_array($data) && array_is_list($data)) {
-            $items = $data;
-        } elseif ($data === null) {
-            $items = [];
-        } else {
-            $items = [$data];
-        }
-        foreach ($items as $item) {
-            if ($aborted()) {
-                return;
-            }
-            yield $item;
-        }
+        return null;
     }
 
     
@@ -248,8 +296,8 @@ class SubmissionEntity
      * @param SubmissionLoadMatch|array|null $reqmatch Match criteria (id/query
      *   fields) as an assoc-array; a typed SubmissionLoadMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return Submission|array The loaded Submission as an assoc-array at the
-     *   SDK boundary; throws CustomsWindowError on failure (item-5 convention).
+     * @return SubmissionEntity The loaded Submission entity, whose data_get() reads
+     *   its record; throws CustomsWindowError on failure (item-5 convention).
      */
     public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
@@ -283,8 +331,8 @@ class SubmissionEntity
      * @param SubmissionListMatch|array|null $reqmatch Match filter (any subset
      *   of Submission fields) as an assoc-array; SubmissionListMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return Submission[]|array A list of Submission items as assoc-arrays at
-     *   the SDK boundary; throws CustomsWindowError on failure (item-5 convention).
+     * @return SubmissionEntity[] The Submission entities, one per record, each read
+     *   with data_get(); throws CustomsWindowError on failure (item-5 convention).
      */
     public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
@@ -315,8 +363,8 @@ class SubmissionEntity
      * @param SubmissionCreateData|array|null $reqdata Body data as an assoc-array;
      *   a typed SubmissionCreateData names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return Submission|array The created Submission as an assoc-array at the
-     *   SDK boundary; throws CustomsWindowError on failure (item-5 convention).
+     * @return SubmissionEntity The created Submission entity, whose data_get() reads
+     *   its record; throws CustomsWindowError on failure (item-5 convention).
      */
     public function create(?array $reqdata = null, $ctrl = null): mixed
     {
@@ -347,8 +395,8 @@ class SubmissionEntity
      * @param SubmissionUpdateData|array|null $reqdata Body data as an assoc-array;
      *   a typed SubmissionUpdateData names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return Submission|array The updated Submission as an assoc-array at the
-     *   SDK boundary; throws CustomsWindowError on failure (item-5 convention).
+     * @return SubmissionEntity The updated Submission entity, whose data_get() reads
+     *   its record; throws CustomsWindowError on failure (item-5 convention).
      */
     public function update(?array $reqdata = null, $ctrl = null): mixed
     {
@@ -376,14 +424,16 @@ class SubmissionEntity
 
 
     
+
+    
     /**
      * Remove an Submission matching the given criteria.
      *
      * @param SubmissionRemoveMatch|array|null $reqmatch Match criteria (id/query
      *   fields) as an assoc-array; SubmissionRemoveMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return Submission|array The removed Submission as an assoc-array at the
-     *   SDK boundary; throws CustomsWindowError on failure (item-5 convention).
+     * @return SubmissionEntity The removed Submission entity, marked as deleted; throws
+     *   CustomsWindowError on failure (item-5 convention).
      */
     public function remove(?array $reqmatch = null, $ctrl = null): mixed
     {
@@ -411,6 +461,39 @@ class SubmissionEntity
 
 
     private function _run_op($ctx, callable $post_done): mixed
+    {
+        $utility = $this->_utility;
+
+        try {
+            return $this->_run_steps($ctx, $post_done);
+        } catch (\Throwable $err) {
+            // What a hook throws here must not escape the cleaning below.
+            try {
+                // Once per operation: make_error fires it for its own error.
+                if (!$ctx->unexpected_fired) {
+                    ($utility->feature_hook)($ctx, "PreUnexpected");                }
+            } catch (\Throwable $hookerr) {
+                $err = $hookerr;
+            }
+            $err = $this->_unexpected($ctx, $err);
+            if ($err !== null) {
+                throw $err;
+            }
+            return null;
+        }
+    }
+
+    // A hook, fetcher or parser threw: make_error never saw it. Null when
+    // the caller switched throwing off.
+    private function _unexpected($ctx, \Throwable $err): ?\Throwable
+    {
+        $ctx->ctrl->err = $err;
+        ($this->_utility->clean_explain)($ctx);
+        $cleaned = ($this->_utility->clean)($ctx, $err);
+        return $ctx->ctrl->throw_err === false ? null : $cleaned;
+    }
+
+    private function _run_steps($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

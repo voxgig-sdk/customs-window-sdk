@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 CustomsWindowUtility::setRegistrar(function (CustomsWindowUtility $u): void {
     $u->clean = [CustomsWindowClean::class, 'call'];
+    $u->clean_add = [CustomsWindowClean::class, 'add'];
+    $u->clean_explain = [CustomsWindowDone::class, 'clean_explain'];
     $u->done = [CustomsWindowDone::class, 'call'];
     $u->make_error = [CustomsWindowMakeError::class, 'call'];
     $u->feature_add = [CustomsWindowFeatureAdd::class, 'call'];

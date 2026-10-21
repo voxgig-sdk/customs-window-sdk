@@ -123,6 +123,29 @@ func MakeConfig() map[string]any {
 				"strict": false,
 				"transport": "wrap",
 			},
+			"secrets": map[string]any{
+				"options": map[string]any{
+					"active": false,
+					"cache": true,
+					"exchange": map[string]any{
+						"active": false,
+						"method": "POST",
+						"path": "auth/token",
+						"refresh": "",
+						"request": "refresh_token",
+						"response": "access_token",
+						"retries": 1,
+						"statuses": []any{
+							401,
+						},
+					},
+					"name": "apikey",
+					"providers": []any{},
+				},
+				"optspec": map[string]any{},
+				"strict": false,
+				"transport": "wrap",
+			},
 			"test": map[string]any{
 				"options": map[string]any{
 					"active": false,
@@ -141,6 +164,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -150,8 +174,7 @@ func MakeConfig() map[string]any {
 		"options": map[string]any{
 			"base": "https://api.customswindow.com",
 			"auth": map[string]any{
-				"prefix": "",
-				"name": "Basic Auth",
+				"prefix": "Basic",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",
@@ -439,6 +462,130 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"body": map[string]any{
+									"alternatives": []any{
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"name": "active_transport_nationality",
+												},
+												map[string]any{
+													"name": "active_transport_number",
+												},
+												map[string]any{
+													"name": "arrival_datetime",
+												},
+												map[string]any{
+													"name": "client",
+												},
+												map[string]any{
+													"name": "company_member",
+												},
+												map[string]any{
+													"name": "declarant",
+												},
+												map[string]any{
+													"name": "departure_datetime",
+												},
+												map[string]any{
+													"name": "external_id",
+												},
+												map[string]any{
+													"name": "file",
+												},
+												map[string]any{
+													"name": "h1_fallback_template",
+												},
+												map[string]any{
+													"name": "house_transport_doc_ref",
+												},
+												map[string]any{
+													"name": "issue_date",
+												},
+												map[string]any{
+													"name": "mapping",
+												},
+												map[string]any{
+													"name": "parser",
+												},
+												map[string]any{
+													"name": "passive_transport_nationality",
+												},
+												map[string]any{
+													"name": "passive_transport_number",
+												},
+												map[string]any{
+													"name": "template",
+												},
+											},
+											"kind": "multipart",
+											"media": "multipart/form-data",
+										},
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"name": "active_transport_nationality",
+												},
+												map[string]any{
+													"name": "active_transport_number",
+												},
+												map[string]any{
+													"name": "arrival_datetime",
+												},
+												map[string]any{
+													"name": "client",
+												},
+												map[string]any{
+													"name": "company_member",
+												},
+												map[string]any{
+													"name": "declarant",
+												},
+												map[string]any{
+													"name": "departure_datetime",
+												},
+												map[string]any{
+													"name": "external_id",
+												},
+												map[string]any{
+													"name": "file",
+												},
+												map[string]any{
+													"name": "h1_fallback_template",
+												},
+												map[string]any{
+													"name": "house_transport_doc_ref",
+												},
+												map[string]any{
+													"name": "issue_date",
+												},
+												map[string]any{
+													"name": "mapping",
+												},
+												map[string]any{
+													"name": "parser",
+												},
+												map[string]any{
+													"name": "passive_transport_nationality",
+												},
+												map[string]any{
+													"name": "passive_transport_number",
+												},
+												map[string]any{
+													"name": "template",
+												},
+											},
+											"kind": "form",
+											"media": "application/x-www-form-urlencoded",
+										},
+									},
+									"kind": "json",
+									"media": "application/json",
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -473,10 +620,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"cursor",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -847,13 +994,93 @@ func MakeConfig() map[string]any {
 								},
 								"rename": map[string]any{},
 								"transform": map[string]any{
-									"req": map[string]any{
-										"file": "`reqdata`",
-									},
+									"req": "`reqdata`",
 									"res": "`body`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"body": map[string]any{
+									"alternatives": []any{
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"name": "company",
+												},
+												map[string]any{
+													"name": "created_at",
+												},
+												map[string]any{
+													"name": "extension",
+												},
+												map[string]any{
+													"name": "file",
+												},
+												map[string]any{
+													"name": "id",
+												},
+												map[string]any{
+													"name": "name",
+												},
+												map[string]any{
+													"name": "public",
+												},
+												map[string]any{
+													"name": "size",
+												},
+												map[string]any{
+													"name": "updated_at",
+												},
+												map[string]any{
+													"name": "url",
+												},
+											},
+											"kind": "multipart",
+											"media": "multipart/form-data",
+										},
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"name": "company",
+												},
+												map[string]any{
+													"name": "created_at",
+												},
+												map[string]any{
+													"name": "extension",
+												},
+												map[string]any{
+													"name": "file",
+												},
+												map[string]any{
+													"name": "id",
+												},
+												map[string]any{
+													"name": "name",
+												},
+												map[string]any{
+													"name": "public",
+												},
+												map[string]any{
+													"name": "size",
+												},
+												map[string]any{
+													"name": "updated_at",
+												},
+												map[string]any{
+													"name": "url",
+												},
+											},
+											"kind": "form",
+											"media": "application/x-www-form-urlencoded",
+										},
+									},
+									"kind": "json",
+									"media": "application/json",
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -995,7 +1222,7 @@ func MakeConfig() map[string]any {
 						"name": "type",
 						"title": "Type",
 						"type": "`$STRING`",
-						"short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…",
+						"short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *…",
 					},
 					map[string]any{
 						"name": "type_of_person",
@@ -1083,14 +1310,14 @@ func MakeConfig() map[string]any {
 											"orig": "type",
 											"type": "`$STRING`",
 											"kind": "query",
+											"field": true,
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"cursor",
-										"type",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -1451,7 +1678,7 @@ func MakeConfig() map[string]any {
 						"name": "status",
 						"title": "Status",
 						"type": "`$STRING`",
-						"short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
+						"short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -…",
 					},
 					map[string]any{
 						"name": "template",
@@ -1567,6 +1794,86 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"body": map[string]any{
+									"alternatives": []any{
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"list": true,
+													"name": "additional_external_ids",
+												},
+												map[string]any{
+													"list": true,
+													"name": "answers",
+												},
+												map[string]any{
+													"name": "company_member",
+												},
+												map[string]any{
+													"name": "declarant",
+												},
+												map[string]any{
+													"name": "form",
+												},
+												map[string]any{
+													"name": "name",
+												},
+												map[string]any{
+													"name": "status",
+												},
+												map[string]any{
+													"name": "template",
+												},
+												map[string]any{
+													"name": "template_id",
+												},
+											},
+											"kind": "multipart",
+											"media": "multipart/form-data",
+										},
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"list": true,
+													"name": "additional_external_ids",
+												},
+												map[string]any{
+													"list": true,
+													"name": "answers",
+												},
+												map[string]any{
+													"name": "company_member",
+												},
+												map[string]any{
+													"name": "declarant",
+												},
+												map[string]any{
+													"name": "form",
+												},
+												map[string]any{
+													"name": "name",
+												},
+												map[string]any{
+													"name": "status",
+												},
+												map[string]any{
+													"name": "template",
+												},
+												map[string]any{
+													"name": "template_id",
+												},
+											},
+											"kind": "form",
+											"media": "application/x-www-form-urlencoded",
+										},
+									},
+									"kind": "json",
+									"media": "application/json",
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 							map[string]any{
 								"kind": "http",
@@ -1637,6 +1944,7 @@ func MakeConfig() map[string]any {
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "green",
+											"field": true,
 										},
 										map[string]any{
 											"name": "status",
@@ -1644,23 +1952,21 @@ func MakeConfig() map[string]any {
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "released",
+											"field": true,
 										},
 										map[string]any{
 											"name": "template",
 											"orig": "template",
 											"type": "`$BOOLEAN`",
 											"kind": "query",
+											"field": true,
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"cursor",
-										"form_subtype",
-										"route",
-										"status",
-										"template",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -1705,6 +2011,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -2206,6 +2516,94 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"body": map[string]any{
+									"alternatives": []any{
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"list": true,
+													"name": "additional_external_ids",
+												},
+												map[string]any{
+													"name": "amendment_reason",
+												},
+												map[string]any{
+													"name": "amendment_status",
+												},
+												map[string]any{
+													"list": true,
+													"name": "answers",
+												},
+												map[string]any{
+													"name": "bypass_restricted_code",
+												},
+												map[string]any{
+													"name": "company_member",
+												},
+												map[string]any{
+													"name": "name",
+												},
+												map[string]any{
+													"name": "partial_answers",
+												},
+												map[string]any{
+													"name": "status",
+												},
+												map[string]any{
+													"list": true,
+													"name": "template_properties",
+												},
+											},
+											"kind": "multipart",
+											"media": "multipart/form-data",
+										},
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"list": true,
+													"name": "additional_external_ids",
+												},
+												map[string]any{
+													"name": "amendment_reason",
+												},
+												map[string]any{
+													"name": "amendment_status",
+												},
+												map[string]any{
+													"list": true,
+													"name": "answers",
+												},
+												map[string]any{
+													"name": "bypass_restricted_code",
+												},
+												map[string]any{
+													"name": "company_member",
+												},
+												map[string]any{
+													"name": "name",
+												},
+												map[string]any{
+													"name": "partial_answers",
+												},
+												map[string]any{
+													"name": "status",
+												},
+												map[string]any{
+													"list": true,
+													"name": "template_properties",
+												},
+											},
+											"kind": "form",
+											"media": "application/x-www-form-urlencoded",
+										},
+									},
+									"kind": "json",
+									"media": "application/json",
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -2586,7 +2984,7 @@ func MakeConfig() map[string]any {
 						"name": "status",
 						"title": "Status",
 						"type": "`$STRING`",
-						"short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
+						"short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -…",
 					},
 					map[string]any{
 						"name": "submission",
@@ -2660,6 +3058,62 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"body": map[string]any{
+									"alternatives": []any{
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"list": true,
+													"name": "additional_information",
+												},
+												map[string]any{
+													"name": "company",
+												},
+												map[string]any{
+													"name": "company_member",
+												},
+												map[string]any{
+													"name": "submission",
+												},
+												map[string]any{
+													"list": true,
+													"name": "supporting_documents",
+												},
+											},
+											"kind": "multipart",
+											"media": "multipart/form-data",
+										},
+										map[string]any{
+											"fields": []any{
+												map[string]any{
+													"list": true,
+													"name": "additional_information",
+												},
+												map[string]any{
+													"name": "company",
+												},
+												map[string]any{
+													"name": "company_member",
+												},
+												map[string]any{
+													"name": "submission",
+												},
+												map[string]any{
+													"list": true,
+													"name": "supporting_documents",
+												},
+											},
+											"kind": "form",
+											"media": "application/x-www-form-urlencoded",
+										},
+									},
+									"kind": "json",
+									"media": "application/json",
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -2726,6 +3180,10 @@ func makeFeature(name string) Feature {
 	case "retry":
 		if NewRetryFeatureFunc != nil {
 			return NewRetryFeatureFunc()
+		}
+	case "secrets":
+		if NewSecretsFeatureFunc != nil {
+			return NewSecretsFeatureFunc()
 		}
 	case "test":
 		if NewTestFeatureFunc != nil {

@@ -148,6 +148,29 @@ def make_config():
         "strict": False,
         "transport": "wrap",
       },
+            "secrets": {
+        "options": {
+          "active": False,
+          "cache": True,
+          "exchange": {
+            "active": False,
+            "method": "POST",
+            "path": "auth/token",
+            "refresh": "",
+            "request": "refresh_token",
+            "response": "access_token",
+            "retries": 1,
+            "statuses": [
+              401,
+            ],
+          },
+          "name": "apikey",
+          "providers": [],
+        },
+        "optspec": {},
+        "strict": False,
+        "transport": "wrap",
+      },
             "test": {
         "options": {
           "active": False,
@@ -166,6 +189,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -175,8 +199,7 @@ def make_config():
         "options": {
             "base": "https://api.customswindow.com",
             "auth": {
-                "prefix": "",
-                "name": "Basic Auth",
+                "prefix": "Basic",
             },
             "headers": {
         "content-type": "application/json",
@@ -464,6 +487,130 @@ def make_config():
                 },
                 "args": {},
                 "select": {},
+                "body": {
+                  "alternatives": [
+                    {
+                      "fields": [
+                        {
+                          "name": "active_transport_nationality",
+                        },
+                        {
+                          "name": "active_transport_number",
+                        },
+                        {
+                          "name": "arrival_datetime",
+                        },
+                        {
+                          "name": "client",
+                        },
+                        {
+                          "name": "company_member",
+                        },
+                        {
+                          "name": "declarant",
+                        },
+                        {
+                          "name": "departure_datetime",
+                        },
+                        {
+                          "name": "external_id",
+                        },
+                        {
+                          "name": "file",
+                        },
+                        {
+                          "name": "h1_fallback_template",
+                        },
+                        {
+                          "name": "house_transport_doc_ref",
+                        },
+                        {
+                          "name": "issue_date",
+                        },
+                        {
+                          "name": "mapping",
+                        },
+                        {
+                          "name": "parser",
+                        },
+                        {
+                          "name": "passive_transport_nationality",
+                        },
+                        {
+                          "name": "passive_transport_number",
+                        },
+                        {
+                          "name": "template",
+                        },
+                      ],
+                      "kind": "multipart",
+                      "media": "multipart/form-data",
+                    },
+                    {
+                      "fields": [
+                        {
+                          "name": "active_transport_nationality",
+                        },
+                        {
+                          "name": "active_transport_number",
+                        },
+                        {
+                          "name": "arrival_datetime",
+                        },
+                        {
+                          "name": "client",
+                        },
+                        {
+                          "name": "company_member",
+                        },
+                        {
+                          "name": "declarant",
+                        },
+                        {
+                          "name": "departure_datetime",
+                        },
+                        {
+                          "name": "external_id",
+                        },
+                        {
+                          "name": "file",
+                        },
+                        {
+                          "name": "h1_fallback_template",
+                        },
+                        {
+                          "name": "house_transport_doc_ref",
+                        },
+                        {
+                          "name": "issue_date",
+                        },
+                        {
+                          "name": "mapping",
+                        },
+                        {
+                          "name": "parser",
+                        },
+                        {
+                          "name": "passive_transport_nationality",
+                        },
+                        {
+                          "name": "passive_transport_number",
+                        },
+                        {
+                          "name": "template",
+                        },
+                      ],
+                      "kind": "form",
+                      "media": "application/x-www-form-urlencoded",
+                    },
+                  ],
+                  "kind": "json",
+                  "media": "application/json",
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
+                },
               },
             ],
           },
@@ -498,10 +645,10 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "cursor",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -872,13 +1019,93 @@ def make_config():
                 ],
                 "rename": {},
                 "transform": {
-                  "req": {
-                    "file": "`reqdata`",
-                  },
+                  "req": "`reqdata`",
                   "res": "`body`",
                 },
                 "args": {},
                 "select": {},
+                "body": {
+                  "alternatives": [
+                    {
+                      "fields": [
+                        {
+                          "name": "company",
+                        },
+                        {
+                          "name": "created_at",
+                        },
+                        {
+                          "name": "extension",
+                        },
+                        {
+                          "name": "file",
+                        },
+                        {
+                          "name": "id",
+                        },
+                        {
+                          "name": "name",
+                        },
+                        {
+                          "name": "public",
+                        },
+                        {
+                          "name": "size",
+                        },
+                        {
+                          "name": "updated_at",
+                        },
+                        {
+                          "name": "url",
+                        },
+                      ],
+                      "kind": "multipart",
+                      "media": "multipart/form-data",
+                    },
+                    {
+                      "fields": [
+                        {
+                          "name": "company",
+                        },
+                        {
+                          "name": "created_at",
+                        },
+                        {
+                          "name": "extension",
+                        },
+                        {
+                          "name": "file",
+                        },
+                        {
+                          "name": "id",
+                        },
+                        {
+                          "name": "name",
+                        },
+                        {
+                          "name": "public",
+                        },
+                        {
+                          "name": "size",
+                        },
+                        {
+                          "name": "updated_at",
+                        },
+                        {
+                          "name": "url",
+                        },
+                      ],
+                      "kind": "form",
+                      "media": "application/x-www-form-urlencoded",
+                    },
+                  ],
+                  "kind": "json",
+                  "media": "application/json",
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
+                },
               },
             ],
           },
@@ -1020,7 +1247,7 @@ def make_config():
             "name": "type",
             "title": "Type",
             "type": "`$STRING`",
-            "short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co…",
+            "short": "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *…",
           },
           {
             "name": "type_of_person",
@@ -1108,14 +1335,14 @@ def make_config():
                       "orig": "type",
                       "type": "`$STRING`",
                       "kind": "query",
+                      "field": True,
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "cursor",
-                    "type",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -1476,7 +1703,7 @@ def make_config():
             "name": "status",
             "title": "Status",
             "type": "`$STRING`",
-            "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
+            "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -…",
           },
           {
             "name": "template",
@@ -1592,6 +1819,86 @@ def make_config():
                 },
                 "args": {},
                 "select": {},
+                "body": {
+                  "alternatives": [
+                    {
+                      "fields": [
+                        {
+                          "list": True,
+                          "name": "additional_external_ids",
+                        },
+                        {
+                          "list": True,
+                          "name": "answers",
+                        },
+                        {
+                          "name": "company_member",
+                        },
+                        {
+                          "name": "declarant",
+                        },
+                        {
+                          "name": "form",
+                        },
+                        {
+                          "name": "name",
+                        },
+                        {
+                          "name": "status",
+                        },
+                        {
+                          "name": "template",
+                        },
+                        {
+                          "name": "template_id",
+                        },
+                      ],
+                      "kind": "multipart",
+                      "media": "multipart/form-data",
+                    },
+                    {
+                      "fields": [
+                        {
+                          "list": True,
+                          "name": "additional_external_ids",
+                        },
+                        {
+                          "list": True,
+                          "name": "answers",
+                        },
+                        {
+                          "name": "company_member",
+                        },
+                        {
+                          "name": "declarant",
+                        },
+                        {
+                          "name": "form",
+                        },
+                        {
+                          "name": "name",
+                        },
+                        {
+                          "name": "status",
+                        },
+                        {
+                          "name": "template",
+                        },
+                        {
+                          "name": "template_id",
+                        },
+                      ],
+                      "kind": "form",
+                      "media": "application/x-www-form-urlencoded",
+                    },
+                  ],
+                  "kind": "json",
+                  "media": "application/json",
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
+                },
               },
               {
                 "kind": "http",
@@ -1662,6 +1969,7 @@ def make_config():
                       "type": "`$STRING`",
                       "kind": "query",
                       "example": "green",
+                      "field": True,
                     },
                     {
                       "name": "status",
@@ -1669,23 +1977,21 @@ def make_config():
                       "type": "`$STRING`",
                       "kind": "query",
                       "example": "released",
+                      "field": True,
                     },
                     {
                       "name": "template",
                       "orig": "template",
                       "type": "`$BOOLEAN`",
                       "kind": "query",
+                      "field": True,
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "cursor",
-                    "form_subtype",
-                    "route",
-                    "status",
-                    "template",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -1730,6 +2036,10 @@ def make_config():
                   "exist": [
                     "id",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
               {
@@ -2231,6 +2541,94 @@ def make_config():
                   "exist": [
                     "id",
                   ],
+                },
+                "body": {
+                  "alternatives": [
+                    {
+                      "fields": [
+                        {
+                          "list": True,
+                          "name": "additional_external_ids",
+                        },
+                        {
+                          "name": "amendment_reason",
+                        },
+                        {
+                          "name": "amendment_status",
+                        },
+                        {
+                          "list": True,
+                          "name": "answers",
+                        },
+                        {
+                          "name": "bypass_restricted_code",
+                        },
+                        {
+                          "name": "company_member",
+                        },
+                        {
+                          "name": "name",
+                        },
+                        {
+                          "name": "partial_answers",
+                        },
+                        {
+                          "name": "status",
+                        },
+                        {
+                          "list": True,
+                          "name": "template_properties",
+                        },
+                      ],
+                      "kind": "multipart",
+                      "media": "multipart/form-data",
+                    },
+                    {
+                      "fields": [
+                        {
+                          "list": True,
+                          "name": "additional_external_ids",
+                        },
+                        {
+                          "name": "amendment_reason",
+                        },
+                        {
+                          "name": "amendment_status",
+                        },
+                        {
+                          "list": True,
+                          "name": "answers",
+                        },
+                        {
+                          "name": "bypass_restricted_code",
+                        },
+                        {
+                          "name": "company_member",
+                        },
+                        {
+                          "name": "name",
+                        },
+                        {
+                          "name": "partial_answers",
+                        },
+                        {
+                          "name": "status",
+                        },
+                        {
+                          "list": True,
+                          "name": "template_properties",
+                        },
+                      ],
+                      "kind": "form",
+                      "media": "application/x-www-form-urlencoded",
+                    },
+                  ],
+                  "kind": "json",
+                  "media": "application/json",
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
               {
@@ -2611,7 +3009,7 @@ def make_config():
             "name": "status",
             "title": "Status",
             "type": "`$STRING`",
-            "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re…",
+            "short": "* `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -…",
           },
           {
             "name": "submission",
@@ -2685,6 +3083,62 @@ def make_config():
                 },
                 "args": {},
                 "select": {},
+                "body": {
+                  "alternatives": [
+                    {
+                      "fields": [
+                        {
+                          "list": True,
+                          "name": "additional_information",
+                        },
+                        {
+                          "name": "company",
+                        },
+                        {
+                          "name": "company_member",
+                        },
+                        {
+                          "name": "submission",
+                        },
+                        {
+                          "list": True,
+                          "name": "supporting_documents",
+                        },
+                      ],
+                      "kind": "multipart",
+                      "media": "multipart/form-data",
+                    },
+                    {
+                      "fields": [
+                        {
+                          "list": True,
+                          "name": "additional_information",
+                        },
+                        {
+                          "name": "company",
+                        },
+                        {
+                          "name": "company_member",
+                        },
+                        {
+                          "name": "submission",
+                        },
+                        {
+                          "list": True,
+                          "name": "supporting_documents",
+                        },
+                      ],
+                      "kind": "form",
+                      "media": "application/x-www-form-urlencoded",
+                    },
+                  ],
+                  "kind": "json",
+                  "media": "application/json",
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
+                },
               },
             ],
           },

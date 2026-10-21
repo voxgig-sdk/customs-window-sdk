@@ -49,6 +49,7 @@
 <a href="../features/paging.html">Paging</a>
 <a href="../features/ratelimit.html">Rate limiting</a>
 <a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
 <a href="../features/test.html">Test transport</a>
 <a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="submission">Submission</h1>
 <h2 id="operations">Operations</h2>
@@ -205,7 +206,7 @@ if err != nil {
     panic(err)
 }
 fmt.Println(submission)
-created, err := client.Submission(nil).Create(map[string]any{&quot;answers&quot;: []any{}, &quot;clearance_slip&quot;: map[string]any{}, &quot;client&quot;: map[string]any{}, &quot;company_member&quot;: map[string]any{}, &quot;consignee&quot;: map[string]any{}, &quot;consignor&quot;: map[string]any{}, &quot;created_at&quot;: &quot;example&quot;, &quot;declarant&quot;: map[string]any{}, &quot;form&quot;: &quot;example&quot;, &quot;latest_state&quot;: map[string]any{}, &quot;receipt&quot;: map[string]any{}, &quot;updated_at&quot;: &quot;example&quot;}, nil)
+created, err := client.Submission(nil).Create(map[string]any{&quot;answers&quot;: []any{}, &quot;company_member&quot;: map[string]any{}, &quot;declarant&quot;: map[string]any{}}, nil)
 if err != nil {
     panic(err)
 }
@@ -225,7 +226,7 @@ fmt.Println(removed)
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
 <pre><code class="language-lua">local submissions, err = client:Submission():list()
 local submission, err = client:Submission():load({ id = &quot;example_id&quot; })
-local created, err = client:Submission():create({ answers = {}, clearance_slip = {}, client = {}, company_member = {}, consignee = {}, consignor = {}, created_at = &quot;example&quot;, declarant = {}, form = &quot;example&quot;, latest_state = {}, receipt = {}, updated_at = &quot;example&quot; })
+local created, err = client:Submission():create({ answers = {}, company_member = {}, declarant = {} })
 local updated, err = client:Submission():update({ id = &quot;example_id&quot;, additional_external_ids = {}, amendment_reason = &quot;example&quot; })
 local removed, err = client:Submission():remove({ id = &quot;example_id&quot; })
 </code></pre>
@@ -233,7 +234,7 @@ local removed, err = client:Submission():remove({ id = &quot;example_id&quot; })
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
 <pre><code class="language-php">$submissions = $client-&gt;Submission()-&gt;list();
 $submission = $client-&gt;Submission()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
-$created = $client-&gt;Submission()-&gt;create([&quot;answers&quot; =&gt; [], &quot;clearance_slip&quot; =&gt; [], &quot;client&quot; =&gt; [], &quot;company_member&quot; =&gt; [], &quot;consignee&quot; =&gt; [], &quot;consignor&quot; =&gt; [], &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;declarant&quot; =&gt; [], &quot;form&quot; =&gt; &quot;example&quot;, &quot;latest_state&quot; =&gt; [], &quot;receipt&quot; =&gt; [], &quot;updated_at&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;Submission()-&gt;create([&quot;answers&quot; =&gt; [], &quot;company_member&quot; =&gt; [], &quot;declarant&quot; =&gt; []]);
 $updated = $client-&gt;Submission()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;additional_external_ids&quot; =&gt; [], &quot;amendment_reason&quot; =&gt; &quot;example&quot;]);
 $client-&gt;Submission()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 </code></pre>
@@ -241,7 +242,7 @@ $client-&gt;Submission()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
 <pre><code class="language-py">submissions = client.Submission().list()
 submission = client.Submission().load({&quot;id&quot;: &quot;example_id&quot;})
-created = client.Submission().create({ &quot;answers&quot;: [], &quot;clearance_slip&quot;: {}, &quot;client&quot;: {}, &quot;company_member&quot;: {}, &quot;consignee&quot;: {}, &quot;consignor&quot;: {}, &quot;created_at&quot;: &quot;example&quot;, &quot;declarant&quot;: {}, &quot;form&quot;: &quot;example&quot;, &quot;latest_state&quot;: {}, &quot;receipt&quot;: {}, &quot;updated_at&quot;: &quot;example&quot; })
+created = client.Submission().create({ &quot;answers&quot;: [], &quot;company_member&quot;: {}, &quot;declarant&quot;: {} })
 updated = client.Submission().update({&quot;id&quot;: &quot;example_id&quot;, &quot;additional_external_ids&quot;: [], &quot;amendment_reason&quot;: &quot;example&quot;})
 client.Submission().remove({&quot;id&quot;: &quot;example_id&quot;})
 </code></pre>
@@ -249,7 +250,7 @@ client.Submission().remove({&quot;id&quot;: &quot;example_id&quot;})
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
 <pre><code class="language-rb">submissions = client.Submission.list()
 submission = client.Submission.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
-created = client.Submission.create({ &quot;answers&quot; =&gt; [], &quot;clearance_slip&quot; =&gt; {}, &quot;client&quot; =&gt; {}, &quot;company_member&quot; =&gt; {}, &quot;consignee&quot; =&gt; {}, &quot;consignor&quot; =&gt; {}, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;declarant&quot; =&gt; {}, &quot;form&quot; =&gt; &quot;example&quot;, &quot;latest_state&quot; =&gt; {}, &quot;receipt&quot; =&gt; {}, &quot;updated_at&quot; =&gt; &quot;example&quot; })
+created = client.Submission.create({ &quot;answers&quot; =&gt; [], &quot;company_member&quot; =&gt; {}, &quot;declarant&quot; =&gt; {} })
 updated = client.Submission.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;additional_external_ids&quot; =&gt; [], &quot;amendment_reason&quot; =&gt; &quot;example&quot; })
 client.Submission.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 </code></pre>
@@ -257,7 +258,7 @@ client.Submission.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
 <pre><code class="language-ts">const submissions = await client.Submission().list()
 const submission = await client.Submission().load({ id: &quot;example_id&quot; })
-const created = await client.Submission().create({ answers: [], clearance_slip: {}, client: {}, company_member: {}, consignee: {}, consignor: {}, created_at: &quot;example&quot;, declarant: {}, form: &quot;example&quot;, latest_state: {}, receipt: {}, updated_at: &quot;example&quot; })
+const created = await client.Submission().create({ answers: [], company_member: {}, declarant: {} })
 const updated = await client.Submission().update({ id: &quot;example_id&quot;, additional_external_ids: [], amendment_reason: &quot;example&quot; })
 await client.Submission().remove({ id: &quot;example_id&quot; })
 </code></pre>
@@ -486,7 +487,7 @@ await client.Submission().remove({ id: &quot;example_id&quot; })
 <td><code>status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> - re…</td>
+<td>* <code>draft</code> - draft * <code>complete</code> - complete * <code>processing</code> - processing * <code>rejected</code> - rejected * <code>registered</code> - registered * <code>accepted</code> - accepted * <code>under_review</code> - <code>under_review</code> * <code>insufficient_funds</code> - <code>insufficient_funds</code> * <code>released</code> -…</td>
 </tr>
 <tr>
 <td><code>template</code></td>

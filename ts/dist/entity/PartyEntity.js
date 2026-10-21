@@ -82,9 +82,18 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             return (ctx.result && ctx.result.ok) ? this : out;
         }
         catch (err) {
-            fres = featureHook(ctx, 'PreUnexpected');
-            if (fres instanceof Promise) {
-                await fres;
+            // What a hook throws here must not escape the cleaning below.
+            try {
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
+                }
+            }
+            catch (hookerr) {
+                err = hookerr;
             }
             err = this._unexpected(ctx, err);
             if (err) {
@@ -92,7 +101,7 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Party> return stays clean under strict null checks.
+                // Promise<PartyEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }
@@ -163,9 +172,18 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             return done(ctx);
         }
         catch (err) {
-            fres = featureHook(ctx, 'PreUnexpected');
-            if (fres instanceof Promise) {
-                await fres;
+            // What a hook throws here must not escape the cleaning below.
+            try {
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
+                }
+            }
+            catch (hookerr) {
+                err = hookerr;
             }
             err = this._unexpected(ctx, err);
             if (err) {
@@ -173,7 +191,7 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Party[]> return stays clean under strict null checks.
+                // Promise<PartyEntity[]> return stays clean under strict null checks.
                 return undefined;
             }
         }
@@ -245,9 +263,18 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             return (ctx.result && ctx.result.ok) ? this : out;
         }
         catch (err) {
-            fres = featureHook(ctx, 'PreUnexpected');
-            if (fres instanceof Promise) {
-                await fres;
+            // What a hook throws here must not escape the cleaning below.
+            try {
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
+                }
+            }
+            catch (hookerr) {
+                err = hookerr;
             }
             err = this._unexpected(ctx, err);
             if (err) {
@@ -255,7 +282,7 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Party> return stays clean under strict null checks.
+                // Promise<PartyEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }
@@ -330,9 +357,18 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             return (ctx.result && ctx.result.ok) ? this : out;
         }
         catch (err) {
-            fres = featureHook(ctx, 'PreUnexpected');
-            if (fres instanceof Promise) {
-                await fres;
+            // What a hook throws here must not escape the cleaning below.
+            try {
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
+                }
+            }
+            catch (hookerr) {
+                err = hookerr;
             }
             err = this._unexpected(ctx, err);
             if (err) {
@@ -340,7 +376,7 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Party> return stays clean under strict null checks.
+                // Promise<PartyEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }
@@ -419,9 +455,18 @@ class PartyEntity extends CustomsWindowEntityBase_1.CustomsWindowEntityBase {
             return out;
         }
         catch (err) {
-            fres = featureHook(ctx, 'PreUnexpected');
-            if (fres instanceof Promise) {
-                await fres;
+            // What a hook throws here must not escape the cleaning below.
+            try {
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
+                }
+            }
+            catch (hookerr) {
+                err = hookerr;
             }
             err = this._unexpected(ctx, err);
             if (err) {

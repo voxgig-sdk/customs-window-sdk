@@ -29,6 +29,7 @@
 <a href="../features/paging.html">Paging</a>
 <a href="../features/ratelimit.html">Rate limiting</a>
 <a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
 <a href="../features/test.html">Test transport</a>
 <a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="file">File</h1>
 <h2 id="operations">Operations</h2>
@@ -55,7 +56,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">created, err := client.File(nil).Create(map[string]any{&quot;company&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;extension&quot;: &quot;example&quot;, &quot;file&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;public&quot;: true, &quot;updated_at&quot;: &quot;example&quot;, &quot;url&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">created, err := client.File(nil).Create(map[string]any{&quot;company&quot;: &quot;example&quot;, &quot;file&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -63,23 +64,23 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local created, err = client:File():create({ company = &quot;example&quot;, created_at = &quot;example&quot;, extension = &quot;example&quot;, file = &quot;example&quot;, name = &quot;example&quot;, public = true, updated_at = &quot;example&quot;, url = &quot;example&quot; })
+<pre><code class="language-lua">local created, err = client:File():create({ company = &quot;example&quot;, file = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$created = $client-&gt;File()-&gt;create([&quot;company&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;extension&quot; =&gt; &quot;example&quot;, &quot;file&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;public&quot; =&gt; true, &quot;updated_at&quot; =&gt; &quot;example&quot;, &quot;url&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$created = $client-&gt;File()-&gt;create([&quot;company&quot; =&gt; &quot;example&quot;, &quot;file&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">created = client.File().create({ &quot;company&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;extension&quot;: &quot;example&quot;, &quot;file&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;public&quot;: True, &quot;updated_at&quot;: &quot;example&quot;, &quot;url&quot;: &quot;example&quot; })
+<pre><code class="language-py">created = client.File().create({ &quot;company&quot;: &quot;example&quot;, &quot;file&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">created = client.File.create({ &quot;company&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;extension&quot; =&gt; &quot;example&quot;, &quot;file&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;public&quot; =&gt; true, &quot;updated_at&quot; =&gt; &quot;example&quot;, &quot;url&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">created = client.File.create({ &quot;company&quot; =&gt; &quot;example&quot;, &quot;file&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const created = await client.File().create({ company: &quot;example&quot;, created_at: &quot;example&quot;, extension: &quot;example&quot;, file: &quot;example&quot;, name: &quot;example&quot;, public: true, updated_at: &quot;example&quot;, url: &quot;example&quot; })
+<pre><code class="language-ts">const created = await client.File().create({ company: &quot;example&quot;, file: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>

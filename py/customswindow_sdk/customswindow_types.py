@@ -74,48 +74,24 @@ class BulkUploadListMatch(TypedDict, total=False):
 class BulkUploadCreateDataRequired(TypedDict):
     client: str
     company_member: str
-    created_at: str
     declarant: str
-    declarations_no: int
-    errors_file: dict
     file: dict
-    updated_at: str
 
 
 class BulkUploadCreateData(BulkUploadCreateDataRequired, total=False):
     active_transport_nationality: str
     active_transport_number: str
     arrival_datetime: str
-    deleted_at: str
     departure_datetime: str
     external_id: str
-    failed_declarations_no: int
-    green_routed_no: int
     h1_fallback_template: str
     house_transport_doc_ref: str
-    id: str
     issue_date: str
     mapping: str
-    orange_routed_no: int
-    parsed_declarations_no: int
     parser: str
-    parsing_completed_at: str
-    parsing_started_at: str
     passive_transport_nationality: str
     passive_transport_number: str
-    processed_declarations_no: int
-    processing_ended_at: str
-    processing_started_at: str
-    receipt_generating_started_at: str
-    receipt_request_started_at: str
-    receipt_request_status: str
-    receipt_request_user: str
-    receipts_zip: str
-    red_routed_no: int
-    rejected_status_no: int
-    status: str
     template: str
-    yellow_routed_no: int
 
 
 class BulkUploadUpdateDataRequired(TypedDict):
@@ -128,7 +104,6 @@ class BulkUploadUpdateData(BulkUploadUpdateDataRequired, total=False):
     arrival_datetime: str
     client: str
     company_member: str
-    created_at: str
     declarant: str
     declarations_no: int
     deleted_at: str
@@ -161,7 +136,6 @@ class BulkUploadUpdateData(BulkUploadUpdateDataRequired, total=False):
     rejected_status_no: int
     status: str
     template: str
-    updated_at: str
     yellow_routed_no: int
 
 
@@ -187,17 +161,12 @@ class File(FileRequired, total=False):
 
 class FileCreateDataRequired(TypedDict):
     company: str
-    created_at: str
-    extension: str
     file: str
-    name: str
-    public: bool
-    updated_at: str
-    url: str
 
 
 class FileCreateData(FileCreateDataRequired, total=False):
     id: str
+    public: bool
     size: int
 
 
@@ -247,14 +216,11 @@ class PartyCreateDataRequired(TypedDict):
     address: dict
     authorisation: dict
     certificate: dict
-    certificate_type: str
     company: str
-    created_at: str
     customs_office_of_lodgement: dict
     preferred_payment_method: dict
     signed_form: dict
     type_of_person: dict
-    updated_at: str
 
 
 class PartyCreateData(PartyCreateDataRequired, total=False):
@@ -284,9 +250,7 @@ class PartyUpdateData(PartyUpdateDataRequired, total=False):
     authorisation: dict
     bank_details: str
     certificate: dict
-    certificate_type: str
     company: str
-    created_at: str
     customs_office_of_lodgement: dict
     deleted_at: str
     email: str
@@ -303,7 +267,6 @@ class PartyUpdateData(PartyUpdateDataRequired, total=False):
     type: str
     type_of_person: dict
     unlocode: str
-    updated_at: str
 
 
 class PartyRemoveMatch(TypedDict):
@@ -373,51 +336,16 @@ class SubmissionListMatch(TypedDict, total=False):
 
 class SubmissionCreateDataRequired(TypedDict):
     answers: list
-    clearance_slip: dict
-    client: dict
     company_member: dict
-    consignee: dict
-    consignor: dict
-    created_at: str
     declarant: dict
-    form: str
-    latest_state: dict
-    receipt: dict
-    updated_at: str
 
 
 class SubmissionCreateData(SubmissionCreateDataRequired, total=False):
     additional_external_ids: list
-    amendment_reason: str
-    amendment_status: str
-    bypass_restricted_code: bool
-    document_upload_status: str
-    documents_presentation_requested: bool
-    documents_upload_requested: bool
-    external_id: str
-    goods_presentation_status: str
-    hrcm_status: str
-    id: str
-    invalidation_status: str
-    is_global_template: bool
-    latest_notification_item: str
-    lrn: str
-    mrn: str
     name: str
-    partial_answers: bool
-    refund_application_status: str
-    route: str
-    shipment_items_no: int
-    shipment_items_quantity_no: int
-    source: str
-    source_type: str
     status: str
     template: bool
     template_id: str
-    template_properties: list
-    total_tax_amount: str
-    verification_errors: list
-    verification_status: str
 
 
 class SubmissionUpdateDataRequired(TypedDict):
@@ -430,43 +358,11 @@ class SubmissionUpdateData(SubmissionUpdateDataRequired, total=False):
     amendment_status: str
     answers: list
     bypass_restricted_code: bool
-    clearance_slip: dict
-    client: dict
     company_member: dict
-    consignee: dict
-    consignor: dict
-    created_at: str
-    declarant: dict
-    document_upload_status: str
-    documents_presentation_requested: bool
-    documents_upload_requested: bool
-    external_id: str
-    form: str
-    goods_presentation_status: str
-    hrcm_status: str
-    invalidation_status: str
-    is_global_template: bool
-    latest_notification_item: str
-    latest_state: dict
-    lrn: str
-    mrn: str
     name: str
     partial_answers: bool
-    receipt: dict
-    refund_application_status: str
-    route: str
-    shipment_items_no: int
-    shipment_items_quantity_no: int
-    source: str
-    source_type: str
     status: str
-    template: bool
-    template_id: str
     template_properties: list
-    total_tax_amount: str
-    updated_at: str
-    verification_errors: list
-    verification_status: str
 
 
 class SubmissionRemoveMatch(TypedDict):
@@ -522,46 +418,10 @@ class SubmissionDetail(SubmissionDetailRequired, total=False):
 
 class SubmissionDetailCreateDataRequired(TypedDict):
     additional_information: list
-    clearance_slip: dict
-    client: dict
     company: str
     company_member: dict
-    consignee: dict
-    consignor: dict
-    created_at: str
-    declarant: dict
-    form: str
-    latest_state: dict
-    receipt: dict
     submission: str
-    updated_at: str
 
 
 class SubmissionDetailCreateData(SubmissionDetailCreateDataRequired, total=False):
-    additional_external_ids: list
-    amendment_status: str
-    document_upload_status: str
-    documents_presentation_requested: bool
-    documents_upload_requested: bool
-    external_id: str
-    goods_presentation_status: str
-    hrcm_status: str
-    id: str
-    invalidation_status: str
-    is_global_template: bool
-    latest_notification_item: str
-    lrn: str
-    mrn: str
-    name: str
-    refund_application_status: str
-    route: str
-    shipment_items_no: int
-    shipment_items_quantity_no: int
-    source: str
-    source_type: str
-    status: str
     supporting_documents: list
-    template: bool
-    total_tax_amount: str
-    verification_errors: list
-    verification_status: str

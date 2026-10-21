@@ -7,8 +7,8 @@ main: {
       description: "The API Reference."
       security: {
         in: "header"
-        name: "Basic Auth"
-        prefix: ""
+        name: "Authorization"
+        prefix: "Basic"
         scheme: "Secret Key"
         type: "apiKey"
       }

@@ -12,7 +12,7 @@ It exposes the API as capitalised, semantic **Entities** — e.g. `client:BulkUp
 
 ## Install
 This package is not yet published to LuaRocks. Install it from the
-GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/customs-window-sdk/releases)),
+GitHub release tag (`lua/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/customs-window-sdk/tags)),
 or add the source directory to your `LUA_PATH`:
 
 ```bash
@@ -37,31 +37,36 @@ local client = sdk.new({
 
 ### 2. List bulkupload records
 
-Entity operations return `(value, err)`. For `list`, `value` is the
-array of records itself — iterate it directly (there is no wrapper).
+Entity operations return `(value, err)`. For `list`, `value` is an
+array of entities, one per record — iterate it directly (there is no
+wrapper), and read each record with `data_get()`.
 
 ```lua
 local bulkuploads, err = client:BulkUpload():list()
 if err then error(err) end
 
 for _, item in ipairs(bulkuploads) do
-  print(item["id"])
+  local rec = item:data_get()
+  print(rec["id"])
 end
 ```
 
 ### 3. Load a bulkupload
 
+`load` returns the entity; `data_get()` reads its record.
+
 ```lua
 local bulkupload, err = client:BulkUpload():load({ id = "example_id" })
 if err then error(err) end
-print(bulkupload)
+local rec = bulkupload:data_get()
+print(rec["id"])
 ```
 
 ### 4. Create, update, and remove
 
 ```lua
 -- Create
-local created, err = client:BulkUpload():create({ client = "example_client", company_member = "example_company_member", created_at = "example_created_at", declarant = "example_declarant", declarations_no = 1, errors_file = {}, file = {}, updated_at = "example_updated_at" })
+local created, err = client:BulkUpload():create({ client = "example_client", company_member = "example_company_member", declarant = "example_declarant", file = {} })
 if err then error(err) end
 
 -- Update
@@ -137,7 +142,7 @@ Create a mock client for unit testing — no server required:
 local client = sdk.test()
 
 local result, err = client:Submission():list()
--- result is the returned data; err is set on failure
+-- result is an array of entities, one per mock record; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -229,11 +234,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria, and return it. |
+| `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria, one per record. |
+| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity, and return it. |
+| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity, and return it. |
+| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity, and return it marked as deleted. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -243,19 +248,19 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(value, err)`. The `value` is the operation's
-data **directly** — there is no wrapper:
+Entity operations return `(value, err)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
-| `list` | an array (`table`) of entity records |
+| `load` / `create` / `update` / `remove` | the entity, whose `data_get()` reads its record (a `table`) |
+| `list` | an array (`table`) of entities, one per record |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
     local bulk_upload, err = client:BulkUpload():load({ id = "example_id" })
     if err then error(err) end
-    -- bulk_upload is the loaded record
+    -- bulk_upload is the loaded entity
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -357,7 +362,7 @@ API path: `/files`
 | `phone_number` |  |
 | `preferred_payment_method` |  |
 | `signed_form` |  |
-| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` |  |
 | `unlocode` |  |
 | `updated_at` |  |
@@ -405,7 +410,7 @@ API path: `/parties`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` |  |
 | `template_id` | cuid-format identifier for this entity. |
 | `template_properties` |  |
@@ -455,7 +460,7 @@ API path: `/submissions/{id}/refund`
 | `shipment_items_quantity_no` |  |
 | `source` | cuid-format identifier for this entity. |
 | `source_type` | * `template` - template * `automated_import` - automated_import |
-| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | cuid-format identifier for this entity. |
 | `supporting_documents` |  |
 | `template` |  |
@@ -551,12 +556,8 @@ local bulk_uploads, err = client:BulkUpload():list()
 local bulk_upload, err = client:BulkUpload():create({
   client = "example_client", -- string
   company_member = "example_company_member", -- string
-  created_at = "example_created_at", -- string
   declarant = "example_declarant", -- string
-  declarations_no = 1, -- number
-  errors_file = {}, -- table
   file = {}, -- table
-  updated_at = "example_updated_at", -- string
 })
 ```
 
@@ -591,13 +592,7 @@ Create an instance: `local file = client:File(nil)`
 ```lua
 local file, err = client:File():create({
   company = "example_company", -- string
-  created_at = "example_created_at", -- string
-  extension = "example_extension", -- string
   file = "example_file", -- string
-  name = "example_name", -- string
-  public = true, -- boolean
-  updated_at = "example_updated_at", -- string
-  url = "example_url", -- string
 })
 ```
 
@@ -642,7 +637,7 @@ Create an instance: `local party = client:Party(nil)`
 | `phone_number` | `string` |  |
 | `preferred_payment_method` | `table` |  |
 | `signed_form` | `table` |  |
-| `type` | `string` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `string` | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `table` |  |
 | `unlocode` | `string` |  |
 | `updated_at` | `string` |  |
@@ -667,14 +662,11 @@ local party, err = client:Party():create({
   address = {}, -- table
   authorisation = {}, -- table
   certificate = {}, -- table
-  certificate_type = "example_certificate_type", -- string
   company = "example_company", -- string
-  created_at = "example_created_at", -- string
   customs_office_of_lodgement = {}, -- table
   preferred_payment_method = {}, -- table
   signed_form = {}, -- table
   type_of_person = {}, -- table
-  updated_at = "example_updated_at", -- string
 })
 ```
 
@@ -732,7 +724,7 @@ Create an instance: `local submission = client:Submission(nil)`
 | `shipment_items_quantity_no` | `number` |  |
 | `source` | `string` | cuid-format identifier for this entity. |
 | `source_type` | `string` | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `boolean` |  |
 | `template_id` | `string` | cuid-format identifier for this entity. |
 | `template_properties` | `table` |  |
@@ -758,17 +750,8 @@ local submissions, err = client:Submission():list()
 ```lua
 local submission, err = client:Submission():create({
   answers = {}, -- table
-  clearance_slip = {}, -- table
-  client = {}, -- table
   company_member = {}, -- table
-  consignee = {}, -- table
-  consignor = {}, -- table
-  created_at = "example_created_at", -- string
   declarant = {}, -- table
-  form = "example_form", -- string
-  latest_state = {}, -- table
-  receipt = {}, -- table
-  updated_at = "example_updated_at", -- string
 })
 ```
 
@@ -820,7 +803,7 @@ Create an instance: `local submission_detail = client:SubmissionDetail(nil)`
 | `shipment_items_quantity_no` | `number` |  |
 | `source` | `string` | cuid-format identifier for this entity. |
 | `source_type` | `string` | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `string` | cuid-format identifier for this entity. |
 | `supporting_documents` | `table` |  |
 | `template` | `boolean` |  |
@@ -834,25 +817,15 @@ Create an instance: `local submission_detail = client:SubmissionDetail(nil)`
 ```lua
 local submission_detail, err = client:SubmissionDetail():create({
   additional_information = {}, -- table
-  clearance_slip = {}, -- table
-  client = {}, -- table
   company = "example_company", -- string
   company_member = {}, -- table
-  consignee = {}, -- table
-  consignor = {}, -- table
-  created_at = "example_created_at", -- string
-  declarant = {}, -- table
-  form = "example_form", -- string
-  latest_state = {}, -- table
-  receipt = {}, -- table
   submission = "example_submission", -- string
-  updated_at = "example_updated_at", -- string
 })
 ```
 
 ## Features
 
-This SDK ships 8 optional features. Each is **inactive until you
+This SDK ships 9 optional features. Each is **inactive until you
 switch it on**, so an SDK you have not configured behaves exactly as if none of
 them existed — no retries, no cache, no logging, no measurable overhead.
 
@@ -867,10 +840,11 @@ above:
 | [`paging`](#paging) | Paging |
 | [`ratelimit`](#ratelimit) | Rate limiting |
 | [`retry`](#retry) | Retry |
+| [`secrets`](#secrets) | Secrets |
 | [`test`](#test) | Test transport |
 | [`timeout`](#timeout) | Timeout |
 
-> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> **Order matters for `ratelimit`, `retry`, `secrets`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
 > activate them in IS the nesting order. Activating them as an ordered list
 > rather than a map is what fixes that order.
@@ -961,6 +935,24 @@ Set `feature.retry.active` to enable it, then override any of the options above.
 transport features decides what it sees. A feature activated later wraps one
 activated earlier.
 
+### secrets
+
+Secrets.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+Set `feature.secrets.active` to enable it, then override any of the options above.
+
+`secrets` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
 ### test
 
 Test transport.
@@ -1031,6 +1023,7 @@ The SDK ships with built-in features:
 - **PagingFeature**: Paging
 - **RatelimitFeature**: Rate limiting
 - **RetryFeature**: Retry
+- **SecretsFeature**: Secrets
 - **TestFeature**: Test transport
 - **TimeoutFeature**: Timeout
 

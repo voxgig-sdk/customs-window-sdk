@@ -7,6 +7,7 @@ from customswindow_sdk.feature.metrics_feature import CustomsWindowMetricsFeatur
 from customswindow_sdk.feature.paging_feature import CustomsWindowPagingFeature
 from customswindow_sdk.feature.ratelimit_feature import CustomsWindowRatelimitFeature
 from customswindow_sdk.feature.retry_feature import CustomsWindowRetryFeature
+from customswindow_sdk.feature.secrets_feature import CustomsWindowSecretsFeature
 from customswindow_sdk.feature.test_feature import CustomsWindowTestFeature
 from customswindow_sdk.feature.timeout_feature import CustomsWindowTimeoutFeature
 
@@ -19,6 +20,7 @@ _FEATURES = {
     "paging": lambda: CustomsWindowPagingFeature(),
     "ratelimit": lambda: CustomsWindowRatelimitFeature(),
     "retry": lambda: CustomsWindowRetryFeature(),
+    "secrets": lambda: CustomsWindowSecretsFeature(),
     "test": lambda: CustomsWindowTestFeature(),
     "timeout": lambda: CustomsWindowTimeoutFeature(),
 }

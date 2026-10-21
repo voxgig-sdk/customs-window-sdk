@@ -45,7 +45,7 @@ Key fields to recognise:
 
 - `company`: cuid-format identifier for this entity.
 - `id`: cuid-format identifier for this entity.
-- `type`: * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `contact` - contact * `consignee` - consignee * `consignor` - consignor * `carrier` - carrier
+- `type`: * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - `authorisation_holder` * `client` - client * `contact` - contact * `consignee` - consignee * `consignor` - consignor * `carrier` - carrier
 
 ### [Submission](docs/api/submission.html)
 
@@ -71,7 +71,7 @@ Key fields to recognise:
 - `company`: cuid-format identifier for this entity.
 - `company_member`: cuid-format identifier for this entity.
 - `document_upload_status`: * `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled
-- `goods_presentation_status`: * `in_review` - in_review * `rejected` - rejected * `accepted` - accepted * `requested` - requested
+- `goods_presentation_status`: * `in_review` - `in_review` * `rejected` - rejected * `accepted` - accepted * `requested` - requested
 
 ### Route map
 
@@ -120,7 +120,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 
 - Customs Window production API: `https://api.customswindow.com`
 
-The default credential is sent in the `Basic Auth` header.
+The default credential is sent in the `Authorization` header with the `Basic` prefix.
 
 Basic authentication with required secret-key
 
@@ -179,6 +179,7 @@ Features supply behaviour around API calls, such as request handling, diagnostic
 - [`paging`](docs/features/paging.html): Pagination signals for list operations
 - [`ratelimit`](docs/features/ratelimit.html): Client-side rate limiting via a token bucket
 - [`retry`](docs/features/retry.html): Automatic retry of transient failures with exponential backoff
+- [`secrets`](docs/features/secrets.html): Secret access: resolve the API credential through a provider chain, and exchange a refresh token for short-lived access tokens
 - [`test`](docs/features/test.html): In-memory mock transport for testing without a live server
 - [`timeout`](docs/features/timeout.html): Per-request timeout with transport abort
 

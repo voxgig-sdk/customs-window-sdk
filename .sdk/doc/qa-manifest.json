@@ -13,6 +13,7 @@
     "docs/features/paging.html",
     "docs/features/ratelimit.html",
     "docs/features/retry.html",
+    "docs/features/secrets.html",
     "docs/features/test.html",
     "docs/features/timeout.html",
     "docs/guides/authentication.html",
@@ -30,5 +31,32 @@
     "docs/tools/go-mcp.html"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "* `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - `authorisation_holder` * `client` - client * `contact` - contact * `consignee` - consignee * `consignor` - consignor * `carrier` - carrier",
+      "* `in_review` - `in_review` * `rejected` - rejected * `accepted` - accepted * `requested` - requested",
+      "* `requested` - requested * `draft` - draft * `complete` - complete * `processing` - processing * `accepted` - accepted * `rejected` - rejected * `cancelled` - cancelled",
+      "Basic authentication with required secret-key",
+      "Customs Window production API",
+      "No response body",
+      "The API Reference.",
+      "cuid-format identifier for this entity."
+    ],
+    "docs/api/bulk_upload.html": [
+      "No response body"
+    ],
+    "docs/api/index.html": [
+      "Customs Window production API"
+    ],
+    "docs/api/party.html": [
+      "No response body"
+    ],
+    "docs/api/submission.html": [
+      "No response body"
+    ],
+    "docs/index.html": [
+      "The API Reference."
+    ]
+  }
 }

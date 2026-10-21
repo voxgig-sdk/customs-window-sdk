@@ -94,6 +94,13 @@ main: kit: entity: file: {
       name: "create"
       points: [
         {
+          bf: [
+            "company"
+            "file"
+            "id"
+            "public"
+            "size"
+          ]
           co: {
             id: "POST /files"
             source: "openapi3"
@@ -101,15 +108,95 @@ main: kit: entity: file: {
           }
           m: "POST"
           o: "/files"
+          rb: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    name: "company"
+                  }
+                  {
+                    name: "created_at"
+                  }
+                  {
+                    name: "extension"
+                  }
+                  {
+                    name: "file"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "name"
+                  }
+                  {
+                    name: "public"
+                  }
+                  {
+                    name: "size"
+                  }
+                  {
+                    name: "updated_at"
+                  }
+                  {
+                    name: "url"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    name: "company"
+                  }
+                  {
+                    name: "created_at"
+                  }
+                  {
+                    name: "extension"
+                  }
+                  {
+                    name: "file"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "name"
+                  }
+                  {
+                    name: "public"
+                  }
+                  {
+                    name: "size"
+                  }
+                  {
+                    name: "updated_at"
+                  }
+                  {
+                    name: "url"
+                  }
+                ]
+                kind: "form"
+                media: "application/x-www-form-urlencoded"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "files"
             }
           ]
           t: {
-            req: {
-              file: "`reqdata`"
-            }
+            req: "`reqdata`"
             res: "`body`"
           }
         }

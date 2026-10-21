@@ -153,24 +153,20 @@ local bulk_upload = client:BulkUpload(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:BulkUpload():create({
   client = --[[ string ]],
   company_member = --[[ string ]],
-  created_at = --[[ string ]],
   declarant = --[[ string ]],
-  declarations_no = --[[ number ]],
-  errors_file = --[[ table ]],
   file = --[[ table ]],
-  updated_at = --[[ string ]],
 })
 ```
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:BulkUpload():list()
@@ -178,7 +174,7 @@ local results, err = client:BulkUpload():list()
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:BulkUpload():load({ id = "bulk_upload_id" })
@@ -186,7 +182,7 @@ local result, err = client:BulkUpload():load({ id = "bulk_upload_id" })
 
 #### `remove(reqmatch, ctrl) -> any, err`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:BulkUpload():remove({ id = "bulk_upload_id" })
@@ -194,7 +190,7 @@ local result, err = client:BulkUpload():remove({ id = "bulk_upload_id" })
 
 #### `update(reqdata, ctrl) -> any, err`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:BulkUpload():update({
@@ -273,18 +269,12 @@ local file = client:File(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:File():create({
   company = --[[ string ]],
-  created_at = --[[ string ]],
-  extension = --[[ string ]],
   file = --[[ string ]],
-  name = --[[ string ]],
-  public = --[[ boolean ]],
-  updated_at = --[[ string ]],
-  url = --[[ string ]],
 })
 ```
 
@@ -350,7 +340,7 @@ local party = client:Party(nil)
 | `phone_number` | `string` | No |  |
 | `preferred_payment_method` | `table` | Yes |  |
 | `signed_form` | `table` | Yes |  |
-| `type` | `string` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `string` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `table` | Yes |  |
 | `unlocode` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
@@ -359,7 +349,7 @@ local party = client:Party(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Party():create({
@@ -367,20 +357,17 @@ local result, err = client:Party():create({
   address = --[[ table ]],
   authorisation = --[[ table ]],
   certificate = --[[ table ]],
-  certificate_type = --[[ string ]],
   company = --[[ string ]],
-  created_at = --[[ string ]],
   customs_office_of_lodgement = --[[ table ]],
   preferred_payment_method = --[[ table ]],
   signed_form = --[[ table ]],
   type_of_person = --[[ table ]],
-  updated_at = --[[ string ]],
 })
 ```
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:Party():list()
@@ -388,7 +375,7 @@ local results, err = client:Party():list()
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Party():load({ id = "party_id" })
@@ -396,7 +383,7 @@ local result, err = client:Party():load({ id = "party_id" })
 
 #### `remove(reqmatch, ctrl) -> any, err`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Party():remove({ id = "party_id" })
@@ -404,7 +391,7 @@ local result, err = client:Party():remove({ id = "party_id" })
 
 #### `update(reqdata, ctrl) -> any, err`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Party():update({
@@ -488,7 +475,7 @@ local submission = client:Submission(nil)
 | `shipment_items_quantity_no` | `number` | No |  |
 | `source` | `string` | No | cuid-format identifier for this entity. |
 | `source_type` | `string` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `boolean` | No |  |
 | `template_id` | `string` | No | cuid-format identifier for this entity. |
 | `template_properties` | `table` | No |  |
@@ -549,28 +536,19 @@ local submission = client:Submission(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Submission():create({
   answers = --[[ table ]],
-  clearance_slip = --[[ table ]],
-  client = --[[ table ]],
   company_member = --[[ table ]],
-  consignee = --[[ table ]],
-  consignor = --[[ table ]],
-  created_at = --[[ string ]],
   declarant = --[[ table ]],
-  form = --[[ string ]],
-  latest_state = --[[ table ]],
-  receipt = --[[ table ]],
-  updated_at = --[[ string ]],
 })
 ```
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:Submission():list()
@@ -578,7 +556,7 @@ local results, err = client:Submission():list()
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Submission():load({ id = "submission_id" })
@@ -586,7 +564,7 @@ local result, err = client:Submission():load({ id = "submission_id" })
 
 #### `remove(reqmatch, ctrl) -> any, err`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Submission():remove({ id = "submission_id" })
@@ -594,7 +572,7 @@ local result, err = client:Submission():remove({ id = "submission_id" })
 
 #### `update(reqdata, ctrl) -> any, err`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Submission():update({
@@ -676,7 +654,7 @@ local submission_detail = client:SubmissionDetail(nil)
 | `shipment_items_quantity_no` | `number` | No |  |
 | `source` | `string` | No | cuid-format identifier for this entity. |
 | `source_type` | `string` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `string` | Yes | cuid-format identifier for this entity. |
 | `supporting_documents` | `table` | No |  |
 | `template` | `boolean` | No |  |
@@ -689,24 +667,14 @@ local submission_detail = client:SubmissionDetail(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:SubmissionDetail():create({
   additional_information = --[[ table ]],
-  clearance_slip = --[[ table ]],
-  client = --[[ table ]],
   company = --[[ string ]],
   company_member = --[[ table ]],
-  consignee = --[[ table ]],
-  consignor = --[[ table ]],
-  created_at = --[[ string ]],
-  declarant = --[[ table ]],
-  form = --[[ string ]],
-  latest_state = --[[ table ]],
-  receipt = --[[ table ]],
   submission = --[[ string ]],
-  updated_at = --[[ string ]],
 })
 ```
 
@@ -750,6 +718,7 @@ Return the entity name.
 | `paging` | 0.0.1 | Paging |
 | `ratelimit` | 0.0.1 | Rate limiting |
 | `retry` | 0.0.1 | Retry |
+| `secrets` | 0.1.0 | Secrets |
 | `test` | 0.0.1 | Test transport |
 | `timeout` | 0.0.1 | Timeout |
 
@@ -765,6 +734,7 @@ local client = sdk.new({
     paging = { active = true },
     ratelimit = { active = true },
     retry = { active = true },
+    secrets = { active = true },
     test = { active = true },
     timeout = { active = true },
   },
@@ -783,7 +753,7 @@ transport, and the order you list them in is the order they nest.
 
 #### Ordering
 
-`ratelimit`, `retry`, `timeout` wrap the transport. Each
+`ratelimit`, `retry`, `secrets`, `timeout` wrap the transport. Each
 wraps whatever is already installed, so **activation order is nesting order**:
 a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
@@ -985,6 +955,31 @@ its default unless you name it.
   sees. See [Ordering](#ordering) above.
 - Inactive by default: leaving it out costs nothing at runtime.
 
+#### `secrets`
+
+Secrets.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+**Usage**
+
+Set `feature.secrets.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
 #### `test`
 
 Test transport.
@@ -1030,6 +1025,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

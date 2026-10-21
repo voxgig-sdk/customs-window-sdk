@@ -23,7 +23,7 @@ export CUSTOMS_WINDOW_APIKEY=sk_live_xxx
 ./customs-window-cli load 1 bulk_upload            # {id:1} shorthand
 ./customs-window-cli load '{id:1}' bulk_upload       # explicit match map
 ./customs-window-cli update '{name:"x"}' bulk_upload
-./customs-window-cli list file
+./customs-window-cli list party
 
 # 5. Override the API base URL for a single call
 CUSTOMS_WINDOW_BASE=https://api.example.com ./customs-window-cli list bulk_upload

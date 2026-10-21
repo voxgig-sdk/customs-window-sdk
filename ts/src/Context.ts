@@ -23,6 +23,9 @@ class Context {
   // Store for the current operation.
   current: WeakMap<String, any> = new WeakMap()
 
+  // Set by makeError as it fires PreUnexpected, which fires once per operation.
+  unexpectedFired = false
+
 
   ctrl: Record<string, any> = {}
   meta: Record<string, any> = {}
@@ -98,7 +101,7 @@ class Context {
       const opcfg = getpath(this.config, ['entity', entname, 'op', opname])
       let input = 'match'
 
-      if ('update' === opname || 'create' === opname) {
+      if ('update' === opname || 'create' === opname || 'patch' === opname) {
         input = 'data'
       }
 
@@ -121,8 +124,10 @@ class Context {
   }
 
 
+  // The serialised context leaves the pipeline (a logger, an error dump), so
+  // it is cleaned; the live fields stay raw for the pipeline's own use.
   toJSON() {
-    return {
+    const record = {
       id: this.id,
       op: this.op,
       spec: this.spec,
@@ -131,6 +136,8 @@ class Context {
       response: this.response,
       meta: this.meta,
     }
+    const clean = (this as any).utility?.clean
+    return 'function' === typeof clean ? clean(this, record) : record
   }
 
   toString() {

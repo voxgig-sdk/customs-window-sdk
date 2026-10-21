@@ -155,24 +155,20 @@ $bulk_upload = $client->BulkUpload();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->BulkUpload()->create([
   "client" => null, // string
   "company_member" => null, // string
-  "created_at" => null, // string
   "declarant" => null, // string
-  "declarations_no" => null, // int
-  "errors_file" => null, // array
   "file" => null, // array
-  "updated_at" => null, // string
 ]);
 ```
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
 $results = $client->BulkUpload()->list();
@@ -180,7 +176,7 @@ $results = $client->BulkUpload()->list();
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria. Throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
 $result = $client->BulkUpload()->load(["id" => "bulk_upload_id"]);
@@ -188,7 +184,7 @@ $result = $client->BulkUpload()->load(["id" => "bulk_upload_id"]);
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
 
-Remove the entity matching the given criteria. Throws on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
 $result = $client->BulkUpload()->remove(["id" => "bulk_upload_id"]);
@@ -196,7 +192,7 @@ $result = $client->BulkUpload()->remove(["id" => "bulk_upload_id"]);
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
 
-Update an existing entity. The data must include the entity `id`. Throws on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
 
 ```php
 $result = $client->BulkUpload()->update([
@@ -275,18 +271,12 @@ $file = $client->File();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->File()->create([
   "company" => null, // string
-  "created_at" => null, // string
-  "extension" => null, // string
   "file" => null, // string
-  "name" => null, // string
-  "public" => null, // bool
-  "updated_at" => null, // string
-  "url" => null, // string
 ]);
 ```
 
@@ -352,7 +342,7 @@ $party = $client->Party();
 | `phone_number` | `string` | No |  |
 | `preferred_payment_method` | `array` | Yes |  |
 | `signed_form` | `array` | Yes |  |
-| `type` | `string` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client * `co… |
+| `type` | `string` | No | * `exporter` - exporter * `importer` - importer * `buyer` - buyer * `seller` - seller * `representative` - representative * `declarant` - declarant * `owner` - owner * `authorisation_holder` - authorisation_holder * `client` - client *… |
 | `type_of_person` | `array` | Yes |  |
 | `unlocode` | `string` | No |  |
 | `updated_at` | `string` | Yes |  |
@@ -361,7 +351,7 @@ $party = $client->Party();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->Party()->create([
@@ -369,20 +359,17 @@ $result = $client->Party()->create([
   "address" => null, // array
   "authorisation" => null, // array
   "certificate" => null, // array
-  "certificate_type" => null, // string
   "company" => null, // string
-  "created_at" => null, // string
   "customs_office_of_lodgement" => null, // array
   "preferred_payment_method" => null, // array
   "signed_form" => null, // array
   "type_of_person" => null, // array
-  "updated_at" => null, // string
 ]);
 ```
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
 $results = $client->Party()->list();
@@ -390,7 +377,7 @@ $results = $client->Party()->list();
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria. Throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
 $result = $client->Party()->load(["id" => "party_id"]);
@@ -398,7 +385,7 @@ $result = $client->Party()->load(["id" => "party_id"]);
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
 
-Remove the entity matching the given criteria. Throws on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
 $result = $client->Party()->remove(["id" => "party_id"]);
@@ -406,7 +393,7 @@ $result = $client->Party()->remove(["id" => "party_id"]);
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
 
-Update an existing entity. The data must include the entity `id`. Throws on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
 
 ```php
 $result = $client->Party()->update([
@@ -490,7 +477,7 @@ $submission = $client->Submission();
 | `shipment_items_quantity_no` | `int` | No |  |
 | `source` | `string` | No | cuid-format identifier for this entity. |
 | `source_type` | `string` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `template` | `bool` | No |  |
 | `template_id` | `string` | No | cuid-format identifier for this entity. |
 | `template_properties` | `array` | No |  |
@@ -551,28 +538,19 @@ $submission = $client->Submission();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->Submission()->create([
   "answers" => null, // array
-  "clearance_slip" => null, // array
-  "client" => null, // array
   "company_member" => null, // array
-  "consignee" => null, // array
-  "consignor" => null, // array
-  "created_at" => null, // string
   "declarant" => null, // array
-  "form" => null, // string
-  "latest_state" => null, // array
-  "receipt" => null, // array
-  "updated_at" => null, // string
 ]);
 ```
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
 $results = $client->Submission()->list();
@@ -580,7 +558,7 @@ $results = $client->Submission()->list();
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria. Throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
 $result = $client->Submission()->load(["id" => "submission_id"]);
@@ -588,7 +566,7 @@ $result = $client->Submission()->load(["id" => "submission_id"]);
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
 
-Remove the entity matching the given criteria. Throws on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
 $result = $client->Submission()->remove(["id" => "submission_id"]);
@@ -596,7 +574,7 @@ $result = $client->Submission()->remove(["id" => "submission_id"]);
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
 
-Update an existing entity. The data must include the entity `id`. Throws on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
 
 ```php
 $result = $client->Submission()->update([
@@ -678,7 +656,7 @@ $submission_detail = $client->SubmissionDetail();
 | `shipment_items_quantity_no` | `int` | No |  |
 | `source` | `string` | No | cuid-format identifier for this entity. |
 | `source_type` | `string` | No | * `template` - template * `automated_import` - automated_import |
-| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` - re… |
+| `status` | `string` | No | * `draft` - draft * `complete` - complete * `processing` - processing * `rejected` - rejected * `registered` - registered * `accepted` - accepted * `under_review` - under_review * `insufficient_funds` - insufficient_funds * `released` -… |
 | `submission` | `string` | Yes | cuid-format identifier for this entity. |
 | `supporting_documents` | `array` | No |  |
 | `template` | `bool` | No |  |
@@ -691,24 +669,14 @@ $submission_detail = $client->SubmissionDetail();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->SubmissionDetail()->create([
   "additional_information" => null, // array
-  "clearance_slip" => null, // array
-  "client" => null, // array
   "company" => null, // string
   "company_member" => null, // array
-  "consignee" => null, // array
-  "consignor" => null, // array
-  "created_at" => null, // string
-  "declarant" => null, // array
-  "form" => null, // string
-  "latest_state" => null, // array
-  "receipt" => null, // array
   "submission" => null, // string
-  "updated_at" => null, // string
 ]);
 ```
 
@@ -752,6 +720,7 @@ Return the entity name.
 | `paging` | 0.0.1 | Paging |
 | `ratelimit` | 0.0.1 | Rate limiting |
 | `retry` | 0.0.1 | Retry |
+| `secrets` | 0.1.0 | Secrets |
 | `test` | 0.0.1 | Test transport |
 | `timeout` | 0.0.1 | Timeout |
 
@@ -767,6 +736,7 @@ $client = new CustomsWindowSDK([
     "paging" => ["active" => true],
     "ratelimit" => ["active" => true],
     "retry" => ["active" => true],
+    "secrets" => ["active" => true],
     "test" => ["active" => true],
     "timeout" => ["active" => true],
   ],
@@ -785,7 +755,7 @@ transport, and the order you list them in is the order they nest.
 
 #### Ordering
 
-`ratelimit`, `retry`, `timeout` wrap the transport. Each
+`ratelimit`, `retry`, `secrets`, `timeout` wrap the transport. Each
 wraps whatever is already installed, so **activation order is nesting order**:
 a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
@@ -987,6 +957,31 @@ its default unless you name it.
   sees. See [Ordering](#ordering) above.
 - Inactive by default: leaving it out costs nothing at runtime.
 
+#### `secrets`
+
+Secrets.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `cache` | `true` |
+| `exchange` | `{active: false, method: 'POST', path: 'auth/token', refresh: '', request: 'refresh_token', response: 'access_token', retries: 1, statuses: [401]}` |
+| `name` | `'apikey'` |
+| `providers` | `[]` |
+
+**Usage**
+
+Set `feature.secrets.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
 #### `test`
 
 Test transport.
@@ -1032,6 +1027,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and
