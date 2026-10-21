@@ -3853,7 +3853,7 @@
       "Secret Key": {
         "type": "apiKey",
         "in": "header",
-        "name": "Basic Auth",
+        "name": "Authorization",
         "description": "Basic authentication with required secret-key"
       }
     }

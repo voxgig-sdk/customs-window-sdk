@@ -55,12 +55,10 @@ main: kit: target: py: publish: registry: package: 'voxgig-sdk-customs-window-sd
 main: kit: target: rb: publish: registry: package: 'voxgig-sdk-customs-window-sdk'
 main: kit: target: lua: publish: registry: package: 'voxgig-sdk-customs-window-sdk'
 main: kit: target: php: publish: registry: package: 'voxgig-sdk/customs-window-sdk'
-# Authentication, corrected from the live API (probed 2026-10-21). The spec
-# declares an apiKey header literally named "Basic Auth", which is not a valid
-# HTTP header name: fetch throws on it, and the server never reads it. The live
-# API answers `Authorization: Basic <secret key>` with "Incorrect/invalid secret
-# key", so that is the header it checks. The spec is left as published; this
-# overrides it (config.auth outranks info.security in sdkgen).
+# Authentication. The live API reads `Authorization: Basic <secret key>`
+# (probed 2026-10-21). The header name is corrected in .sdk/def (see its
+# README); the Basic prefix lives here because an apiKey scheme cannot
+# express a prefix. config.auth outranks info.security in sdkgen.
 main: kit: config: auth: { in: 'header', name: 'Authorization', prefix: 'Basic' }
 
 # --- cedar: release version (written by cedar-regen.sh, do not hand-edit)
