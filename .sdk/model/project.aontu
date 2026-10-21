@@ -22,6 +22,47 @@
 # A published package name that does not follow the derivation:
 #
 #   main: kit: target: ts: publish: registry: package: '@scope/name'
+# outreach1 standard (2026-10-21): the Brontie build. std8 targets, the standard
+# features (including secrets) and a branded GitHub Pages documentation site.
+main: kit: doc: edition: 'github-pages': active: true
+
+# GitHub Pages is enabled for this repository, so generated documentation may
+# link the site. Without this the README advertises no address, which is what
+# an unpublished repository should do.
+main: kit: doc: edition: 'github-pages': published: true
+
+# Brand palette, taken from customswindow.com's own stylesheet: #003734 deep
+# teal (headings and the logo, the most-used brand colour), #ff6b3d orange
+# (calls to action), #f8f8f8 page background. Dark mode deepens the teal for the
+# background and uses the site's #e4f2f2 tint for text.
+# auto, so the dark values are actually used: light and dark emit one palette
+# each, and only auto honours the reader's own setting.
+main: kit: doc: style: mode: 'auto'
+
+main: kit: doc: style: color: {
+  primary: '#003734'
+  accent: '#ff6b3d'
+  background: '#f8f8f8'
+  text: '#003734'
+  darkBackground: '#001e1c'
+  darkText: '#e4f2f2'
+}
+
+# Published package names, declared so a change in the generator's naming
+# rule cannot rename a released package.
+main: kit: target: ts: publish: registry: package: '@voxgig-sdk/customs-window-sdk'
+main: kit: target: py: publish: registry: package: 'voxgig-sdk-customs-window-sdk'
+main: kit: target: rb: publish: registry: package: 'voxgig-sdk-customs-window-sdk'
+main: kit: target: lua: publish: registry: package: 'voxgig-sdk-customs-window-sdk'
+main: kit: target: php: publish: registry: package: 'voxgig-sdk/customs-window-sdk'
+# Authentication, corrected from the live API (probed 2026-10-21). The spec
+# declares an apiKey header literally named "Basic Auth", which is not a valid
+# HTTP header name: fetch throws on it, and the server never reads it. The live
+# API answers `Authorization: Basic <secret key>` with "Incorrect/invalid secret
+# key", so that is the header it checks. The spec is left as published; this
+# overrides it (config.auth outranks info.security in sdkgen).
+main: kit: config: auth: { in: 'header', name: 'Authorization', prefix: 'Basic' }
+
 # --- cedar: release version (written by cedar-regen.sh, do not hand-edit)
 # Per target, because sdkgen keys the version per target; identical across
 # them because cedar tags a repo at one version.
